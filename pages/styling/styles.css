@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #485364;
+    line-height: 1.25rem;
+}
+
+.login-form{
+    text-align: center;
+    color:azure;
+    font-family: sans-serif;
+    position: relative;
+}
+
+.email-form{
+    
+
+}
