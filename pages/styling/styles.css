@@ -1,20 +1,30 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
-    background-color: #485364;
     line-height: 1.25rem;
+    max-width: 90%;
+    background-color: #485364;
+    text-align: center;
 }
 
-.login-form{
+.digikort-heading{
     text-align: center;
-    color:azure;
-    font-family: sans-serif;
-    position: relative;
+    color: snow;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.login-form {
+        font-family: arial;
+        position: relative;
+        justify-content: center;
+
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
 }
 
 .email-form{
-    
-
+    position: relative;
 }
