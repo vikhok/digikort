@@ -11,20 +11,28 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.login-form {
-        font-family: arial;
-        position: relative;
-        justify-content: center;
-
+.email-form {
+    position: relative;
 }
 
-.login-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.login-form{
     
 }
 
-.email-form{
-    position: relative;
-}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	    
+  }

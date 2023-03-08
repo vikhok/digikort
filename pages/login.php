@@ -11,7 +11,7 @@
  
 <div class="login-form">
     <div class="login-container">    
-        <form action="">
+        <form name="login" class="login" action="login.php">
 
             <div class="digikort-heading">
                 <h1>DigiKort</h1>
