@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets\styles\rediger_profil_styles.css">
     <title>Rediger profil</title>
 </head>
 <body>
 
+
+<div class="rediger_profil">
     <h1>Rediger profilen din</h1>
 
     <form action="rediger_profil.php" method="POST">
@@ -30,8 +33,12 @@
         <label for="github">Github:</label>
         <input type="url" id="github" name="github" placeholder="https://github.com/"><br><br>
 
+        <label for="instagram">Instagram:</label>
+        <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/"><br><br>
+
         <button type="submit">Oppdater profil</button>
     </form>
+</div>
 
 </body>
 </html>
