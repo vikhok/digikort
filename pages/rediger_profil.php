@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets\styles\rediger_profil_styles.css">
+    <link rel="stylesheet" href="rediger_profil_styles.css">
     <title>Rediger profil</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
         <input type="text" id="stillingstittel" name="stillingstittel"><br><br>
 
         <label for="email">E-post:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" name="email"><br><br>
 
         <label for="telefon">Telefon:</label>
         <input type="text" id="telefon" name="telefon"><br><br>

@@ -9,7 +9,7 @@ form, h1 {
   }
   
   input[type="url"] {
-    width: 100%;
+    width: 25%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
