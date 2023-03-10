@@ -9,11 +9,11 @@ form, h1 {
   }
   
   input[type="url"] {
-    width: 25%;
-    padding: 10px;
+    width: 75%;
+    padding: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
   }
   
   button[type="submit"] {
@@ -39,4 +39,22 @@ form, h1 {
   .register_profil {
     position: relative;
     justify-content: center;
+  }
+
+  body {
+    background: #99A8BF;
+  }
+
+  .rediger_some {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .column {
+    flex: 1;
+    padding: 1px;
   }
