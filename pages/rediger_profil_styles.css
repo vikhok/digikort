@@ -36,14 +36,11 @@ form, h1 {
     margin-bottom: 10px;
   }
   
-  .register_profil {
+  .rediger_profil {
     position: relative;
     justify-content: center;
   }
-
-  body {
-    background: #99A8BF;
-  }
+  
 
   .rediger_some {
     display: flex;

@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="rediger_profil_styles.css">
     <title>Rediger profil</title>
+    
+    <style>
+    html, body {
+        background: linear-gradient(to bottom, #03426D, #298C85);
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+
 </head>
 <body>
 
-
 <div class="rediger_profil">
-    <h1>Rediger profilen din</h1>
 
     <form action="rediger_profil.php" method="POST">
 
@@ -27,28 +35,28 @@
         <label for="telefon">Telefon:</label>
         <input type="text" id="telefon" name="telefon" placeholder="+47 12345678" ><br><br>
 
-    <div class="rediger_some">
+        <div class="rediger_some">
 
-        <div class="column">
-        <label for="linkedin">LinkedIn:</label>
-        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/"><br><br>
+            <div class="column">
+            <label for="linkedin">LinkedIn:</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/"><br><br>
+            </div>
+
+            <div class="column">
+            <label for="github">Github:</label>
+            <input type="url" id="github" name="github" placeholder="https://github.com/"><br><br>
+            </div>
+
+            <div class="column">
+            <label for="instagram">Instagram:</label>
+            <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/"><br><br>
+            </div>
+        
         </div>
 
-        <div class="column">
-        <label for="github">Github:</label>
-        <input type="url" id="github" name="github" placeholder="https://github.com/"><br><br>
-        </div>
+    <button type="submit">Oppdater profil</button>
 
-        <div class="column">
-        <label for="instagram">Instagram:</label>
-        <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/"><br><br>
-        </div>
-
-        <button type="submit">Oppdater profil</button>
-
-    </div>
     </form>
 </div>
-
 </body>
 </html>
