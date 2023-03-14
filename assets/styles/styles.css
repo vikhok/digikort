@@ -21,15 +21,17 @@ header {
     justify-content: flex-end;
     align-items: center;
     padding: 30px 10%;
-    height: 10%;
+    height: 8rem;
     background-color: #03426D;
 }
 
 .profile_picture {
+    position: relative;
     cursor: pointer;
     margin-right: auto;
     border-radius: 50%;
-    height: 100px;
+    height: 10rem;
+    top: 4rem;
     outline: auto;
 }
 
