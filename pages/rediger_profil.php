@@ -9,7 +9,7 @@
     
     <style>
     html, body {
-        background: linear-gradient(to bottom, #03426D, #298C85);
+        background: linear-gradient(to right, #03426D, #298C85);
         height: 100%;
         margin: 0;
         padding: 0;

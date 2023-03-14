@@ -1,11 +1,65 @@
+@media only screen and (max-width: 375px) { /* iPhone screen size */
+  .column {
+    flex-basis: 100%; /* Full width for small screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1025px) {
+
+}
+
 form, h1 {
     text-align: center;
   }
-  
+ 
   label {
     display: block;
+    font-size: 20px;
     margin-bottom: 10px;
     font-weight: bold;
+    color: #fff;
+  }
+
+  input[type="text"]:focus {
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+
+  input[type="text"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
+  }
+
+  input[type="email"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
   }
   
   input[type="url"] {
@@ -14,6 +68,7 @@ form, h1 {
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 1px;
+    font-size: 20px;
   }
   
   button[type="submit"] {
@@ -44,14 +99,16 @@ form, h1 {
 
   .rediger_some {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 5px;
     font-weight: bold;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .column {
-    flex: 1;
-    padding: 1px;
+    flex-basis: 50%;
+    padding: 10px;
+    box-sizing: border-box;
   }
