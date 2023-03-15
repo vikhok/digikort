@@ -101,9 +101,8 @@ header {
 
     .nav-menu {
         position: fixed;
-        left: 100%;
-        padding: 5%;
-        top: 10px;
+        top: -100%;
+        padding: 10%;
         gap: 0;
         flex-direction: column;
         background-color: #03426D;
@@ -117,6 +116,7 @@ header {
     }
 
     .nav-menu.active {
+        top: 0;
         left: 0;
     }
 }
