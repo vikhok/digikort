@@ -11,6 +11,7 @@
                         <li class="nav-item"><a href="#" class="nav-link">Bedrift</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Logg ut</a></li>
                     <?php } else { ?>
+                        <li class="nav-item"><a href="#" class="nav-link">NO / EN</a>
                         <li class="nav-item"><a href="#" class="nav-link">Visittkort</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Bedrift</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Logg inn</a></li>
