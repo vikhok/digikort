@@ -1,3 +1,10 @@
+<!--
+    Denne funksjonen blir brukt til å importere HTML elementer for header/navbar.
+    Importer denne der header/navbar trengs, så ungår vi code dupliaction.
+
+    Importeres slik: require_once("denne filen");
+    Kalles på i php: banner() med parameter true eller false, basert på om profilbilde skal vises.
+-->
 <?php function banner($profile_picture = false) { ?>
     <header>
         <?php if($profile_picture) { ?>
