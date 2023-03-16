@@ -39,17 +39,17 @@
 
             <div class="column">
             <label for="linkedin">LinkedIn</label>
-            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/"><br><br>
+            <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/"><br><br>
             </div>
 
             <div class="column">
             <label for="github">Github</label>
-            <input type="url" id="github" name="github" placeholder="https://github.com/"><br><br>
+            <input type="url" id="github" name="github" placeholder="github.com/"><br><br>
             </div>
 
             <div class="column">
             <label for="instagram">Instagram</label>
-            <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/"><br><br>
+            <input type="url" id="instagram" name="instagram" placeholder="www.instagram.com/"><br><br>
             </div>
         
         </div>
