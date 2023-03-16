@@ -13,5 +13,6 @@
 </head>
 <body>
     <?php banner(true) ?>
+    <?php footer("profile") ?>
 </body>
 </html>

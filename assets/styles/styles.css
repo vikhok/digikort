@@ -38,6 +38,7 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 60px;
+    list-style: none;
 }
 
 .profile_picture {
@@ -50,10 +51,6 @@ header {
     outline: auto;
 }
 
-.nav-menu {
-    list-style: none;
-}
-
 .nav-menu li {
     display: inline-block;
     padding: 0px 20px;
@@ -64,7 +61,7 @@ header {
 }
 
 .nav-menu li a:hover {
-    color: blueviolet;
+    color: #99A8BF;
 }
 
 .hamburger {
@@ -102,6 +99,7 @@ header {
     .nav-menu {
         position: fixed;
         top: -100%;
+        left: 0;
         padding: 10%;
         gap: 0;
         flex-direction: column;
@@ -119,4 +117,29 @@ header {
         top: 0;
         left: 0;
     }
+}
+
+footer {
+    position: absolute;
+    height: 4rem;
+    width: 100%;
+    bottom: 0;
+    background-color: #03426D;
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    width: 15%;
+    right: 0;
+}
+
+.footer-item {
+    width: 2rem;
+    margin-top: 1rem;
 }
