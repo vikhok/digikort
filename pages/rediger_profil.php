@@ -23,6 +23,11 @@
 
     <form action="rediger_profil.php" method="POST">
 
+        <div class="profil_bilde">
+        <label for="profile-picture">Endre profilbilde</label>
+        <input type="file" id="profil_bilde" name="profil_bilde" accept="image/*">
+        </div>
+
         <label for="full_name">Fullt navn</label>
         <input type="text" id="full_name" name="full_name" placeholder="Navnet ditt"><br><br>
 
