@@ -26,7 +26,7 @@ INSERT INTO location(company_id, address, city, zip)
 INSERT INTO location(company_id, address, city, zip)
     VALUES('1', 'Dokkvegen 11', 'Porsgrunn', '3920');
 INSERT INTO location(company_id, address, city, zip)
-    VALUES('2', 'Bukkene Bruses vei 12', '4638', 'Kristiansand S');
+    VALUES('2', 'Bukkene Bruses vei 12', 'Kristiansand S', '4638');
 
 
 #Testdata note
@@ -42,6 +42,9 @@ INSERT INTO business_card(user_id, company_id, location_id, administrator)
     VALUES('1', '1', '1', 'true');
 INSERT INTO business_card(user_id, company_id, location_id, administrator)
     VALUES('2', '2', '2', 'true');
+INSERT INTO business_card(user_id, company_id, location_id, administrator)
+    VALUES('3', '1', '2', 'false');
+
 
 #Testdata user_social
 INSERT INTO user_social(user_id, linkedin, github, instagram)
