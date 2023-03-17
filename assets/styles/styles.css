@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #99A8BF;
+    height: 100vh;
+}
+
+li, a, button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+    height: 8rem;
+    background-color: #03426D;
+}
+
+.navbar {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    list-style: none;
+}
+
+.profile_picture {
+    position: relative;
+    cursor: pointer;
+    margin-right: auto;
+    border-radius: 50%;
+    height: 10rem;
+    top: 4rem;
+    outline: auto;
+}
+
+.nav-menu li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav-menu li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav-menu li a:hover {
+    color: #99A8BF;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+@media(max-width:768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        padding: 10%;
+        gap: 0;
+        flex-direction: column;
+        background-color: #03426D;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        top: 0;
+        left: 0;
+    }
+}
+
+footer {
+    position: absolute;
+    height: 4rem;
+    width: 100%;
+    bottom: 0;
+    background-color: #03426D;
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    width: 15%;
+    right: 0;
+}
+
+.footer-item {
+    width: 2rem;
+    margin-top: 1rem;
+}
+
+
+
+.digikort-heading{
+    text-align: center;
+    color: snow;
+}
+
+.login-container {
+    text-align: left;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #D9D9D9;
+    box-sizing: border-box;
+  }
+
+form {
+    position: absolute;
+    text-shadow: 5px;
+    color: #FFFFFF;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	    
+}
+
+.business-card-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+}
+
+.personal-information {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2rem;
+    
+}
+
+.qr-code {
+    width: 15rem;
+    margin: 2rem;
+}
