@@ -20,13 +20,11 @@
             </div>
             
             <div class="email-form">
-                <label>E-postadresse</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" placeholder="E-postadresse" required>
             </div>
 
             <div class="password-form">
-                <label>Passord</label>
-                <input type="password" class="form-control" required>
+                <input type="password" class="form-control" placeholder="Passord" required>
             </div>
 
             <div class="remember-password-checkbox">
@@ -35,14 +33,15 @@
             </div>
         
             <div class="signup-form">
-                <p>Mangler du brukerkonto? <a href="#">Registerer konto</a></p>
+                <p><a href="#">Mangler du brukerkonto?</a></p>
             </div> 
 
             <div class="forgot-password-form">
-                <p>Glemt passord? <a href="#">Trykk her</a></p>
+                <p><a href="#">Glemt Passord?</a></p>
             </div>
-
-            <input type="submit" class="submit" value="Login">
+            <div>
+                <button type="submit"> Login</button>
+            </div>
         </form>
     </div>
 </div>
