@@ -118,6 +118,17 @@ header {
         top: 0;
         left: 0;
     }
+
+    /*** Header scaling personal-information ***/
+    .personal-information{
+        
+        margin: auto;
+        font-size: medium;
+    }
+
+    .qr-code {
+        width: 50%;
+    }
 }
 
 footer {
@@ -144,7 +155,6 @@ footer {
     width: 2rem;
     margin-top: 1rem;
 }
-
 
 
 .digikort-heading{
@@ -192,10 +202,16 @@ form {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     margin: 2rem;
-    
 }
 
 .qr-code {
     width: 15rem;
     margin: 2rem;
 }
+
+.employee-information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+  }

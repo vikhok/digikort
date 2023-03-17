@@ -8,7 +8,7 @@
 <?php function banner($profile_picture = false) { ?>
     <header>
         <?php if($profile_picture) { ?>
-            <img class="profile_picture" src="/digikort/profiles/profile1/profile_pic.png" alt="Profile picture">
+            <img class="profile_picture" src="../profiles/profile1/profile_pic.png" alt="Profile picture">
         <?php } ?>
             <nav class="navbar">
                 <ul class="nav-menu">
@@ -31,5 +31,5 @@
                 </div>
             </nav>
         </header>
-        <script src="/digikort/assets/include/menu.js"></script>
+        <script src="../assets/include/menu.js"></script>
 <?php } ?>

@@ -10,13 +10,13 @@
         <nav class="footer">
             <ul class="footer-menu">
                 <?php if($option == "profile") { ?>
-                    <li class="footer-item"><a href="#" class="nav-link"><img src="/digikort/assets/include/icons/instagram.svg"></a></li>
-                    <li class="footer-item"><a href="#" class="nav-link"><img src="/digikort/assets/include/icons/linkedin.svg"></a></li>
-                    <li class="footer-item"><a href="#" class="nav-link"><img src="/digikort/assets/include/icons/github.svg"></a></li>
+                    <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/instagram.svg"></a></li>
+                    <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/linkedin.svg"></a></li>
+                    <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/github.svg"></a></li>
                 <?php } elseif($option == "company") { ?>
-                    <li class="footer-item"><a href="#" class="nav-link"><img src="/digikort/assets/include/icons/instagram.svg"></a></li>
-                    <li class="footer-item"><a href="#" class="nav-link"><img src="/digikort/assets/include/icons/linkedin.svg"></a></li>
-                    <li class="footer-item"><a href="#" class="nav-link"><img src="/digikort/assets/include/icons/github.svg"></a></li>
+                    <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/instagram.svg"></a></li>
+                    <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/linkedin.svg"></a></li>
+                    <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/github.svg"></a></li>
                 <?php } ?>
             </ul>
         </nav>
