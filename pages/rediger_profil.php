@@ -7,14 +7,7 @@
     <link rel="stylesheet" href="rediger_profil_styles.css">
     <title>Rediger profil</title>
     
-    <style>
-    html, body {
-        background: linear-gradient(to right, #03426D, #298C85);
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    </style>
+
 
 </head>
 <body>
@@ -23,8 +16,9 @@
 
     <form action="rediger_profil.php" method="POST">
 
-        <div class="profil_bilde">
+        <div class="profil_bilde">    
         <label for="profile-picture">Endre profilbilde</label>
+        <img class="vis_profil_bilde" src="plassholder for senere bilde" alt="Profil bilde">
         <input type="file" id="profil_bilde" name="profil_bilde" accept="image/*">
         </div>
 
@@ -42,17 +36,17 @@
 
         <div class="rediger_some">
 
-            <div class="column">
+            <div class="column_rediger_profil">
             <label for="linkedin">LinkedIn</label>
             <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/"><br><br>
             </div>
 
-            <div class="column">
+            <div class="column_rediger_profil">
             <label for="github">Github</label>
             <input type="url" id="github" name="github" placeholder="github.com/"><br><br>
             </div>
 
-            <div class="column">
+            <div class="column_rediger_profil">
             <label for="instagram">Instagram</label>
             <input type="url" id="instagram" name="instagram" placeholder="www.instagram.com/"><br><br>
             </div>

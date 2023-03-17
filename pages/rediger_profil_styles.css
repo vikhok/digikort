@@ -20,11 +20,18 @@
 
 }
 
+html, body {
+  background: linear-gradient(to right, #03426D, #298C85);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 form, h1 {
     text-align: center;
   }
  
-  label {
+label {
     display: block;
     font-size: 20px;
     margin-bottom: 10px;
@@ -32,13 +39,13 @@ form, h1 {
     padding-top: 10px;
   }
 
-  input[type="text"]:focus {
+input[type="text"]:focus {
     background-color: #fff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     outline: none;
   }
 
-  input[type="text"] {
+input[type="text"] {
     background-color: #f9f9f9;
     border: none;
     border-radius: 10px;
@@ -50,7 +57,7 @@ form, h1 {
     width: 40%;
   }
 
-  input[type="email"] {
+input[type="email"] {
     background-color: #f9f9f9;
     border: none;
     border-radius: 10px;
@@ -62,43 +69,56 @@ form, h1 {
     width: 40%;
   }
   
-  input[type="url"] {
+input[type="url"] {
     width: 75%;
-    padding: 20px;
+    padding: 12px;
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 1px;
     font-size: 20px;
   }
+
+input[type="file"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    width: 25%;
+}
+
   
-  button[type="submit"] {
+button[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     margin-bottom: 20px;
   }
   
-  button[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: #0069d9;
   }
   
-  .error {
+.error {
     color: red;
     font-style: italic;
     margin-bottom: 10px;
   }
   
-  .rediger_profil {
+.rediger_profil {
     position: relative;
     justify-content: center;
   }
   
 
-  .rediger_some {
+.rediger_some {
     display: flex;
     flex-direction: row;
     margin-bottom: 5px;
@@ -107,14 +127,17 @@ form, h1 {
     flex-wrap: wrap;
   }
 
-  .column {
+.column_rediger_profil {
     flex-basis: 50%;
     padding: 10px;
     box-sizing: border-box;
   }
 
-  /* Her skal man endre på hvordan profilbildet skal endres.
-  .profil_bilde {
-  
+  .vis_profil_bilde {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
-  */
+
