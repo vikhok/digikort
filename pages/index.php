@@ -22,15 +22,21 @@
             <h2>ola@egde.no</h2>
             <h2>+47 123 45 678</h2>
         </div>
-        <div class="qr-code">
-            <?php if($_SESSION["email"] == "EMAIL VARIABEL HER") { ?>
-                <img src="../profiles/profile1/qr.png" alt="QR-kode">
-            <?php } else { ?>
-                <li class="menu-options"><a href=#>CV</a></li>
-                <li class="menu-options"><a href=#>Kontakt</a></li>
-                <li class="menu-options"><a href=#>Lagre kontakt</a></li>
-                <li class="menu-options"><a href=#>Del</a></li>
-            <?php } ?>
+        <div class="menu">
+            <ul>
+                <li><a href=# class="menu-options">CV</a></li>
+                <li><a href=# class="menu-options">Kontakt</a></li>
+                <li><a href=# class="menu-options">Lagre kontakt</a></li>
+                <li><a href=# class="menu-options">Del</a></li>
+            </ul> 
+        </div>
+
+        <div class="menu-icons">
+            <ul>
+                <li class="menu-item"><a href="#" class="menu-link"><img src="../assets/include/icons/envelope-solid.svg"></li>
+                <li class="menu-item"><a href="#" class="menu-link"><img src="../assets/include/icons/share-from-square-solid.svg"></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><img src="../assets/include/icons/user-plus-solid.svg"></a></li>
+            </ul>
         </div>
     </div>
 
