@@ -16,23 +16,31 @@
 
     <form action="rediger_profil.php" method="POST">
 
-        <div class="profil_bilde">    
+    <div class="profil_bilde">    
         <label for="profile-picture">Endre profilbilde</label>
         <img class="vis_profil_bilde" src="plassholder for senere bilde" alt="Profil bilde">
         <input type="file" id="profil_bilde" name="profil_bilde" accept="image/*">
-        </div>
+    </div>
 
+    <div class="redpro_input_text">
         <label for="full_name">Fullt navn</label>
         <input type="text" id="full_name" name="full_name" placeholder="Navnet ditt"><br><br>
+    </div>
 
+    <div class="redpro_input_text">
         <label for="stillingstittel">Stillingstittel</label>
         <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Din stillingstittel"><br><br>
+    </div>
 
+    <div class="redpro_email">
         <label for="email">E-post</label>
         <input type="email" id="email" name="email" placeholder="eksempel@epost.no" ><br><br>
+    </div>
 
+    <div class="redpro_input_text">
         <label for="telefon">Telefon</label>
         <input type="text" id="telefon" name="telefon" placeholder="+47 12345678" ><br><br>
+    </div>
 
         <div class="rediger_some">
 
@@ -53,7 +61,9 @@
         
         </div>
 
-    <button type="submit">Oppdater profil</button>
+    <div class="oppdater_profil_knapp">    
+        <button type="submit">Oppdater profil</button>
+    </div>
 
     </form>
 </div>
