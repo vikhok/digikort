@@ -20,7 +20,7 @@ body {
     text-align: left;
 }
 
-.email-form, .password-form{
+.email-form, .password-form, .firstname-form{
     position: relative;
     width: 90%;
     border-bottom: 1px solid #414242;
@@ -37,12 +37,12 @@ body {
 }
 
 
-input[type=text], input[type=password] {
-    width: 100%;
+input[type=text], input[type=password], input[type=tel] {
+    width: 90%;
     border-radius: 10px;
-    padding: 20px 10px 10px;
+    padding: 10px 10px 13px;
     margin: 2px 0px;
-    background: transparent;
+    background: white;
     border: none;
     outline: none;
     font-size: medium;
