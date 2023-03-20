@@ -25,7 +25,7 @@
 
         $user = $query->fetch(PDO::FETCH_OBJ);
         if($user) {
-            if(password_verify($password, $user->pass)) {
+            if($password == $user->pass/*password_verify($password, $user->pass)*/) {
                 $_SESSION["user"]["user_id"] = $user->user_id;
                 $_SESSION["user"]["first_name"] = $user->first_name;
                 $_SESSION["user"]["last_name"] = $user->last_name;

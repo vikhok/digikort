@@ -22,9 +22,16 @@
             <h2>ola@egde.no</h2>
             <h2>+47 123 45 678</h2>
         </div>
-
-        <img class="qr-code" src="../profiles/profile1/qr.png" alt="QR-kode">
-
+        <div class="qr-code">
+            <?php if($_SESSION["email"] == "EMAIL VARIABEL HER") { ?>
+                <img src="../profiles/profile1/qr.png" alt="QR-kode">
+            <?php } else { ?>
+                <li class="menu-options"><a href=#>CV</a></li>
+                <li class="menu-options"><a href=#>Kontakt</a></li>
+                <li class="menu-options"><a href=#>Lagre kontakt</a></li>
+                <li class="menu-options"><a href=#>Del</a></li>
+            <?php } ?>
+        </div>
     </div>
 
     <?php footer("profile") ?>
