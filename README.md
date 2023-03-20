@@ -1,5 +1,4 @@
 # digikort
 
-tommel opp
 
 
