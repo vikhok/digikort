@@ -60,10 +60,9 @@
 
     function get_location($company_id) {
         global $pdo;
-        
-        $sql = "SELECT * FROM business_card WHERE card_id = ?";
+        $sql = "SELECT address, city, zip FROM location WHERE company_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $card_id, PDO::PARAM_STR);
+        $query->bindParam(1, $company_id, PDO::PARAM_STR);
 
         try {
             $query->execute();
