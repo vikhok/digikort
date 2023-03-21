@@ -13,7 +13,7 @@
 
     function login($email, $password) {
         global $pdo;
-        $sql = "SELECT * FROM user WHERE email = ?";
+        $sql = "SELECT email, pass FROM user WHERE email = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $email, PDO::PARAM_STR);
 
@@ -26,42 +26,55 @@
         $user = $query->fetch(PDO::FETCH_OBJ);
         if($user) {
             if($password == $user->pass/*password_verify($password, $user->pass)*/) {
-                $_SESSION["user"]["user_id"] = $user->user_id;
-                $_SESSION["user"]["first_name"] = $user->first_name;
-                $_SESSION["user"]["last_name"] = $user->last_name;
-                $_SESSION["user"]["job_title"] = $user->job_title;
-                $_SESSION["user"]["email"] = $user->email;
-                $_SESSION["user"]["phone"] = $user->phone;
-                $_SESSION["user"]["logged_in"] = true;
-                header("Location: " . $_SESSION["site"]["last_visited"]);
-                exit();
+                return $user;
             } else {
-                $failed = "<h4><span style='color:red'>
-                    Feil epost og/eller passord.
-                    </span></h4>";
+                return false;
             }
         } else {
-            $failed = "<h4><span style='color:red'>
-                Feil epost og/eller passord.
-                </span></h4>";
+            return false;
         }
-        return $failed;
     }
 
-    function get_business_card($user_id) {
+    function get_user($card_id) {
         global $pdo;
-        $sql = "SELECT * FROM business_card WHERE user_id = ?";
+        $sql = "SELECT bc.user_id, bc.company_id, bc.job_title, bc.administrator, 
+            u.first_name, u.last_name, u.email, u.phone, 
+            c.company_name
+            FROM business_card AS bc 
+            JOIN user AS u 
+            ON bc.user_id = u.user_id 
+            JOIN company AS c 
+            ON bc.company_id = c.company_id 
+            WHERE bc.card_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $_GET["user_id"], PDO::PARAM_STR);
+        $query->bindParam(1, $card_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
             return $query->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             //echo $e->getMessage();
-            return NULL;
+            return false;
         }
-    } 
+    }
+
+    function get_location($company_id) {
+        global $pdo;
+        
+        $sql = "SELECT * FROM business_card WHERE card_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $card_id, PDO::PARAM_STR);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+
 
 
 
