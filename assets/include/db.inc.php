@@ -13,7 +13,7 @@
 
     function login($email, $password) {
         global $pdo;
-        $sql = "SELECT email, pass FROM user WHERE email = ?";
+        $sql = "SELECT user_id, email, pass FROM user WHERE email = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $email, PDO::PARAM_STR);
 
