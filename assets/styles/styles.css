@@ -251,3 +251,31 @@ form {
     cursor: pointer;
     margin-bottom: 20px;
   }
+
+
+  /*
+    -----------------------------------------------------
+    STYLING GJELDENDE Bedrift-side.php
+    -----------------------------------------------------
+*/
+
+.a_om_oss, .a-kontakt-oss, .a_veibeskrivelse {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: gray;
+    border-radius: 10px;
+    width: 20%;
+    right: -80%;
+    padding: 10px;
+    margin: 10px;
+    font-size: large;
+}
+
+.Bedrift-Text {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+}
