@@ -30,7 +30,7 @@
     </div>
 
     <div class="opprett_ny_bedrift_knapp">
-        <a class="a_ny_bedrift" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Opprett bedrift</a>
+        <a class="a_ny_bedrift" href="https://youtu.be/FDEiOHUxhOk">Opprett bedrift</a>
     </div>
 
     </div>
