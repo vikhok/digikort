@@ -11,8 +11,12 @@
 
     <div class="bli_med_bedrift">
 
+<form class="bli_med_bedrift_form" action="bli_med_bedrift.php" method="POST">
+
     <div class="h1_bli_med_bedrift">
         <h1>Du er ikke oppført i en bedrift.</h1>
+    </div>
+    <div class="h1_bli_med_bedrift_2">
         <h1>Fyll inn navnet på bedriften eller opprett en ny bedrift.</h1>
     </div>
 
@@ -25,7 +29,13 @@
         <button type="submit">Bli med</button>
     </div>
 
+    <div class="opprett_ny_bedrift_knapp">
+        <a class="a_ny_bedrift" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Opprett bedrift</a>
     </div>
+
+    </div>
+
+</form>
 
 </body>
 </html>
