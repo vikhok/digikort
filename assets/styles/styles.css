@@ -6,7 +6,9 @@
 
 body {
     background-color: #99A8BF;
-    height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 li, a, button {
@@ -349,3 +351,8 @@ button[type="submit"]:hover {
         width: 90%;
     }
       }
+
+.map {
+    width: 100%;
+    height: calc(100vh - 12rem);
+}
