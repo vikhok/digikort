@@ -267,15 +267,28 @@ form {
     background: gray;
     border-radius: 10px;
     width: 20%;
-    right: -80%;
     padding: 10px;
     margin: 10px;
     font-size: large;
 }
 
-.Bedrift-Text {
+.Bedrift-knapper {
+    position: relative;
     display: flex;
-    justify-content: left;
-    align-items: center;
+    justify-content: right;
     flex-direction: column;
+}
+
+.Bedrift-Text {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    width: 33%;
+    font-size: xx-large;
+    padding: 0px 30px 10px;
+}
+.bedrift-tittel, .bedrift-slogan, .bedrift-setning {
+    margin: 20px;
 }
