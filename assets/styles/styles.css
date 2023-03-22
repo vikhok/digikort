@@ -159,21 +159,19 @@ footer {
     list-style: none;
     width: 15%;
     right: 0;
+    fill: white;
+
 }
 
 .footer-item {
     width: 2rem;
     margin-top: 1rem;
-
+    color: white;
 }
 
 .digikort-heading{
     text-align: center;
     color: snow;
-}
-
-.login-container {
-    text-align: left;
 }
 
 input[type=text], input[type=password] {
@@ -184,21 +182,6 @@ input[type=text], input[type=password] {
     border: 2px solid #D9D9D9;
     box-sizing: border-box;
   }
-
-form {
-    position: absolute;
-    text-shadow: 5px;
-    color: #FFFFFF;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); /* IE 9 */
-    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	    
-}
 
 .business-card-container {
     display: flex;
@@ -217,7 +200,11 @@ form {
     margin: 2rem;
 }
 
-/*** Styling av ikoner ***/
+/*
+-----------------------------------------------
+STYLING GJELDENDE MENYVALG VISITTKORT KUNDE
+-----------------------------------------------
+*/
 
 .menu {
     font-family: Arial, Helvetica, sans-serif;
