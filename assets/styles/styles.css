@@ -129,6 +129,10 @@ header {
         width: 50%;
     }
 
+    .business-card-container{
+        font-size: medium;
+    }
+
     .menu-options fa {
         font-size: 20pt;
     }
@@ -202,6 +206,7 @@ form {
     align-items: center;
     margin: auto;
     padding: 5rem;
+    line-height: 1.5;
 }
 
 .personal-information {
@@ -214,7 +219,7 @@ form {
 
 .menu {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20pt;
+    font-size: 25pt;
     position: relative;
     font-style: bold;
     width: 15rem;

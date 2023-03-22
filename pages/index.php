@@ -22,7 +22,7 @@
             <h2>Senior systemutvikler</h2>
             <h2>Egde Consulting AS</h2>
             <h2>ola@egde.no</h2>
-            <h2>+47 123 45 678</h2>
+            <h2>+47 123 45 6788</h2>
         </div>
     <div class="menu">
         <ul>
