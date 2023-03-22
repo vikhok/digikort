@@ -259,36 +259,56 @@ form {
     -----------------------------------------------------
 */
 
-.a_om_oss, .a-kontakt-oss, .a_veibeskrivelse {
+.a_om_oss, .a-kontakt-oss {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
     background: gray;
+    flex-flow: row wrap;
     border-radius: 10px;
-    width: 20%;
-    padding: 10px;
-    margin: 10px;
+    width: 30%;
+    padding: 20px;
+    margin: 50px;
     font-size: large;
 }
 
 .Bedrift-knapper {
     position: relative;
     display: flex;
-    justify-content: right;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    background-color: white;
+}
+
+.veibeskrivelse-knapp {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+}
+.a_veibeskrivelse {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background: gray;
+    border-radius: 10px;
+    width: 60%;
+    padding: 20px;
+    margin: 50px;
+    font-size: large;
 }
 
 .Bedrift-Text {
-    position: absolute;
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: left;
     flex-direction: column;
-    width: 33%;
+    width: 500px;
     font-size: xx-large;
     padding: 0px 30px 10px;
+    background-color: white;
 }
+
 .bedrift-tittel, .bedrift-slogan, .bedrift-setning {
     margin: 20px;
 }
