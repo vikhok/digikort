@@ -258,7 +258,18 @@ form {
     STYLING GJELDENDE Bedrift-side.php
     -----------------------------------------------------
 */
+.Bedrift-siden {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+}
 
+.om-og-kontakt-knapp {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    flex-direction: row;
+}
 .a_om_oss, .a-kontakt-oss {
     position: relative;
     display: flex;
@@ -276,9 +287,9 @@ form {
     position: relative;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
     width: 600px;
-    background-color: white;
 }
 
 .veibeskrivelse-knapp {
