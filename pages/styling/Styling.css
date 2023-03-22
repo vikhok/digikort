@@ -2,9 +2,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('Pictures/Login-background.jpg') no-repeat center center fixed;
     text-align: center;
     background-size: cover;
+    background: url('Pictures/Login-background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -20,7 +20,7 @@ body {
     text-align: left;
 }
 
-.email-form, .password-form{
+.email-form, .password-form, .firstname-form{
     position: relative;
     width: 90%;
     border-bottom: 1px solid #414242;
@@ -37,37 +37,45 @@ body {
 }
 
 
-input[type=text], input[type=password] {
-    width: 100%;
-    border-radius: 10px;
-    padding: 20px 10px 10px;
-    margin: 2px 0px;
+input[type=email], input[type=text], input[type=password], input[type=tel] {
+    width: 85%;
+    padding: 10px 10px 13px;
+    margin: 7px 0px;
     background: transparent;
     border: none;
+    border-bottom: 1px solid #414242;
     outline: none;
     font-size: medium;
   }
 
 form {
     position: absolute;
-    text-shadow: 5px;
     color: #FFFFFF;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 23px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%); /* IE 9 */
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
     width: 400px;
-    border: 2px solid #f0eded;
+    border: 1px solid #cfcdcd;
     background: transparent;
     border-radius: 10px;
     backdrop-filter: blur(20px);
-
   }
+
+  @media (max-width:450px){
+form {
+    font-size: 5vw;
+    width: 90%;
+    
+}
+  }
+
+
 .remember-password-checkbox{
 padding: 5px 110px 10px;
 }
@@ -94,12 +102,13 @@ button[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius: 10px;
+    padding: 10px 30px;
     font-size: 16px;
     cursor: pointer;
-    margin-bottom: 20px;
-    margin-left: 155px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
   }
 
   button[type="submit"]:hover {
