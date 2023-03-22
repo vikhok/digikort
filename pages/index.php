@@ -36,28 +36,26 @@
         <?php if(!isset($failed)) { ?>
             <div class="personal-information">
                 <?php
-                    if(!isset($failed)) {
                     echo "<h2>$name</h2>
                         <h2>$job_title</h2>
                         <h2>$company</h2>
                         <h2>$email</h2>
                         <h2>$phone</h2>";
-                    }
                 ?>
             </div>
-                <?php if($_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
-                    <div class="qr-code">
-                    <img src="../profiles/profile1/qr.png" alt="QR-kode">
+            
+                <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
+                    <img class="qr-code" src="../profiles/profile1/qr.png" alt="QR-kode">
                 <?php } else { ?>
                     <div class="menu">
                         <ul>
-                            <li class="menu-options"><a href="#"><i class="fa fa-file-text"></i> CV</a></li>
-                            <li class="menu-options"><a href="#"><i class="fa fa-envelope"></i> Kontakt</a></li>
-                            <li class="menu-options"><a href="#"><i class="fa fa-save"></i> Lagre kontakt</a></li>
-                            <li class="menu-options"><a href="#"><i class="fa fa-share-alt"></i> Del</a></li>
+                            <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
+                            <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
+                            <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
+                            <li><a href="#" class="menu-options"><i class="fa fa-share-alt"></i> Del</a></li>
                         </ul>
+                    </div>
                 <?php } ?>
-             </div>
         <?php } else { echo $failed; }?>
     </div>
     <?php footer("profile") ?>
