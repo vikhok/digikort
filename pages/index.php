@@ -44,7 +44,7 @@
                 ?>
             </div>
             <div class="qr-code">
-                <?php if($email == "EMAIL VARIABEL HER") { ?>
+                <?php if($_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
                     <img src="../profiles/profile1/qr.png" alt="QR-kode">
                 <?php } else { ?>
                     <li class="menu-options"><a href=#>CV</a></li>
