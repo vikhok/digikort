@@ -26,6 +26,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <title>Digikort</title>
 </head>
 <body>
@@ -43,16 +45,19 @@
                     }
                 ?>
             </div>
-            <div class="qr-code">
                 <?php if($_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
+                    <div class="qr-code">
                     <img src="../profiles/profile1/qr.png" alt="QR-kode">
                 <?php } else { ?>
-                    <li class="menu-options"><a href=#>CV</a></li>
-                    <li class="menu-options"><a href=#>Kontakt</a></li>
-                    <li class="menu-options"><a href=#>Lagre kontakt</a></li>
-                    <li class="menu-options"><a href=#>Del</a></li>
+                    <div class="menu">
+                        <ul>
+                            <li class="menu-options"><a href="#"><i class="fa fa-file-text"></i> CV</a></li>
+                            <li class="menu-options"><a href="#"><i class="fa fa-envelope"></i> Kontakt</a></li>
+                            <li class="menu-options"><a href="#"><i class="fa fa-save"></i> Lagre kontakt</a></li>
+                            <li class="menu-options"><a href="#"><i class="fa fa-share-alt"></i> Del</a></li>
+                        </ul>
                 <?php } ?>
-            </div>
+             </div>
         <?php } else { echo $failed; }?>
     </div>
     <?php footer("profile") ?>
