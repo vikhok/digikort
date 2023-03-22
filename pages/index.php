@@ -2,6 +2,7 @@
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/qr.inc.php");
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
@@ -43,11 +44,13 @@
                         <h2>$email</h2>
                         <h2>$phone</h2>";
                     }
+                    // Midlertidig test
+                    createQR(1, "https://www.linkedin.com/in/eivind-hauge-halsnes-875542215/");
                 ?>
             </div>
                 <?php if($_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
                     <div class="qr-code">
-                    <img src="../profiles/profile1/qr.png" alt="QR-kode">
+                    <img src="../profiles/c4ca4238a0b923820dcc509a6f75849b/qr.png" alt="QR-kode">
                 <?php } else { ?>
                     <div class="menu">
                         <ul>
