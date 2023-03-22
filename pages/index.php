@@ -9,6 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <title>Digikort</title>
 </head>
 <body>
@@ -22,24 +24,15 @@
             <h2>ola@egde.no</h2>
             <h2>+47 123 45 678</h2>
         </div>
-        <div class="menu">
-            <ul>
-                <li><a href=# class="menu-options">CV</a></li>
-                <li><a href=# class="menu-options">Kontakt</a></li>
-                <li><a href=# class="menu-options">Lagre kontakt</a></li>
-                <li><a href=# class="menu-options">Del</a></li>
-            </ul> 
-        </div>
-
-        <div class="menu-icons">
-            <ul>
-                <li class="menu-item"><a href="#" class="menu-link"><img src="../assets/include/icons/envelope-solid.svg"></li>
-                <li class="menu-item"><a href="#" class="menu-link"><img src="../assets/include/icons/share-from-square-solid.svg"></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><img src="../assets/include/icons/user-plus-solid.svg"></a></li>
-            </ul>
-        </div>
+    <div class="menu">
+        <ul>
+            <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
+            <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
+            <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
+            <li><a href="#" class="menu-options"><i class="fa fa-share-alt"></i> Del</a></li>
+        </ul>
     </div>
-
+</div>
     <?php footer("profile") ?>
 </body>
 </html>

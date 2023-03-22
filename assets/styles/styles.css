@@ -122,12 +122,17 @@ header {
     /*** Header scaling personal-information ***/
     .personal-information{
         margin: auto;
-        font-size: medium;
+        font-size: small;
     }
 
     .qr-code {
         width: 50%;
     }
+
+    .menu-options fa {
+        font-size: 20pt;
+    }
+
 }
 
 footer {
@@ -153,8 +158,8 @@ footer {
 .footer-item {
     width: 2rem;
     margin-top: 1rem;
-}
 
+}
 
 .digikort-heading{
     text-align: center;
@@ -191,9 +196,11 @@ form {
 
 .business-card-container {
     display: flex;
+    position: relative; 
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    margin: auto;
     padding: 5rem;
 }
 
@@ -203,31 +210,26 @@ form {
     margin: 2rem;
 }
 
+/*** Styling av ikoner ***/
+
 .menu {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20pt;
     position: relative;
     font-style: bold;
     width: 15rem;
-    margin: auto;
     display: flex;
+    align-items: center ;
     justify-content: center;
+    line-height: 1.5;
 }
 
-.menu-icons{
-    margin: auto;
+.menu ul{
+    list-style-type: none;
 }
 
-.menu-options {
-    font-size: 25px;
-    align-items: center;
-}
-
-.menu ul li{
-    list-style: none;
-}
-
-.menu ul li a{
+.menu-options{
     color: black;
-    font-weight: bold;
-    align-items: center;
+    font-size: 20pt;
+    justify-content: center;
 }
