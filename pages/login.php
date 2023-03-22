@@ -10,16 +10,11 @@
         $password = $_POST["password"];
         if($user = login($email, $password)) {
             $_SESSION["user"]["user_id"] = $user->user_id;
-            $_SESSION["user"]["first_name"] = $user->first_name;
-            $_SESSION["user"]["last_name"] = $user->last_name;
-            $_SESSION["user"]["job_title"] = $user->job_title;
-            $_SESSION["user"]["email"] = $user->email;
-            $_SESSION["user"]["phone"] = $user->phone;
             $_SESSION["user"]["logged_in"] = true;
             if(isset($_SESSION["site"]["last_visited"])) {
                 header("Location: " . $_SESSION["site"]["last_visited"]);
             } else {
-                header("Location: index.php");
+                header("Location: index.php?user_id=" . $_SESSION["user"]["user_id"]);
             }
         } else {
             $failed = "<h4><span style='color:red'>
