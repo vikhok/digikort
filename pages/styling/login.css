@@ -1,5 +1,7 @@
 body {
     display: flex;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -9,6 +11,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-position: center;
+
 }
 
 /* 
@@ -41,7 +44,7 @@ STYLING GJELDENDE FOR LOGIN.PHP
 
 }
 
-input[type=email], input[type=text], input[type=password], input[type=tel] {
+.form-control input[type=email], input[type=text], input[type=password], input[type=tel] {
     width: 85%;
     padding: 10px 10px 13px;
     margin: 7px 0px;
@@ -50,7 +53,7 @@ input[type=email], input[type=text], input[type=password], input[type=tel] {
     border-bottom: 1px solid #414242;
     outline: none;
     font-size: medium;
-  }
+  } 
 
 .login-form {
     position: absolute;
@@ -68,7 +71,6 @@ input[type=email], input[type=text], input[type=password], input[type=tel] {
     border: 1px solid #cfcdcd;
     background: transparent;
     border-radius: 10px;
-    backdrop-filter: blur(20px);
   }
 
   @media (max-width:450px){
@@ -76,10 +78,27 @@ input[type=email], input[type=text], input[type=password], input[type=tel] {
         font-size: 5vw;
         width: 90%;
     }
+    }
+
+    @media only screen and (max-width: 600px) {
+    .login-form {
+        width: 300px;
+    }
+    }
+
+    @media only screen and (max-width: 280px) {
+        .login-form {
+            width: 250px;
+        }
+    }
+
+.remember-password-checkbox label{
+    display: block;
+    padding-left: 10px;
 }
 
-.remember-password-checkbox{
-    padding: 5px 110px 10px;
+.remember-password-checkbox[type="checkbox"] {
+    justify-content: left;
 }
 
 .signup-form {
@@ -109,8 +128,9 @@ input[type=email], input[type=text], input[type=password], input[type=tel] {
     cursor: pointer;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
-    position: relative;
+    display: block;
+    margin: 10px auto;
+    
   }
 
   button[type="submit"]:hover {

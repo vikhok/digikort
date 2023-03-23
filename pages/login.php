@@ -47,8 +47,8 @@
                 </div>
 
                 <div class="remember-password-checkbox">
-                    <input type="checkbox" id="remember-password" name="remember-password">
                     <label for="husk-passord">Husk passord</label>
+                    <input type="checkbox" id="remember-password" name="remember-password">
                 </div>
             
                 <div class="signup-form">
