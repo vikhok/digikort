@@ -1,3 +1,28 @@
+<?php
+    require_once("../assets/include/db.inc.php");
+
+    session_start();
+
+    if(isset($_REQUEST["register"])) {
+        $first_name = $_REQUEST["first_name"];
+        $last_name = $_REQUEST["last_name"];
+        $email = $_REQUEST["email"];
+        $phone = $_REQUEST["phone"];
+        $password = $_REQUEST["password"];
+        $confirm_password = $_REQUEST["confirm_password"];
+
+        if(create_account($first_name, $last_name, $email, $phone, $password)) {
+            $status = "<h4><span style='color:green'>
+            Konto ble registrert i systemet.
+            </span></h4>";
+            header("Refresh: 5; url=login.php");
+        } else {
+            $status = "<h4><span style='color:red'>
+            Noe gikk glat, konto ble ikke lagret i systemet.
+            </span></h4>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,29 +35,23 @@
     <title>Registrer</title>
 </head>
 <body>
-
-<div class="register-form">
-    <div class="register-container">
-        <form name="register" class="login" action="POST">
-            
-        <div class="digikort-heading">
-            <h1>DigiKort</h1>
+    <div class="register-form">
+        <div class="register-container">
+            <form name="register" class="login" method="POST">
+                <h1 class="digikort-heading">DigiKort</h1>
+                <div class="form-control">
+                    <input type="text" name="first_name" class="firstname-form" placeholder="Fornavn" required>
+                    <input type="text" name="last_name" class="surname-form" placeholder="Etternavn" required>
+                    <input type="email" name="email" class="email-register-form" placeholder="Email" required>
+                    <input type="tel" name="phone" class="phonenumber-form" placeholder="Mobilnummer" required>
+                    <input type="text" name="password" class="register-password-form" placeholder="Passord" required>
+                    <input type="text" name="confirm_password" class="confirm-password-form" placeholder="Gjenta Passord" required>
+                </div>
+                <button type="submit" name="register">Registrer</button>
+                <p><a class="already-has-user-clicker" href="login.php">Jeg har allerede brukerkonto</a></p>
+                <?php if(isset($status)) { echo $status; } ?>
+            </form>
         </div>
-        <div class="form-control">
-            <input class="firstname-form" type="text"  placeholder="Fornavn" required>
-            <input class="surname-form" type="text"  placeholder="Etternavn" required>
-            <input class="email-register-form" type="text"  placeholder="Email" required>
-            <input class="phonenumber-form" type="tel"  placeholder="Mobilnummer" required>
-            <input class="register-password-form" type="password"  placeholder="Passord" required>
-            <input class="confirm-password-form" type="password"  placeholder="Gjenta Passord" required>
-        </div>
-
-        <div>
-            <button type="submit">Registrer</button>
-        </div>
-        <div class="already-has-user-clicker">
-            <p><a href="#">Jeg har allerede brukerkonto</a></p>
-        </div>
-        </form>
     </div>
-</div>
+</body>
+</html>

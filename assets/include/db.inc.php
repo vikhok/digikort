@@ -73,8 +73,43 @@
         }
     }
 
+    function create_account($first_name, $last_name, $email, $phone, $password) {
+        global $pdo;
+        $sql1 = "INSERT INTO user (first_name, last_name, email, phone, pass) VALUES (?, ?, ?, ?, ?)";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $first_name, PDO::PARAM_STR);
+        $query1->bindParam(2, $last_name, PDO::PARAM_STR);
+        $query1->bindParam(3, $email, PDO::PARAM_STR);
+        $query1->bindParam(4, $phone, PDO::PARAM_STR);
+        $query1->bindParam(5, $password, PDO::PARAM_STR);
+        
+        //$pdo->beginTransaction();
+        try {
+            $query1->execute();
+            //$last_inserted_id = $pdo->lastInsertId();
+            /*
+            try {
+                $sql2 = "INSERT INTO business_card (user_id) VALUE (?)";
+                $query2 = $pdo->prepare($sql2);
+                $query2->bindParam(1, $last_inserted_id, PDO::PARAM_INT);
+                $query2->execute();
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                $pdo->rollBack();
+                return false;
+            }
+            */
+            //$pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            //$pdo->rollBack();
+            return false;
+        }
+    }
 
 
+    //SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`digikort`.`business_card`, CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE)
 
 
 
