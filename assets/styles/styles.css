@@ -1,3 +1,8 @@
+/*
+    -----------------------------------------------------
+    GENERAL STYLING
+    -----------------------------------------------------
+*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,6 +15,12 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE navbar
+    -----------------------------------------------------
+*/
 
 li .nav-item, a, button {
     font-family: "Montserrat", sans-serif;
@@ -120,26 +131,13 @@ header {
         top: 0;
         left: 0;
     }
-
-    /*** Header scaling personal-information ***/
-    .personal-information{
-        margin: auto;
-        font-size: small;
-    }
-
-    .qr-code {
-        width: 50%;
-    }
-
-    .business-card-container{
-        font-size: medium;
-    }
-
-    .menu-options fa {
-        font-size: 20pt;
-    }
-
 }
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE footer
+    -----------------------------------------------------
+*/
 
 footer {
     position: absolute;
@@ -169,19 +167,12 @@ footer {
     color: white;
 }
 
-.digikort-heading{
-    text-align: center;
-    color: snow;
-}
 
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 2px solid #D9D9D9;
-    box-sizing: border-box;
-  }
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE business-card
+    -----------------------------------------------------
+*/
 
 .business-card-container {
     display: flex;
@@ -192,6 +183,7 @@ input[type=text], input[type=password] {
     margin: auto;
     padding: 5rem;
     line-height: 1.5;
+    z-index: -1;
 }
 
 .personal-information {
@@ -205,6 +197,10 @@ input[type=text], input[type=password] {
 STYLING GJELDENDE MENYVALG VISITTKORT KUNDE
 -----------------------------------------------
 */
+
+.qr-code {
+    width: 15rem;
+}
 
 .menu {
     font-family: Arial, Helvetica, sans-serif;
@@ -224,12 +220,26 @@ STYLING GJELDENDE MENYVALG VISITTKORT KUNDE
 
 .menu-options{
     color: black;
-    font-size: 20pt;
+    font-size: 15pt;
     justify-content: center;
     margin: 2rem;
 }
 
+@media(max-width:768px) {
+    .personal-information{
+        font-size: small;
+    }
 
+    .business-card-container{
+        font-size: medium;
+    }
+}
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE notater
+    -----------------------------------------------------
+*/
 /* notes */
 
 .container {
@@ -340,7 +350,7 @@ button[type="submit"]:hover {
 .h1_bli_med_bedrift_2 {
     margin-top: 50px;
     color:black;
-    font-size: medium; 
+    font-size: medium;
 }
 
 .bli_med_bedrift_knapp button[type="submit"] {
@@ -379,7 +389,18 @@ button[type="submit"]:hover {
     }
       }
 
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE kart
+    -----------------------------------------------------
+*/
 .map {
     width: 100%;
-    height: calc(100vh - 12rem);
+    height: calc(100vh - 12rem); /* Full height - height of topbar and footer 8+4 */
 }
+
+
+
+
+
+
