@@ -165,46 +165,6 @@ footer {
 
 }
 
-/* SLETT??
-.digikort-heading{
-    text-align: center;
-    color: snow;
-}
-*/
-
-/*
-    -----------------------------------------------------
-    STYLING GJELDENDE login
-    -----------------------------------------------------
-*/
-
-.login-container {
-    text-align: left;
-}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 2px solid #D9D9D9;
-    box-sizing: border-box;
-  }
-
-form { /* Må spesifisere styling mere, denna påvirka alle forms i hele prosjektet og gjør at forms på andre sie ikke ser ut som de skal */
-    position: absolute;
-    text-shadow: 5px;
-    color: #FFFFFF;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); /* IE 9 */
-    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	    
-}
 
 /*
     -----------------------------------------------------
