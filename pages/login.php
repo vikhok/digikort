@@ -17,7 +17,7 @@
                 header("Location: index.php?user_id=" . $_SESSION["user"]["user_id"]);
             }
         } else {
-            $failed = "<h4><span style='color:red'>
+            $status = "<h4><span style='color:red'>
                     Feil epost og/eller passord.
                     </span></h4>";
         }
@@ -52,15 +52,15 @@
                 </div>
             
                 <div class="signup-form">
-                    <p><a href="#">Mangler du brukerkonto?</a></p>
+                    <p><a href="Registrer-konto.php">Mangler du brukerkonto?</a></p>
                 </div> 
 
                 <div class="forgot-password-form">
-                    <p><a href="#">Glemt Passord?</a></p>
+                    <p><a href="recover.php">Glemt Passord?</a></p>
                 </div>
                 <button type="submit" name="login" class="submit">Login</button>
             </form>
-            <?php if(isset($failed)) { echo $failed; } ?>
+            <?php if(isset($status)) { echo $status; } ?>
         </div>
     </div>
 </body>

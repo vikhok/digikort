@@ -44,12 +44,12 @@ CREATE TABLE `reset_password` (
 );
 
 CREATE TABLE `business_card` (
-  `card_id`       int(11)   NOT NULL,
-  `user_id`       int(11)   NOT NULL,
-  `job_title`   varchar(64)   NOT NULL,
-  `company_id`    int(11)   NOT NULL,
-  `location_id`   int(11)   NOT NULL,
-  `administrator` boolean   NOT NULL
+  `card_id`       int(11)       NOT NULL,
+  `user_id`       int(11)       NOT NULL,
+  `job_title`     varchar(64)   NOT NULL,
+  `company_id`    int(11)       NOT NULL,
+  `location_id`   int(11)       NOT NULL,
+  `administrator` boolean       NOT NULL
 );
 
 CREATE TABLE `user_social` (

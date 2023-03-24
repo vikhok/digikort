@@ -35,7 +35,7 @@
         }
     }
 
-    function get_user($card_id) {
+    function get_user_company_old($user_id) {
         global $pdo;
         $sql = "SELECT bc.user_id, bc.company_id, bc.job_title, bc.administrator, 
             u.first_name, u.last_name, u.email, u.phone, 
@@ -45,9 +45,44 @@
             ON bc.user_id = u.user_id 
             JOIN company AS c 
             ON bc.company_id = c.company_id 
-            WHERE bc.card_id = ?";
+            WHERE bc.user_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $card_id, PDO::PARAM_INT);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function get_user($user_id) {
+        global $pdo;
+        $sql = "SELECT first_name, last_name, email, phone FROM user WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function get_user_company($user_id) {
+        global $pdo;
+        $sql = "SELECT bc.user_id, bc.company_id, bc.job_title, bc.administrator, 
+            c.company_name
+            FROM business_card AS bc 
+            JOIN company AS c 
+            ON bc.company_id = c.company_id 
+            WHERE bc.user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
@@ -73,8 +108,43 @@
         }
     }
 
+    function create_account($first_name, $last_name, $email, $phone, $password) {
+        global $pdo;
+        $sql1 = "INSERT INTO user (first_name, last_name, email, phone, pass) VALUES (?, ?, ?, ?, ?)";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $first_name, PDO::PARAM_STR);
+        $query1->bindParam(2, $last_name, PDO::PARAM_STR);
+        $query1->bindParam(3, $email, PDO::PARAM_STR);
+        $query1->bindParam(4, $phone, PDO::PARAM_STR);
+        $query1->bindParam(5, $password, PDO::PARAM_STR);
+        
+        //$pdo->beginTransaction();
+        try {
+            $query1->execute();
+            $user_id = $pdo->lastInsertId();
+            /*
+            try {
+                $sql2 = "INSERT INTO business_card (user_id) VALUE (?)";
+                $query2 = $pdo->prepare($sql2);
+                $query2->bindParam(1, $last_inserted_id, PDO::PARAM_INT);
+                $query2->execute();
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                $pdo->rollBack();
+                return false;
+            }
+            */
+            //$pdo->commit();
+            return $user_id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            //$pdo->rollBack();
+            return false;
+        }
+    }
 
 
+    //SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`digikort`.`business_card`, CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE)
 
 
 
