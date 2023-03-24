@@ -1,5 +1,6 @@
 <?php
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/qr.inc.php");
 
     session_start();
 
@@ -11,7 +12,10 @@
         $password = $_REQUEST["password"];
         $confirm_password = $_REQUEST["confirm_password"];
 
-        if(create_account($first_name, $last_name, $email, $phone, $password)) {
+        if($user_id = create_account($first_name, $last_name, $email, $phone, $password)) {
+            $url = "localhost/digikort/pages/index.php?user_id=" . $user_id;
+            createQR($user_id, $url);
+            
             $status = "<h4><span style='color:green'>
             Konto ble registrert i systemet.
             </span></h4>";

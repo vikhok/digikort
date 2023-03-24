@@ -35,7 +35,7 @@
         }
     }
 
-    function get_user($card_id) {
+    function get_user_company_old($user_id) {
         global $pdo;
         $sql = "SELECT bc.user_id, bc.company_id, bc.job_title, bc.administrator, 
             u.first_name, u.last_name, u.email, u.phone, 
@@ -45,9 +45,44 @@
             ON bc.user_id = u.user_id 
             JOIN company AS c 
             ON bc.company_id = c.company_id 
-            WHERE bc.card_id = ?";
+            WHERE bc.user_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $card_id, PDO::PARAM_INT);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function get_user($user_id) {
+        global $pdo;
+        $sql = "SELECT first_name, last_name, email, phone FROM user WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function get_user_company($user_id) {
+        global $pdo;
+        $sql = "SELECT bc.user_id, bc.company_id, bc.job_title, bc.administrator, 
+            c.company_name
+            FROM business_card AS bc 
+            JOIN company AS c 
+            ON bc.company_id = c.company_id 
+            WHERE bc.user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
@@ -86,7 +121,7 @@
         //$pdo->beginTransaction();
         try {
             $query1->execute();
-            //$last_inserted_id = $pdo->lastInsertId();
+            $user_id = $pdo->lastInsertId();
             /*
             try {
                 $sql2 = "INSERT INTO business_card (user_id) VALUE (?)";
@@ -100,7 +135,7 @@
             }
             */
             //$pdo->commit();
-            return true;
+            return $user_id;
         } catch (PDOException $e) {
             echo $e->getMessage();
             //$pdo->rollBack();

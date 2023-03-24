@@ -10,14 +10,18 @@
     $user_id = $_GET["user_id"];
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
-        $job_title = $user->job_title;
-        $company = $user->company_name;
         $email = $user->email;
         $phone = $user->phone;
+        $job_title = null;
+        $company = null;
     } else {
         $failed = "<h4><span style='color:red'>
         Noe gikk galt, fant ikke bruker i systemet.
         </span></h4>";
+    }
+    if($user = get_user_company($user_id)) {
+        $job_title = $user->job_title;
+        $company = $user->company_name;
     }
 ?>
 <!DOCTYPE html>
@@ -42,9 +46,6 @@
                         <h2>$company</h2>
                         <h2>$email</h2>
                         <h2>$phone</h2>";
-
-                    // Midlertidig test
-                    createQR(1, "https://www.linkedin.com/in/eivind-hauge-halsnes-875542215/");
                 ?>
             </div>
             <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
