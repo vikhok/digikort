@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/include/webshare-api.js" type="text/Javascript">
     <title>Digikort</title>
 </head>
 <body>
@@ -53,10 +54,21 @@
             <?php } else { ?>
                 <div class="menu">
                     <ul>
-                        <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-share-alt"></i> Del</a></li>
+                        <li>
+                            <a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a>
+                        </li>
+                
+                        <li>
+                            <a href="../assets/include/webshare-api.js" class="menu-options"><i class="fa fa-share-alt"></i> Del</a>
+                        </li>
                     </ul>
                 </div>
             <?php } ?>
