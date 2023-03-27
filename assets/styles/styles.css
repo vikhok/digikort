@@ -266,7 +266,7 @@ form {
 
 .om-og-kontakt-knapp {
     display: flex;
-    width: 80%;
+    width: 60%;
     align-items: center;
     flex-direction: row;
 }
@@ -277,10 +277,10 @@ form {
     background: gray;
     flex-flow: row wrap;
     border-radius: 10px;
-    width: 30%;
+    width: 100%;
     padding: 20px;
-    margin: 50px;
-    font-size: large;
+    margin: 5px;
+    font-size: medium;
 }
 
 .Bedrift-knapper {
@@ -289,14 +289,15 @@ form {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 600px;
+    width: 30%;
+    
 }
 
 .veibeskrivelse-knapp {
     position: relative;
     display: flex;
     justify-content: center;
-    width: 500px;
+    width: 450px;
 }
 .a_veibeskrivelse {
     position: relative;
@@ -317,9 +318,14 @@ form {
     width: 500px;
     font-size: xx-large;
     padding: 0px 30px 10px;
-    background-color: white;
 }
 
 .bedrift-tittel, .bedrift-slogan, .bedrift-setning {
     margin: 20px;
+}
+
+.Bedrift-bilde{
+    display: flex;
+    position: relative;
+    width: 33%;
 }
