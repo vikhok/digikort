@@ -6,17 +6,22 @@
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
 
-    $user_id = $_GET["user_id"];
+    $user_id = $_REQUEST["user_id"];
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
-        $job_title = $user->job_title;
-        $company = $user->company_name;
         $email = $user->email;
         $phone = $user->phone;
+        $job_title = null;
+        $company = null;
     } else {
         $failed = "<h4><span style='color:red'>
         Noe gikk galt, fant ikke bruker i systemet.
         </span></h4>";
+    }
+    $company_id = null;
+    if($user_company = get_user_company($user_id)) {
+        $job_title = $user_company->job_title;
+        $company = $user_company->company_name;
     }
 ?>
 <!DOCTYPE html>
@@ -26,11 +31,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
-    <link rel="stylesheet" href="styling/rediger_profil_styles.css">
+    <!--<link rel="stylesheet" href="styling/rediger_profil_styles.css">-->
     <title>Rediger profil</title>
 </head>
 <body>
-    <?php banner(true) ?>
+    <?php banner($user_id, false) ?>
     <div class="rediger_profil">
         <form action="rediger_profil.php" method="POST">
             <div class="profil_bilde">    

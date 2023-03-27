@@ -5,11 +5,11 @@
     Importeres slik: require_once("denne filen");
     Kalles på i php: banner() med parameter true eller false, basert på om profilbilde skal vises.
 -->
-<?php function banner($user_id = false, $user_company = false) { ?>
+<?php function banner($user_id, $user_company) { ?>
     <header>
         <?php if($user_id) { 
             $folder = md5("user." . $user_id);
-            $dir = "../profiles/" . $folder . "/profile_pic.png";
+            $dir = "../profiles/" . $folder . "/profile_picture.png";
             if(!file_exists($dir)) {
                 $dir = "../profiles/stockprofile/profile_picture.png";
             }
@@ -20,7 +20,7 @@
                 <ul class="nav-menu">
                     <?php if(isset($_SESSION["user"]["logged_in"]) && $_SESSION["user"]["logged_in"] == true) { ?>
                         <li class="nav-item"><a href="index.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Mitt Visittkort</a></li>
-                        <li class="nav-item"><a href="rediger_profil.php" class="nav-link">Rediger profil</a></li>
+                        <li class="nav-item"><a href="rediger_profil.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Rediger profil</a></li>
                         <?php if($user_company) { ?>
                             <li class="nav-item"><a href="#" class="nav-link">Bedrift</a></li>
                         <?php } else { ?>
@@ -28,9 +28,11 @@
                         <?php } ?>
                         <li class="nav-item"><a href="utility/logout.php" class="nav-link">Logg ut</a></li>
                     <?php } else { ?>
-                        <li class="nav-item"><a href="#" class="nav-link">NO / EN</a>
+                        <!--<li class="nav-item"><a href="#" class="nav-link">NO / EN</a>-->
                         <li class="nav-item"><a href="#" class="nav-link">Visittkort</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Bedrift</a></li>
+                        <?php if($user_company) { ?>
+                            <li class="nav-item"><a href="#" class="nav-link">Bedrift</a></li>
+                        <?php } ?>
                         <li class="nav-item"><a href="login.php" class="nav-link">Logg inn</a></li>
                     <?php } ?>
                 </ul>

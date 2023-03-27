@@ -53,6 +53,7 @@ header {
     align-items: center;
     gap: 60px;
     list-style: none;
+    z-index: 1;
 }
 
 .profile_picture {
@@ -96,6 +97,7 @@ header {
 @media(max-width:768px) {
     .hamburger {
         display: block;
+        z-index: 2;
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -183,7 +185,6 @@ footer {
     margin: auto;
     padding: 5rem;
     line-height: 1.5;
-    z-index: -1;
 }
 
 .personal-information {
