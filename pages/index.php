@@ -45,8 +45,8 @@
                     echo "<h2>$name</h2>
                         <h2>$job_title</h2>
                         <h2>$company</h2>
-                        <h2>$email</h2>
-                        <h2>$phone</h2>";
+                        <h2><a href='mailto:$email'>$email</a></h2>
+                        <h2><a href='tel:$phone'>$phone</a></h2>";
                 ?>
             </div>
             <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
@@ -67,7 +67,7 @@
                         </li>
                 
                         <li>
-                            <a href="../assets/include/webshare-api.js" class="menu-options"><i class="fa fa-share-alt"></i> Del</a>
+                            <a href="../assets/include/webshare-api.js" class="menu-options" id="share-btn"><i class="fa fa-share-alt"></i> Del</a>
                         </li>
                     </ul>
                 </div>
@@ -75,5 +75,25 @@
         <?php } else { echo $failed; }?>
     </div>
     <?php footer("profile") ?>
+    <script>
+    const shareLink = document.getElementById('share-link');
+
+    shareLink.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+  try {
+    const shareData = {
+      title: 'Deling av visittkort',
+      text: 'Text of the shared content',
+      url: '<?= $_SERVER['REQUEST_URI'] ?>',
+    };
+        await navigator.share(shareData);
+        console.log('Shared successfully');
+        } catch (error) {
+        console.error('Error sharing:', error);
+        }
+    });
+
+</script>
 </body>
 </html>
