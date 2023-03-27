@@ -15,7 +15,7 @@
         <?php banner(false) ?>
         <div class="Bedrift-siden">
             <div class="Bedrift-bilde">
-
+                <img src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
             </div>
 
             <div class="Bedrift-Text">
