@@ -300,7 +300,7 @@ header {
 */
 
 footer {
-    position: relative;
+    position: absolute;
     height: 4rem;
     width: 100%;
     bottom: 0;

@@ -1,6 +1,5 @@
 <?php
     require_once("../assets/include/header.inc.php");
-    require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
 
     session_start();
@@ -31,12 +30,13 @@
 <body>
     <?php banner(true) ?>
     <div class="rediger_profil">
-        <form class="redpro_form" action="rediger_profil.php" method="POST">
+        <form class="redpro_form" action="rediger_profil.php" method="POST" enctype="multipart/form-data">
             <div class="profil_bilde">    
                 <label class="redpro_label" for="profile-picture">Endre profilbilde</label>
                 <!-- Tror ikke det er behov for img -->
-                <img class="vis_profil_bilde" src="plassholder for senere bilde" alt="Profil bilde">
+                <img class="vis_profil_bilde" src="" alt="Profil bilde">
                 <input type="file" id="profil_bilde" name="profil_bilde" accept="image/*">
+                <input type="submit" value="Last opp profilbildet">
             </div>
 
             <div class="redpro_input_text">
@@ -81,6 +81,5 @@
             </div>
         </form>
     </div>
-    <?php footer() ?>
 </body>
 </html>
