@@ -54,46 +54,16 @@
             <?php } else { ?>
                 <div class="menu">
                     <ul>
-                        <li>
-                            <a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a>
-                        </li>
-                
-                        <li>
-                            <a href="../assets/include/webshare-api.js" class="menu-options" id="share-btn"><i class="fa fa-share-alt"></i> Del</a>
-                        </li>
+                        <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
+                        <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
+                        <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
+                        <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a>                        </li>
                     </ul>
                 </div>
+                <script src="../assets/include/webshare-api.js"></script>
             <?php } ?>
         <?php } else { echo $failed; }?>
     </div>
     <?php footer("profile") ?>
-    <script>
-    const shareLink = document.getElementById('share-link');
-
-    shareLink.addEventListener('click', async (event) => {
-    event.preventDefault();
-
-  try {
-    const shareData = {
-      title: 'Deling av visittkort',
-      text: 'Text of the shared content',
-      url: '<?= $_SERVER['REQUEST_URI'] ?>',
-    };
-        await navigator.share(shareData);
-        console.log('Shared successfully');
-        } catch (error) {
-        console.error('Error sharing:', error);
-        }
-    });
-
-</script>
 </body>
 </html>
