@@ -1,3 +1,8 @@
+/*
+    -----------------------------------------------------
+    GENERAL STYLING
+    -----------------------------------------------------
+*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,10 +11,178 @@
 
 body {
     background-color: #99A8BF;
-    height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-li, a, button {
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE rediger_profil.php
+    -----------------------------------------------------
+*/
+
+.redpro_form {
+    text-align: center;
+  }
+   
+.redpro_label {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #fff;
+      padding-top: 10px;
+    }
+  
+.redpro_input_text input[type="text"]:focus {
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+  
+.redpro_input_text input[type="text"] {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+      width: 40%;
+    }
+
+.redpro_input_text input[type="tel"]:focus {
+        background-color: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        outline: none;
+      }
+    
+.redpro_input_text input[type="tel"] {
+        background-color: #f9f9f9;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        color: #555;
+        font-size: 18px;
+        padding: 10px 15px;
+        transition: all 0.3s ease-in-out;
+        width: 40%;
+      }    
+  
+.redpro_email input[type="email"] {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+      width: 40%;
+    }
+    
+  .rediger_some input[type="url"] {
+      width: 75%;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 1px;
+      font-size: 20px;
+    }
+  
+  .column_rediger_profil input[type="file"] {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 16px;
+      padding: 8px 12px;
+      transition: all 0.3s ease-in-out;
+      width: 25%;
+  }
+  
+    
+  .oppdater_profil_knapp button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    
+  .oppdater_profil_knapp button[type="submit"]:hover {
+      background-color: #0069d9;
+    }
+    
+  .error {
+      color: red;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    
+  .rediger_profil {
+      position: relative;
+      justify-content: center;
+    }
+    
+  
+  .rediger_some {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  
+  .column_rediger_profil {
+      flex-basis: 50%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  
+    .vis_profil_bilde {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    margin-top: 15px;
+    }
+  
+    .profil_bilde {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profil_bilde input[type="file"] {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 16px;
+      padding: 8px 12px;
+      transition: all 0.3s ease-in-out;
+      width: 40%;
+      margin-bottom: 15px;
+      margin-top: 15px;
+       
+    }
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE navbar
+    -----------------------------------------------------
+*/
+
+li .nav-item, a, button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -120,6 +293,12 @@ header {
     }
 }
 
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE footer
+    -----------------------------------------------------
+*/
+
 footer {
     position: absolute;
     height: 4rem;
@@ -138,64 +317,333 @@ footer {
     list-style: none;
     width: 15%;
     right: 0;
+    fill: white;
+
 }
 
 .footer-item {
     width: 2rem;
     margin-top: 1rem;
+    color: white;
 }
 
 
-
-.digikort-heading{
-    text-align: center;
-    color: snow;
-}
-
-.login-container {
-    text-align: left;
-}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 2px solid #D9D9D9;
-    box-sizing: border-box;
-  }
-
-form {
-    position: absolute;
-    text-shadow: 5px;
-    color: #FFFFFF;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); /* IE 9 */
-    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	    
-}
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE business-card
+    -----------------------------------------------------
+*/
 
 .business-card-container {
     display: flex;
+    position: relative; 
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    margin: auto;
     padding: 5rem;
+    line-height: 1.5;
+    z-index: -1;
 }
 
 .personal-information {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     margin: 2rem;
-    
 }
+
+/*
+-----------------------------------------------
+STYLING GJELDENDE MENYVALG VISITTKORT KUNDE
+-----------------------------------------------
+*/
 
 .qr-code {
     width: 15rem;
+}
+
+.menu {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25pt;
+    position: relative;
+    font-style: bold;
+    width: 15rem;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    line-height: 1.5;
+}
+
+.menu ul{
+    list-style-type: none;
+}
+
+.menu-options{
+    color: black;
+    font-size: 15pt;
+    justify-content: center;
     margin: 2rem;
 }
+
+@media(max-width:768px) {
+    .personal-information{
+        font-size: small;
+    }
+
+    .business-card-container{
+        font-size: medium;
+    }
+}
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE notater
+    -----------------------------------------------------
+*/
+
+.container-notat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.content-notat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 250px;
+    max-height: 380px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.label-notat {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.textarea-notat {
+    resize: vertical;
+}
+
+.button-notat[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-notat[type="submit"]:hover {
+    background-color: #444;
+}
+
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE bli_med_bedrift
+    -----------------------------------------------------
+*/
+
+.bli_med_bedrift {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.bedrift_navn {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bedrift_navn label {
+    font-size: x-large;
+    margin-top: 10px;
+}
+
+.bedrift_navn input[type="text"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 25px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    width: 75%;
+    margin-top: 1px;
+}
+
+.h1_bli_med_bedrift {
+    margin-top: 20px;
+    color:black; 
+}
+
+.h1_bli_med_bedrift_2 {
+    margin-top: 50px;
+    color:black;
+    font-size: medium;
+}
+
+.bli_med_bedrift_knapp button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 25px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: -10px;
+  }
+
+  .opprett_ny_bedrift_knapp {
+    color: black;
+    font-size: large;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 10px;
+  }
+
+  .a_ny_bedrift {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  @media (max-width:450px){
+    .bli_med_bedrift_form {
+        font-size: 20px;
+        width: 90%;
+    }
+      }
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE kart
+    -----------------------------------------------------
+*/
+.map {
+    width: 100%;
+    height: calc(100vh - 12rem); /* Full height - height of topbar and footer 8+4 */
+}
+
+/*
+-----------------------------------------------------
+STYLING GJELDENDE mine notater
+-----------------------------------------------------
+*/
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .body_mine-notater {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .h1_mine-notater {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .h2_mine-notater {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .h2_mine-notater  {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .main_mine-notater {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .section_mine-notater {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 2rem;
+  }
+  
+  .notat-boks-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .notat-boks {
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  .notat-boks:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+  
+  .button-mine-notater[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 420;
+}
+
+
+
