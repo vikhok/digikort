@@ -1,6 +1,5 @@
 <?php
     require_once("../assets/include/header.inc.php");
-    require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
 
     session_start();
@@ -26,52 +25,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
-    <link rel="stylesheet" href="styling/rediger_profil_styles.css">
     <title>Rediger profil</title>
 </head>
 <body>
     <?php banner(true) ?>
     <div class="rediger_profil">
-        <form action="rediger_profil.php" method="POST">
+        <form class="redpro_form" action="rediger_profil.php" method="POST" enctype="multipart/form-data">
             <div class="profil_bilde">    
-                <label for="profile-picture">Endre profilbilde</label>
-                <img class="vis_profil_bilde" src="plassholder for senere bilde" alt="Profil bilde">
+                <label class="redpro_label" for="profile-picture">Endre profilbilde</label>
+                <!-- Tror ikke det er behov for img -->
+                <img class="vis_profil_bilde" src="" alt="Profil bilde">
                 <input type="file" id="profil_bilde" name="profil_bilde" accept="image/*">
+                <input type="submit" value="Last opp profilbildet">
             </div>
 
             <div class="redpro_input_text">
-                <label for="full_name">Fullt navn</label>
+                <label class="redpro_label" for="full_name">Fullt navn</label>
                 <input type="text" id="full_name" name="full_name" placeholder="Navnet ditt"><br><br>
             </div>
 
             <div class="redpro_input_text">
-                <label for="stillingstittel">Stillingstittel</label>
+                <label class="redpro_label" for="stillingstittel">Stillingstittel</label>
                 <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Din stillingstittel"><br><br>
             </div>
 
             <div class="redpro_email">
-                <label for="email">E-post</label>
+                <label class="redpro_label" for="email">E-post</label>
                 <input type="email" id="email" name="email" placeholder="eksempel@epost.no" ><br><br>
             </div>
 
             <div class="redpro_input_text">
-                <label for="telefon">Telefon</label>
+                <label class="redpro_label" for="telefon">Telefon</label>
                 <input type="tel" id="telefon" name="telefon" placeholder="+47 12345678" ><br><br>
             </div>
 
             <div class="rediger_some">
                 <div class="column_rediger_profil">
-                <label for="linkedin">LinkedIn</label>
+                <label class="redpro_label" for="linkedin">LinkedIn</label>
                 <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/"><br><br>
                 </div>
 
                 <div class="column_rediger_profil">
-                <label for="github">Github</label>
+                <label class="redpro_label" for="github">Github</label>
                 <input type="url" id="github" name="github" placeholder="github.com/"><br><br>
                 </div>
 
                 <div class="column_rediger_profil">
-                <label for="instagram">Instagram</label>
+                <label class="redpro_label" for="instagram">Instagram</label>
                 <input type="url" id="instagram" name="instagram" placeholder="www.instagram.com/"><br><br>
                 </div>
             </div>
@@ -81,6 +81,5 @@
             </div>
         </form>
     </div>
-    <?php footer() ?>
 </body>
 </html>
