@@ -12,17 +12,18 @@ require_once("../assets/include/footer.inc.php");
 </head>
 <body>
     <?php banner(false) ?>
-    <div class="container-notes">
-        <div class="content-notes"></div>
+    <div class="container-notat">
+        <div class="content-notat">
+              <div class="button-notat">
+               <div class="textarea-notat">
+                       <div class="label-notat">
+        </div>
         <br>
+            <br>
             <h1>Nytt notat</h1>
             
             <form action="">    
-    <br>
-        <br>
-            <br>
-                <br>
-                    <br>
+
                 <input type="text" placeholder="Tittel:" id="title" name="title" required>
                 <textarea id="text" placeholder="Notat:" name="title" rows="13" required></textarea>
                 <button type="submit">Lagre</button>
@@ -32,3 +33,4 @@ require_once("../assets/include/footer.inc.php");
     <?php footer() ?>
 </body>
 </html>
+

@@ -407,22 +407,22 @@ STYLING GJELDENDE MENYVALG VISITTKORT KUNDE
     STYLING GJELDENDE notater
     -----------------------------------------------------
 */
-/* notes */
-/*
-.container {
+
+.container-notat {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
 }
 
-.content {
+.content-notat {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 250px;
+    max-height: 380px;
     padding: 20px;
     box-sizing: border-box;
     background-color: #fff;
@@ -435,7 +435,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-label {
+.label-notat {
     display: block;
     margin-bottom: 10px;
 }
@@ -451,11 +451,11 @@ input, textarea {
     resize: none;
 }
 
-textarea {
+.textarea-notat {
     resize: vertical;
 }
 
-button[type="submit"] {
+.button-notat[type="submit"] {
     display: block;
     margin: 0 auto;
     background-color: #333;
@@ -467,10 +467,9 @@ button[type="submit"] {
     transition: all 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.button-notat[type="submit"]:hover {
     background-color: #444;
 }
-*/
 
 /*
     -----------------------------------------------------
@@ -567,7 +566,90 @@ button[type="submit"]:hover {
     height: calc(100vh - 12rem); /* Full height - height of topbar and footer 8+4 */
 }
 
+/*
+-----------------------------------------------------
+STYLING GJELDENDE mine notater
+-----------------------------------------------------
+*/
 
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .body_mine-notater {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .h1_mine-notater {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .h2_mine-notater {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .h2_mine-notater  {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .main_mine-notater {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .section_mine-notater {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 2rem;
+  }
+  
+  .notat-boks-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .notat-boks {
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  .notat-boks:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+  
+  .button-mine-notater[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 420;
+}
 
 
 
