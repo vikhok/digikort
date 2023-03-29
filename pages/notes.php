@@ -23,6 +23,7 @@ require_once("../assets/include/footer.inc.php");
             <h1>Nytt notat</h1>
             
             <form action="">    
+
                 <input type="text" placeholder="Tittel:" id="title" name="title" required>
                 <textarea id="text" placeholder="Notat:" name="title" rows="13" required></textarea>
                 <button type="submit">Lagre</button>
@@ -32,3 +33,4 @@ require_once("../assets/include/footer.inc.php");
     <?php footer() ?>
 </body>
 </html>
+

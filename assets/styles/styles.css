@@ -321,6 +321,13 @@ footer {
 
 }
 
+/* SoMe-ikoner responsiv mobil-view */
+    @media screen and (max-width: 750px){
+        .footer-menu {
+            width: 50%;
+        }
+    }
+
 .footer-item {
     width: 2rem;
     margin-top: 1rem;
@@ -463,7 +470,6 @@ STYLING GJELDENDE MENYVALG VISITTKORT KUNDE
 .button-notat[type="submit"]:hover {
     background-color: #444;
 }
-
 
 /*
     -----------------------------------------------------
@@ -644,6 +650,7 @@ STYLING GJELDENDE mine notater
     transition: all 0.3s ease;
     margin-top: 420;
 }
+
 
 
 
