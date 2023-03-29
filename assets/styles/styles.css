@@ -430,7 +430,7 @@ STYLING GJELDENDE MENYVALG VISITTKORT KUNDE
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-h1 {
+.h1-notat {
     text-align: center;
     margin-bottom: 30px;
 }
@@ -440,7 +440,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-input, textarea {
+.input-notat, .textarea-notat {
     display: block;
     width: 100%;
     padding: 10px;
