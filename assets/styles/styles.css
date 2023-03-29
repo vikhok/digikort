@@ -321,6 +321,13 @@ footer {
 
 }
 
+/* SoMe-ikoner responsiv mobil-view */
+    @media screen and (max-width: 750px){
+        .footer-menu {
+            width: 50%;
+        }
+    }
+
 .footer-item {
     width: 2rem;
     margin-top: 1rem;
