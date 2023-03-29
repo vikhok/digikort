@@ -1,0 +1,143 @@
+body {
+    display: flex;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    background: url('Pictures/Login-background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+
+}
+
+/* 
+---------------------------------------
+STYLING GJELDENDE FOR LOGIN.PHP
+---------------------------------------
+*/
+
+.digikort-heading{
+    text-align: center;
+    color: rgb(66, 65, 65);
+}
+
+.login-container {
+    text-align: left;
+}
+
+.email-form, .password-form, .firstname-form{
+    position: relative;
+    width: 90%;
+    border-bottom: 1px solid #414242;
+    margin: 10px 10px;
+    
+}
+
+.login-container label{
+    position: absolute;
+    color: #3b3a3a;
+    left: 10px;
+
+}
+
+.form-control input[type=email], input[type=text], input[type=password], input[type=tel] {
+    width: 85%;
+    padding: 10px 10px 13px;
+    margin: 7px 0px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #414242;
+    outline: none;
+    font-size: medium;
+  } 
+
+.login-form {
+    position: absolute;
+    color: #FFFFFF;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
+    width: 400px;
+    border: 1px solid #cfcdcd;
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  @media (max-width:450px){
+    form {
+        font-size: 5vw;
+        width: 90%;
+    }
+    }
+
+    @media only screen and (max-width: 600px) {
+    .login-form {
+        width: 300px;
+    }
+    }
+
+    @media only screen and (max-width: 280px) {
+        .login-form {
+            width: 250px;
+        }
+    }
+
+.remember-password-checkbox label{
+    display: block;
+    padding-left: 10px;
+}
+
+.remember-password-checkbox[type="checkbox"] {
+    justify-content: left;
+}
+
+.signup-form {
+    position: relative;
+   color: black;
+   padding: 0px 10px;
+   display: flex;
+    justify-content: right;
+    margin-bottom: -20px;
+    margin-top: -10px;
+}
+
+.forgot-password-form {
+    color: black;
+    padding: 0px 8px;
+    display: flex;
+    justify-content: right;
+}
+
+.login-container button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: 10px auto;
+    
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+
+
+::placeholder {
+    font-size: medium;
+}
