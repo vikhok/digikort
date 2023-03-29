@@ -144,7 +144,7 @@
     }
 
 
-    //SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`digikort`.`business_card`, CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE)
+    
 
 
 
