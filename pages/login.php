@@ -1,3 +1,28 @@
+<?php
+    require_once("../assets/include/header.inc.php");
+    require_once("../assets/include/footer.inc.php");
+    require_once("../assets/include/db.inc.php");
+
+    session_start();
+
+    if(isset($_POST["login"])) {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        if($user = login($email, $password)) {
+            $_SESSION["user"]["user_id"] = $user->user_id;
+            $_SESSION["user"]["logged_in"] = true;
+            if(isset($_SESSION["site"]["last_visited"])) {
+                header("Location: " . $_SESSION["site"]["last_visited"]);
+            } else {
+                header("Location: index.php?user_id=" . $_SESSION["user"]["user_id"]);
+            }
+        } else {
+            $failed = "<h4><span style='color:red'>
+                    Feil epost og/eller passord.
+                    </span></h4>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,39 +35,34 @@
     <title>Login</title>
 </head>
 <body>
- 
-<div class="login-form">
-    <div class="login-container">    
-        <form name="login" class="login" action="POST">
+    <div class="login-form">
+        <div class="login-container">    
+            <form name="login" method="POST" action="#">
+                
+                <h1 class="digikort-heading">DigiKort</h1>
+                
+                <div class="form-control">
+                    <input type="email" name="email" class="email-form" placeholder="E-postadresse" required>
+                    <input type="password" name="password" class="password-form" placeholder="Passord" required>
+                </div>
 
-            <div class="digikort-heading">
-                <h1>DigiKort</h1>
-            </div>
+                <div class="remember-password-checkbox">
+                    <input type="checkbox" id="remember-password" name="remember-password">
+                    <label for="husk-passord">Husk passord</label>
+                </div>
             
-            <div class="email-form">
-                <input type="text" class="form-control" placeholder="E-postadresse" required>
-            </div>
+                <div class="signup-form">
+                    <p><a href="#">Mangler du brukerkonto?</a></p>
+                </div> 
 
-            <div class="password-form">
-                <input type="password" class="form-control" placeholder="Passord" required>
-            </div>
-
-            <div class="remember-password-checkbox">
-                <input type="checkbox" id="remember-password" name="remember-password">
-                <label for="husk-passord">Husk passord</label>
-            </div>
-        
-            <div class="signup-form">
-                <p><a href="#">Mangler du brukerkonto?</a></p>
-            </div> 
-
-            <div class="forgot-password-form">
-                <p><a href="#">Glemt Passord?</a></p>
-            </div>
-            <div>
-                <button type="submit"> Login</button>
-        </form>
+                <div class="forgot-password-form">
+                    <p><a href="#">Glemt Passord?</a></p>
+                </div>
+                <!--<button type="submit">Login</button>-->
+                <input type="submit" name="login" class="submit" value="Login">
+            </form>
+            <?php if(isset($failed)) { echo $failed; } ?>
+        </div>
     </div>
-</div>
 </body>
 </html>

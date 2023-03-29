@@ -1,3 +1,8 @@
+/*
+    -----------------------------------------------------
+    GENERAL STYLING
+    -----------------------------------------------------
+*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,10 +11,18 @@
 
 body {
     background-color: #99A8BF;
-    height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-li, a, button {
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE navbar
+    -----------------------------------------------------
+*/
+
+li .nav-item, a, button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -120,6 +133,12 @@ header {
     }
 }
 
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE footer
+    -----------------------------------------------------
+*/
+
 footer {
     position: absolute;
     height: 4rem;
@@ -143,14 +162,21 @@ footer {
 .footer-item {
     width: 2rem;
     margin-top: 1rem;
+
 }
 
-
-
+/* SLETT??
 .digikort-heading{
     text-align: center;
     color: snow;
 }
+*/
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE login
+    -----------------------------------------------------
+*/
 
 .login-container {
     text-align: left;
@@ -165,7 +191,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
   }
 
-form {
+form { /* Må spesifisere styling mere, denna påvirka alle forms i hele prosjektet og gjør at forms på andre sie ikke ser ut som de skal */
     position: absolute;
     text-shadow: 5px;
     color: #FFFFFF;
@@ -180,24 +206,136 @@ form {
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	    
 }
 
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE business-card
+    -----------------------------------------------------
+*/
+
 .business-card-container {
     display: flex;
+    position: relative; 
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    margin: auto;
     padding: 5rem;
+    line-height: 1.5;
+    z-index: -1;
 }
 
 .personal-information {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     margin: 2rem;
-    
 }
+
+/*** Styling av ikoner ***/
 
 .qr-code {
     width: 15rem;
+}
+
+.menu {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25pt;
+    position: relative;
+    font-style: bold;
+    width: 15rem;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    line-height: 1.5;
+}
+
+.menu ul{
+    list-style-type: none;
+}
+
+.menu-options{
+    color: black;
+    font-size: 15pt;
+    justify-content: center;
     margin: 2rem;
+}
+
+@media(max-width:768px) {
+    .personal-information{
+        font-size: small;
+    }
+
+    .business-card-container{
+        font-size: medium;
+    }
+}
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE notater
+    -----------------------------------------------------
+*/
+/* notes */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #444;
 }
 
 /*
@@ -222,6 +360,7 @@ form {
 
 .bedrift_navn label {
     font-size: x-large;
+    margin-top: 10px;
 }
 
 .bedrift_navn input[type="text"] {
@@ -239,6 +378,13 @@ form {
 
 .h1_bli_med_bedrift {
     margin-top: 20px;
+    color:black; 
+}
+
+.h1_bli_med_bedrift_2 {
+    margin-top: 50px;
+    color:black;
+    font-size: medium;
 }
 
 .bli_med_bedrift_knapp button[type="submit"] {
@@ -247,10 +393,52 @@ form {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
     margin-bottom: 20px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: -10px;
   }
+
+  .opprett_ny_bedrift_knapp {
+    color: black;
+    font-size: large;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 10px;
+  }
+
+  .a_ny_bedrift {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  @media (max-width:450px){
+    .bli_med_bedrift_form {
+        font-size: 20px;
+        width: 90%;
+    }
+      }
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE kart
+    -----------------------------------------------------
+*/
+.map {
+    width: 100%;
+    height: calc(100vh - 12rem); /* Full height - height of topbar and footer 8+4 */
+}
+
+
+
+
+
+
+
 
 
   /*
