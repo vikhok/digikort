@@ -169,7 +169,7 @@
 
 
         try {
-            $query->execute();
+            $query->execute()   ;
             return $query->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             //echo $e->getMessage();
@@ -212,10 +212,5 @@
             return false;
         }
     }
-
-
-
-
-
 
 ?>
