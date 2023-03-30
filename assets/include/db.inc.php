@@ -143,6 +143,30 @@
         }
     }
 
+    function get_company_info($company_id) {
+        global $pdo;
+        $sql = "SELECT company_id 
+            FROM company 
+            WHERE company_id = ?";
+
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+    }
+
+    function edit_company($company_id, $company_name, $descriptions, $web_url) {
+        global $pdo;
+        $sql = "SELECT company_id
+            FROM company
+            WHERE company_id = ?";
+    }
+}
 
     //SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`digikort`.`business_card`, CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE)
 
