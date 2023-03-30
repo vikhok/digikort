@@ -11,7 +11,7 @@ require_once("../assets/include/footer.inc.php");
     <link rel="stylesheet" href="../assets/styles/styles.css">
 </head>
 <body>
-    <?php banner(false) ?>
+    <?php banner(1, false) ?>
     <div class="container-notat">
         <div class="content-notat">
               <div class="button-notat">
