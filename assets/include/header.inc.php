@@ -22,7 +22,7 @@
                         <li class="nav-item"><a href="index.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Mitt Visittkort</a></li>
                         <li class="nav-item"><a href="rediger_profil.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Rediger profil</a></li>
                         <?php if($user_company) { ?>
-                            <li class="nav-item"><a href="#" class="nav-link">Bedrift</a></li>
+                            <li class="nav-item"><a href="company.php?company_id=" class="nav-link">Bedrift</a></li>
                         <?php } else { ?>
                             <li class="nav-item"><a href="#" class="nav-link">Bli med i bedrift</a></li>
                         <?php } ?>
