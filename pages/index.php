@@ -18,7 +18,6 @@
         Noe gikk galt, fant ikke bruker i systemet.
         </span></h4>";
     }
-    $company_id = null;
     if($user_company = get_user_company($user_id)) {
         $job_title = $user_company->job_title;
         $company = $user_company->company_name;
