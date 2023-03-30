@@ -177,5 +177,40 @@
         }
     }
 
+    function update_user_profile($first_name, $last_name, $phone, $email, $job_title, $user_id) {
+        global $pdo;
+        $sql1 = "UPDATE user SET (first_name, last_name, phone, email) VALUES (?, ?, ?, ?) WHERE user_id = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $first_name, PDO::PARAM_STR);
+        $query1->bindParam(2, $last_name, PDO::PARAM_STR);
+        $query1->bindParam(3, $phone, PDO::PARAM_STR);
+        $query1->bindParam(4, $email, PDO::PARAM_STR);
+        $query1->bindParam(5, $user_id, PDO::PARAM_INT);
+
+        $pdo->beginTransaction();
+
+        try {
+            $query1->execute();
+            $sql2 = "UPDATE business_card SET (job_title) VALUE (?) WHERE user_id ?";
+            $query2 = $pdo->prepare($sql2);
+            $query2->bindParam(1, $job_title, PDO::PARAM_STR);
+            $query2->bindParam(2, $user_id, PDO::PARAM_INT);
+
+            try {
+                $query2->execute();
+                $pdo->commit();
+                return true;
+            } catch (PDOException $e) {
+                //echo $e->getMessage();
+                $pdo->rollBack();
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            $pdo->rollBack();
+            return false;
+        }
+    }
 
 ?>
