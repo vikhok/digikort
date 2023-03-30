@@ -1,3 +1,4 @@
+let link = window.location.href;
 const shareLinkButton = document.getElementById('share-link');
 
 shareLinkButton.addEventListener('click', (event) => {
@@ -6,7 +7,7 @@ shareLinkButton.addEventListener('click', (event) => {
     navigator.share({
         title: 'Visittkort',
         text: 'Deling av visittkort',
-        url: "www.google.no",
+        url: link,
     })
       .then(() => console.log('Deling fullført'))
       .catch((error) => console.error('Et problem oppsto:', error));
