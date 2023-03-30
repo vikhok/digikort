@@ -13,10 +13,30 @@
         $email = $user->email;
         $phone = $user->phone;
     } else {
-        $failed = "<h4><span style='color:red'>
+        $status = "<h4><span style='color:red'>
         Noe gikk galt, fant ikke bruker i systemet.
         </span></h4>";
     }
+
+    // Oppdaterer tabellen med nye endringer gjort av bruker.
+    if(isset($_REQUEST["submit"])) {
+        $first_name = $_REQUEST["first_name"];
+        $last_name = $_REQUEST["last_name"];
+        $job_title = $_REQUEST["stillingstittel"];
+        $email = $_REQUEST["email"];
+        $phone = $_REQUEST["telefon"];
+
+        if(update_user_profile($first_name, $last_name, $phone, $email, $job_title, $user_id)) {
+            $status = "<h4><span style='color:green'>
+            Profil ble endret.
+            </span></h4>";
+        } else {
+            $status = "<h4><span style='color:red'>
+            Noe gikk galt, endringer ble ikke foretatt.
+            </span></h4>";
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -40,8 +60,13 @@
             </div>
 
             <div class="redpro_input_text">
-                <label class="redpro_label" for="full_name">Fullt navn</label>
-                <input type="text" id="full_name" name="full_name" placeholder="Navnet ditt"><br><br>
+                <label class="redpro_label" for="first_name">Fornavn</label>
+                <input type="text" id="first_name" name="first_name" placeholder="Fornavnet ditt"><br><br>
+            </div>
+
+            <div class="redpro_input_text">
+                <label class="redpro_label" for="last_name">Etternavn</label>
+                <input type="text" id="last_name" name="last_name" placeholder="Etternavnet ditt"><br><br>
             </div>
 
             <div class="redpro_input_text">
@@ -77,9 +102,14 @@
             </div>
 
             <div class="oppdater_profil_knapp">    
-                <button type="submit">Oppdater profil</button>
+                <button type="submit" name="submit">Oppdater profil</button>
             </div>
         </form>
+        <?php
+            if(isset($status)) {
+                echo $status;
+            }
+        ?>
     </div>
 </body>
 </html>
