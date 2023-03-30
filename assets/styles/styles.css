@@ -733,3 +733,16 @@ STYLING GJELDENDE mine notater
     position: relative;
     width: 33%;
 }
+
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE MAIN-SIDE (AJAX-search)
+    -----------------------------------------------------
+*/
+
+.ajax-search-field {
+    position: relative;
+    margin: auto;
+    width: 10%;
+}
