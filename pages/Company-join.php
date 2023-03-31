@@ -1,3 +1,12 @@
+<?php
+    require_once("../assets/include/header.inc.php");
+    require_once("../assets/include/db.inc.php");
+
+    session_start();
+    $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -8,7 +17,7 @@
     <title>Bli med i en bedrift</title>
 </head>
 <body>
-
+    <?php banner(true)?>
     <div class="bli_med_bedrift">
 
 <form class="bli_med_bedrift_form" action="bli_med_bedrift.php" method="POST">
