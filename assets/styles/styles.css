@@ -350,6 +350,7 @@ footer {
     margin: auto;
     padding: 5rem;
     line-height: 1.5;
+    z-index: -1;
 }
 
 .personal-information {
@@ -649,14 +650,7 @@ STYLING GJELDENDE mine notater
     transition: all 0.3s ease;
     margin-top: 420;
 }
-
-
-
-
-
-
-
-  /*
+/*
     -----------------------------------------------------
     STYLING GJELDENDE Bedrift-side.php
     -----------------------------------------------------
