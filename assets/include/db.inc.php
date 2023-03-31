@@ -182,7 +182,15 @@
         global $pdo;
         $sql1 = "DELETE FROM company WHERE company_id = ?";
         $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $company_id, PDO::PARAM_INT);
 
+        try{
+            $query1->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+        
     }
 
 
