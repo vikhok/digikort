@@ -230,4 +230,21 @@
         }
     }
 
+    function get_all_users() {
+        global $pdo;
+        $sql = "SELECT user_id, first_name, last_name FROM user";
+        $query = $pdo->prepare($sql);
+
+        try {
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach($results as $result) {
+                $new_results[] = "<a href='index.php?user_id=" . $result["user_id"] . "'>" . $result["first_name"] . " " . $result["last_name"] . "</a>";
+            }
+            return $new_results;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 ?>

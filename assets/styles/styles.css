@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #99A8BF;
+    background-color: #C7C8DB;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -196,7 +196,7 @@ header {
     align-items: center;
     padding: 30px 10%;
     height: 8rem;
-    background-color: #03426D;
+    background-color: #00406b;
 }
 
 .navbar {
@@ -279,10 +279,11 @@ header {
         padding: 10%;
         gap: 0;
         flex-direction: column;
-        background-color: #03426D;
+        background-color: #00406b;
         width: 100%;
         text-align: center;
         transition: 0.3s;
+        z-index: 1;
     }
 
     .nav-item {
@@ -306,7 +307,6 @@ footer {
     height: 4rem;
     width: 100%;
     bottom: 0;
-    background-color: #03426D;
 }
 
 .footer-menu {
@@ -319,8 +319,6 @@ footer {
     list-style: none;
     width: 15%;
     right: 0;
-    fill: white;
-
 }
 
 /* SoMe-ikoner responsiv mobil-view */
@@ -651,11 +649,14 @@ STYLING GJELDENDE mine notater
     transition: all 0.3s ease;
     margin-top: 420;
 }
+
+
 /*
     -----------------------------------------------------
     STYLING GJELDENDE Bedrift-side.php
     -----------------------------------------------------
 */
+
 .Bedrift-siden {
     position: relative;
     display: flex;
@@ -726,4 +727,17 @@ STYLING GJELDENDE mine notater
     display: flex;
     position: relative;
     width: 33%;
+}
+
+
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE MAIN-SIDE (AJAX-search)
+    -----------------------------------------------------
+*/
+
+.ajax-search-field {
+    position: relative;
+    margin: auto;
+    width: 10%;
 }
