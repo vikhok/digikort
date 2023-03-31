@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/include/webshare-api.js" type="text/Javascript">
     <title>Digikort</title>
 </head>
 <body>
@@ -44,8 +45,8 @@
                     echo "<h2>$name</h2>
                         <h2>$job_title</h2>
                         <h2>$company</h2>
-                        <h2>$email</h2>
-                        <h2>$phone</h2>";
+                        <h2><a href='mailto:$email'>$email</a></h2>
+                        <h2><a href='tel:$phone'>$phone</a></h2>";
                 ?>
             </div>
             <?php if(isset($_SESSION["user"]["user_id"]) && $_SESSION["user"]["user_id"] == $_GET["user_id"]) { ?>
@@ -56,9 +57,10 @@
                         <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
                         <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
                         <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-share-alt"></i> Del</a></li>
+                        <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a>                        </li>
                     </ul>
                 </div>
+                <script src="../assets/include/webshare-api.js"></script>
             <?php } ?>
         <?php } else { echo $failed; }?>
     </div>
