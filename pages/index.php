@@ -19,9 +19,9 @@
         Noe gikk galt, fant ikke bruker i systemet.
         </span></h4>";
     }
-    if($user = get_user_company($user_id)) {
-        $job_title = $user->job_title;
-        $company = $user->company_name;
+    if($user_company = get_user_company($user_id)) {
+        $job_title = $user_company->job_title;
+        $company = $user_company->company_name;
     }
 ?>
 <!DOCTYPE html>
@@ -44,11 +44,11 @@
                     echo "<h2>$name</h2>
                         <h2>$job_title</h2>
                         <h2>$company</h2>
-                        <h2>$email</h2>
-                        <h2>$phone</h2>";
+                        <h2><a href='mailto:$email'>$email</a></h2>
+                        <h2><a href='tel:$phone'>$phone</a></h2>";
                 ?>
             </div>
-            <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]) { ?>
+            <?php if(isset($_SESSION["user"]["user_id"]) && $_SESSION["user"]["user_id"] == $_GET["user_id"]) { ?>
                 <img class="qr-code" src="../profiles/c4ca4238a0b923820dcc509a6f75849b/qr.png" alt="QR-kode">
             <?php } else { ?>
                 <div class="menu">
@@ -56,9 +56,10 @@
                         <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
                         <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
                         <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-share-alt"></i> Del</a></li>
+                        <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a>                        </li>
                     </ul>
                 </div>
+                <script src="../assets/include/js/webshare-api.js"></script>
             <?php } ?>
         <?php } else { echo $failed; }?>
     </div>

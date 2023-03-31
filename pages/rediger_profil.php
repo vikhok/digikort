@@ -4,8 +4,9 @@
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
-
+    
     $user_id = $_GET["user_id"];
+    
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
         $job_title = $user->job_title;
@@ -13,9 +14,45 @@
         $email = $user->email;
         $phone = $user->phone;
     } else {
-        $failed = "<h4><span style='color:red'>
+        $status = "<h4><span style='color:red'>
         Noe gikk galt, fant ikke bruker i systemet.
         </span></h4>";
+    }
+
+    // Oppdaterer tabellen med nye endringer gjort av bruker.
+    if(isset($_REQUEST["submit"])) {
+        $first_name = $_REQUEST["first_name"];
+        $last_name = $_REQUEST["last_name"];
+        $job_title = $_REQUEST["stillingstittel"];
+        $email = $_REQUEST["email"];
+        $phone = $_REQUEST["telefon"];
+
+        if(update_user_profile($first_name, $last_name, $phone, $email, $job_title, $user_id)) {
+            $status = "<h4><span style='color:green'>
+            Profil ble endret.
+            </span></h4>";
+        } else {
+            $status = "<h4><span style='color:red'>
+            Noe gikk galt, endringer ble ikke foretatt.
+            </span></h4>";
+        }
+    }
+
+
+    if($user_social = get_user_social($user_id)) {
+        $linkedin = $user_social->linkedin;
+        $github = $user_social->github;
+        $instagram = $user_social->instagram;
+    } else {
+        $failed = "<h4><span style='color:red'>
+        Noe gikk galt, fant ingen linker i systemet.
+        </span></h4>";
+    }
+
+    if(isset($_REQUEST["redpro_form"])) {
+        $linkedin = $_REQUEST["linkedin"];
+        $github = $_REQUEST["github"];
+        $instagram = $_REQUEST["instagram"];
     }
 ?>
 <!DOCTYPE html>
@@ -28,9 +65,9 @@
     <title>Rediger profil</title>
 </head>
 <body>
-    <?php banner(true) ?>
+    <?php banner(true)?>
     <div class="rediger_profil">
-        <form class="redpro_form" action="rediger_profil.php" method="POST" enctype="multipart/form-data">
+            <form class="redpro_form" action="rediger_profil.php" method="POST" enctype="multipart/form-data">
             <div class="profil_bilde">    
                 <label class="redpro_label" for="profile-picture">Endre profilbilde</label>
                 <!-- Tror ikke det er behov for img -->
@@ -40,8 +77,13 @@
             </div>
 
             <div class="redpro_input_text">
-                <label class="redpro_label" for="full_name">Fullt navn</label>
-                <input type="text" id="full_name" name="full_name" placeholder="Navnet ditt"><br><br>
+                <label class="redpro_label" for="first_name">Fornavn</label>
+                <input type="text" id="first_name" name="first_name" placeholder="Fornavnet ditt"><br><br>
+            </div>
+
+            <div class="redpro_input_text">
+                <label class="redpro_label" for="last_name">Etternavn</label>
+                <input type="text" id="last_name" name="last_name" placeholder="Etternavnet ditt"><br><br>
             </div>
 
             <div class="redpro_input_text">
@@ -61,25 +103,29 @@
 
             <div class="rediger_some">
                 <div class="column_rediger_profil">
-                <label class="redpro_label" for="linkedin">LinkedIn</label>
-                <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/"><br><br>
+                    <label class="redpro_label" for="linkedin">LinkedIn</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/" value="<?=$linkedin?>"><br><br>
                 </div>
 
                 <div class="column_rediger_profil">
-                <label class="redpro_label" for="github">Github</label>
-                <input type="url" id="github" name="github" placeholder="github.com/"><br><br>
+                    <label class="redpro_label" for="github">Github</label>
+                    <input type="url" id="github" name="github" placeholder="github.com/" value="<?=$github?>"><br><br>
                 </div>
 
                 <div class="column_rediger_profil">
-                <label class="redpro_label" for="instagram">Instagram</label>
-                <input type="url" id="instagram" name="instagram" placeholder="www.instagram.com/"><br><br>
+                    <label class="redpro_label" for="instagram">Instagram</label>
+                    <input type="url" id="instagram" name="instagram" placeholder="www.instagram.com/" value="<?=$instagram?>"><br><br>
                 </div>
             </div>
-
             <div class="oppdater_profil_knapp">    
-                <button type="submit">Oppdater profil</button>
+                <button type="submit" name="submit">Oppdater profil</button>
             </div>
         </form>
+        <?php
+            if(isset($status)) {
+                echo $status;
+            }
+        ?>
     </div>
 </body>
 </html>

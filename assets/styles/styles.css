@@ -650,7 +650,79 @@ STYLING GJELDENDE mine notater
     transition: all 0.3s ease;
     margin-top: 420;
 }
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE Bedrift-side.php
+    -----------------------------------------------------
+*/
+.Bedrift-siden {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+}
 
+.om-og-kontakt-knapp {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    flex-direction: row;
+}
+.a_om_oss, .a-kontakt-oss {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background: gray;
+    flex-flow: row wrap;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    margin: 5px;
+    font-size: medium;
+}
 
+.Bedrift-knapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    
+}
 
+.veibeskrivelse-knapp {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 450px;
+}
+.a_veibeskrivelse {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background: gray;
+    border-radius: 10px;
+    width: 60%;
+    padding: 20px;
+    margin: 50px;
+    font-size: large;
+}
 
+.Bedrift-Text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    font-size: xx-large;
+    padding: 0px 30px 10px;
+}
+
+.bedrift-tittel, .bedrift-slogan, .bedrift-setning {
+    margin: 20px;
+}
+
+.Bedrift-bilde{
+    display: flex;
+    position: relative;
+    width: 33%;
+}
