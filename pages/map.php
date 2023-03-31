@@ -6,7 +6,8 @@
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
 
-    $company_id = $_GET["company_id"];
+    $user_id = $_REQUEST["user_id"];
+    $company_id = $_REQUEST["company_id"];
     if($location = get_location($company_id)) {
         $address = $location->address;
         $city = $location->city;
@@ -27,7 +28,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php banner(false) ?>
+    <?php banner($user_id, $company_id) ?>
     <?php
         // Build API address
         $full_address = "$address $zip $city";
