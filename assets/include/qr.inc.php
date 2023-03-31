@@ -3,7 +3,7 @@
         include("phpqrcode/qrlib.php");
 
         // Declare file path and name:
-        $dir = "../profiles/user." . md5($user_id);
+        $dir = "../profiles/" . md5("user." . $user_id);
         $file = "qr.png";
         $path = $dir . "/" . $file;
         

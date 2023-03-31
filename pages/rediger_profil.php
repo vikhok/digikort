@@ -4,15 +4,14 @@
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
-    
-    $user_id = $_GET["user_id"];
-    
+
+    $user_id = $_REQUEST["user_id"];
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
-        $job_title = $user->job_title;
-        $company = $user->company_name;
         $email = $user->email;
         $phone = $user->phone;
+        $job_title = null;
+        $company = null;
     } else {
         $status = "<h4><span style='color:red'>
         Noe gikk galt, fant ikke bruker i systemet.
@@ -65,7 +64,7 @@
     <title>Rediger profil</title>
 </head>
 <body>
-    <?php banner(true)?>
+    <?php banner($user_id, false) ?>
     <div class="rediger_profil">
             <form class="redpro_form" action="rediger_profil.php" method="POST" enctype="multipart/form-data">
             <div class="profil_bilde">    
