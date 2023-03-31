@@ -654,11 +654,13 @@ STYLING GJELDENDE mine notater
     transition: all 0.3s ease;
     margin-top: 420;
 }
+
 /*
     -----------------------------------------------------
     STYLING GJELDENDE Bedrift-side.php
     -----------------------------------------------------
 */
+
 .Bedrift-siden {
     position: relative;
     display: flex;
