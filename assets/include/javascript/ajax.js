@@ -1,9 +1,10 @@
-$(document).ready(function(){
+function ajax_search(url) {
+    $(document).ready(function(){
     $("#searchInput").on("keyup", function(){
         var searchValue = $(this).val();
         if(searchValue.length >= 1){
             $.ajax({
-                url: "all_users.php",
+                url: url,
                 dataType: "json",
                 success: function(data){
                     var suggestions = [];
@@ -20,3 +21,4 @@ $(document).ready(function(){
         }
     });
 });
+};

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
+    <script>
+        ajax_search("all_users.php");
+    </script>
     <title>Document</title>
 </head>
 <body>
@@ -18,7 +21,7 @@
     <div class="ajax-search-field">
         <h1>AJAX List:</h1>
         <form action="#" method="POST">
-            <input type="text" id="searchInput" placeholder="Search for a fruit...">
+            <input type="text" id="searchInput" placeholder="Search for a person...">
             <div id="suggestions"></div>
         </form>
     </div>
