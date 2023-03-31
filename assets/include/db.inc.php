@@ -143,39 +143,56 @@
         }
     }
 
-    function get_user_social($user_id) {
+    function get_company_info($company_id) {
         global $pdo;
-        $sql = "SELECT linkedin, github, instagram FROM user_social WHERE user_id = ?";
+        $sql = "SELECT company_id 
+            FROM company 
+            WHERE company_id = ?";
+
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);    
 
         try {
             $query->execute();
             return $query->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
-            //echo $e->getMessage();
+            echo $e->getMessage();
             return false;
-        }
     }
 
-    function update_user_social($linkedin, $github, $instagram, $user_id) {
+    function edit_company($company_id, $company_name, $descriptions, $web_url) {
         global $pdo;
-        $sql = "UPDATE user_social SET (linkedin, github, instagram) VALUES (?, ?, ?) WHERE user_id = ?";
-        $query = $pdo->prepare($sql);
-        $query->bindParam(1, $linkedin, PDO::PARAM_STR);
-        $query->bindParam(2, $github, PDO::PARAM_STR);
-        $query->bindParam(3, $instagram, PDO::PARAM_STR);
-        $query->bindParam(4, $user_id, PDO::PARAM_INT);
+        $sql1 = "UPDATE company SET (company_name, descriptions, web_url) VALUES (?, ?, ?) WHERE company_id = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $company_name, PDO::PARAM_STR);
+        $query1->bindParam(2, $descriptions, PDO::PARAM_STR);
+        $query1->bindParam(3, $web_url, PDO::PARAM_STR);
+        $query1->bindParam(4, $company_id, PDO::PARAM_INT);
 
+            try{
+                $query1->execute();
+                return true;
+            } catch (PDOException $e) {
+                //echo $e->getMessage();
+                return false;
+            }
+    }
 
-        try {
-            $query->execute()   ;
-            return $query->fetch(PDO::FETCH_OBJ);
+    function delete_company($company_id, $company_name, $descriptions, $web_url) {
+        global $pdo;
+        $sql1 = "DELETE FROM company WHERE company_id = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try{
+            $query1->execute();
+            return true;
         } catch (PDOException $e) {
-            //echo $e->getMessage();
             return false;
         }
+        
     }
+
 
     function update_user_profile($first_name, $last_name, $phone, $email, $job_title, $user_id) {
         global $pdo;
