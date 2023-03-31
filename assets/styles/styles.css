@@ -256,6 +256,7 @@ header {
 @media(max-width:768px) {
     .hamburger {
         display: block;
+        z-index: 2;
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -281,6 +282,7 @@ header {
         width: 100%;
         text-align: center;
         transition: 0.3s;
+        z-index: 1;
     }
 
     .nav-item {
@@ -346,17 +348,19 @@ footer {
     position: relative; 
     flex-flow: row wrap;
     justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
     align-items: center;
     margin: auto;
     padding: 5rem;
     line-height: 1.5;
-    z-index: -1;
 }
 
-.personal-information {
+.personal-information a {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
 }
 
 /*
