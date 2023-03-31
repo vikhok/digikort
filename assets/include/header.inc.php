@@ -31,5 +31,5 @@
                 </div>
             </nav>
         </header>
-        <script src="../assets/include/menu.js"></script>
+        <script src="../assets/include/js/menu.js"></script>
 <?php } ?>

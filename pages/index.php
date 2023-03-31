@@ -44,8 +44,8 @@
                     echo "<h2>$name</h2>
                         <h2>$job_title</h2>
                         <h2>$company</h2>
-                        <h2>$email</h2>
-                        <h2>$phone</h2>";
+                        <h2><a href='mailto:$email'>$email</a></h2>
+                        <h2><a href='tel:$phone'>$phone</a></h2>";
                 ?>
             </div>
             <?php if(isset($_SESSION["user"]["user_id"]) && $_SESSION["user"]["user_id"] == $_GET["user_id"]) { ?>
@@ -56,9 +56,10 @@
                         <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
                         <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
                         <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-share-alt"></i> Del</a></li>
+                        <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a>                        </li>
                     </ul>
                 </div>
+                <script src="../assets/include/js/webshare-api.js"></script>
             <?php } ?>
         <?php } else { echo $failed; }?>
     </div>
