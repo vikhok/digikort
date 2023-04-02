@@ -27,12 +27,8 @@
         if($user) {
             if($password == $user->pass/*password_verify($password, $user->pass)*/) {
                 return $user;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+            } else return false;
+        } else return false;
     }
 
     function get_user_company_old($user_id) {
@@ -110,138 +106,18 @@
 
     function create_account($first_name, $last_name, $email, $phone, $password) {
         global $pdo;
-        $sql1 = "INSERT INTO user (first_name, last_name, email, phone, pass) VALUES (?, ?, ?, ?, ?)";
-        $query1 = $pdo->prepare($sql1);
-        $query1->bindParam(1, $first_name, PDO::PARAM_STR);
-        $query1->bindParam(2, $last_name, PDO::PARAM_STR);
-        $query1->bindParam(3, $email, PDO::PARAM_STR);
-        $query1->bindParam(4, $phone, PDO::PARAM_STR);
-        $query1->bindParam(5, $password, PDO::PARAM_STR);
+        $sql = "INSERT INTO user (first_name, last_name, email, phone, pass) VALUES (?, ?, ?, ?, ?)";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $first_name, PDO::PARAM_STR);
+        $query->bindParam(2, $last_name, PDO::PARAM_STR);
+        $query->bindParam(3, $email, PDO::PARAM_STR);
+        $query->bindParam(4, $phone, PDO::PARAM_STR);
+        $query->bindParam(5, $password, PDO::PARAM_STR);
         
-        //$pdo->beginTransaction();
         try {
-            $query1->execute();
+            $query->execute();
             $user_id = $pdo->lastInsertId();
-            /*
-            try {
-                $sql2 = "INSERT INTO business_card (user_id) VALUE (?)";
-                $query2 = $pdo->prepare($sql2);
-                $query2->bindParam(1, $last_inserted_id, PDO::PARAM_INT);
-                $query2->execute();
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-                $pdo->rollBack();
-                return false;
-            }
-            */
-            //$pdo->commit();
             return $user_id;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            //$pdo->rollBack();
-            return false;
-        }
-    }
-
-    function get_company_info($company_id) {
-        global $pdo;
-        $sql = "SELECT company_id 
-            FROM company 
-            WHERE company_id = ?";
-
-        $query = $pdo->prepare($sql);
-        $query->bindParam(1, $company_id, PDO::PARAM_INT);    
-
-        try {
-            $query->execute();
-            return $query->fetch(PDO::FETCH_OBJ);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-    }
-
-    function edit_company($company_id, $company_name, $descriptions, $web_url) {
-        global $pdo;
-        $sql1 = "UPDATE company SET (company_name, descriptions, web_url) VALUES (?, ?, ?) WHERE company_id = ?";
-        $query1 = $pdo->prepare($sql1);
-        $query1->bindParam(1, $company_name, PDO::PARAM_STR);
-        $query1->bindParam(2, $descriptions, PDO::PARAM_STR);
-        $query1->bindParam(3, $web_url, PDO::PARAM_STR);
-        $query1->bindParam(4, $company_id, PDO::PARAM_INT);
-
-            try{
-                $query1->execute();
-                return true;
-            } catch (PDOException $e) {
-                //echo $e->getMessage();
-                return false;
-            }
-    }
-
-    function delete_company($company_id, $company_name, $descriptions, $web_url) {
-        global $pdo;
-        $sql1 = "DELETE FROM company WHERE company_id = ?";
-        $query1 = $pdo->prepare($sql1);
-        $query1->bindParam(1, $company_id, PDO::PARAM_INT);
-
-        try{
-            $query1->execute();
-            return true;
-        } catch (PDOException $e) {
-            return false;
-        }
-        
-    }
-
-
-    function update_user_profile($first_name, $last_name, $phone, $email, $job_title, $user_id) {
-        global $pdo;
-        $sql1 = "UPDATE user SET (first_name, last_name, phone, email) VALUES (?, ?, ?, ?) WHERE user_id = ?";
-        $query1 = $pdo->prepare($sql1);
-        $query1->bindParam(1, $first_name, PDO::PARAM_STR);
-        $query1->bindParam(2, $last_name, PDO::PARAM_STR);
-        $query1->bindParam(3, $phone, PDO::PARAM_STR);
-        $query1->bindParam(4, $email, PDO::PARAM_STR);
-        $query1->bindParam(5, $user_id, PDO::PARAM_INT);
-
-        $pdo->beginTransaction();
-
-        try {
-            $query1->execute();
-            $sql2 = "UPDATE business_card SET (job_title) VALUE (?) WHERE user_id ?";
-            $query2 = $pdo->prepare($sql2);
-            $query2->bindParam(1, $job_title, PDO::PARAM_STR);
-            $query2->bindParam(2, $user_id, PDO::PARAM_INT);
-
-            try {
-                $query2->execute();
-                $pdo->commit();
-                return true;
-            } catch (PDOException $e) {
-                //echo $e->getMessage();
-                $pdo->rollBack();
-                return false;
-            }
-
-        } catch (PDOException $e) {
-            //echo $e->getMessage();
-            $pdo->rollBack();
-            return false;
-        }
-    }
-
-    function get_all_users() {
-        global $pdo;
-        $sql = "SELECT user_id, first_name, last_name FROM user";
-        $query = $pdo->prepare($sql);
-
-        try {
-            $query->execute();
-            $results = $query->fetchAll(PDO::FETCH_ASSOC);
-            foreach($results as $result) {
-                $new_results[] = "<a href='index.php?user_id=" . $result["user_id"] . "'>" . $result["first_name"] . " " . $result["last_name"] . "</a>";
-            }
-            return $new_results;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
