@@ -93,7 +93,7 @@
         global $pdo;
         $sql = "SELECT address, city, zip FROM location WHERE company_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $company_id, PDO::PARAM_STR);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
@@ -123,4 +123,68 @@
             return false;
         }
     }
+
+    function get_user_socialmedia($user_id) {
+        global $pdo;
+        $sql = "SELECT linkedin, github, instagram FROM user_social WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        
+        try {
+            $query->execute();
+            $user_id = $pdo->lastInsertId();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function update_user_profile($first_name, $last_name, $phone, $email, $job_title, $linkedin, $github, $instagram) {
+        global $pdo;
+        $pdo->beginTransaction();
+
+        $sql1 = "UPDATE user SET (first_name, last_name, phone, email) VALUES (?, ?, ?, ?) WHERE user_id = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $first_name, PDO::PARAM_STR);
+        $query1->bindParam(2, $last_name, PDO::PARAM_STR);
+        $query1->bindParam(3, $phone, PDO::PARAM_INT);
+        $query1->bindParam(4, $email, PDO::PARAM_STR);
+        $query1->bindParam(5, $user_id, PDO::PARAM_STR);
+
+        try {
+            $query1->execute();
+            $sql2 = "UPDATE business_card SET (job_title) VALUE (?) WHERE user_id ?";
+            $query2 = $pdo->prepare($sql2);
+            $query2->bindParam(1, $job_title, PDO::PARAM_STR);
+            $query2->bindParam(2, $user_id, PDO::PARAM_INT);
+            return $query2->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+
+        try {
+            $query2->execute();
+            $sql3 = "UPDATE user_social SET (linkedin, github, instagram) VALUES (?, ?, ?) WHERE user_id = ?";
+            $query3 = $pdo->prepare($sql3);
+            $query3->bindParam(1, $linkedin, PDO::PARAM_STR);
+            $query3->bindParam(2, $github, PDO::PARAM_STR);
+            $query3->bindParam(3, $instagram, PDO::PARAM_STR);
+            $query3->bindParam(4, $user_id, PDO::PARAM_INT);
+            return $query3=fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+
+        try {
+                $query3->execute();
+                $pdo->commit();
+                 return true;
+            } catch (PDOException $e) {
+                //echo $e->getMessage();
+                return false;
+            }
+        }
 ?>
