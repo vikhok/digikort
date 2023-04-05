@@ -26,10 +26,8 @@ require_once("../assets/include/db.inc.php");
                     <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/instagram.svg"></a></li>
                     <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/linkedin.svg"></a></li>
                     <li class="footer-item"><a href="#" class="nav-link"><img src="../assets/include/icons/github.svg"></a></li>
-                <?php */ }  ?>
+                <?php } */  ?>
             </ul>
         </nav>
     </footer>
-<?php 
-
-?>
+<?php } ?>

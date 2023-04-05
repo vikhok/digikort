@@ -39,8 +39,7 @@
             </span></h4>";
         }
     }
-
-    $user_id = $_REQUEST["user_id"];
+    
     if($user_social = get_user_socialmedia($user_id)) {
         $linkedin = $user_social->linkedin;
         $github = $user_social->github;
