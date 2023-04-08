@@ -23,10 +23,13 @@
         $first_name = $_REQUEST["first_name"];
         $last_name = $_REQUEST["last_name"];
         $job_title = $_REQUEST["stillingstittel"];
-        $email = $_REQUEST["email"];
         $phone = $_REQUEST["telefon"];
+        $email = $_REQUEST["email"];
+        $linkedin = $_REQUEST["linkedin"];
+        $github = $_REQUEST["github"];
+        $instagram = $_REQUEST["instagram"];
 
-        if(update_user_profile($first_name, $last_name, $phone, $email, $job_title, $user_id)) {
+        if(update_user_profile($user_id, $first_name, $last_name, $phone, $email, $job_title, $linkedin, $github, $instagram)) {
             $status = "<h4><span style='color:green'>
             Profil ble endret.
             </span></h4>";
@@ -36,9 +39,8 @@
             </span></h4>";
         }
     }
-
-
-    if($user_social = get_user_social($user_id)) {
+    
+    if($user_social = get_user_socialmedia($user_id)) {
         $linkedin = $user_social->linkedin;
         $github = $user_social->github;
         $instagram = $user_social->instagram;
@@ -48,11 +50,6 @@
         </span></h4>";
     }
 
-    if(isset($_REQUEST["redpro_form"])) {
-        $linkedin = $_REQUEST["linkedin"];
-        $github = $_REQUEST["github"];
-        $instagram = $_REQUEST["instagram"];
-    }
 ?>
 <!DOCTYPE html>
 <html lang="no">

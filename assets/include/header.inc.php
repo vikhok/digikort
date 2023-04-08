@@ -19,7 +19,7 @@
             <nav class="navbar">
                 <ul class="nav-menu">
                     <?php if(isset($_SESSION["user"]["logged_in"]) && $_SESSION["user"]["logged_in"] == true) { ?>
-                        <li class="nav-item"><a href="index.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Mitt Visittkort</a></li>
+                        <li class="nav-item"><a href="index.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Mitt visittkort</a></li>
                         <li class="nav-item"><a href="rediger_profil.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Rediger profil</a></li>
                         <?php if($user_company) { ?>
                             <li class="nav-item"><a href="company.php?company_id=" class="nav-link">Bedrift</a></li>
