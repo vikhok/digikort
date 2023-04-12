@@ -1,5 +1,5 @@
 <?php
-    function createQR($user_id, $url) {
+    function generateQR($user_id, $url) {
         include("phpqrcode/qrlib.php");
 
         // Declare file path and name:

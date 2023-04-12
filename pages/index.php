@@ -2,11 +2,14 @@
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/qr.inc.php");
 
     session_start();
-    $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
 
     $user_id = $_REQUEST["user_id"];
+    $url = $_SERVER["REQUEST_URI"];
+    generateQR($user_id, $url);
+
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
         $email = $user->email;
@@ -15,8 +18,8 @@
         $company = null;
     } else {
         $failed = "<h4><span style='color:red'>
-        Noe gikk galt, fant ikke bruker i systemet.
-        </span></h4>";
+                Noe gikk galt, fant ikke bruker i systemet.
+                </span></h4>";
     }
     if($user_company = get_user_company($user_id)) {
         $job_title = $user_company->job_title;
