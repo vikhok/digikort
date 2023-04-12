@@ -26,7 +26,7 @@
 
         $user = $query->fetch(PDO::FETCH_OBJ);
         if($user) {
-            if($password == $user->pass/*password_verify($password, $user->pass)*/) {
+            if($password == password_verify($password, $user->pass)) {
                 return $user;
             } else return false;
         } else return false;
@@ -105,7 +105,7 @@
         }
     }
 
-    function create_account($first_name, $last_name, $email, $phone, $password) {
+    function create_account($first_name, $last_name, $email, $phone, $password_hash) {
         global $pdo;
         $sql = "INSERT INTO user (first_name, last_name, email, phone, pass) VALUES (?, ?, ?, ?, ?)";
         $query = $pdo->prepare($sql);
@@ -113,7 +113,7 @@
         $query->bindParam(2, $last_name, PDO::PARAM_STR);
         $query->bindParam(3, $email, PDO::PARAM_STR);
         $query->bindParam(4, $phone, PDO::PARAM_STR);
-        $query->bindParam(5, $password, PDO::PARAM_STR);
+        $query->bindParam(5, $password_hash, PDO::PARAM_STR);
         
         try {
             $query->execute();

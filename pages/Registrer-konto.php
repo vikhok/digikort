@@ -1,29 +1,37 @@
 <?php
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/qr.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
 
     if(isset($_REQUEST["register"])) {
-        $first_name = $_REQUEST["first_name"];
-        $last_name = $_REQUEST["last_name"];
-        $email = $_REQUEST["email"];
-        $phone = $_REQUEST["phone"];
-        $password = $_REQUEST["password"];
-        $confirm_password = $_REQUEST["confirm_password"];
+        $first_name = ucfirst(clean($_REQUEST["first_name"]));
+        $last_name = ucfirst(clean($_REQUEST["last_name"]));
+        $email = clean($_REQUEST["email"]);
+        $phone = clean($_REQUEST["phone"]);
+        $password = clean($_REQUEST["password"]);
+        $confirm_password = clean($_REQUEST["confirm_password"]);
 
-        if($user_id = create_account($first_name, $last_name, $email, $phone, $password)) {
-            $url = "localhost/digikort/pages/index.php?user_id=" . $user_id;
-            createQR($user_id, $url);
-            
-            $status = "<h4><span style='color:green'>
-            Konto ble registrert i systemet.
-            </span></h4>";
-            header("Refresh: 5; url=login.php");
+        if($password == $confirm_password) {
+            $password_hash = password_hash($password, PASSWORD_DEFAULT, ["cost" => 10]);
+            if($user_id = create_account($first_name, $last_name, $email, $phone, $password_hash)) {
+                $url = "localhost/digikort/pages/index.php?user_id=" . $user_id;
+                createQR($user_id, $url);
+                
+                $status = "<h4><span style='color:green'>
+                        Konto ble registrert i systemet.
+                        </span></h4>";
+                header("Refresh: 5; url=login.php");
+            } else {
+                $status = "<h4><span style='color:red'>
+                        Noe gikk glat, konto ble ikke lagret i systemet.
+                        </span></h4>";
+            }
         } else {
             $status = "<h4><span style='color:red'>
-            Noe gikk glat, konto ble ikke lagret i systemet.
-            </span></h4>";
+                    Passordene du skrev stemte ikke overrens.
+                    </span></h4>";
         }
     }
 ?>
