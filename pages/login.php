@@ -11,11 +11,7 @@
         if($user = login($email, $password)) {
             $_SESSION["user"]["user_id"] = $user->user_id;
             $_SESSION["user"]["logged_in"] = true;
-            if(isset($_SESSION["site"]["last_visited"])) {
-                header("Location: " . $_SESSION["site"]["last_visited"]);
-            } else {
-                header("Location: index.php?user_id=" . $_SESSION["user"]["user_id"]);
-            }
+            header("Location: index.php?user_id=" . $_SESSION["user"]["user_id"]);
         } else {
             $status = "<h4><span style='color:red'>
                     Feil epost og/eller passord.
@@ -32,7 +28,7 @@
     <link rel="stylesheet" href="styling/login.css">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.3.0-web/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <title>Login</title>
+    <title>Digikort Log-in</title>
 </head>
 <body>
     <div class="login-form">
