@@ -5,7 +5,7 @@
     Importeres slik: require_once("denne filen");
     Kalles på i php: banner() med parameter true eller false, basert på om profilbilde skal vises.
 -->
-<?php function banner($user_id, $user_company) { ?>
+<?php function banner($user_id = false, $company_id = false) { ?>
     <header>
         <?php if($user_id) { 
             $folder = md5("user." . $user_id);
@@ -14,24 +14,24 @@
                 $dir = "../profiles/stockprofile/profile_picture.png";
             }
         ?>
-            <img class="profile_picture" src="<?=$dir?>" alt="Profile picture">
+        <img class="profile_picture" src="<?=$dir?>" alt="Profile picture">
         <?php } ?>
             <nav class="navbar">
                 <ul class="nav-menu">
                     <?php if(isset($_SESSION["user"]["logged_in"]) && $_SESSION["user"]["logged_in"] == true) { ?>
                         <li class="nav-item"><a href="index.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Mitt visittkort</a></li>
+                        <li class="nav-item"><a href="mine-notater.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Mine notater</a></li>
                         <li class="nav-item"><a href="rediger_profil.php?user_id=<?= $_SESSION["user"]["user_id"] ?>" class="nav-link">Rediger profil</a></li>
-                        <?php if($user_company) { ?>
-                            <li class="nav-item"><a href="company.php?company_id=" class="nav-link">Bedrift</a></li>
+                        <?php if($company_id) { ?>
+                            <li class="nav-item"><a href="company-page.php?company_id=<?=$company_id?>" class="nav-link">Bedrift</a></li>
                         <?php } else { ?>
-                            <li class="nav-item"><a href="#" class="nav-link">Bli med i bedrift</a></li>
+                            <li class="nav-item"><a href="company-join.php" class="nav-link">Bli med i bedrift</a></li>
                         <?php } ?>
                         <li class="nav-item"><a href="utility/logout.php" class="nav-link">Logg ut</a></li>
                     <?php } else { ?>
-                        <!--<li class="nav-item"><a href="#" class="nav-link">NO / EN</a>-->
-                        <li class="nav-item"><a href="#" class="nav-link">Visittkort</a></li>
-                        <?php if($user_company) { ?>
-                            <li class="nav-item"><a href="#" class="nav-link">Bedrift</a></li>
+                        <li class="nav-item"><a href="index.php?user_id=<?= $_SESSION["user"]["last_visited"] ?>" class="nav-link">Visittkort</a></li>
+                        <?php if($company_id) { ?>
+                            <li class="nav-item"><a href="company-page.php?company_id=<?=$company_id?>" class="nav-link">Bedrift</a></li>
                         <?php } ?>
                         <li class="nav-item"><a href="login.php" class="nav-link">Logg inn</a></li>
                     <?php } ?>
