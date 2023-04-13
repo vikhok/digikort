@@ -59,7 +59,7 @@
                 <div class="menu">
                     <ul>
                         <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
+                        <li><a href="contact-employee.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
                         <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
                         <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a>                        </li>
                     </ul>
