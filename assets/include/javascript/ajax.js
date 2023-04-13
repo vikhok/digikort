@@ -2,7 +2,7 @@ function ajax_search(url) {
     $(document).ready(function(){
         $("#searchInput").on("keyup", function(){
           var searchValue = $(this).val();
-          if(searchValue.length >= 3){
+          if(searchValue.length >= 2){
             $.ajax({
               url: url,
               dataType: "json",

@@ -43,7 +43,7 @@
     </div>
 
     <div class="bli_med_bedrift_knapp">    
-        <button type="submit">Bli med</button>
+        <button type="submit">Bli med i bedrift</button>
     </div>
 
 

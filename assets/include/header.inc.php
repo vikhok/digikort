@@ -24,7 +24,7 @@
                         <?php if($user_company) { ?>
                             <li class="nav-item"><a href="company.php?company_id=" class="nav-link">Bedrift</a></li>
                         <?php } else { ?>
-                            <li class="nav-item"><a href="#" class="nav-link">Bli med i bedrift</a></li>
+                            <li class="nav-item"><a href="Company-join.php" class="nav-link">Bli med i bedrift</a></li>
                         <?php } ?>
                         <li class="nav-item"><a href="utility/logout.php" class="nav-link">Logg ut</a></li>
                     <?php } else { ?>
