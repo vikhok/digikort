@@ -176,4 +176,76 @@
             return false;
         }
     }
+
+    // DISSE VAR SLETTET MED UHELL:
+
+    function get_company_info($company_id) {
+        global $pdo;
+        $sql = "SELECT company_id 
+            FROM company 
+            WHERE company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);    
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function edit_company($company_id, $company_name, $descriptions, $web_url) {
+        global $pdo;
+        $sql1 = "UPDATE company SET (company_name, descriptions, web_url) VALUES (?, ?, ?) WHERE company_id = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $company_name, PDO::PARAM_STR);
+        $query1->bindParam(2, $descriptions, PDO::PARAM_STR);
+        $query1->bindParam(3, $web_url, PDO::PARAM_STR);
+        $query1->bindParam(4, $company_id, PDO::PARAM_INT);
+
+            try{
+                $query1->execute();
+                return true;
+            } catch (PDOException $e) {
+                //echo $e->getMessage();
+                return false;
+            }
+    }
+
+    function delete_company($company_id, $company_name, $descriptions, $web_url) {
+        global $pdo;
+        $sql1 = "DELETE FROM company WHERE company_id = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try{
+            $query1->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+
+    function get_all_users() {
+        global $pdo;
+        $sql = "SELECT user_id, first_name, last_name FROM user";
+        $query = $pdo->prepare($sql);
+
+        try {
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach($results as $result) {
+                $new_results[] = $result["first_name"] . " " . $result["last_name"];
+            }
+            return $new_results;
+            $user_id = $pdo->lastInsertId();
+            return $user_id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 ?>

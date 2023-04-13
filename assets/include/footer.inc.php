@@ -12,7 +12,7 @@ require_once("../assets/include/db.inc.php");
         <nav class="footer">
             <ul class="footer-menu">
                 <?php
-                $user_id = $_REQUEST["user_id"];
+                $user_id = 1;
                 if($user_social = get_user_socialmedia($user_id)) {
                     $linkedin = $user_social->linkedin;
                     $github = $user_social->github;

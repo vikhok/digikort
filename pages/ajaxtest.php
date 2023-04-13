@@ -17,12 +17,12 @@
     <title>Document</title>
 </head>
 <body>
-    <?php banner() ?>
+    <?php banner(false, false) ?>
     <div class="ajax-search-field">
         <h1>AJAX List:</h1>
-        <form action="#" method="POST">
-            <input type="text" id="searchInput" placeholder="Search for a person...">
-            <div id="suggestions"></div>
+        <form method="post" action="">
+            <input name="company" type="text" id="searchInput" placeholder="Search for a company..." list="suggestions">
+            <datalist id="suggestions"></datalist>
         </form>
     </div>
     <?php footer("profile") ?>
