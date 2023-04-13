@@ -1,6 +1,6 @@
 <?php
-require_once("../assets/include/header.inc.php");
-require_once("../assets/include/footer.inc.php");
+    require_once("../assets/include/header.inc.php");
+    require_once("../assets/include/footer.inc.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +16,9 @@ require_once("../assets/include/footer.inc.php");
         <div class="content-notat">
               <div class="button-notat">
                <div class="textarea-notat">
-                       <div class="label-notat">
-        </div>
-        <br>
-            <br>
+            <br><br>
             <h1>Nytt notat</h1>
-            
-            <form action="">    
+            <form action="">
 
                 <input type="text" placeholder="Tittel:" id="title" name="title" required>
                 <textarea id="text" placeholder="Notat:" name="title" rows="13" required></textarea>
