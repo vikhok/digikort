@@ -753,29 +753,29 @@ STYLING GJELDENDE contact-employee.php
 
 .contact-form {
     position: absolute;
+    margin: auto;
     color: black;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
     font-weight: 500;
-    font-size: 23px;
+    font-size: 16px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%); /* IE 9 */
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
-    width: 400px;
-    border: 1px solid #cfcdcd;
-    background: transparent;
-    border-radius: 10px;
-    justify-content: center;
 }
 
 
 #fields input[type="text"]{
     display: block;
-    margin-bottom: 20px;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    margin-bottom: 15px;
+    font-size: 16px;
     padding: 10px;
     color: black;
+    width: 100%;
 }
 
 .submit-button button[type="submit"]{
@@ -790,4 +790,24 @@ STYLING GJELDENDE contact-employee.php
     align-items: center;
     display: block;
     margin: 10px auto;
+}
+
+#freetext textarea{
+    resize: none;
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    font-weight:500;
+    font-size: 16px;
+}
+
+/* Responsive mobile view contact-form */
+
+@media only screen and (min-width: 300px) {
+    .contact-form {
+        margin-top: 5rem;
+        font-size: 20px;
+    }
 }
