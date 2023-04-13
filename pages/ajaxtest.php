@@ -17,7 +17,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php banner() ?>
+    <?php banner(true, true) ?>
     <div class="ajax-search-field">
         <h1>AJAX List:</h1>
         <form action="#" method="POST">
@@ -28,3 +28,11 @@
     <?php footer("profile") ?>
 </body>
 </html>
+
+<div class="ajax-search-field">
+        <h1>AJAX List:</h1>
+        <form method="post" action="">
+            <input name="company" type="text" id="searchInput" placeholder="Search for a company..." list="suggestions">
+            <datalist id="suggestions"></datalist>
+        </form>
+    </div>

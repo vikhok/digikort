@@ -176,4 +176,40 @@
             return false;
         }
     }
+
+    function get_all_companies() {
+        global $pdo;
+        $sql = "SELECT company_id, company_name FROM company";
+        $query = $pdo->prepare($sql);
+        
+        try {
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach($results as $result) {
+                $new_results[] = $result["company_name"];
+            }
+            return $new_results;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function get_all_users() {
+        global $pdo;
+        $sql = "SELECT user_id, first_name, last_name FROM user";
+        $query = $pdo->prepare($sql);
+
+        try {
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach($results as $result) {
+                $new_results[] = $result["first_name"] . " " . $result["last_name"];
+            }
+            return $new_results;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 ?>
