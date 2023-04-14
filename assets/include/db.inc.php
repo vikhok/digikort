@@ -177,6 +177,24 @@
         }
     }
 
+    function get_all_companies() {
+        global $pdo;
+        $sql = "SELECT company_id, company_name FROM company";
+        $query = $pdo->prepare($sql);
+        
+        try {
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach($results as $result) {
+                $new_results[] = $result["company_name"];
+            }
+            return $new_results;
+            } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+            
     // DISSE VAR SLETTET MED UHELL:
 
     function get_company_info($company_id) {
@@ -228,7 +246,6 @@
         }
     }
 
-
     function get_all_users() {
         global $pdo;
         $sql = "SELECT user_id, first_name, last_name FROM user";
@@ -241,8 +258,6 @@
                 $new_results[] = $result["first_name"] . " " . $result["last_name"];
             }
             return $new_results;
-            $user_id = $pdo->lastInsertId();
-            return $user_id;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
