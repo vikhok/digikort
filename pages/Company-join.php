@@ -48,7 +48,7 @@
 
 
     <div class="opprett_ny_bedrift_knapp">
-        <a class="a_ny_bedrift" href="https://youtu.be/FDEiOHUxhOk">Opprett bedrift</a>
+        <a class="a_ny_bedrift" href="edit_company.php">Opprett bedrift</a>
     </div>
 
     </div>
