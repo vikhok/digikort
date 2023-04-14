@@ -39,20 +39,21 @@
 <body>
     <?php banner($user_id, false) ?>
     <div class="contact-form" id="fields">
-        <form name="contact" method="POST"> 
+        <form name="contact" action="sendmail.php" method="POST"> 
             <section class="name-section">
                 <label for="name">Navn</label>
-                <input type="text" id="name" name="name" size="100" required>
+                <input type="text" id="name" name="name" size="100" value="" required>
             </section>
 
             <section class="email-section">
                 <label for="email">E-post</label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="email" value="" required>
             </section>
 
             <section class="freetext-section" id="freetext">
                 <label for="message">Din melding</label>
-                <textarea name="freetext" cols="25" rows="10" name="description" wrap="physical" required></textarea>
+                <input type="text" id="email" name="message" value="" required>
+                <!-- <textarea name="freetext" cols="25" rows="10" name="description" wrap="physical"></textarea> -->
             </section>
 
             <section class="submit-button">
