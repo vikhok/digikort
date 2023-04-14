@@ -17,7 +17,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `company` (
   `company_id`    int(11)       NOT NULL,
-  `company_name`  varchar(64)   NOT NULL,
+  `company_name`  varchar(64)   NOT NULL UNIQUE,
   `descriptions`  varchar(255)  NOT NULL,
   `web_url`       varchar(255)  NOT NULL
 );
@@ -48,8 +48,7 @@ CREATE TABLE `business_card` (
   `user_id`       int(11)       NOT NULL,
   `job_title`     varchar(64)   NOT NULL,
   `company_id`    int(11)       NOT NULL,
-  `location_id`   int(11)       NOT NULL,
-  `administrator` boolean       NOT NULL
+  `administrator` boolean       NOT NULL DEFAULT false
 );
 
 CREATE TABLE `user_social` (

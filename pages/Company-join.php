@@ -4,6 +4,23 @@
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    $user_id = $_SESSION["user"]["user_id"];
+
+    if(isset($_REQUEST["submit_company"])) {
+        $company_id = $_REQUEST["company_id"];
+        $job_title = $_REQUEST["job_title"];
+        $user_id = $_REQUEST["user_id"];
+
+        if(join_company($company_id, $job_title, $user_id )) {
+            $status = "<h4><span style='color:green'>
+            Lagt til i bedrift
+            </span></h4>";
+        } else {
+            $status = "<h4><span style='color:red'>
+            Noe gikk galt, endringer ble ikke foretatt.
+            </span></h4>";
+        }
+    }
 
 ?>
 
@@ -43,7 +60,7 @@
     </div>
 
     <div class="bli_med_bedrift_knapp">    
-        <button type="submit">Bli med i bedrift</button>
+        <button type="submit" name="submit_company">Bli med i bedrift</button>
     </div>
 
 
@@ -54,6 +71,10 @@
     </div>
 
 </form>
-
+        <?php
+            if(isset($status)) {
+                echo $status;
+            }
+        ?>
 </body>
 </html>

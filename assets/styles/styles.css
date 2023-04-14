@@ -538,6 +538,10 @@ STYLING GJELDENDE index.php (Menyvalg)
     margin-top: -10px;
   }
 
+  .bli_med_bedrift_knapp button[type="submit"]:hover {
+    background-color: #075db8;
+  }
+
   .opprett_ny_bedrift_knapp {
     color: black;
     font-size: large;

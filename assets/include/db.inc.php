@@ -263,4 +263,22 @@
             return false;
         }
     }
+
+    // Legge company inn i visittkortet til en bruker
+    function join_company ($company_id, $job_title, $user_id) {
+        global $pdo;
+        $sql = "INSERT INTO business_card (company_id, job_title) VALUES (?,?) WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+        $query->bindParam(2, $job_title, PDO::PARAM_STR);
+        $query->bindParam(3, $user_id, PDO::PARAM_INT);
+        
+        try {
+            $query->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
 ?>
