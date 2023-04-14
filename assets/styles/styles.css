@@ -729,7 +729,12 @@ STYLING GJELDENDE mine notater
 .Bedrift-bilde{
     display: flex;
     position: relative;
-    width: 33%;
+}
+.Bedrift-bilde-styling{
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    height: auto;
 }
 
 
