@@ -22,5 +22,3 @@ function ajax_search(url) {
         });
       });
     };
-
-  
