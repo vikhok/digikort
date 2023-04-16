@@ -2,6 +2,7 @@
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/phpmailer/sendepost.php");
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
@@ -23,6 +24,12 @@
         $company = $user_company->company_name;
     }
 
+    if(isset($_POST["contact"])) {
+        $name = $_POST["name"];
+        $reciever_email = $_POST["email"];
+        $message = $_POST["message"];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -39,20 +46,20 @@
 <body>
     <?php banner($user_id, false) ?>
     <div class="contact-form" id="fields">
-        <form name="contact" action="sendmail.php" method="POST"> 
+        <form name="contact" action="../assets/phpmailer/sendepost.php" method="POST"> 
             <section class="name-section">
-                <label for="name">Navn</label>
+                <label for="name">Ditt navn</label>
                 <input type="text" id="name" name="name" size="100" value="" required>
             </section>
 
             <section class="email-section">
-                <label for="email">E-post</label>
+                <label for="email">Din e-postadresse</label>
                 <input type="text" id="email" name="email" value="" required>
             </section>
 
             <section class="freetext-section" id="freetext">
                 <label for="message">Din melding</label>
-                <input type="text" id="email" name="message" value="" required>
+                <input type="text" id="message" name="message" value="" required>
                 <!-- <textarea name="freetext" cols="25" rows="10" name="description" wrap="physical"></textarea> -->
             </section>
 

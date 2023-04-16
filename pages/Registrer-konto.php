@@ -57,8 +57,8 @@
                     <input type="text" name="last_name" class="surname-form" placeholder="Etternavn" required>
                     <input type="email" name="email" class="email-register-form" placeholder="Email" required>
                     <input type="tel" name="phone" class="phonenumber-form" placeholder="Mobilnummer" required>
-                    <input type="text" name="password" class="register-password-form" placeholder="Passord" required>
-                    <input type="text" name="confirm_password" class="confirm-password-form" placeholder="Gjenta Passord" required>
+                    <input type="password" name="password" class="register-password-form" placeholder="Passord" required>
+                    <input type="password" name="confirm_password" class="confirm-password-form" placeholder="Gjenta Passord" required>
                 </div>
                 <button type="submit" name="register">Registrer</button>
                 <p><a class="already-has-user-clicker" href="login.php">Jeg har allerede brukerkonto</a></p>

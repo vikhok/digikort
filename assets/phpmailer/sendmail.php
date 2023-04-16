@@ -1,5 +1,5 @@
 <?php
-use PHPMailer\src\PHPMailer.php;
+use src\PHPMailer.php;
 
 
 require_once "..\assets\src\PHPMailer.php";
@@ -17,7 +17,7 @@ if(isset($_POST["submit"]))
   $mail->Host = "smtp.gmail.com";
   $mail->Port = 465;
   $mail->Username = "digikortpass@gmail.com"; //gmail kontoenen er ein "throwaway" konto fra 3.semester som skal slettast
-  $mail->Password = 'rgqfjmobwvkkmpya';
+  $mail->Password = 'ithkrqoqytvxkyyo';
   $mail->CharSet = 'UTF-8';
   $mail->Encoding = 'base64';
 
