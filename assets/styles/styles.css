@@ -359,6 +359,7 @@ footer {
     font-size: 1.5rem;
     font-weight: bold;
     color: black;
+    margin-right: 20px;
 }
 
 /*
@@ -491,6 +492,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
 }
 
 .bedrift_navn label {
@@ -532,7 +534,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     cursor: pointer;
     margin-bottom: 20px;
     cursor: pointer;
-    width: 50%;
+    width: 100%;
     margin-top: -10px;
   }
 
@@ -543,6 +545,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     cursor: pointer;
     text-decoration: underline;
     margin-top: 10px;
+    margin-bottom: 40px;
   }
 
   .a_ny_bedrift {

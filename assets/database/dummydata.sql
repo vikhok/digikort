@@ -44,6 +44,8 @@ INSERT INTO business_card(user_id, job_title, company_id, location_id, administr
     VALUES('2', 'Administrerende direktør', '2', '2', 'true');
 INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
     VALUES('3', 'Front-end utvikler', '1', '2', 'false');
+INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
+    VALUES('14', 'Tøffing', '1', '1', 'true');   
 
 
 #Testdata user_social
