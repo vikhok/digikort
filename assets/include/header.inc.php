@@ -19,12 +19,12 @@
         ?>
         <nav class="navbar">
             <ul class="nav-menu">
-                <?php // Check whether user is logged in:
+                <?php // Check whether user is logged in or not:
                     if(isset($_SESSION["user"]["logged_in"]) && $_SESSION['user']['logged_in'] == true) { ?>
                     <li class="nav-item"><a href="index.php?user_id=<?=$_SESSION['user']['user_id']?>" class="nav-link">Mitt visittkort</a></li>
                     <li class="nav-item"><a href="mine-notater.php?user_id=<?=$_SESSION['user']['user_id']?>" class="nav-link">Mine notater</a></li>
                     <li class="nav-item"><a href="rediger_profil.php?user_id=<?=$_SESSION['user']['user_id']?>" class="nav-link">Rediger profil</a></li>
-                    <?php // Check whether user is belong in a company:
+                    <?php // Check whether user belong in a company:
                     if($company_id) { ?>
                         <li class="nav-item"><a href="company-page.php?company_id=<?=$company_id?>" class="nav-link">Bedrift</a></li>
                     <?php } else { ?>
@@ -33,7 +33,7 @@
                     <li class="nav-item"><a href="utility/logout.php" class="nav-link">Logg ut</a></li>
                 <?php } else { ?>
                     <li class="nav-item"><a href="index.php?user_id=<?=$_SESSION['user']['last_visited']?>" class="nav-link">Visittkort</a></li>
-                    <?php // Check whether user is belong in a company:
+                    <?php // Check whether user belong in a company:
                     if($company_id) { ?>
                         <li class="nav-item"><a href="company-page.php?company_id=<?=$company_id?>" class="nav-link">Bedrift</a></li>
                     <?php } ?>

@@ -12,7 +12,7 @@ CREATE TABLE `user` (
   `last_name`   varchar(64)   NOT NULL,
   `email`       varchar(128)  NOT NULL,
   `phone`       varchar(15)   NOT NULL,
-  `pass`    varchar(255)  NOT NULL
+  `pass`        varchar(255)  NOT NULL
 );
 
 CREATE TABLE `company` (
