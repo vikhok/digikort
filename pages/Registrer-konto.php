@@ -26,7 +26,7 @@
                 header("Refresh: 5; url=login.php");
             } else {
                 $status = "<h4><span style='color:red'>
-                        Noe gikk glat, konto ble ikke lagret i systemet.
+                        Noe gikk galt, konto ble ikke lagret i systemet.
                         </span></h4>";
             }
         } else {
