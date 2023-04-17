@@ -263,4 +263,24 @@
             return false;
         }
     }
+
+    function add_company($company_name, $company_email, $descriptions, $web_url){
+        global $pdo;
+        $sql = "INSERT INTO company (company_name, company_email, descriptions, web_url) VALUES (?, ?, ?, ?, ?)";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_name, PDO::PARAM_STR);
+        $query->bindParam(2, $company_email, PDO::PARAM_STR);
+        $query->bindParam(3, $descriptions, PDO::PARAM_STR);
+        $query->bindParam(4, $web_url, PDO::PARAM_STR);
+        
+        try {
+            $query->execute();
+            $user_id = $pdo->lastInsertId();
+            return $user_id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+
+    }
 ?>
