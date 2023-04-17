@@ -6,6 +6,7 @@
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     $user_id = $_SESSION["user"]["user_id"];
 
+    // For å bli med i bedrift
     if(isset($_REQUEST["submit_company"])) {
         $company_id = $_REQUEST["company_id"];
         $job_title = $_REQUEST["job_title"];
