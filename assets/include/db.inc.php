@@ -267,7 +267,7 @@
     // Legge company inn i visittkortet til en bruker
     function join_company ($company_id, $job_title, $user_id) {
         global $pdo;
-        $sql = "INSERT INTO business_card (company_id, job_title) VALUES (?,?) WHERE user_id = ?";
+        $sql = "INSERT INTO business_card (company_id, job_title) VALUES (?,?)";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);
         $query->bindParam(2, $job_title, PDO::PARAM_STR);
@@ -280,5 +280,7 @@
             return false;
         }
     }
+
+    
 
 ?>
