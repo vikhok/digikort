@@ -266,17 +266,31 @@
 
     function get_all_notes($user_id) {
         global $pdo;
-        $sql = "SELECT note_id, note_heading, note_subject, note_date FROM note WHERE user_id = ?";
+        $sql = "SELECT note_id, note_subject, note_body, note_date FROM note WHERE user_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $user_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
-            $results = $query->fetchAll(PDO::FETCH_ASSOC);
-            foreach($results as $result) {
-                $notes[] = [$result["note_id"], $result["note_heading"], $result["note_subject"], $result["note_date"]];
-            }
+            $notes = $query->fetchAll(PDO::FETCH_ASSOC);
             return $notes;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function get_note($user_id, $note_id) {
+        global $pdo;
+        $sql = "SELECT note_subject, note_body, note_date FROM note WHERE user_id = ? AND note_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $note_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            $note = $query->fetch(PDO::FETCH_OBJ);
+            return $note;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
@@ -318,15 +332,18 @@
     }
     
     
-    function edit_note($note_id, $user_id, $note_title, $note_text) {
+    function update_note($note_id, $note_subject, $note_body) {
         global $pdo;
-        $sql = "UPDATE note SET note_title = ?, note_text = ? WHERE note_id = ? AND user_id = ?";
+        $sql = "UPDATE note SET note_subject = ?, note_body = ?, note_date = ? WHERE note_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $note_title, PDO::PARAM_STR);
-        $query->bindParam(2, $note_text, PDO::PARAM_STR);
+        $date = new DateTime();
+        $result = $date->format('Y-m-d H:i:s');
+        $query->bindParam(1, $note_subject, PDO::PARAM_STR);
+        $query->bindParam(2, $note_body, PDO::PARAM_STR);
         $query->bindParam(3, $note_id, PDO::PARAM_INT);
-        $query->bindParam(4, $user_id, PDO::PARAM_INT);
-    
+        $query->bindParam(4, $result, PDO::PARAM_STR);
+        //date("H:i l d.m.Y")
+        
         try {
             $query->execute();
             return true;

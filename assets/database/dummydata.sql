@@ -1,10 +1,10 @@
 #Testdata users
-INSERT INTO user(first_name, last_name, email, phone, pass)
-    VALUES ('Eivind', 'Halsnes', 'ehalsnes@epost.com', '12345678', 'lol12345');
-INSERT INTO user(first_name, last_name, email, phone, pass)
-    VALUES ('Viktor', 'Hokland', 'vikhok@epost.com', '12345678', '!ToppSecret');
-INSERT INTO user(first_name, last_name, email, phone, pass)
-    VALUES ('Aleksander', 'Kolsrud', 'alekkols@epost.com', '12345678', '%Vinter2023');
+INSERT INTO user(first_name, last_name, job_title, email, phone, pass)
+    VALUES ('Eivind', 'Halsnes', 'Senior systemarkitekt', 'ehalsnes@epost.com', '12345678', '$2y$10$DW5DBzBM7hes7GrzItn2huzQKXM3yX52T5ZvyPr.PyDT537AufolK');
+INSERT INTO user(first_name, last_name, job_title, email, phone, pass)
+    VALUES ('Viktor', 'Hokland', 'Administrerende direktør', 'vikhokjoh@gmail.com', '12345678', '$2y$10$DW5DBzBM7hes7GrzItn2huzQKXM3yX52T5ZvyPr.PyDT537AufolK');
+INSERT INTO user(first_name, last_name, job_title, email, phone, pass)
+    VALUES ('Aleksander', 'Kolsrud', 'Front-end utvikler', 'alekkols@epost.com', '12345678', '$2y$10$DW5DBzBM7hes7GrzItn2huzQKXM3yX52T5ZvyPr.PyDT537AufolK');
 
 #Testdata company
 INSERT INTO company(company_name, company_email, descriptions, web_url)
@@ -30,22 +30,22 @@ INSERT INTO location(company_id, address, city, zip)
 
 
 #Testdata note
-INSERT INTO note(user_id, note_heading, note_subject)
-    VALUES('1', 'Møte med Ola', 'Husk møte med Ola på Slottsplassen 23 kl. 11 førstkommende mandag');
-INSERT INTO note(user_id, note_heading, note_subject)
-    VALUES('2', 'Sende tilbud', 'Husk å sende tilbud til Gard AS');
-INSERT INTO note(user_id, note_heading, note_subject)
-    VALUES('3', 'Kaffe-drøs', 'Husk å invitere til kaffi-drøs med daglig leder Per i Rent og Pent AS for å diskutere nytt samarbeid');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('1', 'Møte med Ola', 'Husk møte med Ola på Slottsplassen 23 kl. 11 førstkommende mandag', '01.01.2023');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Sende tilbud', 'Husk å sende tilbud til Gard AS', '01.01.2023');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '01.01.2023');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('3', 'Kaffe-drøs', 'Husk å invitere til kaffi-drøs med daglig leder Per i Rent og Pent AS for å diskutere nytt samarbeid', '01.01.2023');
 
 #Testdata business_card
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('1', 'Senior systemarkitekt', '1', '1', 'true');
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('2', 'Administrerende direktør', '2', '2', 'true');
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('3', 'Front-end utvikler', '1', '2', 'false');
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('14', 'Tøffing', '1', '1', 'true');   
+INSERT INTO business_card(user_id, company_id, location_id, administrator)
+    VALUES('1', '1', '1', 'true');
+INSERT INTO business_card(user_id, company_id, location_id, administrator)
+    VALUES('2', '2', '2', 'true');
+INSERT INTO business_card(user_id, company_id, location_id, administrator)
+    VALUES('3', '1', '2', 'false');
 
 
 #Testdata user_social
