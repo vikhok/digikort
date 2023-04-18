@@ -351,6 +351,4 @@
             return false;
         }
     }
-
-    
 ?>
