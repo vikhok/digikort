@@ -487,6 +487,20 @@ STYLING GJELDENDE index.php (Menyvalg)
     text-align: center;
 }
 
+/* .stillings_tittel input[type="text"]{
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 25px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    width: 75%;
+    margin-top: 1px;
+    margin-bottom: 3rem;
+} */
+
 .bedrift_navn {
     margin-top: 30px;
     display: flex;
@@ -534,8 +548,12 @@ STYLING GJELDENDE index.php (Menyvalg)
     cursor: pointer;
     margin-bottom: 20px;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     margin-top: -10px;
+  }
+
+  .bli_med_bedrift_knapp button[type="submit"]:hover {
+    background-color: #075db8;
   }
 
   .opprett_ny_bedrift_knapp {
