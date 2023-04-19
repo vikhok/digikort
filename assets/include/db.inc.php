@@ -264,25 +264,6 @@
         }
     }
 
-    // Legge company inn i visittkortet til en bruker
-    // function join_company ($company_id, $user_id, $administrator) {
-    //     global $pdo;
-    //     $sql = "INSERT INTO business_card (company_id, user_id, administrator, company_name) VALUES (?,?,?) 
-    //     SELECT company_name FROM company WHERE company_name = ?";
-    //     $query = $pdo->prepare($sql);
-    //     $query->bindParam(1, $company_id, PDO::PARAM_INT);
-    //     $query->bindParam(2, $user_id, PDO::PARAM_INT);
-    //     $query->bindParam(3, $administrator, PDO::PARAM_BOOL);
-        
-    //     try {
-    //         $query->execute();
-    //         return true;
-    //     } catch (PDOException $e) {
-    //         echo $e->getMessage();
-    //         return false;
-    //     }
-    // }
-
     function join_company($company_name, $user_id, $administrator) {
         global $pdo;
 
@@ -310,4 +291,92 @@
 
     
 
+?>
+    function get_all_notes($user_id) {
+        global $pdo;
+        $sql = "SELECT note_id, note_heading, note_subject, note_date FROM note WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach($results as $result) {
+                $notes[] = [$result["note_id"], $result["note_heading"], $result["note_subject"], $result["note_date"]];
+            }
+            return $notes;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+      
+    // function get_user_notes($user_id) {
+    //     global $pdo;
+
+    //     $sql = "SELECT * FROM notes WHERE user_id = :user_id";
+    //     $query = $pdo->prepare($sql);
+    //     $query->execute(['user_id' => $user_id]);
+
+    //     $user_notes = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return $user_notes;
+    // }
+
+    function create_note() {
+        if(isset($_POST['note_title']) && isset($_POST['note_text'])) {
+            $note_title = trim($_POST['note_title']);
+            $note_text = trim($_POST['note_text']);
+    
+            if(!empty($note_title) && !empty($note_text)) {
+                $user_id = $_SESSION['user_id'];
+                $note_id = create_note($user_id, $note_title, $note_text);
+    
+                if($note_id) {
+                    $_SESSION['success'] = "Note added successfully!";
+                    header("Location: index.php");
+                    exit();
+                } else {
+                    $_SESSION['error'] = "Note creation failed. Please try again.";
+                }
+            } else {
+                $_SESSION['error'] = "Please enter both title and text for your note.";
+            }
+        }
+    }
+    
+    
+    function edit_note($note_id, $user_id, $note_title, $note_text) {
+        global $pdo;
+        $sql = "UPDATE note SET note_title = ?, note_text = ? WHERE note_id = ? AND user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $note_title, PDO::PARAM_STR);
+        $query->bindParam(2, $note_text, PDO::PARAM_STR);
+        $query->bindParam(3, $note_id, PDO::PARAM_INT);
+        $query->bindParam(4, $user_id, PDO::PARAM_INT);
+    
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+    
+    function delete_note($note_id, $user_id) {
+        global $pdo;
+        $sql = "DELETE FROM note WHERE note_id = ? AND user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $note_id, PDO::PARAM_INT);
+        $query->bindParam(2, $user_id, PDO::PARAM_INT);
+    
+        try {
+            $query->execute();
+            return $query->rowCount();
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
 ?>
