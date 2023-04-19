@@ -1,4 +1,4 @@
-body {
+.login-page {
     display: flex;
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -16,7 +16,7 @@ body {
 
 /* 
 ---------------------------------------
-STYLING GJELDENDE FOR LOGIN.PHP
+STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
 ---------------------------------------
 */
 
@@ -142,3 +142,8 @@ STYLING GJELDENDE FOR LOGIN.PHP
     font-size: medium;
 }
 
+/* 
+---------------------------------------
+STYLING GJELDENDE FOR CHANGE-PASSWORD.PHP
+---------------------------------------
+*/
