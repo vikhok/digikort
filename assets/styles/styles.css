@@ -726,11 +726,8 @@ STYLING GJELDENDE mine notater
     margin: 20px;
 }
 
-.Bedrift-bilde{
-    display: flex;
-    position: relative;
-}
-.Bedrift-bilde-styling{
+
+.bedrift-bilde-styling{
     display: flex;
     position: relative;
     max-width: 100%;
