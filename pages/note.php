@@ -7,16 +7,6 @@
     $note_id = $_REQUEST["note_id"];
     $user_id = $_SESSION["user"]["user_id"];
 
-    if($note = get_note($user_id, $note_id)) {
-        $note_subject = $note->note_subject;
-        $note_body = $note->note_body;
-        $note_date = $note->note_date;
-    } else {
-        $status = "<h4><span style='color:red'>
-                Fant ingen notat.
-                </span></h4>";
-    }
-
     if(isset($_REQUEST["update"])) {
         $new_note_subject = $_REQUEST["note_subject"];
         $new_note_body = $_REQUEST["note_body"];
@@ -29,11 +19,27 @@
                     Noe gikk galt, notat ble ikke oppdatert.
                     </span></h4>";
         }
-    } else {
-        echo "wtf";
     }
 
-    
+    if(isset($_REQUEST["delete"])) {
+        if(delete_note($note_id, $user_id)) {
+            header("Location: my_notes.php?user_id=$user_id");
+        } else {
+            $status = "<h4><span style='color:red'>
+                    Noe gikk galt, notat ble ikke slettet.
+                    </span></h4>";
+        }
+    }
+
+    if($note = get_note($user_id, $note_id)) {
+        $note_subject = $note->note_subject;
+        $note_body = $note->note_body;
+        $note_date = date("H:i d-m-Y", strtotime($note->note_date));
+    } else {
+        $status = "<h4><span style='color:red'>
+                Fant ingen notat.
+                </span></h4>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,17 +55,19 @@
     <?php if($note): ?>
         <form action="" method="post">
             <div class="form-group">
-                <label for="note_subject"><h3>Tittel</h3>
+                <label for="note_subject"><h3>Tittel:</h3>
                     <input type="text" name="note_subject" value="<?= $note_subject ?>" required>
                 </label>
-                <label for="note_body"><h3>Notat</h3>
+                <label for="note_body"><h3>Notat:</h3>
                     <textarea type="text" name="note_body" required><?= $note_body ?></textarea>
                 </label>
-                <button type="submit" name="update" style="color:black">Oppdater notat</button>
+                <h3>Siste oppdatert:</h3>
+                <p><?= $note_date ?></p>
+                <br><button type="submit" name="update" style="color:black">Oppdater notat</button> 
             </div>
         </form>
-        <form action="" method="get">
-            <button type="submit" name="delete" style="color:black">Slett notat</button>
+        <form action="" method="post">
+            <br><button type="submit" name="delete" style="color:black">Slett notat</button>
         </form>
     <?php endif; ?>
     <?php if(isset($status)) echo $status; ?>

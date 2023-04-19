@@ -264,6 +264,8 @@
         }
     }
 
+    // NOTES:
+
     function get_all_notes($user_id) {
         global $pdo;
         $sql = "SELECT note_id, note_subject, note_body, note_date FROM note WHERE user_id = ?";
@@ -297,53 +299,41 @@
         }
     }
       
-    // function get_user_notes($user_id) {
-    //     global $pdo;
 
-    //     $sql = "SELECT * FROM notes WHERE user_id = :user_id";
-    //     $query = $pdo->prepare($sql);
-    //     $query->execute(['user_id' => $user_id]);
+    function create_note($user_id, $note_subject, $note_body) {
+        global $pdo;
+        $sql = "INSERT INTO note (user_id, note_subject, note_body, note_date) VALUES (?, ?, ?, ?)";
+        $query = $pdo->prepare($sql);
 
-    //     $user_notes = $query->fetchAll(PDO::FETCH_ASSOC);
+        $note_subject = md5($note_subject);
+        $note_body = md5($note_body);
+        $date = date("Y-m-d H:i:s");
 
-    //     return $user_notes;
-    // }
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $note_subject, PDO::PARAM_STR);
+        $query->bindParam(3, $note_body, PDO::PARAM_STR);
+        $query->bindParam(4, $date, PDO::PARAM_STR);
 
-    function create_note() {
-        if(isset($_POST['note_title']) && isset($_POST['note_text'])) {
-            $note_title = trim($_POST['note_title']);
-            $note_text = trim($_POST['note_text']);
-    
-            if(!empty($note_title) && !empty($note_text)) {
-                $user_id = $_SESSION['user_id'];
-                $note_id = create_note($user_id, $note_title, $note_text);
-    
-                if($note_id) {
-                    $_SESSION['success'] = "Note added successfully!";
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    $_SESSION['error'] = "Note creation failed. Please try again.";
-                }
-            } else {
-                $_SESSION['error'] = "Please enter both title and text for your note.";
-            }
+        try {
+            $query->execute();
+            $note_id = $pdo->lastInsertId();
+            return $note_id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
         }
     }
-    
     
     function update_note($note_id, $note_subject, $note_body) {
         global $pdo;
         $sql = "UPDATE note SET note_subject = ?, note_body = ?, note_date = ? WHERE note_id = ?";
         $query = $pdo->prepare($sql);
-        $date = new DateTime();
-        $result = $date->format('Y-m-d H:i:s');
+        $date = date("Y-m-d H:i:s");
         $query->bindParam(1, $note_subject, PDO::PARAM_STR);
         $query->bindParam(2, $note_body, PDO::PARAM_STR);
-        $query->bindParam(3, $note_id, PDO::PARAM_INT);
-        $query->bindParam(4, $result, PDO::PARAM_STR);
-        //date("H:i l d.m.Y")
-        
+        $query->bindParam(3, $date, PDO::PARAM_STR);
+        $query->bindParam(4, $note_id, PDO::PARAM_INT);
+       
         try {
             $query->execute();
             return true;
@@ -362,7 +352,7 @@
     
         try {
             $query->execute();
-            return $query->rowCount();
+            return true;
         } catch (PDOException $e) {
             //echo $e->getMessage();
             return false;

@@ -5,7 +5,7 @@
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
 
-    $user_id = $_REQUEST["user_id"];
+    $user_id = $_SESSION["user"]["user_id"];
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
         $email = $user->email;
@@ -61,7 +61,7 @@
     <title>Rediger profil</title>
 </head>
 <body>
-    <?php banner($user_id, false) ?>
+    <?php banner($user_id) ?>
     <div class="rediger_profil">
             <form class="redpro_form" action="rediger_profil.php" method="POST" enctype="multipart/form-data">
             <div class="profil_bilde">    
@@ -117,11 +117,7 @@
                 <button type="submit" name="submit">Oppdater profil</button>
             </div>
         </form>
-        <?php
-            if(isset($status)) {
-                echo $status;
-            }
-        ?>
+        <?php if(isset($status)) echo $status; ?>
     </div>
 </body>
 </html>

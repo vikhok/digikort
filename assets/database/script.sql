@@ -37,7 +37,7 @@ CREATE TABLE `note` (
   `user_id`       int(11)       NOT NULL,
   `note_subject`  varchar(64)   NOT NULL,
   `note_body`     varchar(255)  NOT NULL,
-  `note_date`     date          NOT NULL
+  `note_date`     datetime      NOT NULL
 );
 
 CREATE TABLE `reset_password` (

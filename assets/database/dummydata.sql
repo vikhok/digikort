@@ -31,13 +31,29 @@ INSERT INTO location(company_id, address, city, zip)
 
 #Testdata note
 INSERT INTO note(user_id, note_subject, note_body, note_date)
-    VALUES('1', 'Møte med Ola', 'Husk møte med Ola på Slottsplassen 23 kl. 11 førstkommende mandag', '01.01.2023');
+    VALUES('1', 'Møte med Ola', 'Husk møte med Ola på Slottsplassen 23 kl. 11 førstkommende mandag', '2023-04-19 12:53:56');
 INSERT INTO note(user_id, note_subject, note_body, note_date)
-    VALUES('2', 'Sende tilbud', 'Husk å sende tilbud til Gard AS', '01.01.2023');
+    VALUES('2', 'Sende tilbud', 'Husk å sende tilbud til Gard AS', '2023-04-19 12:53:56');
 INSERT INTO note(user_id, note_subject, note_body, note_date)
-    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '01.01.2023');
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
 INSERT INTO note(user_id, note_subject, note_body, note_date)
-    VALUES('3', 'Kaffe-drøs', 'Husk å invitere til kaffi-drøs med daglig leder Per i Rent og Pent AS for å diskutere nytt samarbeid', '01.01.2023');
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('2', 'Kjøpe melk', 'Husk å Kjøpe melk så min hustru ikke blir sint.', '2023-04-19 12:53:56');
+INSERT INTO note(user_id, note_subject, note_body, note_date)
+    VALUES('3', 'Kaffe-drøs', 'Husk å invitere til kaffi-drøs med daglig leder Per i Rent og Pent AS for å diskutere nytt samarbeid', '2023-04-19 12:53:56');
 
 #Testdata business_card
 INSERT INTO business_card(user_id, company_id, location_id, administrator)

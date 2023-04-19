@@ -3,20 +3,10 @@
     require_once("../assets/include/db.inc.php");
 
     session_start();
-
-    // Sjekk om notatet skal slettes
-    if(isset($_REQUEST["delete"]) && isset($_SESSION["user_id"])) {
-        $note_id = $_REQUEST["delete"];
-        if(delete_note($note_id, $_SESSION["user_id"])) {
-            header("Location: mine-notater.php");
-            exit();
-        } else {
-            $error = "Kunne ikke slette notatet";
-        }
-    }
     $user_id = $_SESSION["user"]["user_id"];
+
     $notes = get_all_notes($user_id);
-    print_r($notes);
+
     // Oppdater notatet hvis skjemaet er sendt inn
     if(isset($_POST["submit"]) && isset($_SESSION["user_id"])) {
         $note_id = $_POST["note_id"];
@@ -51,9 +41,7 @@
         <br>
         <br>
         <h1>Mine notater</h1>
-        <?php if(!$notes): ?>
-            <p>Du har ingen notater.</p>
-        <?php else: ?>
+        <?php if($notes):?>
             <section>
                 <?php foreach($notes as $note): ?>
                     <div class="notat-boks-wrapper">
@@ -61,16 +49,18 @@
                             <a href="note.php?note_id=<?=$note["note_id"]?>" style="color:black">
                                 <h3><?=$note["note_subject"]?></h3>
                                 <p><?=$note["note_body"]?></p>
-                                <p><?=$note["note_date"]?></p>
+                                <p><?=date("H:i d-m-Y", strtotime($note["note_date"]))?></p>
                             </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </section>
+        <?php else: ?>
+            <p>Du har ingen notater lagret.</p>
         <?php endif; ?>
         <div class="button-mine-notater">
-            <form action="nytt-notat.php" method="get">
-                <button type="submit">Nytt notat</button>
+            <form action="create_note.php" method="post">
+                <button type="submit" name="create_note" style="color:black">Nytt notat</button>
             </form>
         </div>
     </main>
