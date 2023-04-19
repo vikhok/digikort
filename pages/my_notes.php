@@ -1,6 +1,7 @@
 <?php
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $user_id = $_SESSION["user"]["user_id"];

@@ -304,11 +304,7 @@
         global $pdo;
         $sql = "INSERT INTO note (user_id, note_subject, note_body, note_date) VALUES (?, ?, ?, ?)";
         $query = $pdo->prepare($sql);
-
-        $note_subject = md5($note_subject);
-        $note_body = md5($note_body);
         $date = date("Y-m-d H:i:s");
-
         $query->bindParam(1, $user_id, PDO::PARAM_INT);
         $query->bindParam(2, $note_subject, PDO::PARAM_STR);
         $query->bindParam(3, $note_body, PDO::PARAM_STR);

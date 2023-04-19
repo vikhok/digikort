@@ -1,15 +1,15 @@
 <?php
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
-
-    $note_id = $_REQUEST["note_id"];
     $user_id = $_SESSION["user"]["user_id"];
+    $note_id = $_REQUEST["note_id"];
 
     if(isset($_REQUEST["update"])) {
-        $new_note_subject = $_REQUEST["note_subject"];
-        $new_note_body = $_REQUEST["note_body"];
+        $new_note_subject = clean($_REQUEST["note_subject"]);
+        $new_note_body = clean($_REQUEST["note_body"]);
         if(update_note($note_id, $new_note_subject, $new_note_body)) {
             $status = "<h4><span style='color:green'>
                     Notat ble oppdatert.
@@ -56,10 +56,10 @@
         <form action="" method="post">
             <div class="form-group">
                 <label for="note_subject"><h3>Tittel:</h3>
-                    <input type="text" name="note_subject" value="<?= $note_subject ?>" required>
+                    <input type="text" name="note_subject" value="<?= $note_subject ?>" maxlength="64" required>
                 </label>
                 <label for="note_body"><h3>Notat:</h3>
-                    <textarea type="text" name="note_body" required><?= $note_body ?></textarea>
+                    <textarea type="text" name="note_body" maxlength="255" required><?= $note_body ?></textarea>
                 </label>
                 <h3>Siste oppdatert:</h3>
                 <p><?= $note_date ?></p>
