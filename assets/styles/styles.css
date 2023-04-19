@@ -852,3 +852,110 @@ STYLING GJELDENDE contact-employee.php
         font-size: 20px;
     }
 }
+
+/*
+-----------------------------------------------------
+STYLING GJELDENDE rediger-bedrift.php
+-----------------------------------------------------
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header */
+  .header-rediger-bedrift {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Rediger bilde */
+  .rediger-bilde-rediger-bedrift {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .bilde-rediger-bedrift {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Rediger navn */
+  .rediger-navn-rediger-bedrift {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .navn-input-rediger-bedrift {
+    font-size: 1.5em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Rediger beskrivelse */
+  .rediger-beskrivelse-rediger-bedrift {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .beskrivelse-input-rediger-bedrift {
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Rediger URL-er */
+  .rediger-url-rediger-bedrift {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .url-input-rediger-bedrift {
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Rediger adresse */
+  .rediger-adresse-rediger-bedrift {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .adresse-input-rediger-bedrift {
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Lagre-knapp */
+  .lagre-knapp-rediger-bedrift {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
