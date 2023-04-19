@@ -18,8 +18,15 @@
             </form>
 
             <div class="form-control">
-                <input type="password" name="Nytt passord" class="new-password-form" placeholder="Nytt passord" required>
+                <input type="password" name="Nytt-passord" class="new-password-form" placeholder="Nytt passord" required>
+                <input type="password" name="Bekreft-passord" class="confirm-password-form" placeholder="Bekreft passord" required>
             </div>
+            <div class="remember-password-checkbox">
+                    <label for="husk-passord">Husk passord</label>
+                    <input type="checkbox" id="remember-password" name="remember-password">
+            </div>
+            <button type="submit" name="login" class="submit">Lagre passord</button>
+            </form>
 
         </div>
     </div>
