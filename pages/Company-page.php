@@ -17,9 +17,8 @@
 <body>
     <?php banner(false, $company_id) ?>
     <div class="Bedrift-siden">
-        <div class="Bedrift-bilde">
-            <img src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
-        </div>
+        
+            <img class="bedrift_bilde_styling" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
 
         <div class="Bedrift-Text">
             <h2 class="bedrift-tittel">Egde AS</h2>
