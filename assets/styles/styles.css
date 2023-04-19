@@ -487,7 +487,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     text-align: center;
 }
 
-.stillings_tittel input[type="text"]{
+/* .stillings_tittel input[type="text"]{
     background-color: #f9f9f9;
     border: none;
     border-radius: 10px;
@@ -499,7 +499,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     width: 75%;
     margin-top: 1px;
     margin-bottom: 3rem;
-}
+} */
 
 .bedrift_navn {
     margin-top: 30px;
@@ -548,7 +548,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     cursor: pointer;
     margin-bottom: 20px;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     margin-top: -10px;
   }
 

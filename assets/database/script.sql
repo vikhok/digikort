@@ -46,7 +46,6 @@ CREATE TABLE `reset_password` (
 CREATE TABLE `business_card` (
   `card_id`       int(11)       NOT NULL,
   `user_id`       int(11)       NOT NULL,
-  `job_title`     varchar(64)   NOT NULL,
   `company_id`    int(11)       NOT NULL,
   `administrator` boolean       NOT NULL DEFAULT false
 );
@@ -131,8 +130,7 @@ ALTER TABLE `reset_password`
 
 ALTER TABLE `business_card`
   ADD CONSTRAINT `business_card_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `business_card_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE;
 
 ALTER TABLE `location`
   ADD CONSTRAINT `location_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE;
