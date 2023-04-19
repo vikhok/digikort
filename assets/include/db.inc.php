@@ -289,9 +289,6 @@
         }
     }
 
-    
-
-?>
     function get_all_notes($user_id) {
         global $pdo;
         $sql = "SELECT note_id, note_heading, note_subject, note_date FROM note WHERE user_id = ?";
