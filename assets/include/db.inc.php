@@ -275,7 +275,8 @@
         
         try {
             $query->execute();
-            return true;
+            $company_id = $pdo->lastInsertId();
+            return $company_id;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;

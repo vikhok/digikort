@@ -1,21 +1,20 @@
 <?php
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
 
     $user_id = $_SESSION["user"]["user_id"];
     if(isset($_REQUEST["submit"])){
-        $company_name = ($_REQUEST["company_name"]);
-        $description = ($_REQUEST["description"]);
-        $company_email = ($_REQUEST["email"]);
-        $web_url = ($_REQUEST["web_url"]);
-        if(add_company($company_name, $company_email, $description, $web_url)) {
-            $status = "<h4><span style='color:green'>
-                Bedriften ble opprettet.
-                </span></h4>";
+        $company_name = clean($_REQUEST["company_name"]);
+        $company_email = clean($_REQUEST["email"]);
+        $web_url = clean($_REQUEST["web_url"]);
+        $description = clean($_REQUEST["freetext"]);
+        if($company_id = add_company($company_name, $company_email, $web_url, $description)) {
+            header("Location: Company-page.php?company_id=$company_id");
         } else {
-        $status = "<h4><span style='color:red'>
+            $status = "<h4><span style='color:red'>
                 Noe gikk galt, endringer ble ikke foretatt.
                 </span></h4>";
     }
@@ -59,12 +58,12 @@
         <section class="addcompany_submit">    
             <button type="submit" name="submit">Opprett bedrift</button>
         </section>
+        <?php
+            if(isset($status)) {
+                echo $status;
+            }
+        ?>
     </form>
-    <?php
-        if(isset($status)) {
-            echo $status;
-        }
-    ?>
 </div>
 </body>
 </html>
