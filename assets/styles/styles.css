@@ -17,9 +17,9 @@ body {
 }
 
 /*
-    -----------------------------------------------------
+    -------------------------------------------------------
     STYLING GJELDENDE rediger_profil.php
-    -----------------------------------------------------
+    -------------------------------------------------------
 */
 
 .redpro_form {
@@ -40,7 +40,7 @@ body {
       outline: none;
     }
   
-.redpro_input_text input[type="text"] {
+.redpro_input_text .input-fields-addcompany input[type="text"] {
       background-color: #f9f9f9;
       border: none;
       border-radius: 10px;
@@ -82,7 +82,7 @@ body {
       width: 40%;
     }
     
-  .rediger_some input[type="url"] {
+.rediger_some input[type="url"] {
       width: 75%;
       padding: 12px;
       border-radius: 5px;
@@ -113,9 +113,11 @@ body {
       font-size: 20px;
       cursor: pointer;
       margin-bottom: 20px;
+      display: block;
+      margin: 10px auto;
     }
     
-  .oppdater_profil_knapp button[type="submit"]:hover {
+  .oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
       background-color: #0069d9;
     }
     
@@ -129,7 +131,6 @@ body {
       position: relative;
       justify-content: center;
     }
-    
   
   .rediger_some {
       display: flex;
@@ -749,12 +750,12 @@ STYLING GJELDENDE MAIN-SIDE (AJAX-search)
 }
 
 /*
------------------------------------------------------
-STYLING GJELDENDE contact-employee.php
------------------------------------------------------
+---------------------------------------------------------
+STYLING GJELDENDE contact-employee.php og add_company.php
+---------------------------------------------------------
 */
 
-.contact-form {
+.contact-form, .addcompany_form {
     position: absolute;
     margin: auto;
     color: black;
@@ -769,8 +770,7 @@ STYLING GJELDENDE contact-employee.php
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
-
-#fields input[type="text"]{
+#fields, .addcompany_form input[type="text"]{
     display: block;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
@@ -781,7 +781,7 @@ STYLING GJELDENDE contact-employee.php
     width: 100%;
 }
 
-.submit-button button[type="submit"]{
+.submit-button, .addcompany_submit button[type="submit"]{
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -810,6 +810,11 @@ STYLING GJELDENDE contact-employee.php
 
 @media only screen and (min-width: 300px) {
     .contact-form {
+        margin-top: 5rem;
+        font-size: 20px;
+    }
+
+    .addcompany_form{
         margin-top: 5rem;
         font-size: 20px;
     }

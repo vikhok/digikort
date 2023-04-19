@@ -34,33 +34,37 @@
 <body>
 
 <?php banner($user_id, false) ?>
-    <div class="rediger_profil">
-            <form class="addcompany_form" action="#" method="POST" enctype="multipart/form-data">
+<div class="addcompany_structure" id="fields">
+    <form class="addcompany_form" action="#" method="POST" enctype="multipart/form-data">
+        <section class="company_name" for="company_name">
+            <label for="name">Bedriftnavn</label>
+            <input type="text" id="company_name" name="company_name" placeholder="Bedrift avdeling Oslo AS" size="100" required>
+        </section>
 
-            <div class="redpro_input_text">
-                <label class="redpro_label" for="company_name">Navn på bedrift</label>
-                <input type="text" id="company_name" name="company_name" placeholder="Navn på bedrift" required><br><br>
+        <section class="company_email" for="email">
+            <label for="email">E-postadresse til bedriften</label>
+            <input type="text" id="email" name="email" placeholder="mail@epost.com" size="100" required>
+        </section>
 
-                <label class="redpro_label" for="email">Bedriftens e-postadresse</label>
-                <input type="text" id="email" name="email" placeholder="Bedriftens e-postadresse" required><br><br>
+        <section class="company_url" for="web_url">
+            <label for="url">Nettside til bedriften</label>
+            <input type="text" id="web_url" name="web_url" placeholder="www.bedriftsnavn.no" size="100" required>
+        </section>
 
-                <label class="redpro_label" for="description">Beskrivelse av bedriften</label>
-                <textarea type="text" id="description" name="description" placeholder="Beskriv bedriften" required></textarea> <br><br>
+        <section class="company_description" id="freetext">
+            <label for="information">Beskrivelse av bedriften</label>
+            <textarea name="freetext" type="text" cols="25" rows="10" name="description" placeholder="Vi leverer skreddersydde tjenester til våre kunder" wrap="physical" required></textarea>
+        </section>
 
-            <div class="addcompany_email">
-                <label class="redpro_label" for="email">Nettside til bedriften</label>
-                <input type="text" id="web_url" name="web_url" placeholder="Legg inn nettsiden til bedriften" required><br><br>
-            </div>
-
-            <div class="addcompany_submit">    
-                <button type="submit" name="submit">Opprett bedrift</button>
-            </div>
-        </form>
-        <?php
-            if(isset($status)) {
-                echo $status;
-            }
-        ?>
-    </div>
+        <section class="addcompany_submit">    
+            <button type="submit" name="submit">Opprett bedrift</button>
+        </section>
+    </form>
+    <?php
+        if(isset($status)) {
+            echo $status;
+        }
+    ?>
+</div>
 </body>
 </html>
