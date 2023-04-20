@@ -45,7 +45,7 @@ CREATE TABLE `business_card` (
     `card_id`       int(11)       NOT NULL,
     `user_id`       int(11)       NOT NULL,
     `company_id`    int(11)       NOT NULL,
-    `administrator` boolean       NOT NULL
+    `administrator` boolean       NOT NULL DEFAULT false
 );
 
 CREATE TABLE `user_social` (

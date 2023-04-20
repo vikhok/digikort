@@ -97,6 +97,8 @@
                 <input type="tel" id="telefon" name="telefon" placeholder="+47 12345678" ><br><br>
             </div>
 
+            <!-- Legg til et felt for å slutte i bedrift -->
+
             <div class="rediger_some">
                 <div class="column_rediger_profil">
                     <label class="redpro_label" for="linkedin">LinkedIn</label>

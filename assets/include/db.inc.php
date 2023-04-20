@@ -72,7 +72,7 @@
 
     function get_user_company($user_id) {
         global $pdo;
-        $sql = "SELECT bc.user_id, bc.company_id, bc.job_title, bc.administrator, 
+        $sql = "SELECT bc.user_id, bc.company_id, bc.administrator, 
             c.company_name
             FROM business_card AS bc 
             JOIN company AS c 
@@ -264,6 +264,47 @@
         }
     }
 
+    function add_company($company_name, $company_email, $descriptions, $web_url){
+        global $pdo;
+        $sql = "INSERT INTO company (company_name, company_email, descriptions, web_url) VALUES (?, ?, ?, ?)";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_name, PDO::PARAM_STR);
+        $query->bindParam(2, $company_email, PDO::PARAM_STR);
+        $query->bindParam(3, $descriptions, PDO::PARAM_STR);
+        $query->bindParam(4, $web_url, PDO::PARAM_STR);
+        
+        try {
+            $query->execute();
+            $company_id = $pdo->lastInsertId();
+            return $company_id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+   function join_company($company_name, $user_id, $administrator) {
+        global $pdo;
+        $sql1 = "SELECT company_id FROM company WHERE company_name = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $company_name, PDO::PARAM_STR);
+
+        try {
+            $query1->execute();
+            $company_id = $query1->fetch(PDO::FETCH_COLUMN);
+            $sql2 = "INSERT INTO business_card (company_id, user_id, administrator) VALUES (?,?,?)";
+            $query2 = $pdo->prepare($sql2);
+            $query2->bindParam(1, $company_id, PDO::PARAM_INT);
+            $query2->bindParam(2, $user_id, PDO::PARAM_INT);
+            $query2->bindParam(3, $administrator, PDO::PARAM_BOOL);
+            $query2->execute();
+            return true;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+    
     // NOTES:
 
     function get_all_notes($user_id) {
@@ -354,4 +395,6 @@
             return false;
         }
     }
+    
+      
 ?>

@@ -19,7 +19,7 @@
     <title>Rediger bedrift</title>
 </head>
 <body>
-    <?php banner(false) ?>
+    <?php banner(false, false) ?>
         <div class="edit_company">
             <form class ="edcom_form" action="edit_company.php" method="POST">
                 <input type="text" name="Bedriftslogan" class="company_slogan">

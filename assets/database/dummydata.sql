@@ -42,4 +42,3 @@ INSERT INTO note(user_id, note_subject, note_body, note_date) VALUES
     ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
     ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
     ('3', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56');
-

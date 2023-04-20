@@ -17,9 +17,9 @@ body {
 }
 
 /*
-    -----------------------------------------------------
+    -------------------------------------------------------
     STYLING GJELDENDE rediger_profil.php
-    -----------------------------------------------------
+    -------------------------------------------------------
 */
 
 .redpro_form {
@@ -82,7 +82,7 @@ body {
       width: 40%;
     }
     
-  .rediger_some input[type="url"] {
+.rediger_some input[type="url"] {
       width: 75%;
       padding: 12px;
       border-radius: 5px;
@@ -113,9 +113,11 @@ body {
       font-size: 20px;
       cursor: pointer;
       margin-bottom: 20px;
+      display: block;
+      margin: 10px auto;
     }
     
-  .oppdater_profil_knapp button[type="submit"]:hover {
+  .oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
       background-color: #0069d9;
     }
     
@@ -129,7 +131,6 @@ body {
       position: relative;
       justify-content: center;
     }
-    
   
   .rediger_some {
       display: flex;
@@ -487,6 +488,20 @@ STYLING GJELDENDE index.php (Menyvalg)
     text-align: center;
 }
 
+/* .stillings_tittel input[type="text"]{
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 25px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    width: 75%;
+    margin-top: 1px;
+    margin-bottom: 3rem;
+} */
+
 .bedrift_navn {
     margin-top: 30px;
     display: flex;
@@ -534,8 +549,12 @@ STYLING GJELDENDE index.php (Menyvalg)
     cursor: pointer;
     margin-bottom: 20px;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     margin-top: -10px;
+  }
+
+  .bli_med_bedrift_knapp button[type="submit"]:hover {
+    background-color: #075db8;
   }
 
   .opprett_ny_bedrift_knapp {
@@ -667,6 +686,7 @@ STYLING GJELDENDE mine notater
     position: relative;
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
 .om-og-kontakt-knapp {
@@ -682,10 +702,10 @@ STYLING GJELDENDE mine notater
     background: gray;
     flex-flow: row wrap;
     border-radius: 10px;
-    width: 100%;
+    width: 60%;
     padding: 20px;
     margin: 5px;
-    font-size: medium;
+    font-size: large;
 }
 
 .Bedrift-knapper {
@@ -694,7 +714,7 @@ STYLING GJELDENDE mine notater
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 30%;
+    width: 50%;
     
 }
 
@@ -702,7 +722,7 @@ STYLING GJELDENDE mine notater
     position: relative;
     display: flex;
     justify-content: center;
-    width: 450px;
+    width: 380px;
 }
 .a_veibeskrivelse {
     position: relative;
@@ -720,19 +740,38 @@ STYLING GJELDENDE mine notater
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 500px;
-    font-size: xx-large;
-    padding: 0px 30px 10px;
+    width: 66%;
+    font-size: x-large;
+    padding: 0px 200px 10px;
 }
 
 .bedrift-tittel, .bedrift-slogan, .bedrift-setning {
     margin: 20px;
 }
 
-.Bedrift-bilde{
-    display: flex;
-    position: relative;
-    width: 33%;
+
+.bedrift_bilde_styling{
+    max-width: 100%;
+    height: auto;
+    padding: 30px 0px 0px;
+}
+
+@media (max-width: 607px) {
+    .Bedrift-siden {
+        justify-content: center;
+    }
+    .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
+        width: 300px;
+    }
+    .bedrift_bilde_styling {
+        padding: 0px 0px 0px;
+    }
+}
+@media (max-width: 1000px) {
+    .Bedrift-Text {
+        width: 600px;
+        padding: 0px 30px 10px;
+    }
 }
 
 
@@ -749,12 +788,12 @@ STYLING GJELDENDE MAIN-SIDE (AJAX-search)
 }
 
 /*
------------------------------------------------------
-STYLING GJELDENDE contact-employee.php
------------------------------------------------------
+---------------------------------------------------------
+STYLING GJELDENDE contact-employee.php og add_company.php
+---------------------------------------------------------
 */
 
-.contact-form {
+.contact-form, .addcompany_form {
     position: absolute;
     margin: auto;
     color: black;
@@ -769,8 +808,7 @@ STYLING GJELDENDE contact-employee.php
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
-
-#fields input[type="text"]{
+#fields, .addcompany_form input[type="text"]{
     display: block;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
@@ -781,7 +819,7 @@ STYLING GJELDENDE contact-employee.php
     width: 100%;
 }
 
-.submit-button button[type="submit"]{
+.submit-button, .addcompany_submit button[type="submit"]{
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -813,4 +851,111 @@ STYLING GJELDENDE contact-employee.php
         margin-top: 5rem;
         font-size: 20px;
     }
+
+    .addcompany_form {
+        margin-top: 5rem;
+        font-size: 20px;
+    }
 }
+
+
+/*
+-----------------------------------------------------
+STYLING GJELDENDE rediger-bedrift.php
+-----------------------------------------------------
+*/
+  
+  /* Header */
+  .header-rediger-bedrift {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Rediger bilde */
+  .rediger-bilde-rediger-bedrift {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .bilde-rediger-bedrift {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Rediger navn */
+  .rediger-navn-rediger-bedrift {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .navn-input-rediger-bedrift {
+    font-size: 1.5em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Rediger beskrivelse */
+  .rediger-beskrivelse-rediger-bedrift {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .beskrivelse-input-rediger-bedrift {
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Rediger URL-er */
+  .rediger-url-rediger-bedrift {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .url-input-rediger-bedrift {
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Rediger adresse */
+  .rediger-adresse-rediger-bedrift {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .adresse-input-rediger-bedrift {
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Lagre-knapp */
+  .lagre-knapp-rediger-bedrift {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
