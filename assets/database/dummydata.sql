@@ -10,7 +10,7 @@ INSERT INTO user(first_name, last_name, email, phone, pass)
 INSERT INTO company(company_name, company_email, descriptions, web_url)
     VALUES ('Egde Consulting AS', 'digikortpass@gmail.com', 'Vi er et konsulent firma med et bredt spekter av kompetanse', 'www.egde.no');
 INSERT INTO company(company_name, company_email, descriptions, web_url)
-    VALUES ('Gard AS', 'digikortpass@gmail.com', 'Vi er et konsulent firma med et bredt spekter av kompetanse', 'www.egde.no');
+    VALUES ('Gard AS', 'digikortpass@gmail.com', 'Vi er et konsulent firma med et bredt spekter av kompetanse', 'www.gard.no');
 
 #Testdata company_social
 INSERT INTO company_social(company_id, linkedin, github, instagram)

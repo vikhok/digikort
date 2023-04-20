@@ -63,16 +63,10 @@
     </form>
 
     <div class="opprett_ny_bedrift_knapp">
-        <a class="a_ny_bedrift" href="edit_company.php">Opprett bedrift</a>
+        <a class="a_ny_bedrift" href="add_company.php">Opprett bedrift</a>
     </div>
 
     </div>
-
-
-        <?php
-            if(isset($status)) {
-                echo $status;
-            }
-        ?>
+        <?php if(isset($status)) echo $status; ?>
 </body>
 </html>

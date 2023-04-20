@@ -18,7 +18,7 @@ CREATE TABLE `user` (
 CREATE TABLE `company` (
   `company_id`    int(11)       NOT NULL,
   `company_name`  varchar(64)   NOT NULL UNIQUE,
-  `company_email` varchar(128)  NOT NULL,
+  `company_email` varchar(128)  NOT NULL UNIQUE,
   `descriptions`  varchar(255)  NOT NULL,
   `web_url`       varchar(255)  NOT NULL
 );
