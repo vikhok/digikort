@@ -120,7 +120,7 @@ STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
     justify-content: right;
 }
 
-.login-container button[type="submit"], .bytt-passord-container button[type="submit"] {
+.login-container button[type="submit"], .bytt-passord-container button[type="submit"], .form-submit button[type="submit"]{
     background-color: #007bff;
     color: #fff;
     border: none;
