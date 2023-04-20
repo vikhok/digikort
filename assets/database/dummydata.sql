@@ -38,14 +38,12 @@ INSERT INTO note(user_id, note_heading, note_subject)
     VALUES('3', 'Kaffe-drøs', 'Husk å invitere til kaffi-drøs med daglig leder Per i Rent og Pent AS for å diskutere nytt samarbeid');
 
 #Testdata business_card
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('1', 'Senior systemarkitekt', '1', '1', 'true');
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('2', 'Administrerende direktør', '2', '2', 'true');
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('3', 'Front-end utvikler', '1', '2', 'false');
-INSERT INTO business_card(user_id, job_title, company_id, location_id, administrator)
-    VALUES('14', 'Tøffing', '1', '1', 'true');   
+INSERT INTO business_card(user_id, company_id, administrator)
+    VALUES('1', '1', 'true');
+INSERT INTO business_card(user_id, company_id, administrator)
+    VALUES('2', '2', 'true');
+INSERT INTO business_card(user_id, company_id, administrator)
+    VALUES('3', '1', 'false');
 
 
 #Testdata user_social

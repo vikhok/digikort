@@ -7,18 +7,18 @@ SET time_zone = "+00:00";
 SET GLOBAL event_scheduler=ON;
 
 CREATE TABLE `user` (
-  `user_id`     int(11)       NOT NULL,
-  `first_name`  varchar(64)   NOT NULL,
-  `last_name`   varchar(64)   NOT NULL,
-  `email`       varchar(128)  NOT NULL,
-  `phone`       varchar(15)   NOT NULL,
-  `pass`        varchar(255)  NOT NULL
+  `user_id`     int(11)         NOT NULL,
+  `first_name`  varchar(64)     NOT NULL,
+  `last_name`   varchar(64)     NOT NULL,
+  `email`       varchar(128)    NOT NULL,
+  `phone`       varchar(15)     NOT NULL,
+  `pass`        varchar(255)    NOT NULL
 );
 
 CREATE TABLE `company` (
   `company_id`    int(11)       NOT NULL,
-  `company_name`  varchar(64)   NOT NULL,
-  `company_email` varchar(64)   NOT NULL,
+  `company_name`  varchar(64)   NOT NULL UNIQUE,
+  `company_email` varchar(128)  NOT NULL UNIQUE,
   `descriptions`  varchar(255)  NOT NULL,
   `web_url`       varchar(255)  NOT NULL
 );
@@ -47,10 +47,8 @@ CREATE TABLE `reset_password` (
 CREATE TABLE `business_card` (
   `card_id`       int(11)       NOT NULL,
   `user_id`       int(11)       NOT NULL,
-  `job_title`     varchar(64)   NOT NULL,
   `company_id`    int(11)       NOT NULL,
-  `location_id`   int(11)       NOT NULL,
-  `administrator` boolean       NOT NULL
+  `administrator` boolean       NOT NULL DEFAULT false
 );
 
 CREATE TABLE `user_social` (
@@ -133,8 +131,7 @@ ALTER TABLE `reset_password`
 
 ALTER TABLE `business_card`
   ADD CONSTRAINT `business_card_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `business_card_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `business_card_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE;
 
 ALTER TABLE `location`
   ADD CONSTRAINT `location_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE;

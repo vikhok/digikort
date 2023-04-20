@@ -14,11 +14,9 @@
         $email = $user->email;
         $phone = $user->phone;
         if($user_company = get_user_company($user_id)) {
-            $job_title = $user_company->job_title;
             $company = $user_company->company_name;
             $company_id = $user_company->company_id;
         } else {
-            $job_title = null;
             $company = null;
             $company_id = null;
         }
@@ -50,7 +48,6 @@
             <div class="personal-information">
                 <?php
                     echo "<h2>$name</h2>
-                        <h2>$job_title</h2>
                         <h2>$company</h2>
                         <h2><a href='mailto:$email'>$email</a></h2>
                         <h2><a href='tel:$phone'>$phone</a></h2>";
