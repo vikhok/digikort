@@ -1,4 +1,4 @@
-body {
+.login-page {
     display: flex;
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -16,7 +16,7 @@ body {
 
 /* 
 ---------------------------------------
-STYLING GJELDENDE FOR LOGIN.PHP
+STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
 ---------------------------------------
 */
 
@@ -29,7 +29,7 @@ STYLING GJELDENDE FOR LOGIN.PHP
     text-align: left;
 }
 
-.email-form, .password-form, .firstname-form{
+.email-form, .password-form, .firstname-form, .new-password-form, .confirm-password-form{
     position: relative;
     width: 90%;
     border-bottom: 1px solid #414242;
@@ -55,7 +55,7 @@ STYLING GJELDENDE FOR LOGIN.PHP
     font-size: medium;
   } 
 
-.login-form {
+.login-form, .bytt-passord-form {
     position: absolute;
     color: #FFFFFF;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
@@ -76,7 +76,7 @@ STYLING GJELDENDE FOR LOGIN.PHP
   @media (max-width:450px){
     form {
         font-size: 5vw;
-        width: 90%;
+        width: 100%;
     }
     }
 
@@ -95,6 +95,8 @@ STYLING GJELDENDE FOR LOGIN.PHP
 .remember-password-checkbox label{
     display: block;
     padding-left: 10px;
+    color: #414242;
+    font-size: large;
 }
 
 .remember-password-checkbox[type="checkbox"] {
@@ -118,7 +120,7 @@ STYLING GJELDENDE FOR LOGIN.PHP
     justify-content: right;
 }
 
-.login-container button[type="submit"] {
+.login-container button[type="submit"], .bytt-passord-container button[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -142,3 +144,23 @@ STYLING GJELDENDE FOR LOGIN.PHP
     font-size: medium;
 }
 
+/* 
+---------------------------------------
+STYLING GJELDENDE FOR CHANGE-PASSWORD.PHP
+---------------------------------------
+*/
+
+.bytt-passord-form {
+    height: 400px;
+}
+
+.bytt-passord-container button[type="submit"] {
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 450px) {
+    .bytt-passord-form {
+        width: 250px;
+        height: 350px;
+    }
+}
