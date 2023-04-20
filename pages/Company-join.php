@@ -18,7 +18,6 @@
             Noe gikk galt, endringer ble ikke foretatt.
             </span></h4>";
         }
-        echo $status;
     }
 
 ?>
