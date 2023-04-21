@@ -1,3 +1,7 @@
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
 .login-page {
     display: flex;
     overflow-y: hidden; /* Hide vertical scrollbar */
@@ -15,14 +19,15 @@
 }
 
 /* 
----------------------------------------
-STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
----------------------------------------
+---------------------------------------------------------------------------
+STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
+---------------------------------------------------------------------------
 */
 
 .digikort-heading{
     text-align: center;
     color: rgb(66, 65, 65);
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
 }
 
 .login-container {
@@ -34,7 +39,6 @@ STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
     width: 90%;
     border-bottom: 1px solid #414242;
     margin: 10px 10px;
-    
 }
 
 .login-container label{
@@ -43,6 +47,8 @@ STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
     left: 10px;
 
 }
+
+/* Login form */
 
 .form-control input[type=email], input[type=text], input[type=password], input[type=tel] {
     width: 85%;
@@ -53,12 +59,11 @@ STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
     border-bottom: 1px solid #414242;
     outline: none;
     font-size: medium;
-  } 
+  }
 
 .login-form, .bytt-passord-form {
     position: absolute;
     color: #FFFFFF;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
     font-weight: 500;
     font-size: 23px;
@@ -120,7 +125,7 @@ STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
     justify-content: right;
 }
 
-.login-container button[type="submit"], .bytt-passord-container button[type="submit"] {
+.login-container button[type="submit"], .bytt-passord-container button[type="submit"], .form-submit button[type="submit"]{
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -142,6 +147,14 @@ STYLING GJELDENDE FOR LOGIN.PHP OG CHANGE-PASSWORD.PHP
 
 ::placeholder {
     font-size: medium;
+}
+
+.register-user{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height: 100vh;
+    margin: 10px auto;
 }
 
 /* 
