@@ -37,7 +37,7 @@
                     if($company_id) { ?>
                         <li class="nav-item"><a href="company-page.php?company_id=<?=$company_id?>" class="nav-link">Bedrift</a></li>
                     <?php } ?>
-                    <li class="nav-item"><a href="login.php" class="nav-link">Logg inn</a></li>
+                    <li class="nav-item"><a href="utility/login.php" class="nav-link">Logg inn</a></li>
                 <?php } ?>
             </ul>
             <div class="hamburger">

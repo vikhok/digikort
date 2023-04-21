@@ -1,5 +1,5 @@
 <?php
-    require_once("../assets/include/db.inc.php");
+    require_once("../../assets/include/db.inc.php");
     
     if($result = get_all_companies()) {
         echo json_encode($result);

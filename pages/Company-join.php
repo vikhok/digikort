@@ -3,22 +3,28 @@
     require_once("../assets/include/db.inc.php");
 
     session_start();
-    $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     $user_id = $_SESSION["user"]["user_id"];
 
-    if(isset($_REQUEST["submit_company"])) {
-        $company_name = $_REQUEST["company"];
-    
-        if(join_company($company_name, $user_id, false)) {
-            $status = "<h4><span style='color:green'>
-            Lagt til i bedrift
-            </span></h4>";
-        } else {
-            $status = "<h4><span style='color:red'>
-            Noe gikk galt, endringer ble ikke foretatt.
-            </span></h4>";
+    // Check if user is already in a company:
+    if(!$user_company = get_user_company($user_id)) {
+        if(isset($_REQUEST["submit_company"])) {
+            $company_name = $_REQUEST["company"];
+        
+            if(join_company($company_name, $user_id, false)) {
+                $status = "<h4><span style='color:green'>
+                    Lagt til i bedrift
+                    </span></h4>";
+            } else {
+                $status = "<h4><span style='color:red'>
+                    Noe gikk galt, endringer ble ikke foretatt.
+                    </span></h4>";
+            }
+            echo $status;
         }
-        echo $status;
+    } else {
+        // Redirect if user is already in a company:
+        $company_id = $user_company->company_id;
+        header("Location: company-page.php?company_id=$company_id");
     }
 
 ?>
@@ -33,7 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
     <script>
-        ajax_search("all_companies.php");
+        ajax_search("utility/all_companies.php");
     </script>
     <title>Bli med i en bedrift</title>
 </head>

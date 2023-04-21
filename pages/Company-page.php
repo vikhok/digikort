@@ -18,7 +18,7 @@
     <?php banner(false, $company_id) ?>
     <div class="Bedrift-siden">
         
-            <img class="bedrift_bilde_styling" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
+        <img class="bedrift_bilde_styling" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
 
         <div class="Bedrift-Text">
             <h2 class="bedrift-tittel">Egde AS</h2>
@@ -32,7 +32,7 @@
             <a class="a-kontakt-oss" href="https://egde.no/kontakt/">Se ansatte</a>
             </div>
             <div class="veibeskrivelse-knapp">
-            <a class="a_veibeskrivelse" href="https://www.google.com/maps/place/Egde+Consulting+AS/@58.1401491,7.9944956,15.93z/data=!4m6!3m5!1s0x463802612c6a6bc5:0xec7da6512d9d2ce0!8m2!3d58.1409102!4d7.9948404!16s%2Fg%2F11c7t422qw">Veibeskrivelse på kart</a>
+            <a class="a_veibeskrivelse" href="company_map.php">Veibeskrivelse på kart</a>
             </div>
             </div>
         </div>
