@@ -57,7 +57,7 @@
 
     function get_user($user_id) {
         global $pdo;
-        $sql = "SELECT first_name, last_name, email, phone FROM user WHERE user_id = ?";
+        $sql = "SELECT first_name, last_name, job_title, email, phone FROM user WHERE user_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $user_id, PDO::PARAM_INT);
 
@@ -397,4 +397,73 @@
     }
     
       
+    function create_validation_code($email, $verification, $valid_time) {
+        global $pdo;
+        $sql = "INSERT INTO reset_password (email, security_code, valid_to) 
+            VALUES (?, ?, date_add(CURRENT_TIMESTAMP, interval ? minute))";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $email, PDO::PARAM_STR);
+        $query->bindParam(2, $verification, PDO::PARAM_STR);
+        $query->bindParam(3, $valid_time, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function delete_validation_code($email) {
+        global $pdo;
+        $sql = "DELETE FROM reset_password WHERE email = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $email, PDO::PARAM_STR);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function validate_password_reset($email, $verification) {
+        global $pdo;
+        $sql = "SELECT * FROM reset_password WHERE email = ? and security_code = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $email, PDO::PARAM_STR);
+        $query->bindParam(2, $verification, PDO::PARAM_STR);
+
+        try {
+            $query->execute();
+            $valid = $query->fetch(PDO::FETCH_OBJ);
+            if($valid) return true;
+            else return false;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    
+    function update_password($user_id, $password_hash) {
+        global $pdo;
+        $sql = "UPDATE user SET pass = ? WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $password_hash, PDO::PARAM_STR);
+        $query->bindParam(2, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+
 ?>

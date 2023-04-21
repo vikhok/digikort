@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
     <script>
-        ajax_search("all_users.php");
+        ajax_search("utility/all_users.php");
     </script>
     <title>Document</title>
 </head>

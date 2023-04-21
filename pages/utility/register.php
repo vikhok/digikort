@@ -1,7 +1,6 @@
 <?php
-    require_once("../assets/include/db.inc.php");
-    require_once("../assets/include/qr.inc.php");
-    require_once("../assets/include/util.inc.php");
+    require_once("../../assets/include/db.inc.php");
+    require_once("../../assets/include/util.inc.php");
 
     session_start();
 
@@ -21,9 +20,9 @@
                     mkdir($dir, 0777, true);
                 }
                 $status = "<h4><span style='color:green'>
-                        Konto ble registrert i systemet.
+                        Konto ble registrert i systemet, vi sender deg til loggin siden.
                         </span></h4>";
-                header("Refresh: 5; url=login.php");
+                header("Refresh: 3; url=login.php");
             } else {
                 $status = "<h4><span style='color:red'>
                         Noe gikk galt, konto ble ikke lagret i systemet.
@@ -42,7 +41,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styling/Styling.css">
+    <link rel="stylesheet" href="../styling/login.css">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.3.0-web/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>Registrer</title>
