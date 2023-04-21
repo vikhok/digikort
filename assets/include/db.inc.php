@@ -262,9 +262,27 @@
         }
     }
 
-    function join_company($company_name, $user_id, $administrator) {
+    function add_company($company_name, $company_email, $descriptions, $web_url){
         global $pdo;
+        $sql = "INSERT INTO company (company_name, company_email, descriptions, web_url) VALUES (?, ?, ?, ?)";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_name, PDO::PARAM_STR);
+        $query->bindParam(2, $company_email, PDO::PARAM_STR);
+        $query->bindParam(3, $descriptions, PDO::PARAM_STR);
+        $query->bindParam(4, $web_url, PDO::PARAM_STR);
+        
+        try {
+            $query->execute();
+            $company_id = $pdo->lastInsertId();
+            return $company_id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 
+   function join_company($company_name, $user_id, $administrator) {
+        global $pdo;
         $sql1 = "SELECT company_id FROM company WHERE company_name = ?";
         $query1 = $pdo->prepare($sql1);
         $query1->bindParam(1, $company_name, PDO::PARAM_STR);
@@ -272,13 +290,11 @@
         try {
             $query1->execute();
             $company_id = $query1->fetch(PDO::FETCH_COLUMN);
-
             $sql2 = "INSERT INTO business_card (company_id, user_id, administrator) VALUES (?,?,?)";
             $query2 = $pdo->prepare($sql2);
             $query2->bindParam(1, $company_id, PDO::PARAM_INT);
             $query2->bindParam(2, $user_id, PDO::PARAM_INT);
             $query2->bindParam(3, $administrator, PDO::PARAM_BOOL);
-
             $query2->execute();
             return true;
         } catch (PDOException $e) {
@@ -286,70 +302,73 @@
             return false;
         }
     }
+    
+    // NOTES:
 
     function get_all_notes($user_id) {
         global $pdo;
-        $sql = "SELECT note_id, note_heading, note_subject, note_date FROM note WHERE user_id = ?";
+        $sql = "SELECT note_id, note_subject, note_body, note_date FROM note WHERE user_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $user_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
-            $results = $query->fetchAll(PDO::FETCH_ASSOC);
-            foreach($results as $result) {
-                $notes[] = [$result["note_id"], $result["note_heading"], $result["note_subject"], $result["note_date"]];
-            }
+            $notes = $query->fetchAll(PDO::FETCH_ASSOC);
             return $notes;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
         }
     }
+
+    function get_note($user_id, $note_id) {
+        global $pdo;
+        $sql = "SELECT note_subject, note_body, note_date FROM note WHERE user_id = ? AND note_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $note_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            $note = $query->fetch(PDO::FETCH_OBJ);
+            return $note;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
       
-    // function get_user_notes($user_id) {
-    //     global $pdo;
 
-    //     $sql = "SELECT * FROM notes WHERE user_id = :user_id";
-    //     $query = $pdo->prepare($sql);
-    //     $query->execute(['user_id' => $user_id]);
+    function create_note($user_id, $note_subject, $note_body) {
+        global $pdo;
+        $sql = "INSERT INTO note (user_id, note_subject, note_body, note_date) VALUES (?, ?, ?, ?)";
+        $query = $pdo->prepare($sql);
+        $date = date("Y-m-d H:i:s");
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $note_subject, PDO::PARAM_STR);
+        $query->bindParam(3, $note_body, PDO::PARAM_STR);
+        $query->bindParam(4, $date, PDO::PARAM_STR);
 
-    //     $user_notes = $query->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $user_notes;
-    // }
-
-    function create_note() {
-        if(isset($_POST['note_title']) && isset($_POST['note_text'])) {
-            $note_title = trim($_POST['note_title']);
-            $note_text = trim($_POST['note_text']);
-    
-            if(!empty($note_title) && !empty($note_text)) {
-                $user_id = $_SESSION['user_id'];
-                $note_id = create_note($user_id, $note_title, $note_text);
-    
-                if($note_id) {
-                    $_SESSION['success'] = "Note added successfully!";
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    $_SESSION['error'] = "Note creation failed. Please try again.";
-                }
-            } else {
-                $_SESSION['error'] = "Please enter both title and text for your note.";
-            }
+        try {
+            $query->execute();
+            $note_id = $pdo->lastInsertId();
+            return $note_id;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
         }
     }
     
-    
-    function edit_note($note_id, $user_id, $note_title, $note_text) {
+    function update_note($note_id, $note_subject, $note_body) {
         global $pdo;
-        $sql = "UPDATE note SET note_title = ?, note_text = ? WHERE note_id = ? AND user_id = ?";
+        $sql = "UPDATE note SET note_subject = ?, note_body = ?, note_date = ? WHERE note_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $note_title, PDO::PARAM_STR);
-        $query->bindParam(2, $note_text, PDO::PARAM_STR);
-        $query->bindParam(3, $note_id, PDO::PARAM_INT);
-        $query->bindParam(4, $user_id, PDO::PARAM_INT);
-    
+        $date = date("Y-m-d H:i:s");
+        $query->bindParam(1, $note_subject, PDO::PARAM_STR);
+        $query->bindParam(2, $note_body, PDO::PARAM_STR);
+        $query->bindParam(3, $date, PDO::PARAM_STR);
+        $query->bindParam(4, $note_id, PDO::PARAM_INT);
+       
         try {
             $query->execute();
             return true;
@@ -368,10 +387,12 @@
     
         try {
             $query->execute();
-            return $query->rowCount();
+            return true;
         } catch (PDOException $e) {
             //echo $e->getMessage();
             return false;
         }
     }
+    
+      
 ?>

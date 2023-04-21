@@ -80,7 +80,7 @@
     <title>Rediger profil</title>
 </head>
 <body>
-    <?php banner($user_id, false) ?>
+    <?php banner($user_id) ?>
     <div class="rediger_profil">
     <?php
             if(isset($status)) {
@@ -141,7 +141,6 @@
                 <button type="submit" name="submit_redpro">Oppdater profil</button>
             </div>
         </form>
-        
     </div>
 </body>
 </html>

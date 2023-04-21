@@ -24,14 +24,14 @@
         $url = $_SERVER["REQUEST_URI"];
         generateQR($user_id, $url);
     } else {
-        $failed = "<h4><span style='color:red'>
+        $status = "<h4><span style='color:red'>
                 Noe gikk galt, fant ikke bruker i systemet.
                 </span></h4>";
     }
     
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +44,7 @@
 <body>
     <?php banner($user_id, $company_id) ?>
     <div class="business-card-container">
-        <?php if(!isset($failed)) { ?>
+        <?php if(!isset($status)) { ?>
             <div class="personal-information">
                 <?php
                     echo "<h2>$name</h2>
@@ -69,7 +69,7 @@
                 </div>
                 <script src="../assets/include/js/webshare-api.js"></script>
             <?php } ?>
-        <?php } else { echo $failed; }?>
+        <?php } else { echo $status; }?>
     </div>
     <?php footer("profile"); ?>
 </body>
