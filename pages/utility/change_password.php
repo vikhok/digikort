@@ -27,7 +27,7 @@
                     }
                 } else {
                     $status = "<h4><span style='color:red'>
-                        Passordene du fylte inn stemmer ikke overrens.
+                        Passordene du fylte inn samsvarer ikke.
                         </span></h4>";
                 }
             }
