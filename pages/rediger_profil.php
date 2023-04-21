@@ -34,7 +34,7 @@
 
         if($first_name && $last_name && $email && $phone) {
 
-            if(update_user_profile($user_id, $first_name, $last_name, $email, $phone, $job_title, $linkedin, $github, $instagram)) {
+            if(update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram)) {
                 $status = "<h4><span style='color:green'>
                 Profil ble endret.
                 </span></h4>";
