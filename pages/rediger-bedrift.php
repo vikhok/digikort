@@ -7,7 +7,7 @@
 </head>
 <?php banner(false) ?>
 <!DOCTYPE html>
-<html>
+<html lang="no">
   <head>
     <title>Rediger Bedrift</title>
   </head>

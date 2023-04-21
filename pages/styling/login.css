@@ -1,5 +1,5 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .login-page {
@@ -27,6 +27,7 @@ STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
 .digikort-heading{
     text-align: center;
     color: rgb(66, 65, 65);
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
 }
 
 .login-container {
@@ -63,7 +64,6 @@ STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
 .login-form, .bytt-passord-form {
     position: absolute;
     color: #FFFFFF;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
     font-weight: 500;
     font-size: 23px;
