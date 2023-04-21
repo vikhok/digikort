@@ -5,7 +5,7 @@
 
     session_start();
 
-    if(isset($_REQUEST["register-form"])) {
+    if(isset($_REQUEST["register"])) {
         $first_name = ucfirst(clean($_REQUEST["first_name"]));
         $last_name = ucfirst(clean($_REQUEST["last_name"]));
         $email = clean($_REQUEST["email"]);
@@ -48,12 +48,12 @@
     <title>Registrer</title>
 </head>
 <body>
-    <div class="register-form">
+    <div class="register-user">
         <div class="register-container">
             <form name="register-form" class="login" method="POST">
                 <h1 class="digikort-heading">DigiKort</h1>
                 <div class="form-control">
-                    <input type="text" name="first_name" class="firstname-form" placeholder="Fornavn" required>
+                    <input type="text" name="first_name" class="firstname-form" placeholder="Fornavn" required size="50">
                     <input type="text" name="last_name" class="surname-form" placeholder="Etternavn" required>
                     <input type="email" name="email" class="email-register-form" placeholder="Email" required>
                     <input type="tel" name="phone" class="phonenumber-form" placeholder="Mobilnummer" required>
@@ -61,10 +61,13 @@
                     <input type="password" name="confirm_password" class="confirm-password-form" placeholder="Gjenta Passord" required>
                 </div>
                 <section class="form-submit">
-                    <button type="submit" name="register">Registrer</button>
+                    <button type="submit" name="register">Registrer konto</button>
                 </section>
                 <p><a class="already-has-user-clicker" href="login.php">Jeg har allerede brukerkonto</a></p>
-                <?php if(isset($status)) { echo $status; } ?>
+                <?php if(isset($status)) 
+                { 
+                    echo $status; 
+                } ?>
             </form>
         </div>
     </div>
