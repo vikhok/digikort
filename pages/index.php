@@ -5,7 +5,6 @@
     require_once("../assets/include/qr.inc.php");
 
     session_start();
-
     $user_id = $_REQUEST["user_id"];
     $_SESSION["user"]["last_visited"] = $user_id;
 

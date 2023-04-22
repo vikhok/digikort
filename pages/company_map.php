@@ -4,7 +4,7 @@
     require_once("../assets/include/db.inc.php");
 
     session_start();
-    $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    
 
     $user_id = $_REQUEST["user_id"];
     $company_id = $_REQUEST["company_id"];
@@ -54,6 +54,5 @@
             echo "Kunne ikke generere kart for adressen.";
         }
     ?>
-    <?php footer("company") ?>
 </body>
 </html>
