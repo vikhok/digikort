@@ -51,6 +51,7 @@
 
         // Change password verification email:
         if(isset($_REQUEST["change_password"])) {
+            delete_validation_code($email);
             $verification = substr(md5(microtime()),rand(0,26),6);
             if(create_validation_code($email, $verification, 60)) {
                 $reciever_name = $user->first_name;
