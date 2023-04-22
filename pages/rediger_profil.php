@@ -15,39 +15,61 @@
         $phone = $user->phone;
         $job_title = $user->job_title;
         $company = null;
+    } else {
+        $status = "<h4><span style='color:red'>
+        Noe gikk galt, fant ikke bruker i systemet.
+        </span></h4>";
+    }
 
-        // Get user social media
-        if($user_social = get_user_socialmedia($user_id)) {
-            $linkedin = $user_social->linkedin;
-            $github = $user_social->github;
-            $instagram = $user_social->instagram;
-        } else {
-            $status = "<h4><span style='color:red'>
-                Noe gikk galt, fant ingen linker i systemet.
-                </span></h4>";
-        }
+    // Oppdaterer tabellen med nye endringer gjort av bruker.
+    if(isset($_REQUEST["submit_redpro"])) {
+        $first_name = ucfirst(strtolower(clean($_REQUEST["first_name"])));
+        $last_name = ucfirst(strtolower(clean($_REQUEST["last_name"])));
+        $job_title = clean_allow_null($_REQUEST["stillingstittel"]);
+        $email = validateEmail(cleanEmail($_REQUEST["email"]));
+        $phone = clean($_REQUEST["telefon"]);
+        $linkedin = clean_allow_null($_REQUEST["linkedin"]);
+        $github = clean_allow_null($_REQUEST["github"]);
+        $instagram = clean_allow_null($_REQUEST["instagram"]);
 
-        // Update the user profile:
-        if(isset($_REQUEST["submit"])) {
-            $first_name = $_REQUEST["first_name"];
-            $last_name = $_REQUEST["last_name"];
-            $job_title = $_REQUEST["stillingstittel"];
-            $phone = $_REQUEST["telefon"];
-            $email = $_REQUEST["email"];
-            $linkedin = $_REQUEST["linkedin"];
-            $github = $_REQUEST["github"];
-            $instagram = $_REQUEST["instagram"];
+        $updated_profile = [$first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram];
 
-            if(update_user_profile($user_id, $first_name, $last_name, $phone, $email, $job_title, $linkedin, $github, $instagram)) {
+        if($first_name && $last_name && $email && $phone) {
+
+            if(update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram)) {
                 $status = "<h4><span style='color:green'>
-                    Profil ble endret.
-                    </span></h4>";
+                Profil ble endret.
+                </span></h4>";
             } else {
                 $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer ble ikke foretatt.
-                    </span></h4>";
+                Noe gikk galt, endringer ble ikke foretatt.
+                </span></h4>";
             }
+        } else {
+            $status = "<h4><span style='color:red'>
+            Noe gikk galt, endringer ble ikke foretatt i det større bildet.
+            </span></h4>";
         }
+    }
+    
+    
+    // Gjør det slik at alle some lenker er null til å begynne med.
+    $user_social = get_user_socialmedia($user_id);
+    $linkedin = null;
+    $github = null;
+    $instagram = null;
+
+    // Skal gjøre en sjekk for å se om det finnes i databasen
+    if($user_social) {
+        $linkedin = $user_social->linkedin ?? '';
+        $github = $user_social->github ?? '';
+        $instagram = $user_social->instagram ?? '';
+    } else {
+        // Endringer behøvs
+        $failed = "<h4><span style='color:red'>
+        Noe gikk galt, fant ingen linker i systemet.
+        </span></h4>";
+    }
 
         // Change password verification email:
         if(isset($_REQUEST["change_password"])) {
@@ -96,16 +118,15 @@
             <div class="profil_bilde">    
                 <label class="redpro_label" for="profile-picture">Endre profilbilde</label>
                 <input type="file" id="profil_bilde" name="profil_bilde" accept="image/*">
-                <input type="submit" value="Last opp profilbildet">
             </div>
 
             <div class="redpro_input_text">
-                <label class="redpro_label" for="first_name">Fornavn</label>
+                <label class="redpro_label" for="first_name">Fornavn<mandatory style="color: red">*</mandatory></label>
                 <input type="text" id="first_name" name="first_name" placeholder="Fornavnet ditt"><br><br>
             </div>
 
             <div class="redpro_input_text">
-                <label class="redpro_label" for="last_name">Etternavn</label>
+                <label class="redpro_label" for="last_name">Etternavn<mandatory style="color: red">*</mandatory></label>
                 <input type="text" id="last_name" name="last_name" placeholder="Etternavnet ditt"><br><br>
             </div>
 
@@ -115,12 +136,12 @@
             </div>
 
             <div class="redpro_email">
-                <label class="redpro_label" for="email">E-post</label>
+                <label class="redpro_label" for="email">E-post<mandatory style="color: red">*</mandatory></label>
                 <input type="email" id="email" name="email" placeholder="eksempel@epost.no" ><br><br>
             </div>
 
             <div class="redpro_input_text">
-                <label class="redpro_label" for="telefon">Telefon</label>
+                <label class="redpro_label" for="telefon">Telefon<mandatory style="color: red">*</mandatory></label>
                 <input type="tel" id="telefon" name="telefon" placeholder="+47 12345678" ><br><br>
             </div>
 
@@ -143,7 +164,7 @@
                 </div>
             </div>
             <div class="oppdater_profil_knapp">    
-                <button type="submit" name="submit">Oppdater profil</button>
+                <button type="submit" name="submit_redpro">Oppdater profil</button>
             </div>
         </form>
         <form action="" method="post">

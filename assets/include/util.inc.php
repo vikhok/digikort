@@ -7,6 +7,14 @@
         else 
             return $var;
     }
+    function clean_allow_null($var){
+        $var = strip_tags($var);
+        $var = htmlentities($var);
+        if (trim($var) == "")
+            return null;
+        else 
+            return $var;
+    }
 
     function cleanNumber($var){
         $var = clean($var);
