@@ -71,34 +71,33 @@
         </span></h4>";
     }
 
-        // Change password verification email:
-        if(isset($_REQUEST["change_password"])) {
-            delete_validation_code($email);
-            $verification = substr(md5(microtime()),rand(0,26),6);
-            if(create_validation_code($email, $verification, 60)) {
-                $reciever_name = $user->first_name;
-                $reciever_email = $user->email;
-                $timestamp = strtotime("now") + 60*60;
-                $valid_to = date('H:i', $timestamp);
-                $subject = "Bytt passord";
-                $message  = "<h3>Følg lenken for å bytte passordet:</h3>";
-                $message .= "<a href='http://localhost/digikort/pages/utility/change_password.php?verification=$verification'>Klikk her for å bytte passord.</a>"; // Denne må oppdateres om vi går live.
-                $message .= "<p>Lenken er gyldig i til klokken $valid_to.</p>";
-                
-                if(sendMail($reciever_email, $reciever_name, $subject, $message)) {
-                    $status = "<h4><span style='color:green'>
-                        En link for tilbakestilling av passordet har blitt sendt til $reciever_email.
-                        </span></h4>";
-                } else {
-                    $status = $status = "<h4><span style='color:red'>
-                        Noe gikk galt, klarte ikke sende link for tilbakestilling av passord til $reciever_email.
-                        </span></h4>";
-                }
+    // Change password verification email:
+    if(isset($_REQUEST["change_password"])) {
+        delete_validation_code($email);
+        $verification = substr(md5(microtime()),rand(0,26),6);
+        if(create_validation_code($email, $verification, 60)) {
+            $reciever_name = $user->first_name;
+            $reciever_email = $user->email;
+            $timestamp = strtotime("now") + 60*60;
+            $valid_to = date('H:i', $timestamp);
+            $subject = "Bytt passord";
+            $message  = "<h3>Følg lenken for å bytte passordet:</h3>";
+            $message .= "<a href='http://localhost/digikort/pages/utility/change_password.php?verification=$verification'>Klikk her for å bytte passord.</a>"; // Denne må oppdateres om vi går live.
+            $message .= "<p>Lenken er gyldig i til klokken $valid_to.</p>";
+            
+            if(sendMail($reciever_email, $reciever_name, $subject, $message)) {
+                $status = "<h4><span style='color:green'>
+                    En link for tilbakestilling av passordet har blitt sendt til $reciever_email.
+                    </span></h4>";
             } else {
                 $status = $status = "<h4><span style='color:red'>
-                    Noe gikk galt, vennligst prøv igjen.
+                    Noe gikk galt, klarte ikke sende link for tilbakestilling av passord til $reciever_email.
                     </span></h4>";
             }
+        } else {
+            $status = $status = "<h4><span style='color:red'>
+                Noe gikk galt, vennligst prøv igjen.
+                </span></h4>";
         }
     }
 ?>

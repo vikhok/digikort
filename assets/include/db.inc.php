@@ -26,7 +26,7 @@
 
         $user = $query->fetch(PDO::FETCH_OBJ);
         if($user) {
-            if($password == password_verify($password, $user->pass)) {
+            if(password_verify($password, $user->pass)) {
                 return $user;
             } else return false;
         } else return false;
@@ -393,7 +393,8 @@
             return false;
         }
     }
-    
+
+    // Reset password:    
       
     function create_validation_code($email, $verification, $valid_time) {
         global $pdo;
