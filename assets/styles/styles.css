@@ -225,6 +225,7 @@ header {
     margin-right: auto;
     border-radius: 50%;
     height: 10rem;
+    width: 10rem;
     top: 4rem;
     outline: auto;
 }
