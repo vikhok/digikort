@@ -11,17 +11,10 @@
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
         $email = $user->email;
-        $phone = $user->phone;
-        $job_title = null;
-        $company = null;
     } else {
         $status = "<h4><span style='color:red'>
                 Noe gikk galt, fant ikke bruker i systemet.
                 </span></h4>";
-    }
-    if($user_company = get_user_company($user_id)) {
-        $job_title = $user_company->job_title;
-        $company = $user_company->company_name;
     }
 
     if(isset($_REQUEST["send"])) {
@@ -63,30 +56,30 @@
 <body>
     <?php banner($user_id, false) ?>
     <br><br><br><br><br><br><br><br>
-    <div class="contact-form" id="fields">
-        <form name="contact" action="" method="POST"> 
-            <section class="name-section">
+    <div class="contact-form-structure">
+        <form class="contact-form" action="" method="POST" enctype="multipart/form-data"> 
+            <section class="company-name">
                 <label for="name">Ditt navn</label><br>
-                <input type="text" id="name" name="name" value="" size="100" required>
+                <input type="text" id="name" name="name" value="" size="100" placeholder="Ola Nordmann" required>
             </section>
 
-            <section class="email-section">
+            <section class="company-email">
                 <label for="email">Din e-postadresse</label><br>
-                <input type="text" id="email" name="email" value="" required>
+                <input type="text" id="email" name="email" size="100" placeholder="mail@epost.com" required>
             </section>
 
             <section class="subject-section">
-                <label for="subject">Subject</label><br>
-                <input type="text" id="subject" name="subject" value="" required>
+                <label for="subject">Tittel</label><br>
+                <input type="text" id="subject" name="subject" size="100" placeholder="Skriv en tittel" required>
             </section>
 
             <section class="freetext-section" id="freetext">
                 <label for="message">Din melding</label><br>
-                <textarea cols="25" rows="10" name="message" wrap="physical"></textarea>
+                <textarea cols="25" rows="10" name="message" wrap="physical" placeholder="Skriv en melding"></textarea>
             </section>
 
-            <section class="submit-button">
-                <button type="submit" name="send">Send inn</button>
+            <section class="contactemp-submit" id=submit-btn>
+                <button type="submit" name="submit">Send inn</button>
             </section>
         </form>
         <?php if(isset($status)) echo $status; ?>
