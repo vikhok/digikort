@@ -10,6 +10,7 @@
 
     if($user = get_user($user_id)) {
         $name = $user->first_name . " " . $user->last_name;
+        $job_title = $user->job_title;
         $email = $user->email;
         $phone = $user->phone;
         if($user_company = get_user_company($user_id)) {
@@ -41,13 +42,14 @@
     <title>Digikort</title>
 </head>
 <body>
-    <?php banner($user_id, $company_id) ?>
+    <?php banner($user_id) ?>
     <div class="business-card-container">
         <?php if(!isset($status)) { ?>
             <div class="personal-information">
                 <?php
                     echo "<h2>$name</h2>
                         <h2>$company</h2>
+                        <h2>$job_title</h2>
                         <h2><a href='mailto:$email'>$email</a></h2>
                         <h2><a href='tel:$phone'>$phone</a></h2>";
                 ?>
