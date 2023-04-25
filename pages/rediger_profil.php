@@ -52,6 +52,26 @@
         }
     }
     
+    // Forsøk på å vise informasjon allerede tilgjengelig i redpro.
+    $user_profile = get_user($user_id);
+    $first_name = null;
+    $last_name = null;
+    $job_title = null;
+    $email = null;
+    $phone = null;
+
+    if($user_profile) {
+        $first_name = $user_profile->first_name ?? '';
+        $last_name = $user_profile->last_name ?? '';
+        $job_title = $user_profile->job_title ?? '';
+        $email = $user_profile->email ?? '';
+        $phone = $user_profile->phone ?? '';
+    } else {
+        // Endringer behøvs
+        $failed = "<h4><span style='color:red'>
+        Noe gikk galt. kjipt.
+        </span></h4>";
+    }
     
     // Gjør det slik at alle some lenker er null til å begynne med.
     $user_social = get_user_socialmedia($user_id);
@@ -122,27 +142,27 @@
 
             <div class="redpro_input_text">
                 <label class="redpro_label" for="first_name">Fornavn<mandatory style="color: red">*</mandatory></label>
-                <input type="text" id="first_name" name="first_name" placeholder="Fornavnet ditt"><br><br>
+                <input type="text" id="first_name" name="first_name" placeholder="Fornavnet ditt" value="<?=$first_name?>"><br><br>
             </div>
 
             <div class="redpro_input_text">
                 <label class="redpro_label" for="last_name">Etternavn<mandatory style="color: red">*</mandatory></label>
-                <input type="text" id="last_name" name="last_name" placeholder="Etternavnet ditt"><br><br>
+                <input type="text" id="last_name" name="last_name" placeholder="Etternavnet ditt" value="<?=$last_name?>"><br><br>
             </div>
 
             <div class="redpro_input_text">
                 <label class="redpro_label" for="stillingstittel">Stillingstittel</label>
-                <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Din stillingstittel"><br><br>
+                <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Din stillingstittel" value="<?=$job_title?>"><br><br>
             </div>
 
             <div class="redpro_email">
                 <label class="redpro_label" for="email">E-post<mandatory style="color: red">*</mandatory></label>
-                <input type="email" id="email" name="email" placeholder="eksempel@epost.no" ><br><br>
+                <input type="email" id="email" name="email" placeholder="eksempel@epost.no" value="<?=$email?>"><br><br>
             </div>
 
             <div class="redpro_input_text">
                 <label class="redpro_label" for="telefon">Telefon<mandatory style="color: red">*</mandatory></label>
-                <input type="tel" id="telefon" name="telefon" placeholder="+47 12345678" ><br><br>
+                <input type="tel" id="telefon" name="telefon" placeholder="+47 12345678" value="<?=$phone?>"><br><br>
             </div>
 
             <!-- Legg til et felt for å slutte i bedrift -->

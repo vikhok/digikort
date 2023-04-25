@@ -20,7 +20,7 @@
                     mkdir($dir, 0777, true);
                 }
                 $status = "<h4><span style='color:green'>
-                        Konto ble registrert i systemet, vi sender deg til loggin siden.
+                        Konto ble registrert i systemet, vi sender deg til innloggingssiden.
                         </span></h4>";
                 header("Refresh: 3; url=login.php");
             } else {

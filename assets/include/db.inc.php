@@ -65,7 +65,7 @@
             $query->execute();
             return $query->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
-            //echo $e->getMessage();
+            echo $e->getMessage();
             return false;
         }
     }
@@ -140,17 +140,17 @@
         }
     }
 
-    function update_user_profile($user_id, $first_name, $last_name, $phone, $email, $job_title, $linkedin, $github, $instagram) {
+    function update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram) {
         global $pdo;
 
         // $sql1 = "UPDATE user SET (first_name, last_name, phone, email, job_title) VALUES (?, ?, ?, ?, ?) WHERE user_id = ?";
-        $sql1 = "UPDATE user SET first_name = ?, last_name = ?, phone = ?, email = ?, job_title = ? WHERE user_id = ?";
+        $sql1 = "UPDATE user SET first_name = ?, last_name = ?, job_title = ?, email = ?, phone = ? WHERE user_id = ?";
         $query1 = $pdo->prepare($sql1);
         $query1->bindParam(1, $first_name, PDO::PARAM_STR);
         $query1->bindParam(2, $last_name, PDO::PARAM_STR);
-        $query1->bindParam(3, $phone, PDO::PARAM_STR);
+        $query1->bindParam(3, $job_title, PDO::PARAM_STR);
         $query1->bindParam(4, $email, PDO::PARAM_STR);
-        $query1->bindParam(5, $job_title, PDO::PARAM_STR);
+        $query1->bindParam(5, $phone, PDO::PARAM_STR);
         $query1->bindParam(6, $user_id, PDO::PARAM_INT);
 
         $pdo->beginTransaction();
