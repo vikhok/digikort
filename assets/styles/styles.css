@@ -17,6 +17,10 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+label {
+    font-family: "Montserrat", sans-serif;
+}
+
 /*
     -------------------------------------------------------
     STYLING GJELDENDE rediger_profil.php
@@ -825,6 +829,10 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
+.name-section, .email-section, .subject-section, #freetext-section {
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+}
+
 .addcompany_form input[type="text"]{
     display: block;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
@@ -838,13 +846,13 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 
 .contact-form input[type="text"]{
     display: block;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
     margin-bottom: 15px;
     font-size: 16px;
     padding: 10px;
     color: black;
     width: 100%;
+    font-family: "Montserrat", sans-serif;
 }
 
 .addcompany_submit button[type="submit"]{
@@ -880,10 +888,11 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     display: block;
     margin-bottom: 20px;
     width: 100%;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight:500;
     font-size: 16px;
+    padding: 10px;
 }
 
 .freetext textarea{
@@ -891,7 +900,7 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     display: block;
     margin-bottom: 20px;
     width: 100%;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight:500;
     font-size: 16px;
