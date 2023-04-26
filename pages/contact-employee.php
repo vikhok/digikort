@@ -9,19 +9,11 @@
 
     $user_id = $_REQUEST["user_id"];
     if($user = get_user($user_id)) {
-        $name = $user->first_name . " " . $user->last_name;
         $email = $user->email;
-        $phone = $user->phone;
-        $job_title = null;
-        $company = null;
     } else {
         $status = "<h4><span style='color:red'>
                 Noe gikk galt, fant ikke bruker i systemet.
                 </span></h4>";
-    }
-    if($user_company = get_user_company($user_id)) {
-        $job_title = $user_company->job_title;
-        $company = $user_company->company_name;
     }
 
     if(isset($_REQUEST["send"])) {

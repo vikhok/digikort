@@ -17,6 +17,10 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+label {
+    font-family: "Montserrat", sans-serif;
+}
+
 /*
     -------------------------------------------------------
     STYLING GJELDENDE rediger_profil.php
@@ -796,7 +800,7 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 ---------------------------------------------------------
 */
 
-.contact-form, .addcompany_form {
+.addcompany_form {
     position: absolute;
     margin: auto;
     color: black;
@@ -811,7 +815,26 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
-#fields, .addcompany_form input[type="text"]{
+.contact-form {
+    position: absolute;
+    margin: auto;
+    color: black;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
+}
+
+.name-section, .email-section, .subject-section, #freetext-section {
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+}
+
+.addcompany_form input[type="text"]{
     display: block;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
@@ -822,7 +845,32 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     width: 100%;
 }
 
-.submit-button, .addcompany_submit button[type="submit"]{
+.contact-form input[type="text"]{
+    display: block;
+    font-style: normal;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding: 10px;
+    color: black;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+}
+
+.addcompany_submit button[type="submit"]{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: 10px auto;
+}
+
+.contactemp-submit button[type='submit'] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -841,7 +889,19 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     display: block;
     margin-bottom: 20px;
     width: 100%;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight:500;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.freetext textarea{
+    resize: none;
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight:500;
     font-size: 16px;
