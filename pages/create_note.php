@@ -30,8 +30,8 @@
 <body>
     <?php banner() ?>
     <main>
-        <h1>Nytt notat:</h1>
-        <form action="" method="POST">
+        <h1 class="h1_create_note">Nytt notat</h1>
+        <form class="form_create_note" action="" method="POST">
             <div class="form-group">
                 <label for="note_subject"><h3>Tittel:</h3></label>
                 <input type="text" name="note_subject" id="note_subject" maxlength="255" required>
@@ -40,7 +40,10 @@
                 <label for="note_body"><h3>Tekst:</h3></label>
                 <textarea name="note_body" id="note_body" rows="4" maxlength="255" required></textarea>
             </div>
-            <br><button type="submit" name="create" style="color:black">Legg til notat</button>
+            <br>
+            <div class="button_create_note">
+                <button  type="submit" name="create" >Legg til notat</button>
+            </div>
         </form>
     </main>
 </body>

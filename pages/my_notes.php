@@ -12,11 +12,11 @@
     if(isset($_POST["submit"]) && isset($_SESSION["user_id"])) {
         $note_id = $_POST["note_id"];
         $note_title = $_POST["note_title"];
-        $note_text = $_POST["note_text"];
+        $note_body = $_POST["note_body"];
 
         // Sjekk om notatet eksisterer før oppdatering
         if($note && $note["user_id"] === $_SESSION["user_id"]) {
-            if(update_note($note_id, $_SESSION["user_id"], $note_title, $note_text)) {
+            if(update_note($user_id, $note_subject, $note_body)) {
                 header("Location: mine-notater.php");
                 exit();
             } else {
@@ -41,7 +41,7 @@
     <main>
         <br>
         <br>
-        <h1>Mine notater</h1>
+        <h1 class="h1_my_notes">Mine notater</h1>
         <?php if($notes):?>
             <section>
                 <?php foreach($notes as $note): ?>
@@ -61,7 +61,7 @@
         <?php endif; ?>
         <div class="button-mine-notater">
             <form action="create_note.php" method="post">
-                <button type="submit" name="create_note" style="color:black">Nytt notat</button>
+                <button type="submit" name="create_note" >Nytt notat</button>
             </form>
         </div>
     </main>
