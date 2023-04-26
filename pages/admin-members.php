@@ -6,6 +6,10 @@
     $user_id = $_REQUEST["user_id"];
     $_SESSION["user"]["last_visited"] = $user_id;
 
+    $employees = $get_all_employees(1);
+
+
+
     
 ?>
 <!DOCTYPE html>
@@ -18,9 +22,15 @@
     <title>Administrer medlemmer</title>
 </head>
 <body>
-    <?php banner($user_id) ?>
-    <div class="administrering_medlemmer">
-        
-    </div>
+    <?php banner() ?>
+    <main>
+        <br>
+        <br>
+        <h1>Ansatte</h1>
+        <?php if($employees):?>
+            <section>
+                <?php foreach ($employees as $employee): ?>
+                    
+            </section>
+    </main>
 </body>
-</html>
