@@ -30,7 +30,7 @@
         $message .= "<h4>Melding: </h4>" . $_REQUEST["message"];
 
         // Attempting to send email:
-        if(sendMail($reciever_email, $reciever_name, $subject, $message, $sender_name)) {
+        if(sendMail($reciever_email, $subject, $message, $reciever_name, $sender_name)) {
             $status = "<h4><span style='color:green'>
                     Epost sendt, du vil få svar fortløpende.
                     </span></h4>";

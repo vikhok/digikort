@@ -448,18 +448,18 @@
     }
 
     
-    function update_password($user_id, $password_hash) {
+    function update_password($email, $password_hash) {
         global $pdo;
-        $sql = "UPDATE user SET pass = ? WHERE user_id = ?";
+        $sql = "UPDATE user SET pass = ? WHERE email = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $password_hash, PDO::PARAM_STR);
-        $query->bindParam(2, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $email, PDO::PARAM_STR);
 
         try {
             $query->execute();
             return true;
         } catch (PDOException $e) {
-            //echo $e->getMessage();
+            echo $e->getMessage();
             return false;
         }
     }
