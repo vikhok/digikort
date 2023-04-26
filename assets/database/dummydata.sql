@@ -33,12 +33,12 @@ INSERT INTO business_card(user_id, company_id, administrator) VALUES
 
 #Testdata note
 INSERT INTO note(user_id, note_subject, note_body, note_date) VALUES 
-    ('1', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('2', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56'),
-    ('3', 'Husk melk', 'Husk å kjøpe melk så ikke min hustru blir sint.', '2023-04-19 12:53:56');
+    ('1', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('2', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('2', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('2', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('2', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('2', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('2', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('2', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56'),
+    ('3', 'TS9xMXpPSmMyYXFBNFYyNm5MMERPUT09OjqT5Hr8ejWqT7ZIQag8NvTN', 'UDUvYTlVQzZSd2dvN2s5Z1ErY2pqQWxDMnF0Z1d6bEhySkJkUm1nWHpuQmpScWQ2N0JlRlJENXFPMVJnalNscmxvZDErOTc4aGJ3bTIvZXR6VkZBUWd6UEZPdzk3TXlLczVXaWNxQ0hJL0E9OjojxBwfuGj2kMW8V2rzfv2o', '2023-04-19 12:53:56');
