@@ -684,99 +684,144 @@ STYLING GJELDENDE mine notater
     -----------------------------------------------------
 */
 
-.Bedrift-siden {
-    position: relative;
+/* Generell stil */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header stil */
+  .header-rediger-bedrift {
     display: flex;
-    flex-flow: row wrap;
     justify-content: center;
-}
-
-.om-og-kontakt-knapp {
-    display: flex;
-    width: 60%;
     align-items: center;
-    flex-direction: row;
-}
-.a_om_oss, .a-kontakt-oss {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    background: gray;
-    flex-flow: row wrap;
-    border-radius: 10px;
-    width: 60%;
+    height: 80px;
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  /* Banner stil */
+  .banner {
+    height: 200px;
+    background-image: url("../assets/images/banner.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /*
+-----------------------------------------------------
+STYLING GJELDENDE rediger-bedrift.php
+-----------------------------------------------------
+
+  
+  /* Bedriftssiden */
+  .Bedrift-siden {
+    max-width: 1000px;
+    margin: auto;
     padding: 20px;
-    margin: 5px;
-    font-size: large;
-}
-
-.Bedrift-knapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    
-}
-
-.veibeskrivelse-knapp {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 380px;
-}
-.a_veibeskrivelse {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    background: gray;
-    border-radius: 10px;
-    width: 60%;
-    padding: 20px;
-    margin: 50px;
-    font-size: large;
-}
-
-.Bedrift-Text {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 66%;
-    font-size: x-large;
-    padding: 0px 200px 10px;
-}
-
-.bedrift-tittel, .bedrift-slogan, .bedrift-setning {
-    margin: 20px;
-}
-
-
-.bedrift_bilde_styling{
+  }
+  
+  .rediger-bilde-rediger-bedrift {
+    text-align: center;
+    margin-bottom: 250px;
+  }
+  
+  .bedrift_bilde_styling {
     max-width: 100%;
     height: auto;
-    padding: 30px 0px 0px;
+    border: 1px solid #ccc;
+  }
+  
+  .bytt-bilde-knapp button {
+    background-color: #000000;
+    color: rgb(7, 7, 7);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .navn-input-rediger-bedrift {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .rediger-beskrivelse-rediger-bedrift {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    height: 200px;
+  }
+  
+  .lagre-knapp {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .contact-form, .addcompany_form {
+    position: absolute;
+    margin: auto;
+    color: black;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
-@media (max-width: 607px) {
-    .Bedrift-siden {
-        justify-content: center;
-    }
-    .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
-        width: 300px;
-    }
-    .bedrift_bilde_styling {
-        padding: 0px 0px 0px;
-    }
-}
-@media (max-width: 1000px) {
-    .Bedrift-Text {
-        width: 600px;
-        padding: 0px 30px 10px;
-    }
+#fields, .addcompany_form input[type="text"]{
+    display: block;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding: 10px;
+    color: black;
+    width: 100%;
 }
 
+.submit-button, .addcompany_submit button[type="submit"]{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: 10px auto;
+}
 
+#freetext textarea{
+    resize: none;
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    font-weight:500;
+    font-size: 16px;
+}
+  
 /*
 -----------------------------------------------------
 STYLING GJELDENDE MAIN-SIDE (AJAX-search)
