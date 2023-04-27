@@ -53,7 +53,7 @@
 <body>
     <?php banner() ?>
     <?php if($note): ?>
-        <form action="" method="post">
+        <form class="form_create_note" action="" method="post">
             <div class="form-group">
                 <label for="note_subject"><h3>Tittel:</h3>
                     <input type="text" name="note_subject" value="<?= $note_subject ?>" maxlength="64" required>
@@ -61,13 +61,21 @@
                 <label for="note_body"><h3>Notat:</h3>
                     <textarea type="text" name="note_body" maxlength="255" required><?= $note_body ?></textarea>
                 </label>
-                <h3>Siste oppdatert:</h3>
-                <p><?= $note_date ?></p>
-                <br><button type="submit" name="update" style="color:black">Oppdater notat</button> 
+                <div class="note_date">
+                    <h3>Sist oppdatert:</h3>
+                    <p><?= $note_date ?></p>
+                </div>
+                <br>
+                <div class="button_create_note">
+                    <button type="submit" name="update">Oppdater notat</button> 
+                </div>
             </div>
         </form>
-        <form action="" method="post">
-            <br><button type="submit" name="delete" style="color:black">Slett notat</button>
+        <form class="form_create_note" action="" method="post">
+            <br>
+            <div class="button_delete_note">
+                <button type="submit" name="delete">Slett notat</button>
+            </div>
         </form>
     <?php endif; ?>
     <?php if(isset($status)) echo $status; ?>
