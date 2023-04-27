@@ -7,10 +7,14 @@
     $user_id = $_SESSION["user"]["user_id"];
     $note_id = $_REQUEST["note_id"];
 
+    // Update note:
     if(isset($_REQUEST["update"])) {
-        $new_note_subject = clean($_REQUEST["note_subject"]);
-        $new_note_body = clean($_REQUEST["note_body"]);
-        if(update_note($note_id, $new_note_subject, $new_note_body)) {
+        $note_subject = clean($_REQUEST["note_subject"]);
+        $note_body = clean($_REQUEST["note_body"]);
+        $encrypted_subject = digicrypt($note_subject, true);
+        $encrypted_body = digicrypt($note_body, true);
+
+        if(update_note($note_id, $encrypted_subject, $encrypted_body)) {
             $status = "<h4><span style='color:green'>
                     Notat ble oppdatert.
                     </span></h4>";
@@ -21,6 +25,7 @@
         }
     }
 
+    // Delete note:
     if(isset($_REQUEST["delete"])) {
         if(delete_note($note_id, $user_id)) {
             header("Location: my_notes.php?user_id=$user_id");
@@ -31,14 +36,17 @@
         }
     }
 
+    // Recieve note from database:
     if($note = get_note($user_id, $note_id)) {
-        $note_subject = $note->note_subject;
-        $note_body = $note->note_body;
+        $encrypted_subject = $note->note_subject;
+        $encrypted_body = $note->note_body;
+        $note_subject = digicrypt($encrypted_subject, false);
+        $note_body = digicrypt($encrypted_body, false);
         $note_date = date("H:i d-m-Y", strtotime($note->note_date));
     } else {
         $status = "<h4><span style='color:red'>
-                Fant ingen notat.
-                </span></h4>";
+            Fant ingen notat.
+            </span></h4>";
     }
 ?>
 <!DOCTYPE html>
@@ -56,10 +64,10 @@
         <form action="" method="post">
             <div class="form-group">
                 <label for="note_subject"><h3>Tittel:</h3>
-                    <input type="text" name="note_subject" value="<?= $note_subject ?>" maxlength="64" required>
+                    <input type="text" name="note_subject" value="<?= $note_subject ?>" maxlength="64" accept-charset="UTF-8" required>
                 </label>
                 <label for="note_body"><h3>Notat:</h3>
-                    <textarea type="text" name="note_body" maxlength="255" required><?= $note_body ?></textarea>
+                    <textarea type="text" name="note_body" maxlength="255" accept-charset="UTF-8" required><?= $note_body ?></textarea>
                 </label>
                 <h3>Siste oppdatert:</h3>
                 <p><?= $note_date ?></p>

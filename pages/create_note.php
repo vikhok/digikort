@@ -6,11 +6,14 @@
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
 
-    // Legg til et nytt notat hvis skjemaet er sendt inn
+    // Create note and push it to the database:
     if(isset($_REQUEST["create"])) {
         $note_subject = clean($_REQUEST["note_subject"]);
         $note_body = clean($_REQUEST["note_body"]);
-        if($note_id = create_note($user_id, $note_subject, $note_body)) {
+        $encrypted_subject = digicrypt($note_subject, true);
+        $encrypted_body = digicrypt($note_body, true);
+
+        if($note_id = create_note($user_id, $encrypted_subject, $encrypted_body)) {
             header("Location: note.php?note_id=$note_id");
         } else {
             $status = "<h4><span style='color:red'>
@@ -34,11 +37,11 @@
         <form action="" method="POST">
             <div class="form-group">
                 <label for="note_subject"><h3>Tittel:</h3></label>
-                <input type="text" name="note_subject" id="note_subject" maxlength="255" required>
+                <input type="text" name="note_subject" id="note_subject" maxlength="64" accept-charset="UTF-8" required>
             </div>
             <div class="form-group">
                 <label for="note_body"><h3>Tekst:</h3></label>
-                <textarea name="note_body" id="note_body" rows="4" maxlength="255" required></textarea>
+                <textarea type="text" name="note_body" id="note_body" rows="4" maxlength="255" accept-charset="UTF-8" required></textarea>
             </div>
             <br><button type="submit" name="create" style="color:black">Legg til notat</button>
         </form>

@@ -7,25 +7,6 @@
     $user_id = $_SESSION["user"]["user_id"];
 
     $notes = get_all_notes($user_id);
-
-    // Oppdater notatet hvis skjemaet er sendt inn
-    if(isset($_POST["submit"]) && isset($_SESSION["user_id"])) {
-        $note_id = $_POST["note_id"];
-        $note_title = $_POST["note_title"];
-        $note_text = $_POST["note_text"];
-
-        // Sjekk om notatet eksisterer før oppdatering
-        if($note && $note["user_id"] === $_SESSION["user_id"]) {
-            if(update_note($note_id, $_SESSION["user_id"], $note_title, $note_text)) {
-                header("Location: mine-notater.php");
-                exit();
-            } else {
-                $error = "Kunne ikke oppdatere notatet";
-            }
-        } else {
-            $error = "Notatet eksisterer ikke eller tilhører ikke den gjeldende brukeren.";
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -48,8 +29,8 @@
                     <div class="notat-boks-wrapper">
                         <div class="notat-boks">
                             <a href="note.php?note_id=<?=$note["note_id"]?>" style="color:black">
-                                <h3><?=$note["note_subject"]?></h3>
-                                <p><?=$note["note_body"]?></p>
+                                <h3><?=digicrypt($note["note_subject"], false)?></h3>
+                                <p><?=digicrypt($note["note_body"], false)?></p>
                                 <p><?=date("H:i d-m-Y", strtotime($note["note_date"]))?></p>
                             </a>
                         </div>
