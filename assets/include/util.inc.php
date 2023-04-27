@@ -7,6 +7,7 @@
         else 
             return $var;
     }
+
     function clean_allow_null($var){
         $var = strip_tags($var);
         $var = htmlentities($var);
@@ -14,15 +15,6 @@
             return null;
         else 
             return $var;
-    }
-
-    function cleanNumber($var){
-        $var = clean($var);
-        return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
-    }
-
-    function validateInt($var){
-        return filter_var($var, FILTER_VALIDATE_INT);
     }
 
     function cleanEmail($var){
@@ -34,8 +26,16 @@
         return filter_var($var, FILTER_VALIDATE_EMAIL);
     }
 
-    // Encryption / decryption:
+    // function cleanNumber($var){
+    //     $var = clean($var);
+    //     return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
+    // }
 
+    // function validateInt($var){
+    //     return filter_var($var, FILTER_VALIDATE_INT);
+    // }
+
+    // Encryption / decryption:
     function digicrypt($data, $boolean) {
         $key = "qkwjdiw239&&jdafweihbrhnan&^%3ggdnawhd4njshjwuuO";
         $encryption_key = base64_decode($key);
