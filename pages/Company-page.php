@@ -32,7 +32,7 @@
             <a class="a-kontakt-oss" href="https://egde.no/kontakt/">Se ansatte</a>
             </div>
             <div class="veibeskrivelse-knapp">
-            <a class="a_veibeskrivelse" href="company_map.php">Veibeskrivelse på kart</a>
+            <a class="a_veibeskrivelse" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
             </div>
             </div>
         </div>

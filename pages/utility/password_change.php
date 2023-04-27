@@ -6,7 +6,9 @@
     if(isset($_SESSION["user"]["user_id"])) {
         $user_id = $_SESSION["user"]["user_id"];
         $email = $_SESSION["user"]["email"];
-        $verification = $_REQUEST["verification"];
+        if(isset($_REQUEST["verification"])) {
+            $verification = $_REQUEST["verification"];
+        } else $verification = null;
 
         if(validate_password_reset($email, $verification)) {
             if(isset($_REQUEST["verify_password_change"])) {
@@ -14,7 +16,7 @@
                 $confrim_password = $_REQUEST["confirm_password"];
                 if($new_password == $confrim_password) {
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT, ["cost" => 10]);
-                    if(update_password($user_id, $password_hash)) {
+                    if(update_password($email, $password_hash)) {
                         delete_validation_code($email);
                         $status = "<h4><span style='color:green'>
                             Passordet ditt har blitt endret, sender deg til din profil.
@@ -38,7 +40,7 @@
         }
     } else {
         $status = "<h4><span style='color:red'>
-            Du må bære logget inn for å bytte passord, vi sender deg til loggin siden.
+            Du må være logget inn for å bytte passord, vi sender deg til loggin siden.
             </span></h4>";
         header("Refresh: 3; url=login.php");
     }
@@ -52,7 +54,7 @@
     <link rel="stylesheet" href="../styling/login.css">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.3.0-web/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <title>Reset passord</title>
+    <title>Bytt passord</title>
 </head>
 <body class="login-page">
     <div class="bytt-passord-form">

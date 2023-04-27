@@ -30,7 +30,7 @@ CREATE TABLE `company` (
 CREATE TABLE `note` (
     `note_id`       int(11)       NOT NULL,
     `user_id`       int(11)       NOT NULL,
-    `note_subject`  varchar(64)   NOT NULL,
+    `note_subject`  varchar(255)  NOT NULL,
     `note_body`     varchar(255)  NOT NULL,
     `note_date`     datetime      NOT NULL
 );

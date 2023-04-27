@@ -92,7 +92,7 @@
 
     function get_location($company_id) {
         global $pdo;
-        $sql = "SELECT address, city, zip FROM location WHERE company_id = ?";
+        $sql = "SELECT address, city, zip FROM company WHERE company_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);
 
@@ -339,14 +339,14 @@
     }
       
 
-    function create_note($user_id, $note_subject, $note_body) {
+    function create_note($user_id, $encrypted_subject, $encrypted_body) {
         global $pdo;
         $sql = "INSERT INTO note (user_id, note_subject, note_body, note_date) VALUES (?, ?, ?, ?)";
         $query = $pdo->prepare($sql);
         $date = date("Y-m-d H:i:s");
         $query->bindParam(1, $user_id, PDO::PARAM_INT);
-        $query->bindParam(2, $note_subject, PDO::PARAM_STR);
-        $query->bindParam(3, $note_body, PDO::PARAM_STR);
+        $query->bindParam(2, $encrypted_subject, PDO::PARAM_STR);
+        $query->bindParam(3, $encrypted_body, PDO::PARAM_STR);
         $query->bindParam(4, $date, PDO::PARAM_STR);
 
         try {
@@ -359,13 +359,13 @@
         }
     }
     
-    function update_note($note_id, $note_subject, $note_body) {
+    function update_note($note_id, $encrypted_subject, $encrypted_body) {
         global $pdo;
         $sql = "UPDATE note SET note_subject = ?, note_body = ?, note_date = ? WHERE note_id = ?";
         $query = $pdo->prepare($sql);
         $date = date("Y-m-d H:i:s");
-        $query->bindParam(1, $note_subject, PDO::PARAM_STR);
-        $query->bindParam(2, $note_body, PDO::PARAM_STR);
+        $query->bindParam(1, $encrypted_subject, PDO::PARAM_STR);
+        $query->bindParam(2, $encrypted_body, PDO::PARAM_STR);
         $query->bindParam(3, $date, PDO::PARAM_STR);
         $query->bindParam(4, $note_id, PDO::PARAM_INT);
        
@@ -448,21 +448,20 @@
     }
 
     
-    function update_password($user_id, $password_hash) {
+    function update_password($email, $password_hash) {
         global $pdo;
-        $sql = "UPDATE user SET pass = ? WHERE user_id = ?";
+        $sql = "UPDATE user SET pass = ? WHERE email = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $password_hash, PDO::PARAM_STR);
-        $query->bindParam(2, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $email, PDO::PARAM_STR);
 
         try {
             $query->execute();
             return true;
         } catch (PDOException $e) {
-            //echo $e->getMessage();
+            echo $e->getMessage();
             return false;
         }
     }
-
 
 ?>

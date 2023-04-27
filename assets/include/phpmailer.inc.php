@@ -18,7 +18,7 @@
         return $mail;
     }
 
-    function sendMail($reciever_email, $reciever_name, $subject, $message, $sender_name = "Digikort") {
+    function sendMail($reciever_email, $subject, $message, $reciever_name = "", $sender_name = "Digikort") {
         try {
             $mail = setBaseMailValues();
             $mail->isHTML(true);

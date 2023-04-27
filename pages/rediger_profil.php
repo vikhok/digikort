@@ -93,8 +93,9 @@
 
     // Change password verification email:
     if(isset($_REQUEST["change_password"])) {
-        delete_validation_code($email);
         $verification = substr(md5(microtime()),rand(0,26),6);
+        
+        delete_validation_code($email);
         if(create_validation_code($email, $verification, 60)) {
             $reciever_name = $user->first_name;
             $reciever_email = $user->email;
@@ -102,10 +103,11 @@
             $valid_to = date('H:i', $timestamp);
             $subject = "Bytt passord";
             $message  = "<h3>Følg lenken for å bytte passordet:</h3>";
-            $message .= "<a href='http://localhost/digikort/pages/utility/change_password.php?verification=$verification'>Klikk her for å bytte passord.</a>"; // Denne må oppdateres om vi går live.
-            $message .= "<p>Lenken er gyldig i til klokken $valid_to.</p>";
+            $message .= "<a href='http://localhost/digikort/pages/utility/password_change.php?verification=$verification'>Klikk her for å bytte passord.</a>"; // Denne må oppdateres om vi går live.
+            $message .= "<p>Lenken er gyldig til klokken $valid_to.</p>";
+            $message .= "<p>Vennligst ta kontakt med oss på digikortpass@gmail.com om dette ikke var deg.</p>";
             
-            if(sendMail($reciever_email, $reciever_name, $subject, $message)) {
+            if(sendMail($reciever_email, $subject, $message, $reciever_name)) {
                 $status = "<h4><span style='color:green'>
                     En link for tilbakestilling av passordet har blitt sendt til $reciever_email.
                     </span></h4>";
