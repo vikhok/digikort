@@ -22,7 +22,7 @@
     <main>
         <br>
         <br>
-        <h1>Mine notater</h1>
+        <h1 class="h1_my_notes">Mine notater</h1>
         <?php if($notes):?>
             <section>
                 <?php foreach($notes as $note): ?>
@@ -42,7 +42,7 @@
         <?php endif; ?>
         <div class="button-mine-notater">
             <form action="create_note.php" method="post">
-                <button type="submit" name="create_note" style="color:black">Nytt notat</button>
+                <button type="submit" name="create_note" >Nytt notat</button>
             </form>
         </div>
     </main>
