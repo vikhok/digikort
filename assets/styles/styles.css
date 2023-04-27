@@ -684,144 +684,87 @@ STYLING GJELDENDE mine notater
     -----------------------------------------------------
 */
 
-/* Generell stil */
 * {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header stil */
-  .header-rediger-bedrift {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    background-color: #2196F3;
-    color: white;
-  }
-  
-  /* Banner stil */
-  .banner {
-    height: 200px;
-    background-image: url("../assets/images/banner.jpg");
-    background-size: cover;
-    background-position: center;
-  }
-  
-  /*
------------------------------------------------------
-STYLING GJELDENDE rediger-bedrift.php
------------------------------------------------------
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  
-  /* Bedriftssiden */
-  .Bedrift-siden {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .rediger-bilde-rediger-bedrift {
-    text-align: center;
-    margin-bottom: 250px;
-  }
-  
+.Bedrift-siden {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rediger-bilde-rediger-bedrift {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bedrift_bilde_styling {
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  color: #555;
+  font-size: 16px;
+  padding: 8px 12px;
+  transition: all 0.3s ease-in-out;
+  width: 40%;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.addcompany_structure {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.addcompany_form label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.addcompany_form input[type="text"],
+.addcompany_form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.addcompany_form textarea {
+  height: 200px;
+}
+
+.addcompany_submit button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
   .bedrift_bilde_styling {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ccc;
-  }
-  
-  .bytt-bilde-knapp button {
-    background-color: #000000;
-    color: rgb(7, 7, 7);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .navn-input-rediger-bedrift {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
   }
-  
-  .rediger-beskrivelse-rediger-bedrift {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    height: 200px;
-  }
-  
-  .lagre-knapp {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .contact-form, .addcompany_form {
-    position: absolute;
-    margin: auto;
-    color: black;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); /* IE 9 */
-    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
-}
 
-#fields, .addcompany_form input[type="text"]{
-    display: block;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    margin-bottom: 15px;
-    font-size: 16px;
-    padding: 10px;
-    color: black;
-    width: 100%;
-}
-
-.submit-button, .addcompany_submit button[type="submit"]{
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin: 10px auto;
-}
-
-#freetext textarea{
-    resize: none;
-    display: block;
-    margin-bottom: 20px;
-    width: 100%;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    font-weight:500;
-    font-size: 16px;
+  .addcompany_form input[type="text"],
+  .addcompany_form textarea {
+    border-radius: 20px;
+  }
 }
   
+
 /*
 -----------------------------------------------------
 STYLING GJELDENDE MAIN-SIDE (AJAX-search)
