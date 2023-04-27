@@ -6,11 +6,8 @@
     $user_id = $_REQUEST["user_id"];
     $_SESSION["user"]["last_visited"] = $user_id;
 
-    $employees = $get_all_employees(1);
+    $employees = get_all_employees(1);
 
-
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -22,15 +19,33 @@
     <title>Administrer medlemmer</title>
 </head>
 <body>
+    
     <?php banner() ?>
     <main>
+        <img class="admin-bedrift-bilde" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
         <br>
         <br>
         <h1>Ansatte</h1>
         <?php if($employees):?>
             <section>
                 <?php foreach ($employees as $employee): ?>
-                    
+                    <div class="Ansatt-wrapper">
+                        <div class="Ansatte">
+                            <a href="index.php?user_id=<?=$employee["user_id"]?>" style="color:black">
+                                <h4><?= $employee["first_name"]. " ". $employee["last_name"]?></h4>
+                                <p><?= $employee ["job_title"]?></p>
+                            </a>
+                        </div>
+                        <div class="admin-buttons">
+                            <button class="member-delete" style="color:grey">Slett</button>
+                            <button class="member-make-admin" style="color:grey">Gi rettigheter</button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </section>
+        <?php else: ?>
+            <p>Finnes ingen ansatte i bedriften</p>
+        <?php endif ?>
     </main>
 </body>
+</html>
