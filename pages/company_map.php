@@ -4,9 +4,8 @@
     require_once("../assets/include/db.inc.php");
 
     session_start();
-    
+    $user_id = $_SESSION["user"]["last_visited"]; 
 
-    $user_id = $_REQUEST["user_id"];
     $company_id = $_REQUEST["company_id"];
     if($location = get_location($company_id)) {
         $address = $location->address;
@@ -28,7 +27,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php banner($user_id, $company_id) ?>
+    <?php banner() ?>
     <?php
         // Build API address
         $full_address = "$address $zip $city";
