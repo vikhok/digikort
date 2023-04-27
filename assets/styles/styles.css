@@ -762,6 +762,104 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     }
 }
 
+/*
+    -----------------------------------------------------
+    STYLING GJELDENDE Bedrift-side.php
+    -----------------------------------------------------
+*/
+
+.Bedrift-siden {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.om-og-kontakt-knapp {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    flex-direction: row;
+}
+.a_om_oss, .a-kontakt-oss {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background: gray;
+    flex-flow: row wrap;
+    border-radius: 10px;
+    width: 60%;
+    padding: 20px;
+    margin: 5px;
+    font-size: large;
+}
+
+.Bedrift-knapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    
+}
+
+.veibeskrivelse-knapp {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 380px;
+}
+.a_veibeskrivelse {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background: gray;
+    border-radius: 10px;
+    width: 60%;
+    padding: 20px;
+    margin: 50px;
+    font-size: large;
+}
+
+.Bedrift-Text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+    font-size: x-large;
+    padding: 0px 200px 10px;
+}
+
+.bedrift-tittel, .bedrift-slogan, .bedrift-setning {
+    margin: 20px;
+}
+
+
+.bedrift_bilde_styling{
+    max-width: 100%;
+    height: auto;
+    padding: 30px 0px 0px;
+}
+
+@media (max-width: 607px) {
+    .Bedrift-siden {
+        justify-content: center;
+    }
+    .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
+        width: 300px;
+    }
+    .bedrift_bilde_styling {
+        padding: 0px 0px 0px;
+    }
+}
+@media (max-width: 1000px) {
+    .Bedrift-Text {
+        width: 600px;
+        padding: 0px 30px 10px;
+    }
+}
+
 
 /*
 -----------------------------------------------------
