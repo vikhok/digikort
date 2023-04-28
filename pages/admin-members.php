@@ -22,23 +22,28 @@
     
     <?php banner() ?>
     <main>
-        <img class="admin-bedrift-bilde" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
+        <div class="admin-bilde">
+            <img class="admin-bedrift-bilde" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
+        </div>
         <br>
         <br>
-        <h1>Ansatte</h1>
+        <h1 class="admin-header">Ansatte</h1>
+        <br>
+        <br>
         <?php if($employees):?>
-            <section>
+            <section class="admin-section">
                 <?php foreach ($employees as $employee): ?>
                     <div class="Ansatt-wrapper">
                         <div class="Ansatte">
-                            <a href="index.php?user_id=<?=$employee["user_id"]?>" style="color:black">
+                            <a class="Ansatt-tekst" href="index.php?user_id=<?=$employee["user_id"]?>">
                                 <h4><?= $employee["first_name"]. " ". $employee["last_name"]?></h4>
                                 <p><?= $employee ["job_title"]?></p>
+                                <p class="ansatt-email"><?= $employee ["email"]?></p>
                             </a>
                         </div>
                         <div class="admin-buttons">
-                            <button class="member-delete" style="color:grey">Slett</button>
-                            <button class="member-make-admin" style="color:grey">Gi rettigheter</button>
+                            <button class="member-delete">Slett</button>
+                            <button class="member-make-admin">Gi rettigheter</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
