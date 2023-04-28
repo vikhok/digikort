@@ -8,7 +8,7 @@
 
     $company_id = $_REQUEST["company_id"];
     if($location = get_location($company_id)) {
-        $address = $location->address;
+        $address = $location->company_address;
         $city = $location->city;
         $zip = $location->zip;
     } else {

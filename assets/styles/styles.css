@@ -34,7 +34,7 @@ label {
 .redpro_label {
       display: block;
       font-size: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       color: #00406b;
       padding-top: 10px;
       font-weight: bold;
@@ -1078,11 +1078,11 @@ STYLING GJELDENDE rediger-bedrift.php
 
 .rediger-bedrift-label {
   display: block;
-  font-weight: bold;
+  font-size: 20px;
   margin-bottom: 10px;
-  width: 300px; /* endre verdien til det du ønsker */
-  height: auto; /* justerer høyden automatisk i forhold til teksten */
-
+  color: #00406b;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
 
@@ -1092,11 +1092,10 @@ STYLING GJELDENDE rediger-bedrift.php
 }
 
 .bedrift_bilde_styling {
-  background-color: #f9f9f9;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  color: #555;
+  /* background-color: #f9f9f9; */
+  /* border: none; */
+  /* border-radius: 20px; */
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
   font-size: 16px;
   padding: 8px 12px;
   transition: all 0.3s ease-in-out;
@@ -1118,9 +1117,10 @@ STYLING GJELDENDE rediger-bedrift.php
   margin-bottom: 10px;
 }
 
+
 .rediger-bedrift_form input[type="text"],
 .rediger-bedrift_form textarea {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -1134,14 +1134,16 @@ STYLING GJELDENDE rediger-bedrift.php
 }
 
 .rediger-bedrift_submit button {
-  background-color: #755dff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-top: 20px;
-  
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    display: block;
+    margin: 10px auto;
 }
 
   .rediger-bedrift_form input[type="text"],

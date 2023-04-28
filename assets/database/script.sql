@@ -22,7 +22,7 @@ CREATE TABLE `company` (
     `company_email` varchar(128)  NOT NULL,
     `descriptions`  varchar(255)  NOT NULL,
     `web_url`       varchar(255)  NOT NULL,
-    `address`       varchar(128)  NOT NULL,
+    `company_address` varchar(128)  NOT NULL,
     `city`          varchar(64)   NOT NULL,
     `zip`           int(4)        NOT NULL
 );
