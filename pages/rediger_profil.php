@@ -8,15 +8,16 @@
     $user_id = $_SESSION["user"]["user_id"];
 
     // Get user information from the database:
-    if($user = get_user_with_socials($user_id)) {
+    if($user = get_user_with_socials_and_company($user_id)) {
         $first_name = $user->first_name ?? null;
         $last_name = $user->last_name ?? null;
         $job_title = $user->job_title ?? null;
         $email = $user->email ?? null;
         $phone = $user->phone ?? null;
-        $linkedin = $user_social->linkedin ?? null;
-        $github = $user_social->github ?? null;
-        $instagram = $user_social->instagram ?? null;
+        $linkedin = $user->linkedin ?? null;
+        $github = $user->github ?? null;
+        $instagram = $user->instagram ?? null;
+        $company_id = $user->company_id ?? false;
 
         // Array as reference of current information state:
         $current_profile = [$first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram];
@@ -132,6 +133,36 @@
                     </span></h4>";
             }
         }
+
+        if(isset($_REQUEST["leave_company"])) {
+            if(leave_company($user_id, $company_id)) {
+                $status = "<h4><span style='color:green'>
+                    Du har forlatt bedriften.
+                    </span></h4>";
+            } else {
+                $status = "<h4><span style='color:red'>
+                    Noe gikk galt, fikk ikke til å forlate bedriften.
+                    </span></h4>";
+            }
+        }
+
+        if(isset($_REQUEST["delete_user"])) {
+            $folder = md5("user." . $user_id);
+            $dir = "../profiles/$folder";
+            if(rrmdir($dir)) {
+                if(delete_user($user_id)) {
+                    header("Location: utility/login.php");
+                } else {
+                    $status = "<h4><span style='color:red'>
+                        Noe gikk galt, fikk ikke slettet profilen 1.
+                        </span></h4>";
+                }
+            } else {
+                $status = "<h4><span style='color:red'>
+                    Noe gikk galt, fikk ikke slettet profilen 2.
+                    </span></h4>";
+            }
+        }
     } else {
         $status = "<h4><span style='color:red'>
             Noe gikk galt, fant ikke bruker i systemet.
@@ -170,19 +201,19 @@
             <div class="redpro_input_text">
                 <label class="redpro_label" for="first_name">Fornavn<mandatory style="color:red">*</mandatory></label>
                 <input type="text" id="first_name" name="first_name" placeholder="Fornavn" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$first_name?>" required 
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp till 64 tegn')"
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
             <div class="redpro_input_text">
                 <label class="redpro_label" for="last_name">Etternavn<mandatory style="color:red">*</mandatory></label>
                 <input type="text" id="last_name" name="last_name" placeholder="Etternavn" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$last_name?>" required 
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp till 64 tegn')"
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
             <div class="redpro_input_text">
                 <label class="redpro_label" for="stillingstittel">Stillingstittel</label>
                 <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Stilling" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$job_title?>" 
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp till 64 tegn')"
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
             <div class="redpro_email">
@@ -220,8 +251,16 @@
                 <button type="submit" name="change_password">Bytt passord</button>
             </div>
         </form>
-        <!-- Legg til et form for å slutte i bedrift -->
-        <!-- Legg til et form for å slette bruker -->
+        <form actuon="" method="post">
+            <div class="leave_company_button">
+                <button type="submit" name="leave_company">Forlat bedrift</button>
+            </div>
+        </form>
+        <form actuon="" method="post">
+            <div class="delete_user_button">
+                <button type="submit" name="delete_user">Slett profil</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>

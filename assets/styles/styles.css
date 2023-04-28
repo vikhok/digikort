@@ -706,6 +706,10 @@ STYLING GJELDENDE index.php (Menyvalg)
     font-weight: bold;
   } 
   
+  .no_notes {
+    display: flex;
+    justify-content: center;
+  }
   
 
 /*

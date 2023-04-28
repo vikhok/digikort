@@ -38,7 +38,7 @@
                 <?php endforeach; ?>
             </section>
         <?php else: ?>
-            <p>Du har ingen notater lagret.</p>
+            <p class="no_notes">Du har ingen notater lagret.</p>
         <?php endif; ?>
         <div class="button-mine-notater">
             <form action="create_note.php" method="post">

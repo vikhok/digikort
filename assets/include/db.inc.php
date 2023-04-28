@@ -70,12 +70,14 @@
         }
     }
 
-    function get_user_with_socials($user_id) {
+    function get_user_with_socials_and_company($user_id) {
         global $pdo;
-        $sql = "SELECT u.first_name, u.last_name, u.job_title, u.email, u.phone, us.linkedin, us.github, us.instagram 
+        $sql = "SELECT u.first_name, u.last_name, u.job_title, u.email, u.phone, us.linkedin, us.github, us.instagram, bc.company_id 
             FROM user AS u 
             LEFT JOIN user_social AS us 
             ON u.user_id = us.user_id 
+            LEFT JOIN business_card AS bc 
+            ON u.user_id = bc.user_id 
             WHERE u.user_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $user_id, PDO::PARAM_INT);
@@ -475,6 +477,37 @@
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $password_hash, PDO::PARAM_STR);
         $query->bindParam(2, $email, PDO::PARAM_STR);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function leave_company($user_id, $company_id) {
+        global $pdo;
+        $sql = "DELETE FROM business_card WHERE user_id = ? AND company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function delete_user($user_id) {
+        global $pdo;
+        $sql = "DELETE FROM user WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
