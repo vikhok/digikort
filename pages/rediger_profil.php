@@ -154,19 +154,17 @@
                     header("Location: utility/login.php");
                 } else {
                     $status = "<h4><span style='color:red'>
-                        Noe gikk galt, fikk ikke slettet profilen 1.
+                        Noe gikk galt, fikk ikke slettet profilen.
                         </span></h4>";
                 }
             } else {
                 $status = "<h4><span style='color:red'>
-                    Noe gikk galt, fikk ikke slettet profilen 2.
+                    Noe gikk galt, fikk ikke slettet profilen.
                     </span></h4>";
             }
         }
     } else {
-        $status = "<h4><span style='color:red'>
-            Noe gikk galt, fant ikke bruker i systemet.
-            </span></h4>";
+        header("Location: utility/error.php?error=500");
     }
 ?>
 <!DOCTYPE html>
