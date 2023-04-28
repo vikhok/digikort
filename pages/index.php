@@ -3,6 +3,7 @@
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/qr.inc.php");
+    require_once("../assets/include/vcard-inc.php");
 
     session_start();
     $user_id = $_REQUEST["user_id"];
@@ -28,7 +29,19 @@
                 Noe gikk galt, fant ikke bruker i systemet.
                 </span></h4>";
     }
-    
+
+    if(isset($_REQUEST["save-contact"])) {
+        if(generate_vcard($user->last_name, $user->first_name, $name, $phone, $email, $dir)) {
+            $status_vcard = "<h4><span style='color:green'>
+            Kontaktopplysninger er blitt lastet ned.
+            </span></h4>";
+        } else {
+            $status_vcard = "<h4><span style='color:red'>
+            Noe gikk galt, finner ikke kontaktopplysninger.
+            </span></h4>";
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -61,16 +74,19 @@
                 <img class="qr-code" src="<?=$dir?>" alt="QR-kode">
             <?php } else { ?>
                 <div class="menu">
-                    <ul>
-                        <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
-                        <li><a href="contact-employee.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
-                        <li><a href="#" class="menu-options"><i class="fa fa-save"></i> Lagre kontakt</a></li>
-                        <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a>                        </li>
-                    </ul>
+                    <form action="" method="post">
+                        <ul>
+                            <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
+                            <li><a href="contact-employee.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
+                            <li><button type="submit" class="menu-options" name="save-contact"><i class="fa fa-save"></i> Lagre kontakt</a></li>
+                            <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a></li>
+                        </ul>
+                    </form>
                 </div>
                 <script src="../assets/include/js/webshare-api.js"></script>
             <?php } ?>
         <?php } else { echo $status; }?>
+        <?php if(isset($status_vcard)) { echo $status_vcard; } ?>
     </div>
     <?php footer("profile"); ?>
 </body>
