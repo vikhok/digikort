@@ -629,7 +629,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 */
 .map {
     width: 100%;
-    height: calc(100vh - 12rem); /* Full height - height of topbar and footer 8+4 */
+    height: 100vh;
 }
 
 /*
