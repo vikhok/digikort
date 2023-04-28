@@ -115,7 +115,7 @@
 
     function get_location($company_id) {
         global $pdo;
-        $sql = "SELECT address, city, zip FROM company WHERE company_id = ?";
+        $sql = "SELECT company_address, city, zip FROM company WHERE company_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);
 
@@ -166,7 +166,6 @@
     function update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram) {
         global $pdo;
 
-        // $sql1 = "UPDATE user SET (first_name, last_name, phone, email, job_title) VALUES (?, ?, ?, ?, ?) WHERE user_id = ?";
         $sql1 = "UPDATE user SET first_name = ?, last_name = ?, job_title = ?, email = ?, phone = ? WHERE user_id = ?";
         $query1 = $pdo->prepare($sql1);
         $query1->bindParam(1, $first_name, PDO::PARAM_STR);
@@ -180,7 +179,6 @@
         try {
             $query1->execute();
 
-            //$sql3 = "UPDATE user_social SET (linkedin, github, instagram) VALUES (?, ?, ?) WHERE user_id = ?";
             $sql3 = "UPDATE user_social SET linkedin = ?, github = ?, instagram = ? WHERE user_id = ?";
             $query3 = $pdo->prepare($sql3);
             $query3->bindParam(1, $linkedin, PDO::PARAM_STR);
@@ -216,13 +214,10 @@
         }
     }
             
-    // DISSE VAR SLETTET MED UHELL:
 
     function get_company_info($company_id) {
         global $pdo;
-        $sql = "SELECT company_id 
-            FROM company 
-            WHERE company_id = ?";
+        $sql = "SELECT company_name, descriptions, web_url, company_address FROM company WHERE company_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);    
 
