@@ -716,7 +716,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 
 .map {
     width: 100%;
-    height: 100vh; /* Full height - height of topbar and footer 8+4 */
+    height: 100vh;
 }
 
 /*
