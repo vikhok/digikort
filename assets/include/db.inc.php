@@ -464,4 +464,24 @@
         }
     }
 
+    function get_all_employees($company_id) {
+        global $pdo;
+        $sql = "SELECT bc.user_id, u.first_name, u.last_name, u.job_title, u.email
+            FROM business_card AS bc 
+            LEFT JOIN user AS u 
+            ON bc.user_id = u.user_id 
+            WHERE bc.company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            $employee_list = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $employee_list;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
 ?>
