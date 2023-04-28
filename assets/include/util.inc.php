@@ -7,6 +7,7 @@
         else 
             return $var;
     }
+
     function clean_allow_null($var){
         $var = strip_tags($var);
         $var = htmlentities($var);
@@ -14,15 +15,6 @@
             return null;
         else 
             return $var;
-    }
-
-    function cleanNumber($var){
-        $var = clean($var);
-        return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
-    }
-
-    function validateInt($var){
-        return filter_var($var, FILTER_VALIDATE_INT);
     }
 
     function cleanEmail($var){
@@ -34,8 +26,16 @@
         return filter_var($var, FILTER_VALIDATE_EMAIL);
     }
 
-    // Encryption / decryption:
+    // function cleanNumber($var){
+    //     $var = clean($var);
+    //     return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
+    // }
 
+    // function validateInt($var){
+    //     return filter_var($var, FILTER_VALIDATE_INT);
+    // }
+
+    // Encryption / decryption:
     function digicrypt($data, $boolean) {
         $key = "qkwjdiw239&&jdafweihbrhnan&^%3ggdnawhd4njshjwuuO";
         $encryption_key = base64_decode($key);
@@ -46,6 +46,25 @@
         } else {
             list($encrypted_data, $iv) = array_pad(explode("::", base64_decode($data), 2), 2, null);
             return openssl_decrypt($encrypted_data, "aes-256-cbc", $encryption_key, 0, $iv);
+        }
+    }
+
+    function rrmdir($dir) {
+        if(is_dir($dir)) {
+            $objects = scandir($dir);
+            foreach ($objects as $object) {
+                if($object != "." && $object != "..") {
+                    if(filetype($dir."/".$object) == "dir") 
+                        rrmdir($dir."/".$object); 
+                    else 
+                        unlink($dir."/".$object);
+                }
+            }
+            reset($objects);
+            if(rmdir($dir)) 
+                return true;
+            else 
+                return false;
         }
     }
 
