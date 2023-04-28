@@ -17,6 +17,10 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+label {
+    font-family: "Montserrat", sans-serif;
+}
+
 /*
     -------------------------------------------------------
     STYLING GJELDENDE rediger_profil.php
@@ -179,6 +183,41 @@ body {
        
     }
 
+    .change_password_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin-right: 20px;
+      }
+
+    .change_password_button button[type="submit"] {
+        background-color: #0b417b;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: uppercase;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      }
+      
+      .change_password_button button[type="submit"]:hover {
+        background-color: #062e58;
+      }
+      
+      .change_password_button button[type="submit"]:active {
+        background-color: #005ecb;
+        box-shadow: none;
+      }
+      
+
 /*
     -----------------------------------------------------
     STYLING GJELDENDE navbar
@@ -225,6 +264,7 @@ header {
     margin-right: auto;
     border-radius: 50%;
     height: 10rem;
+    width: 10rem;
     top: 4rem;
     outline: auto;
 }
@@ -584,18 +624,105 @@ STYLING GJELDENDE index.php (Menyvalg)
 
 /*
     -----------------------------------------------------
+    STYLING GJELDENDE create_note.php
+    -----------------------------------------------------
+*/
+  
+.form_create_note {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  } 
+  
+  .form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+  } 
+
+  .note_date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }  
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 1rem;
+    border: black;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 100rem;
+    font-size: 1rem;
+    margin-bottom: 2,5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+   .button_create_note button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin-bottom: 0,5rem;
+  } 
+
+  .button_delete_note button[type="submit"] {
+    background-color: #e52a09;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin-bottom: 2rem;
+    margin-top: -1rem;
+  }
+  
+  .h1_create_note {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+  } 
+  
+  
+
+/*
+    -----------------------------------------------------
     STYLING GJELDENDE kart
     -----------------------------------------------------
 */
+
 .map {
     width: 100%;
-    height: calc(100vh - 12rem); /* Full height - height of topbar and footer 8+4 */
+    height: 100vh;
 }
 
 /*
------------------------------------------------------
-STYLING GJELDENDE mine notater
------------------------------------------------------
+    -----------------------------------------------------
+    STYLING GJELDENDE mine notater
+    -----------------------------------------------------
 */
 
 
@@ -664,17 +791,24 @@ STYLING GJELDENDE mine notater
     margin-bottom: 1rem;
   }
   
-  .button-mine-notater[type="submit"] {
-    display: block;
-    margin: 0 auto;
-    background-color: #333;
+  .button-mine-notater button[type="submit"] {
+    background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
     border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 420;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: 10px auto;
+}
+
+.h1_my_notes {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 
@@ -795,7 +929,7 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 ---------------------------------------------------------
 */
 
-.contact-form, .addcompany_form {
+.addcompany_form {
     position: absolute;
     margin: auto;
     color: black;
@@ -810,7 +944,26 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
-#fields, .addcompany_form input[type="text"]{
+.contact-form {
+    position: absolute;
+    margin: auto;
+    color: black;
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
+}
+
+.name-section, .email-section, .subject-section, #freetext-section {
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+}
+
+.addcompany_form input[type="text"]{
     display: block;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     font-style: normal;
@@ -821,7 +974,32 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     width: 100%;
 }
 
-.submit-button, .addcompany_submit button[type="submit"]{
+.contact-form input[type="text"]{
+    display: block;
+    font-style: normal;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding: 10px;
+    color: black;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+}
+
+.addcompany_submit button[type="submit"]{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: 10px auto;
+}
+
+.contactemp-submit button[type='submit'] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -840,7 +1018,19 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     display: block;
     margin-bottom: 20px;
     width: 100%;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight:500;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.freetext textarea{
+    resize: none;
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight:500;
     font-size: 16px;
@@ -866,101 +1056,99 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 STYLING GJELDENDE rediger-bedrift.php
 -----------------------------------------------------
 */
-  
-  /* Header */
-  .header-rediger-bedrift {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  /* Rediger bilde */
-  .rediger-bilde-rediger-bedrift {
+  /* Midtstill innhold */
+  .container-rediger-bedrift {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 20px;
-  }
+    align-items: center;
+    height: 100vh;
+    }
+    
+    @media only screen and (max-width: 780px) {
+      .rediger-bedrift-siden {
+        max-width: 30%;
+        padding: 5 px;
+        box-sizing: border-box;
+        transform: translate(-20%, -20%);
+        -ms-transform: translate(-20%, -20%);
+        -webkit-transform: translate(-20%, -20%);
+      }
+    }
+
+.rediger-bedrift-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  width: 300px; /* endre verdien til det du ønsker */
+  height: auto; /* justerer høyden automatisk i forhold til teksten */
+
+}
+
+
+.rediger-bilde-rediger-bedrift {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bedrift_bilde_styling {
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  color: #555;
+  font-size: 16px;
+  padding: 8px 12px;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 15px;
   
-  .bilde-rediger-bedrift {
-    max-width: 100%;
-    height: auto;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
   
-  /* Rediger navn */
-  .rediger-navn-rediger-bedrift {
-    text-align: center;
-    margin-top: 20px;
-  }
+}
+
+.rediger-bedrift_structure {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.rediger-bedrift_form label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.rediger-bedrift_form input[type="text"],
+.rediger-bedrift_form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.rediger-bedrift_form textarea {
+  height: 200px;
+}
+
+.rediger-bedrift_submit button {
+  background-color: #755dff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 20px;
   
-  .navn-input-rediger-bedrift {
-    font-size: 1.5em;
-    padding: 5px;
-    border: none;
-    border-bottom: 2px solid #333;
-    width: 100%;
-    margin-bottom: 10px;
+}
+
+  .rediger-bedrift_form input[type="text"],
+  .rediger-bedrift_form textarea {
+    border-radius: 20px;
   }
-  
-  /* Rediger beskrivelse */
-  .rediger-beskrivelse-rediger-bedrift {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .beskrivelse-input-rediger-bedrift {
-    font-size: 1.2em;
-    padding: 5px;
-    border: none;
-    border-bottom: 2px solid #333;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  /* Rediger URL-er */
-  .rediger-url-rediger-bedrift {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .url-input-rediger-bedrift {
-    font-size: 1.2em;
-    padding: 5px;
-    border: none;
-    border-bottom: 2px solid #333;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  /* Rediger adresse */
-  .rediger-adresse-rediger-bedrift {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .adresse-input-rediger-bedrift {
-    font-size: 1.2em;
-    padding: 5px;
-    border: none;
-    border-bottom: 2px solid #333;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  /* Lagre-knapp */
-  .lagre-knapp-rediger-bedrift {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
+
 
   /* 
   -----------------
@@ -1026,3 +1214,4 @@ STYLING GJELDENDE rediger-bedrift.php
   .ansatt-email {
     color: #0069d9;
   }
+

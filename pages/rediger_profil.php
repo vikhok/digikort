@@ -93,8 +93,9 @@
 
     // Change password verification email:
     if(isset($_REQUEST["change_password"])) {
-        delete_validation_code($email);
         $verification = substr(md5(microtime()),rand(0,26),6);
+        
+        delete_validation_code($email);
         if(create_validation_code($email, $verification, 60)) {
             $reciever_name = $user->first_name;
             $reciever_email = $user->email;
@@ -102,10 +103,11 @@
             $valid_to = date('H:i', $timestamp);
             $subject = "Bytt passord";
             $message  = "<h3>Følg lenken for å bytte passordet:</h3>";
-            $message .= "<a href='http://localhost/digikort/pages/utility/change_password.php?verification=$verification'>Klikk her for å bytte passord.</a>"; // Denne må oppdateres om vi går live.
-            $message .= "<p>Lenken er gyldig i til klokken $valid_to.</p>";
+            $message .= "<a href='http://localhost/digikort/pages/utility/password_change.php?verification=$verification'>Klikk her for å bytte passord.</a>"; // Denne må oppdateres om vi går live.
+            $message .= "<p>Lenken er gyldig til klokken $valid_to.</p>";
+            $message .= "<p>Vennligst ta kontakt med oss på digikortpass@gmail.com om dette ikke var deg.</p>";
             
-            if(sendMail($reciever_email, $reciever_name, $subject, $message)) {
+            if(sendMail($reciever_email, $subject, $message, $reciever_name)) {
                 $status = "<h4><span style='color:green'>
                     En link for tilbakestilling av passordet har blitt sendt til $reciever_email.
                     </span></h4>";
@@ -120,6 +122,64 @@
                 </span></h4>";
         }
     }
+
+    // Upload new image
+    if(isset($_REQUEST["submit_redpro"])) { // Knappen er trykt
+        if(is_uploaded_file($_FILES['upload-file']['tmp_name'])) {
+            $file_type = $_FILES['upload-file']['type']; // Type
+            $file_size = $_FILES['upload-file']['size']; // Bytes
+            $file_size = round($file_size / 1048576, 2); // MB
+
+            $acc_file_types = array("jpg" => "image/jpeg", "png" => "image/png"); // Tillatt filtyper
+            $max_file_size = 200; // MB
+
+            $folder = md5("user." . $user_id);
+            // $dir = "../profiles/" . $folder. "/";
+            $dir = $_SERVER['DOCUMENT_ROOT'] . "/digikort/profiles/" . $folder . "/"; // Definerer mappe
+            if(!file_exists($dir)) { // Om mappen ikke eksisterer
+                if(!mkdir($dir, 0777, true)) { // Lager mappe og gir feilmeding vis det ikke går
+                    die("Kunne ikke opprette mappen: " . $dir);
+                }
+            }
+
+            $error = array(); // Setter opp array som samler inn feilmeldinger
+            if(!in_array($file_type, $acc_file_types)) {
+                $acc_types = implode(", ", array_keys($acc_file_types));
+                $error[] = "Ugyldig filtype, kun $acc_types er tillat.";
+            }
+            if($file_size > $max_file_size) {
+                $error[] = "Filen du valgte er på $file_size MB og overgår grensen på 2 MB.";
+            }
+
+            if(empty($error)) { // Dersom feilmelding-array er tomt
+                if(file_exists($dir . "profile_picture.jpg")) {
+                    unlink($dir . "profile_picture.jpg");
+                    //echo 1;
+                }
+                if(file_exists($dir . "profile_picture.png")) {
+                    unlink($dir . "profile_picture.png");
+                    //echo 2;
+                }
+
+                $suffix = array_search($file_type, $acc_file_types);
+                $filename = "profile_picture." . $suffix;
+                
+                $uploaded_file = move_uploaded_file($_FILES['upload-file']['tmp_name'], $dir . $filename); // Prøver å laste opp fil
+                if(!$uploaded_file) { // Hvis den feiler
+                    $error[] = "Filen kunne ikke lastes opp.";
+                    //echo 3;
+                }
+            }
+        } 
+    }
+    // Display error message(s)
+    if(isset($error) && !empty($error)) { // Skriver ut feilmeldinger om det er noen feil
+        echo "<h4><span style='color:red';>Feilmelding" . (count($error) > 1 ? "er:" : ":") . "</span></h4>";
+        foreach($error as $message) {
+            echo "<span style='color:red';>" . $message . "</span><br>";
+        }
+        //echo 5;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -133,11 +193,11 @@
 <body>
     <?php banner($user_id) ?>
     <div class="rediger_profil">
-        <form class="redpro_form" action="rediger_profil.php" method="POST" enctype="multipart/form-data">
+        <form class="redpro_form" action="" method="POST" enctype="multipart/form-data">
         <?php if(isset($status)) echo $status; ?>
             <div class="profil_bilde">    
-                <label class="redpro_label" for="profile-picture">Endre profilbilde</label>
-                <input type="file" id="profil_bilde" name="profil_bilde" accept="image/*">
+                <label class="redpro_label" for="upload-file">Endre profilbilde</label>
+                <input type="file" id="profil_bilde" name="upload-file">
             </div>
 
             <div class="redpro_input_text">

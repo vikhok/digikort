@@ -11,7 +11,7 @@
         $company_email = clean($_REQUEST["email"]);
         $web_url = clean($_REQUEST["web_url"]);
         $description = clean($_REQUEST["freetext"]);
-        if($company_id = add_company($company_name, $company_email, $web_url, $description)) {
+        if($company_id = add_company($company_name, $company_email, $description, $web_url)) {
             header("Location: Company-page.php?company_id=$company_id");
         } else {
             $status = "<h4><span style='color:red'>
