@@ -192,6 +192,21 @@
             return false;
         }
     }
+
+    function get_company_socialmedia($company_id) {
+        global $pdo;
+        $sql = "SELECT linkedin, github, instagram FROM company_social WHERE company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
             
     // DISSE VAR SLETTET MED UHELL:
 
@@ -202,7 +217,6 @@
             WHERE company_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);
-
 
         try {
             $query->execute();

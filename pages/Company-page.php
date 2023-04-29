@@ -15,7 +15,7 @@
         $company_email = $company_info->company_email;
     } else {
         $status = "<h4><span style='color:red'>
-        Noe gikk galt, fant ikke bedriften i systemet.
+        Noe gikk galt, du er ikke oppført i en bedrift.
         </span></h4>";
     }
 
@@ -33,24 +33,26 @@
 
     <div class="Bedrift-siden">
         <img class="bedrift_bilde_styling" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
-
+    
         <div class="Bedrift-Text">
-            <h2 class="bedrift-tittel"><?=$company_name?></h2>
-            <p class="bedrift-setning"><?=$company_desc?></p>
-            <br>
-            <h3 class="kontaktform">Besøk oss</h3>
-            <p class="bedrift-adresse"><?=$company_address?></p>
-            <p class="bedrift-epost"><?=$company_email?></p>
+            <?php
+                echo "<h2 class='bedrift-tittel'>$company_name</h2>
+                    <p class='bedrift-desc'>$company_desc</p>
+                    <br>    
+                    <h3 class='address-form'>Besøk oss</h3>
+                    <p class='bedrift-adresse'>$company_address</p>
+                    <br>
+                    <h3 class='e-post-form'>Kontakt oss på e-post</h3>
+                    <p class='bedrift-epost'><a href='mailto:$company_email'>$company_email</a></p>"
+            ?>
         </div>
 
         <div class="Bedrift-knapper">
             <div class="om-og-kontakt-knapp">
-                <a class="a_om_oss" href="https://egde.no/om-oss/">Om Oss</a>
-                <a class="a-kontakt-oss" href="https://egde.no/kontakt/">Se ansatte</a>
+                <a class="aboutus-ref" href="https://egde.no/om-oss/">Om oss</a>
+                <a class="employeelist-ref" href="https://egde.no/kontakt/">Se ansatte</a>
+                <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
             </div>
-                <div class="veibeskrivelse-knapp">
-                    <a class="a_veibeskrivelse" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
-                </div>
         </div>
     </div>
 </body>
