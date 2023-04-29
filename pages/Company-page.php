@@ -55,6 +55,7 @@
             </div>
         </div>
     </div>
+    <?php footer($company_id, "company"); ?>
 </body>
 </head>
 </html>
