@@ -1,65 +1,81 @@
 <?php
 require_once("../assets/include/header.inc.php");
 require_once("../assets/include/db.inc.php");
+require_once("../assets/include/util.inc.php");
+require_once("../assets/include/phpmailer.inc.php");
 
 session_start();
 $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
-$user_id = $_SESSION["user"]["user_id"];
 $company_id = $_REQUEST["company_id"];
 
-  if($company_info = get_company_info($company_id)) {
-      $company_name = $company_info->company_name;
-      $descriptions = $company_info->descriptions;
-      $web_url = $company_info->web_url;
-      $company_address = $company_info->company_address;
-  } else {
-      $status = "<h4><span style='color:red'>
-      Noe gikk galt, fant ikke bedrift i systemet.
-      </span></h4>";
-  }
+if($company = get_company_info($company_id)) {
+  $company_name = $company->company_name ?? null;
+  $descriptions = $company->descriptions ?? null;
+  $web_url = $company->web_url ?? null;
+  $company_address = $company->company_address ?? null;
+  
 
+  // Array as reference of current information state:
+  $current_company = [$company_name, $descriptions, $web_url, $company_address];
+
+  // Oppdaterer tabellen med nye endringer gjort av bruker.
   if(isset($_REQUEST["submit"])) {
-    $company_name = ($_REQUEST["company_name"]);
-    $descriptions = ($_REQUEST["descriptions"]);
-    $web_url = ($_REQUEST["web_url"]);
-    $company_address = ($_REQUEST["company_address"]);
+      $company_name = ucfirst(strtolower(clean($_REQUEST["company_name"])));
+      $descriptions = ucfirst(strtolower(clean($_REQUEST["descriptions"])));
+      $web_url = clean_allow_null($_REQUEST["web_url"]);
+      $company_address = strtolower($_REQUEST["company_address"]);
 
-    $updated_company = [$company_name, $descriptions, $web_url, $company_address];
+      // Array to compare against the current information state:
+      $current_company = [$company_name, $descriptions, $web_url, $company_address];
 
-    if($company_name && $descriptions && $web_url && $company_address) {
-      if(edit_company($company_name, $descriptions, $web_url, $company_address)) {
-        $status = "<h4><span style='color:green'>
-                Profil ble endret.
-                </span></h4>";
-            } else {
-                $status = "<h4><span style='color:red'>
-                Noe gikk galt, endringer ble ikke foretatt.
-                </span></h4>";
+      // Check that all variables are accepted:
+      if(!in_array(false, $current_company, true)) {
+          // Check if changes were made to the profile or profile picture:
+          if($current_company != $current_company || is_uploaded_file($_FILES["upload-file"]["tmp_name"])) {
+              $error = array(); // Setter opp array som samler inn feilmeldinger
+              if($_FILES["upload-file"]["tmp_name"] != null) {
+                  $file_type = $_FILES["upload-file"]["type"]; // Type
+                  $file_size = $_FILES["upload-file"]["size"]; // Bytes
+                  $file_size = round($file_size / 1048576, 2); // MB
+                  $acc_file_types = array("jpg" => "image/jpeg", "png" => "image/png"); // Tillatt filtyper
+                  $max_file_size = 2; // MB
+      
+                  $folder = md5("user." . $user_id);
+                  $dir = $_SERVER["DOCUMENT_ROOT"] . "/digikort/Companies" . $folder . "/"; // Definerer mappe
+                  if(!file_exists($dir)) { // Om mappen ikke eksisterer
+                      if(!mkdir($dir, 0777, true)) { // Lager mappe og gir feilmeding vis det ikke går
+                          die("Kunne ikke opprette mappen: " . $dir);
+                      }
+                  }
+      
+                  if(!in_array($file_type, $acc_file_types)) {
+                      $acc_types = implode(", ", array_keys($acc_file_types));
+                      $error[] = "Ugyldig filtype, kun $acc_types er tillat.";
+                  }
+                  if($file_size > $max_file_size) {
+                      $error[] = "Filen du valgte er på $file_size MB og overgår grensen på 2 MB.";
+                  }
+      
+                  if(empty($error)) {
+                      if(file_exists($dir . "profile_picture.jpg")) {
+                          unlink($dir . "profile_picture.jpg");
+                      }
+                      if(file_exists($dir . "profile_picture.png")) {
+                          unlink($dir . "profile_picture.png");
+                      }
+                      $suffix = array_search($file_type, $acc_file_types);
+                      $filename = "profile_picture." . $suffix;
+                      
+                      $uploaded_file = move_uploaded_file($_FILES["upload-file"]["tmp_name"], $dir . $filename); // Prøver å laste opp fil
+                      if(!$uploaded_file) { // Hvis den feiler
+                          $error[] = "Filen kunne ikke lastes opp.";
+                      }
+                  }
+              }
             }
-        } else {
-            $status = "<h4><span style='color:red'>
-            Noe gikk galt, endringer ble ikke foretatt i det større bildet.
-            </span></h4>";
+          }
         }
-     }
-
-  $company_info = get_company_info($company_id);
-  $company_name = null;
-  $descriptions = null;
-  $web_url = null;
-  $company_address = null;
-
-  if($company_info) {
-    $company_name = $company_info->company_name ?? '';
-    $descriptions = $company_info->descriptions ?? '';
-    $web_url = $company_info->web_url ?? '';
-    $company_address = $company_info->company_address ?? '';
-  } else {
-    // Endringer behøvs
-    $failed = "<h4><span style='color:red'>
-    Noe gikk galt. kjipt.
-    </span></h4>";
-}
+      }
 
 ?>
 <!DOCTYPE html>
@@ -95,10 +111,10 @@ $company_id = $_REQUEST["company_id"];
             <input type="text" id="web_url" name="web_url" placeholder="bedrift.no" value="<?=$web_url?>" required><br></br>
           </div>
 
-          <div class="redpro_input_text" for="employee_url">
+          <!-- <div class="redpro_input_text" for="employee_url">
             <label class="rediger-bedrift-label" for="url">Ansatte URL</label><br>
             <input type="text" id="employee_url" name="employee_url" placeholder="bedrift.no/kontakt" required><br></br>
-          </div>
+          </div> -->
 
           <div class="redpro_input_text" for="address">
             <label class="rediger-bedrift-label" for="name">Addresse</label><br><br>
