@@ -88,6 +88,6 @@
         <?php } else { echo $status; }?>
         <?php if(isset($status_vcard)) { echo $status_vcard; } ?>
     </div>
-    <?php footer("profile"); ?>
+    <?php footer($user_id, "user"); ?>
 </body>
 </html>
