@@ -3,8 +3,7 @@
     require_once("../assets/include/db.inc.php");
 
     session_start();
-    $user_id = $_REQUEST["user_id"];
-    $_SESSION["user"]["last_visited"] = $user_id;
+   $company_id = $_REQUEST["company_id"];
 
     $employees = get_all_employees(1);
 
