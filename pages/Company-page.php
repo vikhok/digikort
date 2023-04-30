@@ -54,8 +54,9 @@
                 <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
             </div>
         </div>
+        <?php footer($company_id, "company");?>
     </div>
-    <?php footer($company_id, "company"); ?>
+    <?php if(isset($status)){ echo $status; }?>
 </body>
 </head>
 </html>
