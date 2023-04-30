@@ -8,6 +8,18 @@
 
     $employees = get_all_employees(1);
 
+    if(isset($_REQUEST["member-delete"])) {
+        if(leave_company($user_id, $company_id)) {
+            $status = "<h4><span style='color:green'>
+                Bruker har blitt fjernet fra bedriften.
+                </span></h4>";
+        } else {
+            $status = "<h4><span style='color:red'>
+                Noe gikk galt, fikk ikke til å fjerne bruker fra bedriften.
+                </span></h4>";
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -41,10 +53,12 @@
                                 <p class="ansatt-email"><?= $employee ["email"]?></p>
                             </a>
                         </div>
-                        <div class="admin-buttons">
-                            <button class="member-delete">Slett</button>
-                            <button class="member-make-admin">Gi rettigheter</button>
-                        </div>
+                        <form action="" method="Post">
+                            <div class="admin-buttons">
+                                <button type="submit" class="member-delete" name="member-delete">Slett</button>
+                                <button type="submit" class="member-make-admin">Gi rettigheter</button>
+                            </div>
+                        </form>
                     </div>
                 <?php endforeach; ?>
             </section>
