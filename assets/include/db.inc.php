@@ -213,13 +213,30 @@
             return false;
         }
     }
+
+    function get_company_socialmedia($company_id) {
+        global $pdo;
+        $sql = "SELECT linkedin, github, instagram FROM company_social WHERE company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
             
 
     function get_company_info($company_id) {
         global $pdo;
-        $sql = "SELECT company_name, descriptions, web_url, company_address FROM company WHERE company_id = ?";
+        $sql = "SELECT company_name, descriptions, web_url, company_address, company_email, city, zip
+            FROM company 
+            WHERE company_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $company_id, PDO::PARAM_INT);    
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
