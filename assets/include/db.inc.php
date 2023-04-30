@@ -230,14 +230,15 @@
         }
     }
 
-    function edit_company($company_id, $company_name, $descriptions, $web_url) {
+    function edit_company($company_id, $company_name, $descriptions, $web_url, $company_address) {
         global $pdo;
-        $sql1 = "UPDATE company SET (company_name, descriptions, web_url) VALUES (?, ?, ?) WHERE company_id = ?";
+        $sql1 = "UPDATE company SET (company_name, descriptions, web_url, company_address) VALUES (?, ?, ?,?) WHERE company_id = ?";
         $query1 = $pdo->prepare($sql1);
         $query1->bindParam(1, $company_name, PDO::PARAM_STR);
         $query1->bindParam(2, $descriptions, PDO::PARAM_STR);
         $query1->bindParam(3, $web_url, PDO::PARAM_STR);
-        $query1->bindParam(4, $company_id, PDO::PARAM_INT);
+        $query1->bindParam(4, $company_address, PDO::PARAM_STR);
+        $query1->bindParam(5, $company_id, PDO::PARAM_INT);
 
             try{
                 $query1->execute();

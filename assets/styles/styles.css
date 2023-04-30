@@ -118,7 +118,7 @@ label {
       padding: 10px 20px;
       font-size: 20px;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin-bottom: 2,5rem;
       display: block;
       margin: 10px auto;
     }
@@ -166,6 +166,7 @@ label {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 5rem;
     }
   
     .profil_bilde input[type="file"] {
@@ -187,12 +188,12 @@ label {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        margin-right: 20px;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        margin-bottom: 0,5rem;
       }
 
     .change_password_button button[type="submit"] {

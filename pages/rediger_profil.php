@@ -252,12 +252,12 @@
             </div>
         </form>
         <form actuon="" method="post">
-            <div class="leave_company_button">
+            <div class="change_password_button">
                 <button type="submit" name="leave_company">Forlat bedrift</button>
             </div>
         </form>
         <form actuon="" method="post">
-            <div class="delete_user_button">
+            <div class="change_password_button">
                 <button type="submit" name="delete_user">Slett profil</button>
             </div>
         </form>
