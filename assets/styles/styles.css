@@ -34,7 +34,7 @@ label {
 .redpro_label {
       display: block;
       font-size: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       color: #00406b;
       padding-top: 10px;
       font-weight: bold;
@@ -453,7 +453,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     -----------------------------------------------------
 */
 
-.container-notat {
+.container-notat  {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -705,6 +705,10 @@ STYLING GJELDENDE index.php (Menyvalg)
     font-weight: bold;
   } 
   
+  .no_notes {
+    display: flex;
+    justify-content: center;
+  }
   
 
 /*
@@ -729,7 +733,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     box-sizing: border-box;
   }
   
-  .body_mine-notater {
+  /* .body_mine-notater {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -768,16 +772,16 @@ STYLING GJELDENDE index.php (Menyvalg)
     width: 100%;
     max-width: 600px;
     margin-top: 2rem;
-  }
+  } */
   
-  .notat-boks-wrapper {
+  .notat-boks-wrapper, .Ansatt-wrapper {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-bottom: 1rem;
   }
   
-  .notat-boks {
+  .notat-boks, .Ansatte {
     padding: 1rem;
     background-color: #f2f2f2;
     border-radius: 5px;
@@ -1076,11 +1080,11 @@ STYLING GJELDENDE rediger-bedrift.php
 
 .rediger-bedrift-label {
   display: block;
-  font-weight: bold;
+  font-size: 20px;
   margin-bottom: 10px;
-  width: 300px; /* endre verdien til det du ønsker */
-  height: auto; /* justerer høyden automatisk i forhold til teksten */
-
+  color: #00406b;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
 
@@ -1090,11 +1094,10 @@ STYLING GJELDENDE rediger-bedrift.php
 }
 
 .bedrift_bilde_styling {
-  background-color: #f9f9f9;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  color: #555;
+  /* background-color: #f9f9f9; */
+  /* border: none; */
+  /* border-radius: 20px; */
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
   font-size: 16px;
   padding: 8px 12px;
   transition: all 0.3s ease-in-out;
@@ -1115,9 +1118,10 @@ STYLING GJELDENDE rediger-bedrift.php
   margin-bottom: 10px;
 }
 
+
 .rediger-bedrift_form input[type="text"],
 .rediger-bedrift_form textarea {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -1131,14 +1135,16 @@ STYLING GJELDENDE rediger-bedrift.php
 }
 
 .rediger-bedrift_submit button {
-  background-color: #755dff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-top: 20px;
-  
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    display: block;
+    margin: 10px auto;
 }
 
   .rediger-bedrift_form input[type="text"],
@@ -1146,4 +1152,69 @@ STYLING GJELDENDE rediger-bedrift.php
     border-radius: 20px;
   }
 
+
+  /* 
+  -----------------
+  STYLING GJELDENDE admin-members.php
+  -----------------
+  */
+
+  .admin-bilde {
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+  .admin-bedrift-bilde {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .admin-header {
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+  .Ansatt-wrapper {
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+  .admin-section {
+    display: flex;
+    position: relative;
+    flex-flow: column;
+    max-width: 100%;
+  }
+
+  .admin-buttons {
+    display: flex;
+    padding: 5px 5px 5px;
+    flex-flow: column;
+  }
+
+  .member-delete, .member-make-admin {
+    position: relative;
+    padding: 5px;
+    margin: 5px;
+    background-color:  rgb(232, 234, 249);
+    color: #01233D;
+    border-radius: 5px;
+    border-color: #99A8BF;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  .ansatte {
+    background-color: rgb(232, 234, 249);
+  }
+
+  .Ansatt-tekst {
+    color: #01233D;
+    font-size: large;
+  }
+
+  .ansatt-email {
+    color: #0069d9;
+  }
 

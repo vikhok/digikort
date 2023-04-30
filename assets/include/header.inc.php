@@ -14,7 +14,7 @@
             if(!file_exists($dir)) {
                 $dir = "../profiles/" . $folder . "/profile_picture.jpg";
                 if(!file_exists($dir)){
-                $dir = "../profiles/stockprofile/profile_picture.png";
+                    $dir = "../profiles/stockprofile/profile_picture.png";
                 }
             }
             echo "<img class='profile_picture' src='$dir' alt='Profile picture'>";

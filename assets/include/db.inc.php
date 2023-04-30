@@ -70,6 +70,29 @@
         }
     }
 
+    function get_user_with_socials_and_company($user_id) {
+        global $pdo;
+        $sql = "SELECT u.first_name, u.last_name, u.job_title, u.email, u.phone, us.linkedin, us.github, us.instagram, bc.company_id 
+            FROM user AS u 
+            LEFT JOIN user_social AS us 
+            ON u.user_id = us.user_id 
+            LEFT JOIN business_card AS bc 
+            ON u.user_id = bc.user_id 
+            WHERE u.user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
+
     function get_user_company($user_id) {
         global $pdo;
         $sql = "SELECT bc.user_id, bc.company_id, bc.administrator, 
@@ -92,7 +115,7 @@
 
     function get_location($company_id) {
         global $pdo;
-        $sql = "SELECT address, city, zip FROM company WHERE company_id = ?";
+        $sql = "SELECT company_address, city, zip FROM company WHERE company_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);
 
@@ -143,7 +166,6 @@
     function update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram) {
         global $pdo;
 
-        // $sql1 = "UPDATE user SET (first_name, last_name, phone, email, job_title) VALUES (?, ?, ?, ?, ?) WHERE user_id = ?";
         $sql1 = "UPDATE user SET first_name = ?, last_name = ?, job_title = ?, email = ?, phone = ? WHERE user_id = ?";
         $query1 = $pdo->prepare($sql1);
         $query1->bindParam(1, $first_name, PDO::PARAM_STR);
@@ -157,7 +179,6 @@
         try {
             $query1->execute();
 
-            //$sql3 = "UPDATE user_social SET (linkedin, github, instagram) VALUES (?, ?, ?) WHERE user_id = ?";
             $sql3 = "UPDATE user_social SET linkedin = ?, github = ?, instagram = ? WHERE user_id = ?";
             $query3 = $pdo->prepare($sql3);
             $query3->bindParam(1, $linkedin, PDO::PARAM_STR);
@@ -208,7 +229,6 @@
         }
     }
             
-    // DISSE VAR SLETTET MED UHELL:
 
     function get_company_info($company_id) {
         global $pdo;
@@ -479,4 +499,54 @@
         }
     }
 
+    function leave_company($user_id, $company_id) {
+        global $pdo;
+        $sql = "DELETE FROM business_card WHERE user_id = ? AND company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+        $query->bindParam(2, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function get_all_employees($company_id) {
+        global $pdo;
+        $sql = "SELECT bc.user_id, u.first_name, u.last_name, u.job_title, u.email
+            FROM business_card AS bc 
+            LEFT JOIN user AS u 
+            ON bc.user_id = u.user_id 
+            WHERE bc.company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            $employee_list = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $employee_list;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function delete_user($user_id) {
+        global $pdo;
+        $sql = "DELETE FROM user WHERE user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 ?>
