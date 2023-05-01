@@ -44,21 +44,21 @@
         <?php if($employees):?>
             <section class="admin-section">
                 <?php foreach ($employees as $employee): ?>
-                    <div class="Ansatt-wrapper">
-                        <div class="Ansatte">
-                            <a class="Ansatt-tekst" href="index.php?user_id=<?=$employee["user_id"]?>">
-                                <h4><?= $employee["first_name"]. " ". $employee["last_name"]?></h4>
-                                <p><?= $employee ["job_title"]?></p>
-                                <p class="ansatt-email"><?= $employee ["email"]?></p>
-                            </a>
-                        </div>
-                        <form action="" method="Post">
-                            <div class="admin-buttons">
-                                <button type="submit" class="member-delete" name="member-delete">Slett</button>
-                                <button type="submit" class="member-make-admin">Gi rettigheter</button>
+                    <form action="" inpuAt type="hidden" name="user_id" value="<?=$user_id?>">
+                        <div class="Ansatt-wrapper">
+                            <div class="Ansatte">
+                                <a class="Ansatt-tekst" href="index.php?user_id=<?=$employee["user_id"]?>">
+                                    <h4><?= $employee["first_name"]. " ". $employee["last_name"]?></h4>
+                                    <p><?= $employee ["job_title"]?></p>
+                                    <p class="ansatt-email"><?= $employee ["email"]?></p>
+                                </a>
                             </div>
-                        </form>
-                    </div>
+                                <div class="admin-buttons">
+                                    <button type="submit" class="member-delete" name="member-delete">Slett</button>
+                                    <button type="submit" class="member-make-admin">Gi rettigheter</button>
+                               </div>
+                        </div>
+                    </form>
                 <?php endforeach; ?>
             </section>
         <?php else: ?>
