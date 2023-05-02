@@ -11,12 +11,10 @@
         $company_name = $company_info->company_name;
         $company_desc = $company_info->descriptions;
         $company_url = $company_info->web_url;
-        $company_address = $company_info->company_address . ", " . $company_info->zip . " " . $company_city = $company_info->city;
+        $company_address = $company_info->company_address . ", " . $company_info->zip . " " . $company_info->city;
         $company_email = $company_info->company_email;
     } else {
-        $status = "<h4><span style='color:red'>
-        Noe gikk galt, du er ikke oppført i en bedrift.
-        </span></h4>";
+        header("Location: utility/"); //FIX ME LATER
     }
 
 ?>
@@ -30,10 +28,9 @@
 <title>Bedrift</title>
 <body>
     <?php banner(false, $company_id) ?>
-
+    <?php if($company_info): ?>
     <div class="Bedrift-siden">
         <img class="bedrift_bilde_styling" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
-    
         <div class="Bedrift-Text">
             <?php
                 echo "<h2 class='bedrift-tittel'>$company_name</h2>
@@ -54,6 +51,7 @@
                 <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
             </div>
         </div>
+        <?php endif; ?>
         <?php footer($company_id, "company");?>
     </div>
     <?php if(isset($status)){ echo $status; }?>

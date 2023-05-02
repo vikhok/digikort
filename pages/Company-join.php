@@ -44,7 +44,7 @@
     <title>Bli med i en bedrift</title>
 </head>
 <body>
-    <?php banner(true, true)?>
+    <?php banner($user_id, true)?>
     <div class="bli_med_bedrift">
 
 <form class="bli_med_bedrift_form" action="" method="POST">

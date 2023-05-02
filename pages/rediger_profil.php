@@ -191,7 +191,7 @@
             </div>
             <div class="redpro_input_text">
                 <label class="redpro_label" for="stillingstittel">Stillingstittel</label>
-                <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Stilling" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$job_title?>" 
+                <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Stilling" pattern="[A-Za-zÆæØøÅå'- ]{1,64}" value="<?=$job_title?>" 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
