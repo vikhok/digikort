@@ -118,7 +118,7 @@ label {
       padding: 10px 20px;
       font-size: 20px;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin-bottom: 2,5rem;
       display: block;
       margin: 10px auto;
     }
@@ -166,6 +166,7 @@ label {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 5rem;
     }
   
     .profil_bilde input[type="file"] {
@@ -187,12 +188,12 @@ label {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        margin-right: 20px;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        margin-bottom: 0,5rem;
       }
 
     .change_password_button button[type="submit"] {
@@ -225,7 +226,6 @@ label {
 */
 
 li .nav-item, a, button {
-    /* font-family: "Montserrat", sans-serif; */
     font-weight: 500;
     font-size: 16px;
     color: white;
@@ -835,17 +835,21 @@ STYLING GJELDENDE index.php (Menyvalg)
     align-items: center;
     flex-direction: row;
 }
-.a_om_oss, .a-kontakt-oss {
+.aboutus-ref, .employeelist-ref, .a-map-ref {
     position: relative;
     display: flex;
-    justify-content: center;
     background: gray;
     flex-flow: row wrap;
     border-radius: 10px;
     width: 60%;
     padding: 20px;
-    margin: 5px;
+    margin: 20px;
     font-size: large;
+}
+
+.bedrift-epost a {
+    color: black;
+    font-size: 24px;
 }
 
 .Bedrift-knapper {
@@ -855,7 +859,6 @@ STYLING GJELDENDE index.php (Menyvalg)
     flex-direction: column;
     justify-content: center;
     width: 50%;
-    
 }
 
 .veibeskrivelse-knapp {
@@ -885,13 +888,8 @@ STYLING GJELDENDE index.php (Menyvalg)
     padding: 0px 200px 10px;
 }
 
-.bedrift-tittel, .bedrift-slogan, .bedrift-setning {
-    margin: 20px;
-}
-
-
 .bedrift_bilde_styling{
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     padding: 30px 0px 0px;
 }
@@ -902,6 +900,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     }
     .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
         width: 300px;
+        display: block;
     }
     .bedrift_bilde_styling {
         padding: 0px 0px 0px;
@@ -1105,7 +1104,6 @@ STYLING GJELDENDE rediger-bedrift.php
   transition: all 0.3s ease-in-out;
   width: 100%;
   margin-bottom: 15px;
-  margin-top: 15px;
   
   
 }
