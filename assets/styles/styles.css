@@ -416,10 +416,8 @@ STYLING GJELDENDE index.php (Menyvalg)
 }
 
 .menu {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 25pt;
     position: relative;
-    font-style: bold;
     width: 15rem;
     display: flex;
     align-items: center ;
@@ -431,11 +429,16 @@ STYLING GJELDENDE index.php (Menyvalg)
     list-style-type: none;
 }
 
+.menu button{
+    border: none;
+    background-color: transparent;
+}
+
 .menu-options{
     color: black;
     font-size: 15pt;
     justify-content: center;
-    margin: 2rem;
+    cursor: pointer;
 }
 
 @media(max-width:768px) {
