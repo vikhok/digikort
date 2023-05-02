@@ -42,18 +42,7 @@
                 if($updated_profile != $current_profile || is_uploaded_file($_FILES["upload-file"]["tmp_name"])) {
                     if($_FILES["upload-file"]["tmp_name"] != null) {
                         $upload_image = upload_image($user_id, "user"); // returns array which may contain errors
-                        if(empty($upload_image)) {
-                            if(update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram)) {
-                                $status = "<h4><span style='color:green'>
-                                    Profilen ble endret.
-                                    </span></h4>";
-                            } else {
-                                $terminate = true;
-                                $status = "<h4><span style='color:red'>
-                                    Noe gikk galt, endringer av profil ble ikke foretatt.
-                                    </span></h4>";
-                            }
-                        } else {
+                        if(!empty($upload_image)) {
                             $terminate = true;
                             $status = "<h4><span style='color:red'>
                                 Noe gikk galt, endringer av profil ble ikke foretatt.
@@ -78,7 +67,7 @@
                 }
             } else {
                 $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer av profil ble ikke foretatt XDLMAO.
+                    Noe gikk galt, endringer av profil ble ikke foretatt.
                     </span></h4>";
             }
         }
