@@ -4,21 +4,26 @@
     require_once("../assets/include/util.inc.php");
 
     session_start();
-
     $user_id = $_SESSION["user"]["user_id"];
-    if(isset($_REQUEST["submit"])){
+    
+    if(isset($_REQUEST["submit"])) {
         $company_name = clean($_REQUEST["company_name"]);
-        $company_email = clean($_REQUEST["email"]);
-        $web_url = clean($_REQUEST["web_url"]);
-        $description = clean($_REQUEST["freetext"]);
-        if($company_id = add_company($company_name, $company_email, $description, $web_url)) {
+        $company_desc = ucfirst(clean($_REQUEST["company_desc"]));
+        $company_email = strtolower(validateEmail(cleanEmail($_REQUEST["email"])));
+        $company_url = strtolower(clean_allow_null($_REQUEST["company_url"]));
+        $company_address = ucwords(strtolower(clean($_REQUEST["company_address"])));
+        $company_city = ucwords(strtolower(clean_allow_null($_REQUEST["company_city"])));
+        $company_zip = clean_allow_null($_REQUEST["company_zip"]);
+        $company_pass = clean($_REQUEST["company_pass"]);
+        
+        if($company_id = add_company($company_name, $company_email, $company_desc, $company_url, $company_address, $company_city, $company_zip, $company_pass)) {
             header("Location: Company-page.php?company_id=$company_id");
         } else {
             $status = "<h4><span style='color:red'>
                 Noe gikk galt, endringer ble ikke foretatt.
                 </span></h4>";
+        }
     }
-}
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +37,7 @@
 </head>
 <body>
 
-<?php banner($user_id, false) ?>
+<?php banner() ?>
 <div class="addcompany_structure" id="fields">
     <form class="addcompany_form" action="#" method="POST" enctype="multipart/form-data">
         <section class="company_name" for="company_name">
@@ -58,11 +63,7 @@
         <section class="addcompany_submit">    
             <button type="submit" name="submit">Opprett bedrift</button>
         </section>
-        <?php
-            if(isset($status)) {
-                echo $status;
-            }
-        ?>
+        <?php if(isset($status)) echo $status; ?>
     </form>
 </div>
 </body>

@@ -302,14 +302,19 @@
         }
     }
 
-    function add_company($company_name, $company_email, $company_desc, $company_url){
+    function add_company($company_name, $company_email, $company_desc, $company_url, $company_address, $company_city, $company_zip, $company_pass){
         global $pdo;
-        $sql = "INSERT INTO company (company_name, company_email, company_desc, company_url) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO company (company_name, company_email, company_desc, company_url, company_address, company_city, company_zip, company_pass) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_name, PDO::PARAM_STR);
         $query->bindParam(2, $company_email, PDO::PARAM_STR);
         $query->bindParam(3, $company_desc, PDO::PARAM_STR);
         $query->bindParam(4, $company_url, PDO::PARAM_STR);
+        $query->bindParam(5, $company_address, PDO::PARAM_STR);
+        $query->bindParam(6, $company_city, PDO::PARAM_STR);
+        $query->bindParam(7, $company_zip, PDO::PARAM_INT);
+        $query->bindParam(8, $company_pass, PDO::PARAM_STR);
         
         try {
             $query->execute();

@@ -22,7 +22,7 @@
 
         // Oppdaterer tabellen med nye endringer gjort av bruker.
         if(isset($_REQUEST["submit"])) {
-            $company_name = ucfirst(strtolower(clean($_REQUEST["company_name"])));
+            $company_name = clean($_REQUEST["company_name"]);
             $company_desc = ucfirst(clean($_REQUEST["company_desc"]));
             $company_email = strtolower(validateEmail(cleanEmail($_REQUEST["email"])));
             $company_url = strtolower(clean_allow_null($_REQUEST["company_url"]));
@@ -124,9 +124,9 @@
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
             <div class="redpro_input_text" for="company_pass">
-                <label class="rediger-bedrift-label" for="name">Sikkerhets-kode</label><br><br>
+                <label class="rediger-bedrift-label" for="name">Sikkerhetskode</label><br><br>
                 <input type="text" id="company_pass" name="company_pass" placeholder="Hemmelig kode" pattern="[A-Za-zÆæØøÅå-!?#]{1,50}" value="<?=$company_pass?>" required 
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Sikkerhets-koden kan kun inneholde 50 karakterer i form av bokstaver, tall og tegn som -!?#')"
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Sikkerhetskoden kan kun inneholde 50 karakterer i form av bokstaver, tall og tegn som -!?#')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
             <div class="rediger-bedrift_submit">

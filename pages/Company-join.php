@@ -28,7 +28,6 @@
     }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -58,7 +57,8 @@
 
     <div class="bedrift_navn">
             <label for="bedrift_navn">Bedriftsnavn:</label>
-            <input name="company" type="text" id="searchInput" placeholder="Søk etter en bedrift..." list="suggestions">
+            <input type="text" name="company" id="searchInput" placeholder="Søk etter en bedrift..." list="suggestions">
+            <input type="text" name="access_code" placeholder="Tilgangskode">
             <datalist id="suggestions"></datalist>
     </div>
 
