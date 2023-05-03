@@ -21,7 +21,7 @@
     <title>Notater</title>
 </head>
 <body>
-    <?php banner(true) ?>
+    <?php banner(); ?>
     <main>
         <br>
         <br>
@@ -44,7 +44,7 @@
             <p class="no_notes">Du har ingen notater lagret.</p>
         <?php endif; ?>
         <div class="button-mine-notater">
-            <form action="create_note.php" method="post">
+            <form action="note_create.php" method="post">
                 <button type="submit" name="create_note" >Nytt notat</button>
             </form>
         </div>

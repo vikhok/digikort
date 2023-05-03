@@ -1,4 +1,4 @@
-<?php function banner($profile_picture) { ?>
+<?php function banner($profile_picture = false) { ?>
     <header>
         <?php
             if(isset($_SESSION["user"]["user_id"])) $user_id = $_SESSION["user"]["user_id"];
@@ -22,8 +22,8 @@
                 <?php // Check whether user is logged in or not:
                     if(isset($_SESSION["user"]["logged_in"]) && $_SESSION['user']['logged_in'] == true): ?>
                         <li class="nav-item"><a href="index.php?user_id=<?=$_SESSION['user']['user_id']?>" class="nav-link">Mitt visittkort</a></li>
-                        <li class="nav-item"><a href="rediger_profil.php" class="nav-link">Rediger profil</a></li>
-                        <li class="nav-item"><a href="my_notes.php" class="nav-link">Mine notater</a></li>
+                        <li class="nav-item"><a href="profile_update.php" class="nav-link">Rediger profil</a></li>
+                        <li class="nav-item"><a href="notes.php" class="nav-link">Mine notater</a></li>
                         <?php // Check whether user belong in a company:
                         if(isset($company_id)): ?>
                             <li class="nav-item"><a href="company.php?company_id=<?=$company_id?>" class="nav-link">Bedrift</a></li>

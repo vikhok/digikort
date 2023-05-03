@@ -56,7 +56,7 @@
     <title>Digikort</title>
 </head>
 <body>
-    <?php banner($user_id) ?>
+    <?php banner(true); ?>
     <div class="business-card-container">
         <?php if(!isset($status)) { ?>
             <div class="personal-information">
@@ -78,7 +78,7 @@
                     <form action="" method="post">
                         <ul>
                             <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
-                            <li><a href="contact-employee.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
+                            <li><a href="contact_form.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
                             <li><button type="submit" class="menu-options" name="save-contact"><i class="fa fa-save"></i> Lagre kontakt</a></li>
                             <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a></li>
                         </ul>

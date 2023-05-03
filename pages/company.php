@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="../assets/styles/styles.css">
 <title>Bedrift</title>
 <body>
-    <?php banner(false, $company_id) ?>
+    <?php banner(); ?>
     <?php if($company_info): ?>
     <div class="Bedrift-siden">
         <img class="bedrift_bilde_styling" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">

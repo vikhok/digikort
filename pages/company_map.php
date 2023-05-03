@@ -27,7 +27,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php banner() ?>
+    <?php banner(); ?>
     <?php
         // Build API address
         $full_address = "$address $zip $city";

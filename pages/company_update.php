@@ -80,7 +80,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
 </head>
 <body>
-    <?php banner(false); ?>
+    <?php banner(); ?>
     <div class="rediger_profil">
         <form class="redpro_form" method="POST" action="rediger-bedrift.php" enctype="multipart/form-data">
             <div class="profil_bilde"> 

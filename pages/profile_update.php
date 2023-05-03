@@ -151,7 +151,7 @@
     <title>Rediger profil</title>
 </head>
 <body>
-    <?php banner($user_id) ?>
+    <?php banner(true); ?>
     <div class="rediger_profil">
         <form class="redpro_form" action="" method="POST" enctype="multipart/form-data">
             <?php

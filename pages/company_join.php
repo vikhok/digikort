@@ -40,7 +40,7 @@
     <title>Bli med i en bedrift</title>
 </head>
 <body>
-    <?php banner(false)?>
+    <?php banner(); ?>
     <div class="bli_med_bedrift">
         <form class="bli_med_bedrift_form" action="" method="POST">
             <div class="h1_bli_med_bedrift">
