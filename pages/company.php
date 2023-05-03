@@ -52,7 +52,7 @@
             </div>
         </div>
         <?php endif; ?>
-        <?php footer($company_id, "company");?>
+        <?php /*footer($company_id, "company");*/ ?>
     </div>
     <?php if(isset($status)){ echo $status; }?>
 </body>

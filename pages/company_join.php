@@ -9,7 +9,8 @@
     if(!$user_company = get_user_company($user_id)) {
         if(isset($_REQUEST["submit_company"])) {
             $company_name = $_REQUEST["company_name"];
-            if($company_id = join_company($company_name, $user_id, false)) {
+            $access_code = $_REQUEST["access_code"];
+            if($company_id = join_company($company_name, $access_code, $user_id, false)) {
                 $_SESSION["user"]["company_id"] = $company_id;
                 header("Location: company.php?company_id=$company_id");
             } else {

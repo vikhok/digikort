@@ -25,7 +25,7 @@ CREATE TABLE `company` (
     `company_address`       varchar(128)    NOT NULL,
     `company_city`          varchar(64)     NOT NULL,
     `company_zip`           int(4)          NOT NULL,
-    `company_pass`          varchar(255)    NOT NULL
+    `access_code`           varchar(255)    NOT NULL
 );
 
 CREATE TABLE `note` (
