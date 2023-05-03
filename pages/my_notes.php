@@ -7,6 +7,9 @@
     $user_id = $_SESSION["user"]["user_id"];
 
     $notes = get_all_notes($user_id);
+    if(!$notes) {
+        header("Loaction: utility/error.php?error=404");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -18,7 +21,7 @@
     <title>Notater</title>
 </head>
 <body>
-    <?php banner() ?>
+    <?php banner(true) ?>
     <main>
         <br>
         <br>

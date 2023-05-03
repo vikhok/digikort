@@ -9,12 +9,12 @@
     $company_id = $_REQUEST["company_id"];
     if($company_info = get_company_info($company_id)) {
         $company_name = $company_info->company_name;
-        $company_desc = $company_info->descriptions;
-        $company_url = $company_info->web_url;
-        $company_address = $company_info->company_address . ", " . $company_info->zip . " " . $company_info->city;
+        $company_desc = $company_info->company_desc;
+        $company_url = $company_info->company_url;
+        $company_address = $company_info->company_address . ", " . $company_info->company_zip . " " . $company_info->company_city;
         $company_email = $company_info->company_email;
     } else {
-        header("Location: utility/"); //FIX ME LATER
+        header("Location: utility/error.php?error=404"); //FIX ME LATER
     }
 
 ?>

@@ -17,6 +17,7 @@
         if($user_company = get_user_company($user_id)) {
             $company = $user_company->company_name;
             $company_id = $user_company->company_id;
+            $_SESSION["user"]["company_id"] = $company_id;
         } else {
             $company = null;
             $company_id = null;

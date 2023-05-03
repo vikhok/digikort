@@ -104,6 +104,7 @@
 
         if(isset($_REQUEST["leave_company"])) {
             if(leave_company($user_id, $company_id)) {
+                unset($_SESSION["user"]["company_id"]);
                 $status = "<h4><span style='color:green'>
                     Du har forlatt bedriften.
                     </span></h4>";

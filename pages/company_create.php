@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<?php banner() ?>
+<?php banner(false) ?>
 <div class="addcompany_structure" id="fields">
     <form class="addcompany_form" action="#" method="POST" enctype="multipart/form-data">
         <section class="company_name" for="company_name">
