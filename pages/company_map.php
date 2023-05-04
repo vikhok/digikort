@@ -31,6 +31,7 @@
     <?php
         // Build API address
         $full_address = "$address $zip $city";
+        $full_address = html_entity_decode($full_address);
         $url = "https://ws.geonorge.no/adresser/v1/sok?fuzzy=true&sok=";
         $url .= str_replace(" ", "%20", $full_address);
         $url .= "&treffPerSide=1&asciiKompatibel=true";
