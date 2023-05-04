@@ -9,8 +9,8 @@
     $company_id = $_REQUEST["company_id"];
     if($location = get_location($company_id)) {
         $address = $location->company_address;
-        $city = $location->city;
-        $zip = $location->zip;
+        $city = $location->company_city;
+        $zip = $location->company_zip;
     } else {
         $failed = "<h4><span style='color:red'>
         Noe gikk galt, fant ikke bedriften i systemet.
@@ -24,7 +24,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
-    <title>Document</title>
+    <title>Kart</title>
 </head>
 <body>
     <?php banner(); ?>

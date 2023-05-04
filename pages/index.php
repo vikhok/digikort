@@ -56,7 +56,7 @@
     <title>Digikort</title>
 </head>
 <body>
-    <?php banner(true); ?>
+    <?php banner($user_id); ?>
     <div class="business-card-container">
         <?php if(!isset($status)) { ?>
             <div class="personal-information">

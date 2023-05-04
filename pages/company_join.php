@@ -15,7 +15,7 @@
                 header("Location: company.php?company_id=$company_id");
             } else {
                 $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer ble ikke foretatt.
+                    Noe gikk galt.
                     </span></h4>";
             }
         }
@@ -52,8 +52,8 @@
             </div>
             <div class="bedrift_navn">
                 <label for="bedrift_navn">Bedriftsnavn:</label>
-                <input type="text" name="company_name" id="searchInput" placeholder="Søk etter en bedrift..." list="suggestions">
-                <input type="text" name="access_code" placeholder="Tilgangskode">
+                <input type="text" name="company_name" id="searchInput" placeholder="Søk etter en bedrift..." list="suggestions" required>
+                <input type="text" name="access_code" placeholder="Tilgangskode" required>
                 <datalist id="suggestions"></datalist>
             </div>
             <div class="bli_med_bedrift_knapp">    
@@ -61,7 +61,7 @@
             </div>
         </form>
         <div class="opprett_ny_bedrift_knapp">
-            <a class="a_ny_bedrift" href="add_company.php">Opprett bedrift</a>
+            <a class="a_ny_bedrift" href="company_create.php">Opprett bedrift</a>
         </div>
     </div>
     <?php if(isset($status)) echo $status; ?>

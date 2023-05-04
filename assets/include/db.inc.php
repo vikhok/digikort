@@ -115,7 +115,7 @@
 
     function get_location($company_id) {
         global $pdo;
-        $sql = "SELECT company_address, city, zip FROM company WHERE company_id = ?";
+        $sql = "SELECT company_address, company_city, company_zip FROM company WHERE company_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);
 

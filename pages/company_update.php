@@ -15,24 +15,24 @@
         $company_address = $company->company_address ?? null;
         $company_city = $company->company_city ?? null;
         $company_zip = $company->company_zip ?? null;
-        $company_pass = $company->company_pass ?? null;
+        $access_code = $company->access_code ?? null;
 
         // Array as reference of current information state:
-        $current_company = [$company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $company_pass];
+        $current_company = [$company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code];
 
         // Oppdaterer tabellen med nye endringer gjort av bruker.
         if(isset($_REQUEST["submit"])) {
             $company_name = clean($_REQUEST["company_name"]);
             $company_desc = ucfirst(clean($_REQUEST["company_desc"]));
-            $company_email = strtolower(validateEmail(cleanEmail($_REQUEST["email"])));
+            $company_email = strtolower(validateEmail(cleanEmail($_REQUEST["company_email"])));
             $company_url = strtolower(clean_allow_null($_REQUEST["company_url"]));
             $company_address = ucwords(strtolower(clean($_REQUEST["company_address"])));
             $company_city = ucwords(strtolower(clean_allow_null($_REQUEST["company_city"])));
             $company_zip = clean_allow_null($_REQUEST["company_zip"]);
-            $company_pass = clean($_REQUEST["company_pass"]);
+            $access_code = clean($_REQUEST["access_code"]);
 
             // Array to compare against the current information state:
-            $updated_company = [$company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $company_pass];
+            $updated_company = [$company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code];
 
             // Check that all variables are accepted:
             if(!in_array(false, $updated_company, true)) {
@@ -48,7 +48,7 @@
                         }
                     }
                     if(!isset($terminate)) {
-                        if(update_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $company_pass)) {
+                        if(update_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code)) {
                             $status = "<h4><span style='color:green'>
                                 Bedriften ble endret.
                                 </span></h4>";
@@ -88,46 +88,52 @@
                 <input type="file" id="bedrift-bilde" name="upload-file">
             </div>
             <div class="redpro_input_text" id="fields">
-                <label class="rediger-bedrift-label" for="company_name">Navn på bedriften</label><br>
+                <label class="rediger-bedrift-label" for="company_name">Navn på bedriften</label>
                 <input type="text" id="company_name" name="company_name" placeholder="Bedriften AS" pattern="[A-Za-zÆæØøÅå'- ]{1,50}" value="<?=$company_name?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Navn på bedrift kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 50 tegn.')"
-                    oninput="this.setCustomValidity('')"><br><br>
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="redpro_input_text" id="freetext">
                 <label class="rediger-bedrift-label" for="company_desc">Beskrivelse av bedriften</label>
-                <input name="textarea" type="text" name="company_desc" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[A-Za-zÆæØøÅå'- ]{1,200}" value="<?=$company_desc?>" required 
+                <textarea name="company_desc" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[A-Za-zÆæØøÅå'- ]{1,200}" value="<?=$company_desc?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Beskrivelse kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 200 tegn.')"
-                    oninput="this.setCustomValidity('')"><br><br>
+                    oninput="this.setCustomValidity('')"></textarea>
+            </div>
+            <div class="redpro_input_text" id="freetext">
+                <label class="rediger-bedrift-label" for="company_email">E-post</label>
+                <input type="email" name="company_email" placeholder="bedriften@mail.no" value="<?=$company_email?>" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Eksempelvis: bedriften@mail.no.')"
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="redpro_input_text" for="company_url">
-                <label class="rediger-bedrift-label" for="company_url">Nettstedets URL</label><br>
+                <label class="rediger-bedrift-label" for="company_url">Nettstedets URL</label>
                 <input type="text" id="company_url" name="company_url" placeholder="www.bedrift.no" pattern="[A-Za-zÆæØøÅå'-.]{1,50}" value="<?=$company_url?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Vennligst følg formatet www.bedriften.no, inntill 50 tegn.')"
-                    oninput="this.setCustomValidity('')"><br><br>
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="redpro_input_text" for="company_address">
-                <label class="rediger-bedrift-label" for="name">Addresse</label><br><br>
+                <label class="rediger-bedrift-label" for="name">Addresse</label>
                 <input type="text" id="company_address" name="company_address" placeholder="Bedriftveien 3" pattern="[0-9A-Za-zÆæØøÅå'- ]{1,100}" value="<?=$company_address?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Addressen kan kun inneholde store og små bokstaver, tall, apostrof og bindestrek opp til 100 tegn.')"
-                    oninput="this.setCustomValidity('')"><br><br>
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="redpro_input_text" for="company_city">
-                <label class="rediger-bedrift-label" for="name">By</label><br><br>
+                <label class="rediger-bedrift-label" for="name">By</label>
                 <input type="text" id="company_city" name="company_city" placeholder="Kristiansand" pattern="[A-Za-zÆæØøÅå'- ]{1,50}" value="<?=$company_city?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. By kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 50 tegn.')"
-                    oninput="this.setCustomValidity('')"><br><br>
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="redpro_input_text" for="company_zip">
-                <label class="rediger-bedrift-label" for="name">Postnummer</label><br><br>
+                <label class="rediger-bedrift-label" for="name">Postnummer</label>
                 <input type="text" id="company_zip" name="company_zip" placeholder="4630" pattern="[0-9]{1,4}" value="<?=$company_zip?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Postnummer kan kun inneholde fire tall, vennligst følg formatet 1234.')"
-                    oninput="this.setCustomValidity('')"><br><br>
+                    oninput="this.setCustomValidity('')">
             </div>
-            <div class="redpro_input_text" for="company_pass">
-                <label class="rediger-bedrift-label" for="name">Sikkerhetskode</label><br><br>
-                <input type="text" id="company_pass" name="company_pass" placeholder="Hemmelig kode" pattern="[A-Za-zÆæØøÅå-!?#]{1,50}" value="<?=$company_pass?>" required 
+            <div class="redpro_input_text" for="access_code">
+                <label class="rediger-bedrift-label" for="name">Sikkerhetskode</label>
+                <input type="text" id="access_code" name="access_code" placeholder="Hemmelig kode" pattern="[A-Za-zÆæØøÅå-!?#]{1,50}" value="<?=$access_code?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Sikkerhetskoden kan kun inneholde 50 karakterer i form av bokstaver, tall og tegn som -!?#')"
-                    oninput="this.setCustomValidity('')"><br><br>
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="rediger-bedrift_submit">
                 <button type="submit" name="submit">Lagre</button>

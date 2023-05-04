@@ -1,11 +1,10 @@
-<?php function banner($profile_picture = false) { ?>
+<?php function banner($user_id = false) { ?>
     <header>
         <?php
-            if(isset($_SESSION["user"]["user_id"])) $user_id = $_SESSION["user"]["user_id"];
             if(isset($_SESSION["user"]["company_id"])) $company_id = $_SESSION["user"]["company_id"]; 
 
             // Define and display profile picture:
-            if($profile_picture) {
+            if($user_id) {
                 $folder = md5("user." . $user_id);
                 $dir = "../profiles/" . $folder . "/picture.png";
                 if(!file_exists($dir)) {

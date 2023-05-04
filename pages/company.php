@@ -4,7 +4,6 @@
     require_once("../assets/include/db.inc.php");
 
     session_start();
-    $user_id = $_SESSION["user"]["user_id"];
 
     $company_id = $_REQUEST["company_id"];
     if($company_info = get_company_info($company_id)) {

@@ -53,7 +53,7 @@
     <title>Kontaktskjema</title>
 </head>
 <body>
-    <?php banner(true); ?>
+    <?php banner($user_id); ?>
     <br><br><br><br><br><br><br><br>
     <div class="contact-form" id="fields">
         <form name="contact" action="" method="POST"> 
