@@ -15,9 +15,9 @@
         if($password == $confirm_password) {
             $password_hash = password_hash($password, PASSWORD_DEFAULT, ["cost" => 10]);
             if($user_id = create_account($first_name, $last_name, $email, $phone, $password_hash)) {
-                $dir = "../profiles/" . md5("user." . $user_id);
-                if(!file_exists($dir)) {
-                    mkdir($dir, 0777, true);
+                $folder = "../profiles/" . md5("user." . $user_id);
+                if(!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
                 }
                 $status = "<h4><span style='color:green'>
                     Konto ble registrert i systemet, vi sender deg til innloggingssiden.

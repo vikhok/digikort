@@ -12,10 +12,21 @@
         $company_url = $company_info->company_url;
         $company_address = $company_info->company_address . ", " . $company_info->company_zip . " " . $company_info->company_city;
         $company_email = $company_info->company_email;
+
+        $folder = "../companies/" . md5("company." . $company_id);
+        if(!file_exists($folder)) {
+            mkdir($folder, 0777, true);
+        }
+        $dir = "../companies/" . $folder . "/picture.png";
+        if(!file_exists($dir)) {
+            $dir = "../companies/" . $folder . "/picture.jpg";
+            if(!file_exists($dir)){
+                $dir = "../companies/stockcompany/picture.png";
+            }
+        }
     } else {
         header("Location: utility/error.php?error=404"); //FIX ME LATER
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -28,32 +39,27 @@
 <body>
     <?php banner(); ?>
     <?php if($company_info): ?>
-    <div class="Bedrift-siden">
-        <img class="bedrift_bilde_styling" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">
-        <div class="Bedrift-Text">
-            <?php
-                echo "<h2 class='bedrift-tittel'>$company_name</h2>
-                    <p class='bedrift-desc'>$company_desc</p>
-                    <br>    
-                    <h3 class='address-form'>Besøk oss</h3>
-                    <p class='bedrift-adresse'>$company_address</p>
-                    <br>
-                    <h3 class='e-post-form'>Kontakt oss på e-post</h3>
-                    <p class='bedrift-epost'><a href='mailto:$company_email'>$company_email</a></p>"
-            ?>
-        </div>
+        <div class="Bedrift-siden">
+            <img class="bedrift_bilde_styling" src="<?=$dir?>" alt="Bedrift bilde">
+            <section class="Bedrift-Text">
+                <h2 class="bedrift-tittel"><?=$company_name?></h2>
+                <p class="bedrift-desc"><?=$company_desc?></p><br>
 
-        <div class="Bedrift-knapper">
-            <div class="om-og-kontakt-knapp">
-                <a class="aboutus-ref" href="https://egde.no/om-oss/">Om oss</a>
-                <a class="employeelist-ref" href="https://egde.no/kontakt/">Se ansatte</a>
-                <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
+                <h3 class="address-form">Besøk oss</h3>
+                <p class="bedrift-adresse"><?=$company_address?></p><br>
+
+                <h3 class="e-post-form">Kontakt oss på e-post</h3>
+                <p class="bedrift-epost"><a href="mailto:<?=$company_email?>"><?=$company_email?></a></p>
+            </section>
+            <div class="Bedrift-knapper">
+                <div class="om-og-kontakt-knapp">
+                    <a class="aboutus-ref" href="https://egde.no/om-oss/">Om oss</a>
+                    <a class="employeelist-ref" href="https://egde.no/kontakt/">Se ansatte</a>
+                    <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
+                </div>
             </div>
         </div>
-        <?php endif; ?>
-        <?php /*footer($company_id, "company");*/ ?>
-    </div>
-    <?php if(isset($status)){ echo $status; }?>
+    <?php endif; ?>
 </body>
 </head>
 </html>

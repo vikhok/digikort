@@ -22,7 +22,7 @@
     } else {
         // Redirect if user is already in a company:
         $company_id = $user_company->company_id;
-        header("Location: company-page.php?company_id=$company_id");
+        header("Location: company.php?company_id=$company_id");
     }
 
 ?>
@@ -53,6 +53,7 @@
             <div class="bedrift_navn">
                 <label for="bedrift_navn">Bedriftsnavn:</label>
                 <input type="text" name="company_name" id="searchInput" placeholder="Søk etter en bedrift..." list="suggestions" required>
+                <label for="access_code">Tilgangskode:</label>
                 <input type="text" name="access_code" placeholder="Tilgangskode" required>
                 <datalist id="suggestions"></datalist>
             </div>

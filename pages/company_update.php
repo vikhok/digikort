@@ -5,7 +5,7 @@
     require_once("../assets/include/phpmailer.inc.php");
 
     session_start();
-    $company_id = $_REQUEST["company_id"];
+    $company_id = $_SESSION["user"]["company_id"];
 
     if($company = get_company_info($company_id)) {
         $company_name = $company->company_name ?? null;
@@ -43,29 +43,29 @@
                         if(!empty($upload_image)) {
                             $terminate = true;
                             $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av profil ble ikke foretatt.
+                                Noe gikk galt, endringer av bedriften ble ikke foretatt. 1
                                 </span></h4>";
                         }
                     }
                     if(!isset($terminate)) {
-                        if(update_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code)) {
+                        if(update_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $company_id)) {
                             $status = "<h4><span style='color:green'>
-                                Bedriften ble endret.
+                                Bedriften ble endret. 1.5
                                 </span></h4>";
                         } else {
                             $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av bedriften ble ikke foretatt.
+                                Noe gikk galt, endringer av bedriften ble ikke foretatt. 2
                                 </span></h4>";
                         }
                     }        
                 } else {
                     $status = "<h4><span style='color:red'>
-                        Ingen endringer har blitt foretatt.
+                        Ingen endringer har blitt foretatt. 3
                         </span></h4>";
                 }
             } else {
                 $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer av bedriften ble ikke foretatt.
+                    Noe gikk galt, endringer av bedriften ble ikke foretatt. 4
                     </span></h4>";
             }
         }
@@ -82,7 +82,8 @@
 <body>
     <?php banner(); ?>
     <div class="rediger_profil">
-        <form class="redpro_form" method="POST" action="rediger-bedrift.php" enctype="multipart/form-data">
+        <?php if(isset($status)) echo $status; ?>
+        <form class="redpro_form" action="" method="post" enctype="multipart/form-data">
             <div class="profil_bilde"> 
                 <label class="rediger-bedrift-label" for="upload-file">Endre bakgrunnsbilde for bedrift</label>
                 <input type="file" id="bedrift-bilde" name="upload-file">
@@ -95,9 +96,9 @@
             </div>
             <div class="redpro_input_text" id="freetext">
                 <label class="rediger-bedrift-label" for="company_desc">Beskrivelse av bedriften</label>
-                <textarea name="company_desc" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[A-Za-zÆæØøÅå'- ]{1,200}" value="<?=$company_desc?>" required 
+                <textarea name="company_desc" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[A-Za-zÆæØøÅå'- ]{1,200}" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Beskrivelse kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 200 tegn.')"
-                    oninput="this.setCustomValidity('')"></textarea>
+                    oninput="this.setCustomValidity('')"><?=$company_desc?></textarea>
             </div>
             <div class="redpro_input_text" id="freetext">
                 <label class="rediger-bedrift-label" for="company_email">E-post</label>
