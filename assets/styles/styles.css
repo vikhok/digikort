@@ -4,79 +4,67 @@
     -----------------------------------------------------
 */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: #C7C8DB;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Montserrat", sans-serif;
+  background-color: #C7C8DB;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 label {
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*
-    -------------------------------------------------------
-    STYLING GJELDENDE rediger_profil.php
-    -------------------------------------------------------
+  -------------------------------------------------------
+  STYLING GJELDENDE rediger_profil.php
+  -------------------------------------------------------
 */
 
 .redpro_form {
-    text-align: center;
-  }
-   
+  text-align: center;
+}
+ 
 .redpro_label {
-      display: block;
-      font-size: 20px;
-      margin-bottom: 5px;
-      color: #00406b;
-      padding-top: 10px;
-      font-weight: bold;
-    }
-  
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #00406b;
+    padding-top: 10px;
+    font-weight: bold;
+  }
+
 .redpro_input_text input[type="text"]:focus {
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+
+.redpro_input_text input[type="text"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
+  }
+
+.redpro_input_text input[type="tel"]:focus {
       background-color: #fff;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
       outline: none;
     }
   
-.redpro_input_text input[type="text"] {
-      background-color: #f9f9f9;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      color: #555;
-      font-size: 18px;
-      padding: 10px 15px;
-      transition: all 0.3s ease-in-out;
-      width: 40%;
-    }
-
-.redpro_input_text input[type="tel"]:focus {
-        background-color: #fff;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        outline: none;
-      }
-    
 .redpro_input_text input[type="tel"] {
-        background-color: #f9f9f9;
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        color: #555;
-        font-size: 18px;
-        padding: 10px 15px;
-        transition: all 0.3s ease-in-out;
-        width: 40%;
-      }    
-  
-.redpro_email input[type="email"] {
       background-color: #f9f9f9;
       border: none;
       border-radius: 10px;
@@ -86,323 +74,423 @@ label {
       padding: 10px 15px;
       transition: all 0.3s ease-in-out;
       width: 40%;
-    }
-    
-.rediger_some input[type="url"] {
-      width: 75%;
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      margin-bottom: 1px;
-      font-size: 20px;
-    }
-  
-  .column_rediger_profil input[type="file"] {
-      background-color: #f9f9f9;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      color: #555;
-      font-size: 16px;
-      padding: 8px 12px;
-      transition: all 0.3s ease-in-out;
-      width: 25%;
+    }    
+
+.redpro_email input[type="email"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
   }
   
-    
-  .oppdater_profil_knapp button[type="submit"] {
-      background-color: #007bff;
-      color: #fff;
+.rediger_some input[type="url"] {
+    width: 75%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1px;
+    font-size: 20px;
+  }
+
+.column_rediger_profil input[type="file"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    width: 25%;
+}
+
+  
+.oppdater_profil_knapp button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 2,5rem;
+    display: block;
+    margin: 10px auto;
+  }
+  
+.oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
+.error {
+    color: red;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+.rediger_profil {
+    position: relative;
+    justify-content: center;
+  }
+
+.rediger_some {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+.column_rediger_profil {
+    flex-basis: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .vis_profil_bilde {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+  }
+
+  .profil_bilde {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+  }
+
+  .profil_bilde input[type="file"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+     
+  }
+
+  .change_password_button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: none;
       border-radius: 5px;
       padding: 10px 20px;
       font-size: 20px;
       cursor: pointer;
-      margin-bottom: 2,5rem;
-      display: block;
-      margin: 10px auto;
+      margin-bottom: 0,5rem;
     }
-    
-  .oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
-      background-color: #0069d9;
-    }
-    
-  .error {
-      color: red;
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-    
-  .rediger_profil {
-      position: relative;
-      justify-content: center;
-    }
-  
-  .rediger_some {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 5px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-  
-  .column_rediger_profil {
-      flex-basis: 50%;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-  
-    .vis_profil_bilde {
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    margin-top: 15px;
-    }
-  
-    .profil_bilde {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 5rem;
-    }
-  
-    .profil_bilde input[type="file"] {
-      background-color: #f9f9f9;
+
+  .change_password_button button[type="submit"] {
+      background-color: #0b417b;
+      color: #fff;
       border: none;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      color: #555;
+      border-radius: 4px;
+      padding: 10px 20px;
       font-size: 16px;
-      padding: 8px 12px;
-      transition: all 0.3s ease-in-out;
-      width: 40%;
-      margin-bottom: 15px;
-      margin-top: 15px;
-       
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     }
-
-    .change_password_button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 20px;
-        cursor: pointer;
-        margin-bottom: 0,5rem;
-      }
-
-    .change_password_button button[type="submit"] {
-        background-color: #0b417b;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        text-transform: uppercase;
-        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-      }
-      
-      .change_password_button button[type="submit"]:hover {
-        background-color: #062e58;
-      }
-      
-      .change_password_button button[type="submit"]:active {
-        background-color: #005ecb;
-        box-shadow: none;
-      }
-      
+    
+    .change_password_button button[type="submit"]:hover {
+      background-color: #062e58;
+    }
+    
+    .change_password_button button[type="submit"]:active {
+      background-color: #005ecb;
+      box-shadow: none;
+    }
+    
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE navbar
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE navbar
+  -----------------------------------------------------
 */
 
 li .nav-item, a, button {
-    font-weight: 500;
-    font-size: 16px;
-    color: white;
-    text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
 }
 
 header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 30px 10%;
-    height: 8rem;
-    background-color: #00406b;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 10%;
+  height: 8rem;
+  background-color: #00406b;
 }
 
 .navbar {
-    min-height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 24px;
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
 }
 
 .nav-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 60px;
-    list-style: none;
-    z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  list-style: none;
+  z-index: 1;
 }
 
 .profile_picture {
-    position: relative;
-    cursor: pointer;
-    margin-right: auto;
-    border-radius: 50%;
-    height: 10rem;
-    width: 10rem;
-    top: 4rem;
-    outline: auto;
+  position: relative;
+  cursor: pointer;
+  margin-right: auto;
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  top: 4rem;
+  outline: auto;
 }
 
 .nav-menu li {
-    display: inline-block;
-    padding: 0px 20px;
+  display: inline-block;
+  padding: 0px 20px;
 }
 
 .nav-menu li a {
-    transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .nav-menu li a:hover {
-    color: #99A8BF;
+  color: #99A8BF;
 }
 
 .hamburger {
-    display: none;
-    cursor: pointer;
+  display: none;
+  cursor: pointer;
 }
 
 .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    background-color: white;
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  background-color: white;
 }
 
 @media(max-width:768px) {
-    .hamburger {
-        display: block;
-        z-index: 2;
-    }
+  .hamburger {
+      display: block;
+      z-index: 2;
+  }
 
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
+  .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+  }
 
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
+  .hamburger.active .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+  }
 
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+  .hamburger.active .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+  }
 
-    .nav-menu {
-        position: fixed;
-        top: -100%;
-        left: 0;
-        padding: 10%;
-        gap: 0;
-        flex-direction: column;
-        background-color: #00406b;
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        z-index: 1;
-    }
+  .nav-menu {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      padding: 10%;
+      gap: 0;
+      flex-direction: column;
+      background-color: #00406b;
+      width: 100%;
+      text-align: center;
+      transition: 0.3s;
+      z-index: 1;
+  }
 
-    .nav-item {
-        margin: 16px 0;
-    }
+  .nav-item {
+      margin: 16px 0;
+  }
 
-    .nav-menu.active {
-        top: 0;
-        left: 0;
-    }
+  .nav-menu.active {
+      top: 0;
+      left: 0;
+  }
 }
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE footer
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE footer
+  -----------------------------------------------------
 */
 
 footer {
-    position: absolute;
-    height: 4rem;
-    width: 100%;
-    bottom: 0;
+  position: absolute;
+  height: 4rem;
+  width: 100%;
+  bottom: 0;
 }
 
 .footer-menu {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
-    list-style: none;
-    width: 15%;
-    right: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  list-style: none;
+  width: 15%;
+  right: 0;
 }
-
-/* SoMe-ikoner responsiv mobil-view */
-    @media screen and (max-width: 750px){
-        .footer-menu {
-            width: 50%;
-        }
-    }
 
 .footer-item {
-    width: 2rem;
-    margin-top: 1rem;
-    color: white;
+  width: 2rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Spesiell stil for iPhone 12 Pro */
+
+@media only screen and (max-device-width: 428px) and (-webkit-device-pixel-ratio: 3) {
+  .footer-menu {
+    width: 50%;
+    height: 20px;
+    margin-top: -30px;
+  }
+  h2 {
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 0.5em;
+  }
+  .menu {
+  font-size: 15pt;
+  position: absolute;
+  top: 10px;
+  right: 30pt;
+  width: 15rem;
+  display: none;
+  line-height: 1.5;
+  color: white;
+}
+}
+
+@media screen and (max-width: 750px) {
+  .personal-information a {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Spesiell stil for iPhone SE */
+
+@media only screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+  body {
+    background-color: #f1f1f1;
+  }
 }
 
 
+/* Spesiell stil for iPhone XR */
+
+@media only screen and (max-device-width: 414px) and (-webkit-device-pixel-ratio: 2) {
+  .footer-menu {
+    width: 50%;
+    height: 20px;
+    margin-top: -70px;
+  }
+  h2 {
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 0.7em;
+  }
+  .menu {
+  font-size: 20pt;
+  position: absolute;
+  top: 20px;
+  right: 37pt;
+  width: 15rem;
+  display: none;
+  line-height: 1.5;
+  color: white;
+  }
+}
+
+/* Spesiell stil for Samsung S8+ */
+
+@media only screen and (max-device-width: 360px) and (-webkit-device-pixel-ratio: 4) {
+  .footer-menu {
+    width: 50%;
+    height: 20px;
+    margin-top: 0px;
+  }
+  h2 {
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 0.3em;
+  }
+  .menu {
+    font-size: 15pt;
+    position: absolute;
+    top: 10px;
+    right: 35pt;
+    width: 15rem;
+    display: none;
+    line-height: 1.5;
+    color: white;
+  }
+}
+
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE business-card
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE business-card
+  -----------------------------------------------------
 */
 
 .business-card-container {
-    display: flex;
-    position: relative; 
-    flex-flow: row wrap;
-    justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-    align-items: center;
-    margin: auto;
-    padding: 5rem;
-    line-height: 1.5;
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  margin: auto;
+  padding: 5rem;
+  line-height: 1.5;
 }
 
 .personal-information a {
-    position: relative;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    margin-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: black;
+  margin-right: 20px;
 }
 
 /*
@@ -412,508 +500,508 @@ STYLING GJELDENDE index.php (Menyvalg)
 */
 
 .qr-code {
-    width: 15rem;
+  width: 15rem;
 }
 
 .menu {
-    font-size: 25pt;
-    position: relative;
-    width: 15rem;
-    display: flex;
-    align-items: center ;
-    justify-content: center;
-    line-height: 1.5;
+  font-size: 25pt;
+  position: relative;
+  width: 15rem;
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+  line-height: 1.5;
 }
 
 .menu ul{
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .menu button{
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
 .menu-options{
-    color: black;
-    font-size: 15pt;
-    justify-content: center;
-    cursor: pointer;
+  color: black;
+  font-size: 15pt;
+  justify-content: center;
+  cursor: pointer;
 }
 
 @media(max-width:768px) {
-    .personal-information{
-        font-size: small;
-    }
+  .personal-information{
+      font-size: small;
+  }
 
-    .business-card-container{
-        font-size: medium;
-    }
+  .business-card-container{
+      font-size: medium;
+  }
 }
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE notater
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE notater
+  -----------------------------------------------------
 */
 
 .container-notat  {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
 }
 
 .content-notat {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 250px;
-    max-height: 380px;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 250px;
+  max-height: 380px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .h1-notat {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .label-notat {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .input-notat, .textarea-notat {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
 }
 
 .textarea-notat {
-    resize: vertical;
+  resize: vertical;
 }
 
 .button-notat[type="submit"] {
-    display: block;
-    margin: 0 auto;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .button-notat[type="submit"]:hover {
-    background-color: #444;
+  background-color: #444;
 }
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE Company-join.php
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE Company-join.php
+  -----------------------------------------------------
 */
 
 .bli_med_bedrift {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* .stillings_tittel input[type="text"]{
-    background-color: #f9f9f9;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    color: #555;
-    font-size: 25px;
-    padding: 10px 15px;
-    transition: all 0.3s ease-in-out;
-    width: 75%;
-    margin-top: 1px;
-    margin-bottom: 3rem;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  color: #555;
+  font-size: 25px;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+  width: 75%;
+  margin-top: 1px;
+  margin-bottom: 3rem;
 } */
 
 .bedrift_navn {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 .bedrift_navn label {
-    font-size: x-large;
-    margin-top: 10px;
+  font-size: x-large;
+  margin-top: 10px;
 }
 
 .bedrift_navn input[type="text"] {
-    background-color: #f9f9f9;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    color: #555;
-    font-size: 25px;
-    padding: 10px 15px;
-    transition: all 0.3s ease-in-out;
-    width: 75%;
-    margin-top: 1px;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  color: #555;
+  font-size: 25px;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+  width: 75%;
+  margin-top: 1px;
 }
 
 .h1_bli_med_bedrift {
-    margin-top: 85px;
-    color:black; 
+  margin-top: 85px;
+  color:black; 
 }
 
 .h1_bli_med_bedrift_2 {
-    margin-top: 50px;
-    color:black;
-    font-size: medium;
+  margin-top: 50px;
+  color:black;
+  font-size: medium;
 }
 
 .bli_med_bedrift_knapp button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 25px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    cursor: pointer;
-    width: 50%;
-    margin-top: -10px;
-  }
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 25px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 50%;
+  margin-top: -10px;
+}
 
-  .bli_med_bedrift_knapp button[type="submit"]:hover {
-    background-color: #075db8;
-  }
+.bli_med_bedrift_knapp button[type="submit"]:hover {
+  background-color: #075db8;
+}
 
-  .opprett_ny_bedrift_knapp {
-    color: black;
-    font-size: large;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: underline;
-    margin-top: 10px;
-    margin-bottom: 40px;
-  }
+.opprett_ny_bedrift_knapp {
+  color: black;
+  font-size: large;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
 
-  .a_ny_bedrift {
-    color: black;
-    font-size: 25px;
-    font-weight: bold;
-  }
+.a_ny_bedrift {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+}
 
-  @media (max-width:450px){
-    .bli_med_bedrift_form {
-        font-size: 20px;
-        width: 90%;
+@media (max-width:450px){
+  .bli_med_bedrift_form {
+      font-size: 20px;
+      width: 90%;
+  }
     }
-      }
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE create_note.php
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE create_note.php
+  -----------------------------------------------------
 */
-  
+
 .form_create_note {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-  } 
-  
-  .form-group {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-  } 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+} 
 
-  .note_date {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }  
-  
-  .form-group input,
-  .form-group textarea {
-    padding: 1rem;
-    border: black;
-    border-radius: 1rem;
-    width: 100%;
-    max-width: 100rem;
-    font-size: 1rem;
-    margin-bottom: 2,5rem;
-    display: flex;
-    align-items: center;
-  }
-  
-   .button_create_note button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin-bottom: 0,5rem;
-  } 
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+} 
 
-  .button_delete_note button[type="submit"] {
-    background-color: #e52a09;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin-bottom: 2rem;
-    margin-top: -1rem;
-  }
-  
-  .h1_create_note {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
-    margin-top: 20px;
-    font-weight: bold;
-  } 
-  
-  .no_notes {
-    display: flex;
-    justify-content: center;
-  }
-  
+.note_date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}  
+
+.form-group input,
+.form-group textarea {
+  padding: 1rem;
+  border: black;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 100rem;
+  font-size: 1rem;
+  margin-bottom: 2,5rem;
+  display: flex;
+  align-items: center;
+}
+
+ .button_create_note button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin-bottom: 0,5rem;
+} 
+
+.button_delete_note button[type="submit"] {
+  background-color: #e52a09;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+}
+
+.h1_create_note {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  font-weight: bold;
+} 
+
+.no_notes {
+  display: flex;
+  justify-content: center;
+}
+
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE kart
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE kart
+  -----------------------------------------------------
 */
 
 .map {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE mine notater
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE mine notater
+  -----------------------------------------------------
 */
 
 
 * {
-    box-sizing: border-box;
-  }
-  
-  /* .body_mine-notater {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .h1_mine-notater {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .h2_mine-notater {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .h2_mine-notater  {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-  
-  .main_mine-notater {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .section_mine-notater {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 2rem;
-  } */
-  
-  .notat-boks-wrapper, .Ansatt-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .notat-boks, .Ansatte {
-    padding: 1rem;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    max-width: 700px;
-  }
-  
-  .notat-boks:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-  
-  .button-mine-notater button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin: 10px auto;
+  box-sizing: border-box;
+}
+
+/* .body_mine-notater {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.h1_mine-notater {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.h2_mine-notater {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.h2_mine-notater  {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.main_mine-notater {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.section_mine-notater {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 2rem;
+} */
+
+.notat-boks-wrapper, .Ansatt-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.notat-boks, .Ansatte {
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 700px;
+}
+
+.notat-boks:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.button-mine-notater button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: 10px auto;
 }
 
 .h1_my_notes {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 
 /*
-    -----------------------------------------------------
-    STYLING GJELDENDE Bedrift-side.php
-    -----------------------------------------------------
+  -----------------------------------------------------
+  STYLING GJELDENDE Bedrift-side.php
+  -----------------------------------------------------
 */
 
 .Bedrift-siden {
-    position: relative;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .om-og-kontakt-knapp {
-    display: flex;
-    width: 60%;
-    align-items: center;
-    flex-direction: row;
+  display: flex;
+  width: 60%;
+  align-items: center;
+  flex-direction: row;
 }
 .aboutus-ref, .employeelist-ref, .a-map-ref {
-    position: relative;
-    display: flex;
-    background: gray;
-    flex-flow: row wrap;
-    border-radius: 10px;
-    width: 60%;
-    padding: 20px;
-    margin: 20px;
-    font-size: large;
+  position: relative;
+  display: flex;
+  background: gray;
+  flex-flow: row wrap;
+  border-radius: 10px;
+  width: 60%;
+  padding: 20px;
+  margin: 20px;
+  font-size: large;
 }
 
 .bedrift-epost a {
-    color: black;
-    font-size: 24px;
+  color: black;
+  font-size: 24px;
 }
 
 .Bedrift-knapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
 }
 
 .veibeskrivelse-knapp {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 380px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 380px;
 }
 .a_veibeskrivelse {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    background: gray;
-    border-radius: 10px;
-    width: 60%;
-    padding: 20px;
-    margin: 50px;
-    font-size: large;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: gray;
+  border-radius: 10px;
+  width: 60%;
+  padding: 20px;
+  margin: 50px;
+  font-size: large;
 }
 
 .Bedrift-Text {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 66%;
-    font-size: x-large;
-    padding: 0px 200px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 66%;
+  font-size: x-large;
+  padding: 0px 200px 10px;
 }
 
 .bedrift_bilde_styling{
-    max-width: 50%;
-    height: auto;
-    padding: 30px 0px 0px;
+  max-width: 50%;
+  height: auto;
+  padding: 30px 0px 0px;
 }
 
 @media (max-width: 607px) {
-    .Bedrift-siden {
-        justify-content: center;
-    }
-    .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
-        width: 300px;
-        display: block;
-    }
-    .bedrift_bilde_styling {
-        padding: 0px 0px 0px;
-    }
+  .Bedrift-siden {
+      justify-content: center;
+  }
+  .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
+      width: 300px;
+      display: block;
+  }
+  .bedrift_bilde_styling {
+      padding: 0px 0px 0px;
+  }
 }
 @media (max-width: 1000px) {
-    .Bedrift-Text {
-        width: 600px;
-        padding: 0px 30px 10px;
-    }
+  .Bedrift-Text {
+      width: 600px;
+      padding: 0px 30px 10px;
+  }
 }
 
 
@@ -924,9 +1012,9 @@ STYLING GJELDENDE MAIN-SIDE (AJAX-search)
 */
 
 .ajax-search-field {
-    position: relative;
-    margin: auto;
-    width: 10%;
+  position: relative;
+  margin: auto;
+  width: 10%;
 }
 
 /*
@@ -936,124 +1024,124 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 */
 
 .addcompany_form {
-    position: absolute;
-    margin: auto;
-    color: black;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); /* IE 9 */
-    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
+  position: absolute;
+  margin: auto;
+  color: black;
+  font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
 .contact-form {
-    position: absolute;
-    margin: auto;
-    color: black;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); /* IE 9 */
-    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
+  position: absolute;
+  margin: auto;
+  color: black;
+  font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
 .name-section, .email-section, .subject-section, #freetext-section {
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+  font-family: 'Verdana, Geneva, Tahoma, sans-serif';
 }
 
 .addcompany_form input[type="text"]{
-    display: block;
-    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
-    font-style: normal;
-    margin-bottom: 15px;
-    font-size: 16px;
-    padding: 10px;
-    color: black;
-    width: 100%;
+  display: block;
+  font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+  font-style: normal;
+  margin-bottom: 15px;
+  font-size: 16px;
+  padding: 10px;
+  color: black;
+  width: 100%;
 }
 
 .contact-form input[type="text"]{
-    display: block;
-    font-style: normal;
-    margin-bottom: 15px;
-    font-size: 16px;
-    padding: 10px;
-    color: black;
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
+  display: block;
+  font-style: normal;
+  margin-bottom: 15px;
+  font-size: 16px;
+  padding: 10px;
+  color: black;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
 }
 
 .addcompany_submit button[type="submit"]{
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin: 10px auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: 10px auto;
 }
 
 .contactemp-submit button[type='submit'] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin: 10px auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  margin: 10px auto;
 }
 
 #freetext textarea{
-    resize: none;
-    display: block;
-    margin-bottom: 20px;
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight:500;
-    font-size: 16px;
-    padding: 10px;
+  resize: none;
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight:500;
+  font-size: 16px;
+  padding: 10px;
 }
 
 .freetext textarea{
-    resize: none;
-    display: block;
-    margin-bottom: 20px;
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight:500;
-    font-size: 16px;
+  resize: none;
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight:500;
+  font-size: 16px;
 }
 
 /* Responsive mobile view contact-form */
 
 @media only screen and (min-width: 300px) {
-    .contact-form {
-        margin-top: 5rem;
-        font-size: 20px;
-    }
+  .contact-form {
+      margin-top: 5rem;
+      font-size: 20px;
+  }
 
-    .addcompany_form {
-        margin-top: 5rem;
-        font-size: 20px;
-    }
+  .addcompany_form {
+      margin-top: 5rem;
+      font-size: 20px;
+  }
 }
 
 
@@ -1062,163 +1150,162 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 STYLING GJELDENDE rediger-bedrift.php
 -----------------------------------------------------
 */
-  /* Midtstill innhold */
-  .container-rediger-bedrift {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Midtstill innhold */
+.container-rediger-bedrift {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  }
+  
+  @media only screen and (max-width: 780px) {
+    .rediger-bedrift-siden {
+      max-width: 30%;
+      padding: 5 px;
+      box-sizing: border-box;
+      transform: translate(-20%, -20%);
+      -ms-transform: translate(-20%, -20%);
+      -webkit-transform: translate(-20%, -20%);
     }
-    
-    @media only screen and (max-width: 780px) {
-      .rediger-bedrift-siden {
-        max-width: 30%;
-        padding: 5 px;
-        box-sizing: border-box;
-        transform: translate(-20%, -20%);
-        -ms-transform: translate(-20%, -20%);
-        -webkit-transform: translate(-20%, -20%);
-      }
-    }
+  }
 
 .rediger-bedrift-label {
-  display: block;
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #00406b;
-  padding-top: 10px;
-  font-weight: bold;
+display: block;
+font-size: 20px;
+margin-bottom: 10px;
+color: #00406b;
+padding-top: 10px;
+font-weight: bold;
 }
 
 
 .rediger-bilde-rediger-bedrift {
-  text-align: center;
-  margin-bottom: 20px;
+text-align: center;
+margin-bottom: 20px;
 }
 
 .bedrift_bilde_styling {
-  /* background-color: #f9f9f9; */
-  /* border: none; */
-  /* border-radius: 20px; */
-  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
-  font-size: 16px;
-  padding: 8px 12px;
-  transition: all 0.3s ease-in-out;
-  width: 100%;
-  margin-bottom: 15px;
-  
-  
+/* background-color: #f9f9f9; */
+/* border: none; */
+/* border-radius: 20px; */
+/* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
+font-size: 16px;
+padding: 8px 12px;
+transition: all 0.3s ease-in-out;
+width: 100%;
+margin-bottom: 15px;
+
+
 }
 
 .rediger-bedrift_structure {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
+display: flex;
+flex-direction: column;
+margin-top: 15px;
 }
 
 .rediger-bedrift_form label {
-  font-weight: bold;
-  margin-bottom: 10px;
+font-weight: bold;
+margin-bottom: 10px;
 }
 
 
 .rediger-bedrift_form input[type="text"],
 .rediger-bedrift_form textarea {
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+width: 80%;
+padding: 10px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 20px;
+box-sizing: border-box;
+margin-bottom: 20px;
 }
 
 .rediger-bedrift_form textarea {
-  height: 200px;
+height: 200px;
 }
 
 .rediger-bedrift_submit button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-bottom: 2rem;
-    display: block;
-    margin: 10px auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  display: block;
+  margin: 10px auto;
 }
 
-  .rediger-bedrift_form input[type="text"],
-  .rediger-bedrift_form textarea {
-    border-radius: 20px;
-  }
+.rediger-bedrift_form input[type="text"],
+.rediger-bedrift_form textarea {
+  border-radius: 20px;
+}
 
 
-  /* 
-  -----------------
-  STYLING GJELDENDE admin-members.php
-  -----------------
-  */
+/* 
+-----------------
+STYLING GJELDENDE admin-members.php
+-----------------
+*/
 
-  .admin-bilde {
-    display: flex;
-    position: relative;
-    justify-content: center;
-  }
+.admin-bilde {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
 
-  .admin-bedrift-bilde {
-    max-width: 100%;
-    height: auto;
-  }
+.admin-bedrift-bilde {
+  max-width: 100%;
+  height: auto;
+}
 
-  .admin-header {
-    display: flex;
-    position: relative;
-    justify-content: center;
-  }
+.admin-header {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
 
-  .Ansatt-wrapper {
-    display: flex;
-    position: relative;
-    justify-content: center;
-  }
+.Ansatt-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
 
-  .admin-section {
-    display: flex;
-    position: relative;
-    flex-flow: column;
-    max-width: 100%;
-  }
+.admin-section {
+  display: flex;
+  position: relative;
+  flex-flow: column;
+  max-width: 100%;
+}
 
-  .admin-buttons {
-    display: flex;
-    padding: 5px 5px 5px;
-    flex-flow: column;
-  }
+.admin-buttons {
+  display: flex;
+  padding: 5px 5px 5px;
+  flex-flow: column;
+}
 
-  .member-delete, .member-make-admin {
-    position: relative;
-    padding: 5px;
-    margin: 5px;
-    background-color:  rgb(232, 234, 249);
-    color: #01233D;
-    border-radius: 5px;
-    border-color: #99A8BF;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  }
-  .ansatte {
-    background-color: rgb(232, 234, 249);
-  }
+.member-delete, .member-make-admin {
+  position: relative;
+  padding: 5px;
+  margin: 5px;
+  background-color:  rgb(232, 234, 249);
+  color: #01233D;
+  border-radius: 5px;
+  border-color: #99A8BF;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.ansatte {
+  background-color: rgb(232, 234, 249);
+}
 
-  .Ansatt-tekst {
-    color: #01233D;
-    font-size: large;
-  }
+.Ansatt-tekst {
+  color: #01233D;
+  font-size: large;
+}
 
-  .ansatt-email {
-    color: #0069d9;
-  }
-
+.ansatt-email {
+  color: #0069d9;
+}
