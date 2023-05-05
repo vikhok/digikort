@@ -17,26 +17,26 @@
         if($user_company = get_user_company($user_id)) {
             $company = $user_company->company_name;
             $company_id = $user_company->company_id;
+            $_SESSION["user"]["company_id"] = $company_id;
         } else {
             $company = null;
             $company_id = null;
+            unset($_SESSION["user"]["company_id"]);
         }
         
         $url = $_SERVER["REQUEST_URI"];
         generateQR($user_id, $url);
     } else {
-        $status = "<h4><span style='color:red'>
-                Noe gikk galt, fant ikke bruker i systemet.
-                </span></h4>";
+        header("Location: utility/error.php?error=404"); // Sjekk denna om den stemme later
     }
 
     if(isset($_REQUEST["save-contact"])) {
         if(generate_vcard($user->last_name, $user->first_name, $name, $phone, $email, $dir)) {
-            $status_vcard = "<h4><span style='color:green'>
+            $status = "<h4><span style='color:green'>
             Kontaktopplysninger er blitt lastet ned.
             </span></h4>";
         } else {
-            $status_vcard = "<h4><span style='color:red'>
+            $status = "<h4><span style='color:red'>
             Noe gikk galt, finner ikke kontaktopplysninger.
             </span></h4>";
         }
@@ -55,38 +55,34 @@
     <title>Digikort</title>
 </head>
 <body>
-    <?php banner($user_id) ?>
+    <?php banner($user_id); ?>
     <div class="business-card-container">
-        <?php if(!isset($status)) { ?>
-            <div class="personal-information">
-                <?php
-                    echo "<h2>$name</h2>
-                        <h2>$company</h2>
-                        <h2>$job_title</h2>
-                        <h2><a href='mailto:$email'>$email</a></h2>
-                        <h2><a href='tel:$phone'>$phone</a></h2>";
-                ?>
+        <div class="personal-information">
+            <h2><?=$name?></h2>
+            <h2><?=$company?></h2>
+            <h2><?=$job_title?></h2>
+            <h2><a href="mailto:<?=$email?>"><?=$email?></a></h2>
+            <h2><a href="tel:<?=$phone?>"><?=$phone?></a></h2>
+        </div>
+        <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]):
+            $folder = md5("user." . $user_id);
+            $dir = "../profiles/" . $folder . "/qr.png";
+            echo "<img class='qr-code' src='$dir' alt='QR-kode'>";
+        ?>
+        <?php else: ?>
+            <div class="menu">
+                <form action="" method="post">
+                    <ul>
+                        <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
+                        <li><a href="contact_form.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
+                        <li><button type="submit" class="menu-options" name="save-contact"><i class="fa fa-save"></i> Lagre kontakt</a></li>
+                        <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a></li>
+                    </ul>
+                </form>
             </div>
-            <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]) { 
-                $folder = md5("user." . $user_id);
-                $dir = "../profiles/" . $folder . "/qr.png";
-            ?>
-                <img class="qr-code" src="<?=$dir?>" alt="QR-kode">
-            <?php } else { ?>
-                <div class="menu">
-                    <form action="" method="post">
-                        <ul>
-                            <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
-                            <li><a href="contact-employee.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
-                            <li><button type="submit" class="menu-options" name="save-contact"><i class="fa fa-save"></i> Lagre kontakt</a></li>
-                            <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a></li>
-                        </ul>
-                    </form>
-                </div>
-                <script src="../assets/include/js/webshare-api.js"></script>
-            <?php } ?>
-        <?php } else { echo $status; }?>
-        <?php if(isset($status_vcard)) { echo $status_vcard; } ?>
+            <script src="../assets/include/javascript/webshare-api.js"></script>
+        <?php endif; ?>
+        <?php if(isset($status)) echo $status; ?>
     </div>
     <?php footer($user_id, "user"); ?>
 </body>

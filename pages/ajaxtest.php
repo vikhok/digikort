@@ -17,7 +17,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php banner(false, false) ?>
+    <?php banner(); ?>
     <div class="ajax-search-field">
         <h1>AJAX List:</h1>
         <form method="post" action="">
