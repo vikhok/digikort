@@ -21,6 +21,10 @@ label {
   font-family: "Montserrat", sans-serif;
 }
 
+input::placeholder {
+    opacity: 0.5;
+}
+
 /*
   -------------------------------------------------------
   STYLING GJELDENDE rediger_profil.php
@@ -758,6 +762,10 @@ STYLING GJELDENDE index.php (Menyvalg)
   margin-bottom: 2,5rem;
   display: flex;
   align-items: center;
+
+.map {
+    width: 100%;
+    height: 82vh;
 }
 
  .button_create_note button[type="submit"] {

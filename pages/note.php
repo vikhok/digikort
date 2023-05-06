@@ -28,7 +28,7 @@
     // Delete note:
     if(isset($_REQUEST["delete"])) {
         if(delete_note($note_id, $user_id)) {
-            header("Location: my_notes.php?user_id=$user_id");
+            header("Location: notes.php?user_id=$user_id");
         } else {
             $status = "<h4><span style='color:red'>
                     Noe gikk galt, notat ble ikke slettet.
@@ -59,7 +59,7 @@
     <title>Note</title>
 </head>
 <body>
-    <?php banner() ?>
+    <?php banner(); ?>
     <?php if($note): ?>
         <form class="form_create_note" action="" method="post">
             <div class="form-group">
