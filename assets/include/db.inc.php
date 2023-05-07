@@ -115,7 +115,7 @@
 
     function get_location($company_id) {
         global $pdo;
-        $sql = "SELECT company_address, city, zip FROM company WHERE company_id = ?";
+        $sql = "SELECT company_address, company_city, company_zip FROM company WHERE company_id = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $company_id, PDO::PARAM_INT);
 
@@ -213,13 +213,29 @@
             return false;
         }
     }
+
+    function get_company_socialmedia($company_id) {
+        global $pdo;
+        $sql = "SELECT linkedin, github, instagram FROM company_social WHERE company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
             
 
     function get_company_info($company_id) {
         global $pdo;
-        $sql = "SELECT company_name, descriptions, web_url, company_address FROM company WHERE company_id = ?";
+        $sql = "SELECT company_name, company_desc, company_email, company_url, company_address, company_city, company_zip, access_code 
+            FROM company WHERE company_id = ?";
         $query = $pdo->prepare($sql);
-        $query->bindParam(1, $company_id, PDO::PARAM_INT);    
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
 
         try {
             $query->execute();
@@ -230,32 +246,39 @@
         }
     }
 
-    function edit_company($company_id, $company_name, $descriptions, $web_url) {
+    function update_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $company_id) {
         global $pdo;
-        $sql1 = "UPDATE company SET (company_name, descriptions, web_url) VALUES (?, ?, ?) WHERE company_id = ?";
-        $query1 = $pdo->prepare($sql1);
-        $query1->bindParam(1, $company_name, PDO::PARAM_STR);
-        $query1->bindParam(2, $descriptions, PDO::PARAM_STR);
-        $query1->bindParam(3, $web_url, PDO::PARAM_STR);
-        $query1->bindParam(4, $company_id, PDO::PARAM_INT);
-
-            try{
-                $query1->execute();
-                return true;
-            } catch (PDOException $e) {
-                //echo $e->getMessage();
-                return false;
-            }
-    }
-
-    function delete_company($company_id, $company_name, $descriptions, $web_url) {
-        global $pdo;
-        $sql1 = "DELETE FROM company WHERE company_id = ?";
-        $query1 = $pdo->prepare($sql1);
-        $query1->bindParam(1, $company_id, PDO::PARAM_INT);
+        $sql = "UPDATE company SET company_name = ?, company_desc = ?, company_email = ?, 
+            company_url = ?, company_address = ?, company_city = ?, company_zip = ?, access_code = ? 
+            WHERE company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_name, PDO::PARAM_STR);
+        $query->bindParam(2, $company_desc, PDO::PARAM_STR);
+        $query->bindParam(3, $company_email, PDO::PARAM_STR);
+        $query->bindParam(4, $company_url, PDO::PARAM_STR);
+        $query->bindParam(5, $company_address, PDO::PARAM_STR);
+        $query->bindParam(6, $company_city, PDO::PARAM_STR);
+        $query->bindParam(7, $company_zip, PDO::PARAM_INT);
+        $query->bindParam(8, $access_code, PDO::PARAM_STR);
+        $query->bindParam(9, $company_id, PDO::PARAM_INT);
 
         try{
-            $query1->execute();
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function delete_company($company_id) {
+        global $pdo;
+        $sql = "DELETE FROM company WHERE company_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+
+        try{
+            $query->execute();
             return true;
         } catch (PDOException $e) {
             return false;
@@ -280,43 +303,65 @@
         }
     }
 
-    function add_company($company_name, $company_email, $descriptions, $web_url){
+    function add_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $user_id, $administrator) {
         global $pdo;
-        $sql = "INSERT INTO company (company_name, company_email, descriptions, web_url) VALUES (?, ?, ?, ?)";
-        $query = $pdo->prepare($sql);
-        $query->bindParam(1, $company_name, PDO::PARAM_STR);
-        $query->bindParam(2, $company_email, PDO::PARAM_STR);
-        $query->bindParam(3, $descriptions, PDO::PARAM_STR);
-        $query->bindParam(4, $web_url, PDO::PARAM_STR);
-        
-        try {
-            $query->execute();
-            $company_id = $pdo->lastInsertId();
-            return $company_id;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-
-   function join_company($company_name, $user_id, $administrator) {
-        global $pdo;
-        $sql1 = "SELECT company_id FROM company WHERE company_name = ?";
+        $sql1 = "INSERT INTO company (company_name, company_email, company_desc, company_url, company_address, company_city, company_zip, access_code) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $query1 = $pdo->prepare($sql1);
         $query1->bindParam(1, $company_name, PDO::PARAM_STR);
-
+        $query1->bindParam(2, $company_email, PDO::PARAM_STR);
+        $query1->bindParam(3, $company_desc, PDO::PARAM_STR);
+        $query1->bindParam(4, $company_url, PDO::PARAM_STR);
+        $query1->bindParam(5, $company_address, PDO::PARAM_STR);
+        $query1->bindParam(6, $company_city, PDO::PARAM_STR);
+        $query1->bindParam(7, $company_zip, PDO::PARAM_INT);
+        $query1->bindParam(8, $access_code, PDO::PARAM_STR);
+        
+        $pdo->beginTransaction();
         try {
             $query1->execute();
-            $company_id = $query1->fetch(PDO::FETCH_COLUMN);
-            $sql2 = "INSERT INTO business_card (company_id, user_id, administrator) VALUES (?,?,?)";
+            $company_id = $pdo->lastInsertId();
+
+            $sql2 = "INSERT INTO business_card (company_id, user_id, administrator) VALUES (?, ?, ?)";
             $query2 = $pdo->prepare($sql2);
             $query2->bindParam(1, $company_id, PDO::PARAM_INT);
             $query2->bindParam(2, $user_id, PDO::PARAM_INT);
             $query2->bindParam(3, $administrator, PDO::PARAM_BOOL);
             $query2->execute();
-            return true;
+
+            $pdo->commit();
+            return $company_id;
         } catch (PDOException $e) {
             //echo $e->getMessage();
+            $pdo->rollback();
+            return false;
+        }
+    }
+
+   function join_company($company_name, $access_code, $user_id, $administrator = false) {
+        global $pdo;
+        $sql1 = "SELECT company_id FROM company WHERE company_name = ? AND access_code = ?";
+        $query1 = $pdo->prepare($sql1);
+        $query1->bindParam(1, $company_name, PDO::PARAM_STR);
+        $query1->bindParam(2, $access_code, PDO::PARAM_STR);
+
+        $pdo->beginTransaction();
+        try {
+            $query1->execute();
+            $company_id = $query1->fetch(PDO::FETCH_COLUMN);
+
+            $sql2 = "INSERT INTO business_card (company_id, user_id, administrator) VALUES (?, ?, ?)";
+            $query2 = $pdo->prepare($sql2);
+            $query2->bindParam(1, $company_id, PDO::PARAM_INT);
+            $query2->bindParam(2, $user_id, PDO::PARAM_INT);
+            $query2->bindParam(3, $administrator, PDO::PARAM_BOOL);
+
+            $query2->execute();
+            $pdo->commit();
+            return $company_id;
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+            $pdo->rollBack();
             return false;
         }
     }

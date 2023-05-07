@@ -40,48 +40,16 @@
             if(!in_array(false, $updated_profile, true)) {
                 // Check if changes were made to the profile or profile picture:
                 if($updated_profile != $current_profile || is_uploaded_file($_FILES["upload-file"]["tmp_name"])) {
-                    $error = array(); // Setter opp array som samler inn feilmeldinger
                     if($_FILES["upload-file"]["tmp_name"] != null) {
-                        $file_type = $_FILES["upload-file"]["type"]; // Type
-                        $file_size = $_FILES["upload-file"]["size"]; // Bytes
-                        $file_size = round($file_size / 1048576, 2); // MB
-                        $acc_file_types = array("jpg" => "image/jpeg", "png" => "image/png"); // Tillatt filtyper
-                        $max_file_size = 2; // MB
-            
-                        $folder = md5("user." . $user_id);
-                        $dir = $_SERVER["DOCUMENT_ROOT"] . "/digikort/profiles/" . $folder . "/"; // Definerer mappe
-                        if(!file_exists($dir)) { // Om mappen ikke eksisterer
-                            if(!mkdir($dir, 0777, true)) { // Lager mappe og gir feilmeding vis det ikke går
-                                die("Kunne ikke opprette mappen: " . $dir);
-                            }
-                        }
-            
-                        if(!in_array($file_type, $acc_file_types)) {
-                            $acc_types = implode(", ", array_keys($acc_file_types));
-                            $error[] = "Ugyldig filtype, kun $acc_types er tillat.";
-                        }
-                        if($file_size > $max_file_size) {
-                            $error[] = "Filen du valgte er på $file_size MB og overgår grensen på 2 MB.";
-                        }
-            
-                        if(empty($error)) {
-                            if(file_exists($dir . "profile_picture.jpg")) {
-                                unlink($dir . "profile_picture.jpg");
-                            }
-                            if(file_exists($dir . "profile_picture.png")) {
-                                unlink($dir . "profile_picture.png");
-                            }
-                            $suffix = array_search($file_type, $acc_file_types);
-                            $filename = "profile_picture." . $suffix;
-                            
-                            $uploaded_file = move_uploaded_file($_FILES["upload-file"]["tmp_name"], $dir . $filename); // Prøver å laste opp fil
-                            if(!$uploaded_file) { // Hvis den feiler
-                                $error[] = "Filen kunne ikke lastes opp.";
-                            }
+                        $upload_image = upload_image($user_id, "user"); // returns array which may contain errors
+                        if(!empty($upload_image)) {
+                            $terminate = true;
+                            $status = "<h4><span style='color:red'>
+                                Noe gikk galt, endringer av profil ble ikke foretatt.
+                                </span></h4>";
                         }
                     }
-
-                    if(empty($error)) {
+                    if(!isset($terminate)) {
                         if(update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram)) {
                             $status = "<h4><span style='color:green'>
                                 Profilen ble endret.
@@ -99,7 +67,7 @@
                 }
             } else {
                 $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer av profil ble ikke foretatt XDLMAO.
+                    Noe gikk galt, endringer av profil ble ikke foretatt.
                     </span></h4>";
             }
         }
@@ -136,6 +104,7 @@
 
         if(isset($_REQUEST["leave_company"])) {
             if(leave_company($user_id, $company_id)) {
+                unset($_SESSION["user"]["company_id"]);
                 $status = "<h4><span style='color:green'>
                     Du har forlatt bedriften.
                     </span></h4>";
@@ -180,14 +149,14 @@
     <title>Rediger profil</title>
 </head>
 <body>
-    <?php banner($user_id) ?>
+    <?php banner($user_id); ?>
     <div class="rediger_profil">
         <form class="redpro_form" action="" method="POST" enctype="multipart/form-data">
             <?php
                 if(isset($status)) echo $status;
-                if(isset($error) && !empty($error)) {
-                    echo "<h4><span style='color:red';>Feilmelding" . (count($error) > 1 ? "er:" : ":") . "</span></h4>";
-                    foreach($error as $message) {
+                if(isset($upload_image) && is_array($upload_image) && !empty($upload_image)) {
+                    echo "<h4><span style='color:red';>Feilmelding" . (count($upload_image) > 1 ? "er:" : ":") . "</span></h4>";
+                    foreach($upload_image as $message) {
                         echo "<span style='color:red';>" . $message . "<br>Endring ble ikke lagret.</span>";
                     }
                 }
@@ -210,7 +179,7 @@
             </div>
             <div class="redpro_input_text">
                 <label class="redpro_label" for="stillingstittel">Stillingstittel</label>
-                <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Stilling" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$job_title?>" 
+                <input type="text" id="stillingstittel" name="stillingstittel" placeholder="Stilling" pattern="[A-Za-zÆæØøÅå'- ]{1,64}" value="<?=$job_title?>" 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
@@ -250,12 +219,12 @@
             </div>
         </form>
         <form actuon="" method="post">
-            <div class="leave_company_button">
+            <div class="change_password_button">
                 <button type="submit" name="leave_company">Forlat bedrift</button>
             </div>
         </form>
         <form actuon="" method="post">
-            <div class="delete_user_button">
+            <div class="change_password_button">
                 <button type="submit" name="delete_user">Slett profil</button>
             </div>
         </form>
