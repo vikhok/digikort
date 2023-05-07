@@ -1,7 +1,7 @@
 <?php
-    define("DB_HOST", "localhost");
+    define("DB_HOST", "localhost:8080");
     define("DB_USER", "root");
-    define("DB_PASS", "");
+    define("DB_PASS", "testdb123");
     define("DB_NAME", "digikort");
     $dsn = "mysql:dbname=" . DB_NAME . ";host=" . DB_HOST;
     $pdo;
