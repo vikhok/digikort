@@ -162,7 +162,7 @@
                 }
             ?>
             <div class="profil_bilde">    
-                <label class="redpro_label" for="upload-file">Endre profilbilde</label>
+                <label class="redpro_label" for="profil_bilde">Endre profilbilde</label>
                 <input type="file" id="profil_bilde" name="upload-file">
             </div>
             <div class="redpro_input_text">

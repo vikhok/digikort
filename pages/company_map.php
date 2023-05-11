@@ -5,16 +5,14 @@
 
     session_start();
     $user_id = $_SESSION["user"]["last_visited"]; 
-
     $company_id = $_REQUEST["company_id"];
+
     if($location = get_location($company_id)) {
         $address = $location->company_address;
         $city = $location->company_city;
         $zip = $location->company_zip;
     } else {
-        $failed = "<h4><span style='color:red'>
-        Noe gikk galt, fant ikke bedriften i systemet.
-        </span></h4>";
+        header("Location: utility/error.php?error=404");
     }
 ?>
 <!DOCTYPE html>

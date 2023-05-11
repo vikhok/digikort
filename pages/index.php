@@ -27,7 +27,7 @@
         $url = $_SERVER["REQUEST_URI"];
         generateQR($user_id, $url);
     } else {
-        header("Location: utility/error.php?error=404"); // Sjekk denna om den stemme later
+        header("Location: utility/error.php?error=404");
     }
 
     if(isset($_REQUEST["save-contact"])) {

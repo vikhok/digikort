@@ -1,8 +1,10 @@
 <?php
-    require_once("../../assets/include/header.inc.php");
-
     session_start();
     $error = $_REQUEST["error"];
+
+    if(isset($_REQUEST["submit"])) {
+        header("Location: ../ajaxtest.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -13,10 +15,9 @@
     <link rel="stylesheet" href="../../assets/styles/styles.css">
     <link rel="stylesheet" href="../../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <title>Error</title>
+    <title>Error <?=$error?></title>
 </head>
 <body>
-    <?php banner() ?>
     <div class="error_page_wrapper">
         <div class="error_message">
             <?php if($error == "404"): ?>
@@ -37,8 +38,8 @@
             <?php endif; ?>
         </div>
         <div class="return_from_error">
-            <form action="index.php" method="post">
-                <button type="submit" name="submit" class="return_from_error_button">Take me back</button>
+            <form action="" method="post">
+                <button type="submit" name="submit" class="return_from_error_button">Gå tilbake</button>
             </form>
         </div>
     </div>
