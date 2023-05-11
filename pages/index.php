@@ -10,6 +10,8 @@
     $_SESSION["user"]["last_visited"] = $user_id;
 
     if($user = get_user($user_id)) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        
         $name = $user->first_name . " " . $user->last_name;
         $job_title = $user->job_title;
         $email = $user->email;

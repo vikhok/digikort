@@ -24,8 +24,9 @@
                 $dir = "../companies/stockcompany/picture.png";
             }
         }
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
-        header("Location: utility/error.php?error=404"); //FIX ME LATER
+        header("Location: utility/error.php?error=404");
     }
 ?>
 <!DOCTYPE html>

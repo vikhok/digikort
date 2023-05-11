@@ -9,36 +9,34 @@
 
     $user_id = $_REQUEST["user_id"];
     if($user = get_user($user_id)) {
-        $email = $user->email;
-    } else {
-        $status = "<h4><span style='color:red'>
-                Noe gikk galt, fant ikke bruker i systemet.
-                </span></h4>";
-    }
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        $email = $user->email; // Blir aldri brukt.
 
-    if(isset($_REQUEST["send"])) {
-        $sender_name = $_REQUEST["name"]; // User's name
-        $sender_email = $_REQUEST["email"]; // User's email address
-        
-        $reciever_name = "Reciever"; // Reciever's name
-        $reciever_email = "digikortpass@gmail.com"; // Hvem skal motta epost (denne må endres til company_email fra db)
-
-        $subject = $_REQUEST["subject"]; // Email subject title
-        // Bulding message:
-        $message = "<h4>Fra: " . $sender_name . "</h4>";
-        $message .= "<h4>Email: " . $sender_email . "</h4>";
-        $message .= "<h4>Melding: </h4>" . $_REQUEST["message"];
-
-        // Attempting to send email:
-        if(sendMail($reciever_email, $subject, $message, $reciever_name, $sender_name)) {
-            $status = "<h4><span style='color:green'>
-                    Epost sendt, du vil få svar fortløpende.
-                    </span></h4>";
-        } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, epost ble ikke sendt.
-                    </span></h4>";
+        if(isset($_REQUEST["send"])) {
+            $sender_name = $_REQUEST["name"];
+            $sender_email = $_REQUEST["email"];
+            
+            $reciever_name = "Reciever";
+            $reciever_email = "digikortpass@gmail.com"; // Hvem skal motta epost (denne må endres til company_email fra db)
+    
+            $subject = $_REQUEST["subject"];
+            $message = "<h4>Fra: " . $sender_name . "</h4>";
+            $message .= "<h4>Email: " . $sender_email . "</h4>";
+            $message .= "<h4>Melding: </h4>" . $_REQUEST["message"];
+    
+            // Attempting to send email:
+            if(sendMail($reciever_email, $subject, $message, $reciever_name, $sender_name)) {
+                $status = "<h4><span style='color:green'>
+                        Epost sendt, du vil få svar fortløpende.
+                        </span></h4>";
+            } else {
+                $status = "<h4><span style='color:red'>
+                        Noe gikk galt, epost ble ikke sendt.
+                        </span></h4>";
+            }
         }
+    } else {
+        header("Location: utility/error.php?error=404");
     }
 ?>
 <!DOCTYPE html>
