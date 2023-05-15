@@ -132,7 +132,8 @@ ALTER TABLE `company_social`
 
 
 -- Reset_password validation event:
-
 CREATE DEFINER=`root`@`localhost` EVENT `reset_password_validation_limit` ON SCHEDULE EVERY 1 MINUTE STARTS '2023-03-14 20:00:10' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM reset_password where valid_to<NOW();
 
+-- Delete empty company event:
+CREATE DEFINER=`root`@`localhost` EVENT `delete_empty_company` ON SCHEDULE EVERY 1 DAY STARTS CURRENT_TIMESTAMP ENABLE DO DELETE FROM company WHERE company_id NOT IN (SELECT DISTINCT company_id FROM business_card);
 COMMIT;
