@@ -166,7 +166,7 @@
                 <input type="file" id="profil_bilde" name="upload-file">
             </div>
             <div class="redpro_input_text">
-                <label class="redpro_label" for="first_name">Fornavn<mandatory style="color:red">*</mandatory></label>
+                <label class="redpro_label" for="first_name">Fornavn</label>
                 <input type="text" id="first_name" name="first_name" placeholder="Fornavn" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$first_name?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>

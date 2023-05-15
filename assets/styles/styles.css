@@ -398,6 +398,7 @@ footer {
     margin: auto;
     padding: 5rem;
     line-height: 1.5;
+    margin-top: 2rem;
 }
 
 .personal-information a {
@@ -407,6 +408,7 @@ footer {
     font-weight: bold;
     color: black;
     margin-right: 20px;
+    padding-top: 2rem;
 }
 
 /*
@@ -511,7 +513,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 .button-notat[type="submit"] {
     display: block;
     margin: 0 auto;
-    background-color: #333;
+    background-color: #00406b;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -521,7 +523,23 @@ STYLING GJELDENDE index.php (Menyvalg)
 }
 
 .button-notat[type="submit"]:hover {
-    background-color: #444;
+    background-color: #00406b;
+}
+
+.return_from_error_button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #00406b;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.return_from_error_button[type="submit"]:hover {
+    background-color: #00406b;
 }
 
 /*
@@ -677,7 +695,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
    .button_create_note button[type="submit"] {
-    background-color: #007bff;
+    background-color: #00406b;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -803,7 +821,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
   .button-mine-notater button[type="submit"] {
-    background-color: #007bff;
+    background-color: #00406b;
     color: #fff;
     border: none;
     border-radius: 10px;
