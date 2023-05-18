@@ -529,7 +529,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 .return_from_error_button[type="submit"] {
     display: block;
     margin: 0 auto;
-    background-color: #00406b;
+    background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -539,7 +539,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 }
 
 .return_from_error_button[type="submit"]:hover {
-    background-color: #00406b;
+    background-color: #007bff;
 }
 
 /*
