@@ -93,12 +93,6 @@ input::placeholder {
     }
     
 .rediger_some input[type="url"] {
-      /* width: 75%;
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      margin-bottom: 1px;
-      font-size: 20px; */
       background-color: #f9f9f9;
       border: none;
       border-radius: 10px;
@@ -237,6 +231,30 @@ input::placeholder {
       .change_password_button button[type="submit"]:active {
         background-color: #005ecb;
         box-shadow: none;
+      }
+
+      @media only screen and (max-width: 600px) {
+
+        .redpro_input_text input[type="text"] {
+          width: 20rem;
+        }
+
+        .profil_bilde input[type="file"] {
+          width: 20rem;
+        }
+
+        .redpro_email input[type="email"] {
+          width: 20rem;
+        }
+    
+        .redpro_input_text input[type="tel"] {
+          width: 20rem;
+        }
+
+        .column_rediger_profil input[type="url"] {
+          width: 20rem;
+        }
+
       }
       
 
