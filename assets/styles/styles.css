@@ -979,15 +979,31 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
-    top: 50%;
+    top: 27rem;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%); /* IE 9 */
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
 }
 
+.submit-button button[type="submit"] {
+  background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: 10px auto;
+    margin-bottom: 2.5rem;
+}
+
 .name-section, .email-section, .subject-section, #freetext-section {
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    width: 100%;
 }
 
 .addcompany_form input[type="text"]{
