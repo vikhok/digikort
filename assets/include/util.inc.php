@@ -26,16 +26,6 @@
         return filter_var($var, FILTER_VALIDATE_EMAIL);
     }
 
-    // function cleanNumber($var){
-    //     $var = clean($var);
-    //     return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
-    // }
-
-    // function validateInt($var){
-    //     return filter_var($var, FILTER_VALIDATE_INT);
-    // }
-
-    // Encryption / decryption:
     function digicrypt($data, $boolean) {
         $key = "qkwjdiw239&&jdafweihbrhnan&^%3ggdnawhd4njshjwuuO";
         $encryption_key = base64_decode($key);
@@ -66,6 +56,54 @@
             else 
                 return false;
         }
+    }
+
+    function upload_image($id, $option) {
+        $error = array(); // Array to store potential errors
+        $file_type = $_FILES["upload-file"]["type"]; // File type
+        $file_size = $_FILES["upload-file"]["size"]; // Bytes
+        $file_size = round($file_size / 1048576, 2); // MB
+        $acc_file_types = array("jpg" => "image/jpeg", "png" => "image/png"); // Accepted file types
+        $max_file_size = 2; // MB
+
+        if($option == "user") {
+            $folder = md5("user." . $id);
+            $dir = $_SERVER["DOCUMENT_ROOT"] . "/digikort/profiles/" . $folder . "/";
+        } elseif($option == "company") {
+            $folder = md5("company." . $id);
+            $dir = $_SERVER["DOCUMENT_ROOT"] . "/digikort/companies/" . $folder . "/";
+        } else return false;
+
+        if(!file_exists($dir)) {
+            if(!mkdir($dir, 0777, true)) {
+                die("Kunne ikke opprette mappen: " . $dir);
+            }
+        }
+
+        if(!in_array($file_type, $acc_file_types)) {
+            $acc_types = implode(", ", array_keys($acc_file_types));
+            $error[] = "Ugyldig filtype, kun $acc_types er tillat.";
+        }
+        if($file_size > $max_file_size) {
+            $error[] = "Filen du valgte er på $file_size MB og overgår grensen på 2 MB.";
+        }
+
+        if(empty($error)) {
+            if(file_exists($dir . "picture.jpg")) {
+                unlink($dir . "picture.jpg");
+            }
+            if(file_exists($dir . "picture.png")) {
+                unlink($dir . "picture.png");
+            }
+            $suffix = array_search($file_type, $acc_file_types);
+            $filename = "picture." . $suffix;
+            
+            $uploaded_file = move_uploaded_file($_FILES["upload-file"]["tmp_name"], $dir . $filename);
+            if(!$uploaded_file) {
+                $error[] = "Filen kunne ikke lastes opp.";
+            }
+        }
+        return $error;
     }
 
 ?>

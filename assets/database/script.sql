@@ -17,14 +17,15 @@ CREATE TABLE `user` (
 );
 
 CREATE TABLE `company` (
-    `company_id`            int(11)       NOT NULL,
-    `company_name`          varchar(64)   NOT NULL UNIQUE,
-    `company_email`         varchar(128)  NOT NULL,
-    `descriptions`          varchar(255)  NOT NULL,
-    `web_url`               varchar(255)  NOT NULL,
-    `company_address`       varchar(128)  NOT NULL,
-    `city`                  varchar(64)   NOT NULL,
-    `zip`                   int(4)        NOT NULL
+    `company_id`            int(11)         NOT NULL,
+    `company_name`          varchar(64)     NOT NULL UNIQUE,
+    `company_email`         varchar(128)    NOT NULL,
+    `company_desc`          varchar(255)    NOT NULL,
+    `company_url`           varchar(255)    NOT NULL,
+    `company_address`       varchar(128)    NOT NULL,
+    `company_city`          varchar(64)     NOT NULL,
+    `company_zip`           int(4)          NOT NULL,
+    `access_code`           varchar(255)    NOT NULL
 );
 
 CREATE TABLE `note` (
@@ -131,7 +132,8 @@ ALTER TABLE `company_social`
 
 
 -- Reset_password validation event:
-
 CREATE DEFINER=`root`@`localhost` EVENT `reset_password_validation_limit` ON SCHEDULE EVERY 1 MINUTE STARTS '2023-03-14 20:00:10' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM reset_password where valid_to<NOW();
 
+-- Delete empty company event:
+CREATE DEFINER=`root`@`localhost` EVENT `delete_empty_company` ON SCHEDULE EVERY 1 DAY STARTS CURRENT_TIMESTAMP ENABLE DO DELETE FROM company WHERE company_id NOT IN (SELECT DISTINCT company_id FROM business_card);
 COMMIT;

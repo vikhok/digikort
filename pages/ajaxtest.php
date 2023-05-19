@@ -14,25 +14,16 @@
     <script>
         ajax_search("utility/all_users.php");
     </script>
-    <title>Document</title>
+    <title>Søk blant brukere</title>
 </head>
 <body>
-    <?php banner(false, false) ?>
+    <?php banner(); ?>
     <div class="ajax-search-field">
-        <h1>AJAX List:</h1>
+        <h1>Brukere:</h1>
         <form method="post" action="">
-            <input name="company" type="text" id="searchInput" placeholder="Search for a company..." list="suggestions">
+            <input name="company" type="text" id="searchInput" placeholder="Søk blant brukere..." list="suggestions">
             <datalist id="suggestions"></datalist>
         </form>
     </div>
-    <?php footer("profile") ?>
 </body>
 </html>
-
-<div class="ajax-search-field">
-        <h1>AJAX List:</h1>
-        <form method="post" action="">
-            <input name="company" type="text" id="searchInput" placeholder="Search for a company..." list="suggestions">
-            <datalist id="suggestions"></datalist>
-        </form>
-    </div>
