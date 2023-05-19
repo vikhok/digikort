@@ -93,14 +93,35 @@ input::placeholder {
     }
     
 .rediger_some input[type="url"] {
-      width: 75%;
+      /* width: 75%;
       padding: 12px;
       border-radius: 5px;
       border: 1px solid #ccc;
       margin-bottom: 1px;
-      font-size: 20px;
+      font-size: 20px; */
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+      width: 40%;
     }
   
+  .column_rediger_profil input[type="url"] {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 16px;
+      padding: 8px 12px;
+      transition: all 0.3s ease-in-out;
+      width: 40%;
+  }  
+
   .column_rediger_profil input[type="file"] {
       background-color: #f9f9f9;
       border: none;
@@ -143,12 +164,8 @@ input::placeholder {
     }
   
   .rediger_some {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 5px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
     }
   
   .column_rediger_profil {

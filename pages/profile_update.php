@@ -197,7 +197,7 @@
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Eksempelvis +4712345678')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
-            <div class="rediger_some">
+            <div class="rediger_some"> 
                 <div class="column_rediger_profil">
                     <label class="redpro_label" for="linkedin">LinkedIn</label>
                     <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/" pattern="{1,255}" value="<?=$linkedin?>"><br><br>
@@ -210,7 +210,7 @@
                     <label class="redpro_label" for="instagram">Instagram</label>
                     <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/" pattern="{1,255}" value="<?=$instagram?>"><br><br>
                 </div>
-            </div>
+            </div> 
             <div class="oppdater_profil_knapp">    
                 <button type="submit" name="update_profile">Oppdater profil</button>
             </div>
