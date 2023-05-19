@@ -68,6 +68,7 @@
     <title>Rediger Bedrift</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
 </head>
 <body>
     <?php banner(); ?>

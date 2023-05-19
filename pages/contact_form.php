@@ -3,6 +3,7 @@
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/phpmailer.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
@@ -44,6 +45,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Kontaktskjema</title>
 </head>
 <body>

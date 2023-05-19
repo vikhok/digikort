@@ -4,6 +4,7 @@
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/qr.inc.php");
     require_once("../assets/include/vcard-inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $user_id = $_REQUEST["user_id"];
@@ -48,6 +49,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Digikort</title>
 </head>
 <body>

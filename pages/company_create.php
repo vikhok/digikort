@@ -42,6 +42,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Opprett bedrift</title>
 </head>
 <body>

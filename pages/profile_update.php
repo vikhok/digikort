@@ -115,10 +115,10 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <title>Rediger profil</title>
 </head>

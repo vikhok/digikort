@@ -2,6 +2,7 @@
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $user_id = $_SESSION["user"]["last_visited"]; 
