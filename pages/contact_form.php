@@ -68,7 +68,7 @@
             </section>
 
             <section class="subject-section">
-                <label for="subject">Subject</label><br>
+                <label for="subject">Emne</label><br>
                 <input type="text" id="subject" name="subject" value="" required>
             </section>
 
