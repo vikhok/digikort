@@ -16,9 +16,7 @@
         if($note_id = create_note($user_id, $encrypted_subject, $encrypted_body)) {
             header("Location: note.php?note_id=$note_id");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, notat ble ikke lagret.
-                    </span></h4>";
+            show_alert("Noe gikk galt, notat ble ikke lagret");
         }
     }
 ?>

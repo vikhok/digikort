@@ -11,9 +11,7 @@
     if($user = get_user($user_id)) {
         $email = $user->email;
     } else {
-        $status = "<h4><span style='color:red'>
-                Noe gikk galt, fant ikke bruker i systemet.
-                </span></h4>";
+        show_alert("Noe gikk galt, fant ikke bruker i systemet");
     }
 
     if(isset($_REQUEST["send"])) {
@@ -31,13 +29,9 @@
 
         // Attempting to send email:
         if(sendMail($reciever_email, $subject, $message, $reciever_name, $sender_name)) {
-            $status = "<h4><span style='color:green'>
-                    Epost sendt, du vil få svar fortløpende.
-                    </span></h4>";
+            show_alert("E-post sendt, du vil få svar fortløpende");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, epost ble ikke sendt.
-                    </span></h4>";
+            show_alert("Noe gikk galt, e-post ble ikke sendt");
         }
     }
 ?>
@@ -81,7 +75,6 @@
                 <button type="submit" name="send">Send inn</button>
             </section>
         </form>
-        <?php if(isset($status)) echo $status; ?>
     </div>
 </body>
 </html>

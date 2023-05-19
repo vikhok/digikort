@@ -42,31 +42,21 @@
                         $upload_image = upload_image($company_id, "company"); // returns array which may contain errors
                         if(!empty($upload_image)) {
                             $terminate = true;
-                            $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av bedriften ble ikke foretatt. 1
-                                </span></h4>";
+                            show_alert("Noe gikk galt, endringer av bedriften ble ikke foretatt");
                         }
                     }
                     if(!isset($terminate)) {
                         if(update_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $company_id)) {
-                            $status = "<h4><span style='color:green'>
-                                Bedriften ble endret. 1.5
-                                </span></h4>";
+                            show_alert("Bedriften ble endret");
                         } else {
-                            $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av bedriften ble ikke foretatt. 2
-                                </span></h4>";
+                            show_alert("Noe gikk galt, endringer av bedriften ble ikke foretatt");
                         }
                     }        
                 } else {
-                    $status = "<h4><span style='color:red'>
-                        Ingen endringer har blitt foretatt. 3
-                        </span></h4>";
+                    show_alert("Ingen endringer har blitt foretatt");
                 }
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer av bedriften ble ikke foretatt. 4
-                    </span></h4>";
+                show_alert("Noe gikk galt, endringer av bedriften ble ikke foretatt");
             }
         }
     }

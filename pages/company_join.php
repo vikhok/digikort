@@ -14,9 +14,7 @@
                 $_SESSION["user"]["company_id"] = $company_id;
                 header("Location: company.php?company_id=$company_id");
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt.
-                    </span></h4>";
+                show_alert("Noe gikk galt");
             }
         }
     } else {
@@ -65,6 +63,5 @@
             <a class="a_ny_bedrift" href="company_create.php">Opprett bedrift</a>
         </div>
     </div>
-    <?php if(isset($status)) echo $status; ?>
 </body>
 </html>

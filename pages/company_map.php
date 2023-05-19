@@ -12,9 +12,7 @@
         $city = $location->company_city;
         $zip = $location->company_zip;
     } else {
-        $failed = "<h4><span style='color:red'>
-        Noe gikk galt, fant ikke bedriften i systemet.
-        </span></h4>";
+        show_alert("Noe gikk galt, fant ikke bedriften i systemet");
     }
 ?>
 <!DOCTYPE html>

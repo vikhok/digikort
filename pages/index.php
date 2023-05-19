@@ -32,13 +32,9 @@
 
     if(isset($_REQUEST["save-contact"])) {
         if(generate_vcard($user->last_name, $user->first_name, $name, $phone, $email, $dir)) {
-            $status = "<h4><span style='color:green'>
-            Kontaktopplysninger er blitt lastet ned.
-            </span></h4>";
+            show_alert("Kontaktopplysninger er blitt lastet ned");
         } else {
-            $status = "<h4><span style='color:red'>
-            Noe gikk galt, finner ikke kontaktopplysninger.
-            </span></h4>";
+            show_alert("Noe gikk galt, finner ikke kontaktopplysninger.");
         }
     }
 
@@ -82,7 +78,6 @@
             </div>
             <script src="../assets/include/javascript/webshare-api.js"></script>
         <?php endif; ?>
-        <?php if(isset($status)) echo $status; ?>
     </div>
     <?php footer($user_id, "user"); ?>
 </body>

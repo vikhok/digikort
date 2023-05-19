@@ -15,13 +15,9 @@
         $encrypted_body = digicrypt($note_body, true);
 
         if(update_note($note_id, $encrypted_subject, $encrypted_body)) {
-            $status = "<h4><span style='color:green'>
-                    Notat ble oppdatert.
-                    </span></h4>";
+            show_alert("Notat ble oppdatert");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, notat ble ikke oppdatert.
-                    </span></h4>";
+            show_alert("Noe gikk galt, notat ble ikke oppdatert");
         }
     }
 
@@ -30,9 +26,7 @@
         if(delete_note($note_id, $user_id)) {
             header("Location: notes.php?user_id=$user_id");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, notat ble ikke slettet.
-                    </span></h4>";
+            show_alert("Noe gikk galt, notat ble ikke slettet");
         }
     }
 
@@ -44,9 +38,7 @@
         $note_body = digicrypt($encrypted_body, false);
         $note_date = date("H:i d-m-Y", strtotime($note->note_date));
     } else {
-        $status = "<h4><span style='color:red'>
-            Fant ingen notat.
-            </span></h4>";
+        show_alert("Fant ingen notat");
     }
 ?>
 <!DOCTYPE html>
@@ -86,6 +78,5 @@
             </div>
         </form>
     <?php endif; ?>
-    <?php if(isset($status)) echo $status; ?>
 </body>
 </html>
