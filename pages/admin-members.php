@@ -31,7 +31,7 @@
 </head>
 <body>
     
-    <?php banner() ?>
+    <?php banner(); ?>
     <main>
         <div class="admin-bilde">
             <img class="admin-bedrift-bilde" src="../Companies/Company1/Egde_Grimstad.png" alt="Bilde av bedriften">

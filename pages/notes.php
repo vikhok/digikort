@@ -7,6 +7,9 @@
     $user_id = $_SESSION["user"]["user_id"];
 
     $notes = get_all_notes($user_id);
+    if(!$notes) {
+        header("Loaction: utility/error.php?error=404");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -18,7 +21,7 @@
     <title>Notater</title>
 </head>
 <body>
-    <?php banner() ?>
+    <?php banner(); ?>
     <main>
         <br>
         <br>
@@ -41,7 +44,7 @@
             <p class="no_notes">Du har ingen notater lagret.</p>
         <?php endif; ?>
         <div class="button-mine-notater">
-            <form action="create_note.php" method="post">
+            <form action="note_create.php" method="post">
                 <button type="submit" name="create_note" >Nytt notat</button>
             </form>
         </div>

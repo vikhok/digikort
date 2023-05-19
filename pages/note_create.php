@@ -31,7 +31,7 @@
     <title>Nytt notat</title>
 </head>
 <body>
-    <?php banner() ?>
+    <?php banner(); ?>
     <main>
         <h1 class="h1_create_note">Nytt notat</h1>
         <form class="form_create_note" action="" method="POST">

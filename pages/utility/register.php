@@ -5,9 +5,9 @@
     session_start();
 
     if(isset($_REQUEST["register"])) {
-        $first_name = ucfirst(clean($_REQUEST["first_name"]));
-        $last_name = ucfirst(clean($_REQUEST["last_name"]));
-        $email = clean($_REQUEST["email"]);
+        $first_name = ucfirst(strtolower(clean($_REQUEST["first_name"])));
+        $last_name = ucfirst(strtolower(clean($_REQUEST["last_name"])));
+        $email = strtolower(validateEmail(cleanEmail($_REQUEST["email"])));
         $phone = clean($_REQUEST["phone"]);
         $password = clean($_REQUEST["password"]);
         $confirm_password = clean($_REQUEST["confirm_password"]);
@@ -15,23 +15,23 @@
         if($password == $confirm_password) {
             $password_hash = password_hash($password, PASSWORD_DEFAULT, ["cost" => 10]);
             if($user_id = create_account($first_name, $last_name, $email, $phone, $password_hash)) {
-                $dir = "../profiles/" . md5("user." . $user_id);
-                if(!file_exists($dir)) {
-                    mkdir($dir, 0777, true);
+                $folder = "../profiles/" . md5("user." . $user_id);
+                if(!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
                 }
                 $status = "<h4><span style='color:green'>
-                        Konto ble registrert i systemet, vi sender deg til innloggingssiden.
-                        </span></h4>";
+                    Konto ble registrert i systemet, vi sender deg til innloggingssiden.
+                    </span></h4>";
                 header("Refresh: 3; url=login.php");
             } else {
                 $status = "<h4><span style='color:red'>
-                        Noe gikk galt, konto ble ikke lagret i systemet.
-                        </span></h4>";
+                    Noe gikk galt, konto ble ikke lagret i systemet.
+                    </span></h4>";
             }
         } else {
             $status = "<h4><span style='color:red'>
-                    Passordene du skrev stemte ikke overrens.
-                    </span></h4>";
+                Passordene du skrev stemte ikke overrens.
+                </span></h4>";
         }
     }
 ?>
