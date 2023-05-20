@@ -1075,15 +1075,15 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 }
 
 #freetext textarea{
-    resize: none;
-    display: block;
-    margin-bottom: 20px;
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight:500;
-    font-size: 16px;
-    padding: 10px;
+  resize: none;
+  display: block;
+  margin-bottom: 20px;
+  width: 60%;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight:500;
+  font-size: 16px;
+  padding: 10px;
 }
 
 .freetext textarea{
@@ -1277,3 +1277,35 @@ STYLING GJELDENDE rediger-bedrift.php
     color: #0069d9;
   }
 
+/* 
+---------------
+STYLING GJELDENDE company_create.php
+---------------
+*/
+.company_descr, .company_email_field {
+  background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+}
+.company_descr {
+  width: 50%;
+  height: 8rem;
+}
+.company_email_field {
+  width: 40%;
+}
+
+@media only screen and (max-width: 600px) {
+  .company_descr {
+    width: 20rem;
+    height: 12rem;
+  }
+  .company_email_field {
+    width: 20rem;
+  }
+}
