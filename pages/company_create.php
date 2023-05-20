@@ -31,10 +31,7 @@
             $_SESSION["user"]["company_id"] = $company_id;
             header("Location: company.php?company_id=$company_id");
         } else {
-            $status = "<h4><span style='color:red'>
-                Noe gikk galt, bedriften ble ikke opprettet i systemet. <br>
-                Det kan være at navnet på bedriften allerede er registrert i systemet.
-                </span></h4>";
+            show_alert("Noe gikk galt, bedriften ble ikke opprettet i systemet. Det kan være at navnet på bedriften allerede er registrert i systemet.");
         }
     }
 ?>
@@ -45,6 +42,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Opprett bedrift</title>
 </head>
 <body>

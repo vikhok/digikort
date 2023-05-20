@@ -106,4 +106,11 @@
         return $error;
     }
 
+    function show_alert($message) {
+        echo '<script language="javascript" src="/javascript/messages.js"></script>';
+        echo '<script>';
+        echo 'window.onload = function() { showAlert("'. $message .'"); }';
+        echo '</script>';
+    }
+
 ?>
