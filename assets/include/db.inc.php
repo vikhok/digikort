@@ -250,6 +250,43 @@
         }
     }
 
+    function verify_admin_role($company_id, $user_id) {
+        global $pdo;
+        $sql = "SELECT administrator FROM business_card WHERE company_id = ? AND user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+        $query->bindParam(2, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            $object = $query->fetch(PDO::FETCH_ASSOC);
+            if($object && $object["administrator"]) {
+                return true;
+            } else return false;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function give_admin_role($company_id, $user_id) {
+        global $pdo;
+        $sql = "UPDATE business_card SET administrator = ? WHERE company_id = ? AND user_id = ?";
+        $query = $pdo->prepare($sql);
+        $admin = true;
+        $query->bindParam(1, $admin, PDO::PARAM_BOOL);
+        $query->bindParam(2, $company_id, PDO::PARAM_INT);
+        $query->bindParam(3, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     function update_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $company_id) {
         global $pdo;
         $sql = "UPDATE company SET company_name = ?, company_desc = ?, company_email = ?, 

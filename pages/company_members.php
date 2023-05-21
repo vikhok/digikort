@@ -5,6 +5,7 @@
 
     session_start();
     $company_id = $_REQUEST["company_id"];
+    $admin = verify_admin_role($company_id, $_SESSION["user"]["user_id"]);
 
     if($employees = get_all_employees($company_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
@@ -14,7 +15,12 @@
 
     if(isset($_REQUEST["make_admin"])) {
         $user_id = $_REQUEST["user_id"];
-        
+        if(give_admin_role($company_id, $user_id)) {
+            show_alert("Bruker har fått rollen som administrator.");
+            header("Refresh: 0");
+        } else {
+            show_alert("Noe gikk galt, fikk ikke endret rettighetene til brukeren.");
+        }
     }
 
     if(isset($_REQUEST["remove_member"])) {
@@ -70,11 +76,13 @@
                                     <p><?= $employee["email"] ?></p>
                                 </div>
                             </a>
-                            <div class="admin_buttons">
-                                <input type="hidden" name="user_id" value="<?= $user_id ?>">
-                                <button type="submit" class="member-make-admin" name="make_admin" onclick="confirmation('Er du sikker på at du ønsker å gi rettigheter til <?=$employee['first_name']?>?');">Gi rettigheter</button>
-                                <button type="submit" class="member-delete" name="remove_member" onclick="confirmation('Er du sikker på at du ønsker å fjerne <?=$employee['first_name']?> fra bedriften?');">Fjern medlem</button>
-                            </div>
+                            <?php if($admin && !verify_admin_role($company_id, $user_id)): ?>
+                                <div class="admin_buttons">
+                                    <input type="hidden" name="user_id" value="<?= $user_id ?>">
+                                    <button type="submit" class="member-make-admin" name="make_admin" onclick="confirmation('Er du sikker på at du ønsker å gi rettigheter til <?=$employee['first_name']?>?');">Gi rettigheter</button>
+                                    <button type="submit" class="member-delete" name="remove_member" onclick="confirmation('Er du sikker på at du ønsker å fjerne <?=$employee['first_name']?> fra bedriften?');">Fjern medlem</button>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </form>
                     <br>
