@@ -183,7 +183,7 @@
                     <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/" pattern="{1,255}" value="<?=$instagram?>"><br><br>
                 </div>
             </div> 
-            <div class="oppdater_profil_knapp">    
+            <div class="oppdater_profil_knapp">
                 <button type="submit" name="update_profile">Oppdater profil</button>
             </div>
         </form>
@@ -192,11 +192,13 @@
                 <button type="submit" name="change_password">Bytt passord</button>
             </div>
         </form>
-        <form action="" method="post">
-            <div class="change_password_button">
-                <button type="submit" name="leave_company" onclick="confirmation('Er du sikker på at du ønsker å forlate bedriften?');">Forlat bedrift</button>
-            </div>
-        </form>
+        <?php if($company_id != false): ?>
+            <form action="" method="post">
+                <div class="change_password_button">
+                    <button type="submit" name="leave_company" onclick="confirmation('Er du sikker på at du ønsker å forlate bedriften?');">Forlat bedrift</button>
+                </div>
+            </form>
+        <?php endif; ?>
         <form action="" method="post">
             <div class="change_password_button">
                 <button type="submit" name="delete_user"  onclick="confirmation('Er du sikker på at du ønsker å slette profilen din?');">Slett profil</button>
