@@ -886,6 +886,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     position: relative;
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
     justify-content: center;
 }
 
@@ -943,21 +944,29 @@ STYLING GJELDENDE index.php (Menyvalg)
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 66%;
-    font-size: x-large;
+    width: 77%;
+    font-size: 20px;
     padding: 0px 200px 10px;
 }
 
 .bedrift_bilde_styling{
     max-width: 50%;
     height: auto;
-    padding: 30px 0px 0px;
+}
+
+@media only screen and (max-width: 820px) {
+  .bedrift_bilde_styling{
+    max-width: 100%;
+    height: auto;
+  }
+
+  .Bedrift-siden {
+    max-width: 100%;
+    align-items: left;
+  }
 }
 
 @media (max-width: 607px) {
-    .Bedrift-siden {
-        justify-content: center;
-    }
     .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
         width: 300px;
         display: block;
@@ -1093,15 +1102,15 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 }
 
 #freetext textarea{
-    resize: none;
-    display: block;
-    margin-bottom: 20px;
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight:500;
-    font-size: 16px;
-    padding: 10px;
+  resize: none;
+  display: block;
+  margin-bottom: 20px;
+  width: 60%;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight:500;
+  font-size: 16px;
+  padding: 10px;
 }
 
 .freetext textarea{
@@ -1171,12 +1180,7 @@ STYLING GJELDENDE rediger-bedrift.php
 }
 
 .bedrift_bilde_styling {
-  /* background-color: #f9f9f9; */
-  /* border: none; */
-  /* border-radius: 20px; */
-  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
   font-size: 16px;
-  padding: 8px 12px;
   transition: all 0.3s ease-in-out;
   width: 100%;
   margin-bottom: 15px;
@@ -1316,4 +1320,39 @@ STYLING GJELDENDE error.php
 
 .return_from_error_button {
     color: black;
+}
+
+
+/*
+---------------
+STYLING GJELDENDE company_create.php
+---------------
+*/
+
+.company_descr, .company_email_field {
+  background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+}
+.company_descr {
+  width: 50%;
+  height: 8rem;
+}
+.company_email_field {
+  width: 40%;
+}
+
+@media only screen and (max-width: 600px) {
+  .company_descr {
+    width: 20rem;
+    height: 12rem;
+  }
+  .company_email_field {
+    width: 20rem;
+  }
 }

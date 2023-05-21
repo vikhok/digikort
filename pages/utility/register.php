@@ -19,24 +19,18 @@
                 if(!file_exists($folder)) {
                     mkdir($folder, 0777, true);
                 }
-                $status = "<h4><span style='color:green'>
-                    Konto ble registrert i systemet, vi sender deg til innloggingssiden.
-                    </span></h4>";
+                show_alert("Konto ble registrert i systemet, vi sender deg til påloggingssiden");
                 header("Refresh: 3; url=login.php");
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, konto ble ikke lagret i systemet.
-                    </span></h4>";
+                show_alert("Noe gikk galt, konto ble ikke lagret i systemet");
             }
         } else {
-            $status = "<h4><span style='color:red'>
-                Passordene du skrev stemte ikke overrens.
-                </span></h4>";
+            show_alert("Passordene samsvarer ikke, prøv igjen");
         }
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +38,7 @@
     <link rel="stylesheet" href="../../assets/styles/login.css">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.3.0-web/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="../../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Registrer</title>
 </head>
 <body>
@@ -52,15 +47,24 @@
             <form name="register" class="login" method="POST">
                 <h1 class="digikort-heading">DigiKort</h1>
                 <div class="form-control">
-                    <input type="text" name="first_name" class="firstname-form" placeholder="Fornavn" required>
-                    <input type="text" name="last_name" class="surname-form" placeholder="Etternavn" required>
-                    <input type="email" name="email" class="email-register-form" placeholder="Email" required>
-                    <input type="tel" name="phone" class="phonenumber-form" placeholder="Mobilnummer" required>
-                    <input type="password" name="password" class="register-password-form" placeholder="Passord" required>
-                    <input type="password" name="confirm_password" class="confirm-password-form" placeholder="Gjenta Passord" required>
+                    <input type="text" name="first_name" class="firstname-form" placeholder="Fornavn" pattern="[A-Za-zÆæØøÅå'-.]{1,64}" required
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavnet kan kun innhold bokstaver og 64 tegn')" oninput="this.setCustomValidity('')">
+                    <input type="text" name="last_name" class="surname-form" placeholder="Etternavn" pattern="[A-Za-zÆæØøÅå'-.]{1,64}" required
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavnet kan kun innhold bokstaver og 64 tegn')" oninput="this.setCustomValidity('')">
+                    <input type="email" name="email" class="email-register-form" placeholder="Email" pattern="{1,128}" required
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. E-postadressen kan kun innhold 128 tegn')" oninput="this.setCustomValidity('')">
+                    <input type="tel" name="phone" class="phonenumber-form" placeholder="Mobilnummer" pattern="[0-9]{1,15}" required
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Telefonnummer kan kun innhold nummer og 15 tegn')" oninput="this.setCustomValidity('')">
+                    <input type="password" name="password" class="register-password-form" placeholder="Passord" pattern="[0-9A-Za-zÆæØøÅå'-.]{1,255}" required
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold 255 tegn')" oninput="this.setCustomValidity('')">
+                    <input type="password" name="confirm_password" class="confirm-password-form" placeholder="Gjenta passord" pattern="[0-9A-Za-zÆæØøÅå'-.]{1,255}" required
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold 255 tegn')" oninput="this.setCustomValidity('')">
+                    <div class="register-button">
+                        <button type="submit" name="register">Registrer</button>
+                    </div>
+                    <p><a class="already-has-user-clicker" href="login.php">Jeg har allerede en brukerkonto</a></p>
                 </div>
-                <button type="submit" name="register">Registrer</button>
-                <p><a class="already-has-user-clicker" href="login.php">Jeg har allerede brukerkonto</a></p>
+                
                 <?php if(isset($status)) { echo $status; } ?>
             </form>
         </div>
