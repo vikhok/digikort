@@ -93,134 +93,117 @@ input::placeholder {
     }
     
 .rediger_some input[type="url"] {
-      width: 75%;
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      margin-bottom: 1px;
-      font-size: 20px;
-    }
-  
-  .column_rediger_profil input[type="file"] {
-      background-color: #f9f9f9;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      color: #555;
-      font-size: 16px;
-      padding: 8px 12px;
-      transition: all 0.3s ease-in-out;
-      width: 25%;
-  }
-  
-    
-  .oppdater_profil_knapp button[type="submit"] {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 20px;
-      cursor: pointer;
-      margin-bottom: 2,5rem;
-      display: block;
-      margin: 10px auto;
-    }
-    
-  .oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
-      background-color: #0069d9;
-    }
-    
-  .error {
-      color: red;
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-    
-  .rediger_profil {
-      position: relative;
-      justify-content: center;
-    }
-  
-  .rediger_some {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 5px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-  
-  .column_rediger_profil {
-      flex-basis: 50%;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-  
-    .vis_profil_bilde {
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    width: 75%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1px;
+    font-size: 20px;
+}
+
+.column_rediger_profil input[type="file"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    width: 25%;
+}
+
+
+.oppdater_profil_knapp button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 2,5rem;
+    display: block;
+    margin: 10px auto;
+}
+
+.oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
+    background-color: #0069d9;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.rediger_profil {
+    position: relative;
+    justify-content: center;
+}
+
+.rediger_some {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.column_rediger_profil {
+    flex-basis: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.profil_bilde input[type="file"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
+    margin-bottom: 15px;
     margin-top: 15px;
-    }
-  
-    .profil_bilde {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 5rem;
-    }
-  
-    .profil_bilde input[type="file"] {
-      background-color: #f9f9f9;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      color: #555;
-      font-size: 16px;
-      padding: 8px 12px;
-      transition: all 0.3s ease-in-out;
-      width: 40%;
-      margin-bottom: 15px;
-      margin-top: 15px;
-       
-    }
+}
 
-    .change_password_button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 20px;
-        cursor: pointer;
-        margin-bottom: 0,5rem;
-      }
+.change_password_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 0,5rem;
+}
 
-    .change_password_button button[type="submit"] {
-        background-color: #0b417b;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        text-transform: uppercase;
-        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-      }
-      
-      .change_password_button button[type="submit"]:hover {
-        background-color: #062e58;
-      }
-      
-      .change_password_button button[type="submit"]:active {
-        background-color: #005ecb;
-        box-shadow: none;
-      }
+.change_password_button button[type="submit"] {
+    background-color: #0b417b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+.change_password_button button[type="submit"]:hover {
+    background-color: #062e58;
+}
+
+.change_password_button button[type="submit"]:active {
+    background-color: #005ecb;
+    box-shadow: none;
+}
       
 
 /*
@@ -271,6 +254,17 @@ header {
     width: 10rem;
     top: 4rem;
     outline: auto;
+}
+
+.profile_picture_small {
+    position: relative;
+    cursor: pointer;
+    margin-right: auto;
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    outline: auto;
+    margin-right: 1rem;
 }
 
 .nav-menu li {
@@ -789,7 +783,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     margin-bottom: 1rem;
   }
   
-  .notat-boks, .Ansatte {
+  .notat-boks {
     padding: 1rem;
     background-color: #f2f2f2;
     border-radius: 5px;
@@ -1161,49 +1155,40 @@ STYLING GJELDENDE rediger-bedrift.php
   }
 
 
-  /* 
-  -----------------
-  STYLING GJELDENDE admin-members.php
-  -----------------
-  */
+/* 
+-----------------
+STYLING GJELDENDE admin-members.php
+-----------------
+*/
 
-  .admin-bilde {
+.members_header {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .admin-bedrift-bilde {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .admin-header {
+.employees_wrapper {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .Ansatt-wrapper {
-    display: flex;
-    position: relative;
-    justify-content: center;
-  }
-
-  .admin-section {
+.members_section {
     display: flex;
     position: relative;
     flex-flow: column;
     max-width: 100%;
-  }
+}
 
-  .admin-buttons {
+.admin_buttons {
     display: flex;
     padding: 5px 5px 5px;
     flex-flow: column;
-  }
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
 
-  .member-delete, .member-make-admin {
+.member-delete, .member-make-admin {
     position: relative;
     padding: 5px;
     margin: 5px;
@@ -1212,17 +1197,24 @@ STYLING GJELDENDE rediger-bedrift.php
     border-radius: 5px;
     border-color: #99A8BF;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  }
-  .ansatte {
-    background-color: rgb(232, 234, 249);
-  }
+}
 
-  .Ansatt-tekst {
+.employee {
+    background-color: rgb(232, 234, 249);
+}
+
+.employee_information {
     color: #01233D;
     font-size: large;
-  }
+}
 
-  .ansatt-email {
-    color: #0069d9;
-  }
-
+.employee {
+    position: relative;
+    display: flex;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    width: 30rem;
+}

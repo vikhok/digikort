@@ -13,7 +13,11 @@
 
     function login($email, $password) {
         global $pdo;
-        $sql = "SELECT user_id, email, pass FROM user WHERE email = ?";
+        $sql = "SELECT u.user_id, u.email, u.pass, bc.administrator 
+            FROM user AS u 
+            LEFT JOIN business_card AS bc 
+            ON u.user_id = bc.user_id 
+            WHERE u.email = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $email, PDO::PARAM_STR);
 
@@ -545,7 +549,7 @@
 
     function get_all_employees($company_id) {
         global $pdo;
-        $sql = "SELECT bc.user_id, u.first_name, u.last_name, u.job_title, u.email
+        $sql = "SELECT bc.user_id, bc.administrator, u.first_name, u.last_name, u.job_title, u.email
             FROM business_card AS bc 
             LEFT JOIN user AS u 
             ON bc.user_id = u.user_id 

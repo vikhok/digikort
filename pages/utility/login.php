@@ -11,6 +11,7 @@
             $_SESSION["user"]["user_id"] = $user->user_id;
             $_SESSION["user"]["email"] = $email;
             $_SESSION["user"]["logged_in"] = true;
+            $_SESSION["user"]["administrator"] = $user->administrator;
             header("Location: ../index.php?user_id=" . $_SESSION["user"]["user_id"]);
         } else {
             $status = "<h4><span style='color:red'>
