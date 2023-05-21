@@ -6,9 +6,8 @@
     require_once("../assets/include/util.inc.php");
 
     session_start();
-    $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
-
     $user_id = $_REQUEST["user_id"];
+    
     if($user = get_user($user_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
         $email = $user->email;

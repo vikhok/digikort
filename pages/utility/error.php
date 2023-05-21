@@ -1,9 +1,10 @@
 <?php
     session_start();
     $error = $_REQUEST["error"];
+    $url = $_SESSION["site"]["last_visited"];
 
     if(isset($_REQUEST["submit"])) {
-        header("Location: ../ajaxtest.php");
+        header("Location: $url");
     }
 ?>
 <!DOCTYPE html>

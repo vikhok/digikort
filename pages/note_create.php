@@ -5,6 +5,12 @@
 
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
+    
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
 
     // Create note and push it to the database:
     if(isset($_REQUEST["create"])) {

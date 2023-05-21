@@ -6,9 +6,15 @@
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
 
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
+
     $notes = get_all_notes($user_id);
-    if(!$notes) {
-        header("Loaction: utility/error.php?error=404");
+    if($notes === false) {
+        header("Loaction: utility/error.php?error=500");
     }
 ?>
 <!DOCTYPE html>

@@ -3,6 +3,7 @@
     require_once("../../assets/include/util.inc.php");
 
     session_start();
+    
     if(isset($_SESSION["user"]["user_id"])) {
         $user_id = $_SESSION["user"]["user_id"];
         $email = $_SESSION["user"]["email"];
