@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
     <script>
-        ajax_search("utility/all_users.php");
+        ajax_search_users("utility/all_users.php");
     </script>
     <title>Søk blant brukere</title>
 </head>
@@ -21,8 +21,8 @@
     <div class="ajax-search-field">
         <h1>Brukere:</h1>
         <form method="post" action="">
-            <input name="company" type="text" id="searchInput" placeholder="Søk blant brukere..." list="suggestions">
-            <datalist id="suggestions"></datalist>
+            <input type="text" id="searchInput" placeholder="Search for a fruit...">
+	        <div id="suggestions"></div>
         </form>
     </div>
 </body>

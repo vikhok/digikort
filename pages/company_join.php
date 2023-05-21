@@ -34,7 +34,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
     <script>
-        ajax_search("utility/all_companies.php");
+        ajax_search_companies("utility/all_companies.php");
     </script>
     <title>Bli med i en bedrift</title>
 </head>
