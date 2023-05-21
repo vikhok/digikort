@@ -1,23 +1,29 @@
 <?php
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $company_id = $_REQUEST["company_id"];
 
-    if(!$employees = get_all_employees($company_id)) {
-        echo "This is minging";
+    if($employees = get_all_employees($company_id)) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=404");
     }
 
-    if(isset($_REQUEST["member-delete"])) {
+    if(isset($_REQUEST["make_admin"])) {
+        $user_id = $_REQUEST["user_id"];
+        
+    }
+
+    if(isset($_REQUEST["remove_member"])) {
+        $user_id = $_REQUEST["user_id"];
         if(leave_company($user_id, $company_id)) {
-            $status = "<h4><span style='color:green'>
-                Bruker har blitt fjernet fra bedriften.
-                </span></h4>";
+            show_alert("Bruker har blitt fjernet fra bedriften.");
+            header("Refresh: 0");
         } else {
-            $status = "<h4><span style='color:red'>
-                Noe gikk galt, fikk ikke til å fjerne bruker fra bedriften.
-                </span></h4>";
+            show_alert("Noe gikk galt, fikk ikke til å fjerne bruker fra bedriften.");
         }
     }
 
@@ -29,7 +35,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
-    <title>Administrer medlemmer</title>
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
+    <title>Bedriftens medlemmer</title>
 </head>
 <body>
     <?php banner(); ?>
@@ -64,14 +71,16 @@
                                 </div>
                             </a>
                             <div class="admin_buttons">
-                                <button type="submit" class="member-make-admin">Gi rettigheter</button>
-                                <button type="submit" class="member-delete" name="member-delete">Slett</button>
+                                <input type="hidden" name="user_id" value="<?= $user_id ?>">
+                                <button type="submit" class="member-make-admin" name="make_admin" onclick="confirmation('Er du sikker på at du ønsker å gi rettigheter til <?=$employee['first_name']?>?');">Gi rettigheter</button>
+                                <button type="submit" class="member-delete" name="remove_member" onclick="confirmation('Er du sikker på at du ønsker å fjerne <?=$employee['first_name']?> fra bedriften?');">Fjern medlem</button>
                             </div>
                         </div>
                     </form>
+                    <br>
                 <?php endforeach; ?>
             </section>
-        <?php endif ?>
+        <?php endif; ?>
     </main>
 </body>
 </html>
