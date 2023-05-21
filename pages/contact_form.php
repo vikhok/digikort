@@ -3,6 +3,7 @@
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/phpmailer.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
@@ -11,30 +12,27 @@
     if($user = get_user($user_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
         $email = $user->email;
-        $name = $user->first_name;
+    } else {
+        show_alert("Noe gikk galt, fant ikke bruker i systemet");
+    }
 
-        if(isset($_REQUEST["send"])) {
-            $sender_name = $_REQUEST["name"];
-            $sender_email = $_REQUEST["email"];
-            
-            $reciever_name = $name; // "Reciever";
-            $reciever_email = $email; // "digikortpass@gmail.com"; // Hvem skal motta epost (denne må endres til company_email fra db)
-    
-            $subject = $_REQUEST["subject"];
-            $message = "<h4>Fra: " . $sender_name . "</h4>";
-            $message .= "<h4>Email: " . $sender_email . "</h4>";
-            $message .= "<h4>Melding: </h4>" . $_REQUEST["message"];
-    
-            // Attempting to send email:
-            if(sendMail($reciever_email, $subject, $message, $reciever_name, $sender_name)) {
-                $status = "<h4><span style='color:green'>
-                        Epost sendt, du vil få svar fortløpende.
-                        </span></h4>";
-            } else {
-                $status = "<h4><span style='color:red'>
-                        Noe gikk galt, epost ble ikke sendt.
-                        </span></h4>";
-            }
+    if(isset($_REQUEST["send"])) {
+        $sender_name = $_REQUEST["name"];
+        $sender_email = $_REQUEST["email"];
+        
+        $reciever_name = $name; // "Reciever";
+        $reciever_email = $email; // "digikortpass@gmail.com"; // Hvem skal motta epost (denne må endres til company_email fra db)
+
+        $subject = $_REQUEST["subject"];
+        $message = "<h4>Fra: " . $sender_name . "</h4>";
+        $message .= "<h4>Email: " . $sender_email . "</h4>";
+        $message .= "<h4>Melding: </h4>" . $_REQUEST["message"];
+
+        // Attempting to send email:
+        if(sendMail($reciever_email, $subject, $message, $reciever_name, $sender_name)) {
+            show_alert("E-post sendt, du vil få svar fortløpende");
+        } else {
+            show_alert("Noe gikk galt, e-post ble ikke sendt");
         }
     } else {
         header("Location: utility/error.php?error=404");
@@ -49,6 +47,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Kontaktskjema</title>
 </head>
 <body>
@@ -62,9 +61,9 @@
             <div class="email-section">
                 <label for="email">Din e-postadresse</label><br>
                 <input type="text" id="email" name="email" value="" required>
-            </div>
-            <div class="subject-section">
-                <label for="subject">Subject</label><br>
+            </section>
+            <section class="subject-section">
+                <label for="subject">Emne</label><br>
                 <input type="text" id="subject" name="subject" value="" required>
             </div>
             <div class="freetext-section" id="freetext">
@@ -75,7 +74,6 @@
                 <button type="submit" name="send">Send inn</button>
             </div>
         </form>
-        <?php if(isset($status)) echo $status; ?>
-    </section>
+    </div>
 </body>
 </html>
