@@ -3,6 +3,7 @@
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/phpmailer.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
@@ -11,9 +12,7 @@
     if($user = get_user($user_id)) {
         $email = $user->email;
     } else {
-        $status = "<h4><span style='color:red'>
-                Noe gikk galt, fant ikke bruker i systemet.
-                </span></h4>";
+        show_alert("Noe gikk galt, fant ikke bruker i systemet");
     }
 
     if(isset($_REQUEST["send"])) {
@@ -31,13 +30,9 @@
 
         // Attempting to send email:
         if(sendMail($reciever_email, $subject, $message, $reciever_name, $sender_name)) {
-            $status = "<h4><span style='color:green'>
-                    Epost sendt, du vil få svar fortløpende.
-                    </span></h4>";
+            show_alert("E-post sendt, du vil få svar fortløpende");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, epost ble ikke sendt.
-                    </span></h4>";
+            show_alert("Noe gikk galt, e-post ble ikke sendt");
         }
     }
 ?>
@@ -50,6 +45,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Kontaktskjema</title>
 </head>
 <body>
@@ -68,7 +64,7 @@
             </section>
 
             <section class="subject-section">
-                <label for="subject">Subject</label><br>
+                <label for="subject">Emne</label><br>
                 <input type="text" id="subject" name="subject" value="" required>
             </section>
 
@@ -81,7 +77,6 @@
                 <button type="submit" name="send">Send inn</button>
             </section>
         </form>
-        <?php if(isset($status)) echo $status; ?>
     </div>
 </body>
 </html>

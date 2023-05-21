@@ -4,6 +4,7 @@
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/qr.inc.php");
     require_once("../assets/include/vcard-inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $user_id = $_REQUEST["user_id"];
@@ -32,13 +33,9 @@
 
     if(isset($_REQUEST["save-contact"])) {
         if(generate_vcard($user->last_name, $user->first_name, $name, $phone, $email, $dir)) {
-            $status = "<h4><span style='color:green'>
-            Kontaktopplysninger er blitt lastet ned.
-            </span></h4>";
+            show_alert("Kontaktopplysninger er blitt lastet ned");
         } else {
-            $status = "<h4><span style='color:red'>
-            Noe gikk galt, finner ikke kontaktopplysninger.
-            </span></h4>";
+            show_alert("Noe gikk galt, finner ikke kontaktopplysninger.");
         }
     }
 
@@ -52,6 +49,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.3.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Digikort</title>
 </head>
 <body>
@@ -82,7 +80,6 @@
             </div>
             <script src="../assets/include/javascript/webshare-api.js"></script>
         <?php endif; ?>
-        <?php if(isset($status)) echo $status; ?>
     </div>
     <?php footer($user_id, "user"); ?>
 </body>

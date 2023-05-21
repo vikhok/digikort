@@ -44,31 +44,21 @@
                         $upload_image = upload_image($user_id, "user"); // returns array which may contain errors
                         if(!empty($upload_image)) {
                             $terminate = true;
-                            $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av profil ble ikke foretatt.
-                                </span></h4>";
+                            show_alert("Noe gikk galt, endringer av profil ble ikke foretatt.");
                         }
                     }
                     if(!isset($terminate)) {
                         if(update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram)) {
-                            $status = "<h4><span style='color:green'>
-                                Profilen ble endret.
-                                </span></h4>";
+                            show_alert("Profilen din er oppdatert");
                         } else {
-                            $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av profil ble ikke foretatt.
-                                </span></h4>";
+                            show_alert("Noe gikk galt, endringer av profil ble ikke foretatt");
                         }
                     }
                 } else {
-                    $status = "<h4><span style='color:red'>
-                        Ingen endringer har blitt foretatt.
-                        </span></h4>";
+                    show_alert("Ingen endringer har blitt foretatt");
                 }
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer av profil ble ikke foretatt.
-                    </span></h4>";
+                show_alert("Noe gikk galt, endringer av profil ble ikke foretatt");
             }
         }
     
@@ -87,31 +77,21 @@
                 $message .= "<p>Vennligst ta kontakt med oss på digikortpass@gmail.com om dette ikke var deg.</p>";
                 
                 if(sendMail($reciever_email, $subject, $message, $reciever_name)) {
-                    $status = "<h4><span style='color:green'>
-                        En link for tilbakestilling av passordet har blitt sendt til $reciever_email.
-                        </span></h4>";
+                    show_alert("En link for tilbakestilling av passordet har blitt sendt til $reciever_email.");
                 } else {
-                    $status = $status = "<h4><span style='color:red'>
-                        Noe gikk galt, klarte ikke sende link for tilbakestilling av passord til $reciever_email.
-                        </span></h4>";
+                    show_alert("Noe gikk galt, klarte ikke sende link for tilbakestilling av passord til $reciever_email.");
                 }
             } else {
-                $status = $status = "<h4><span style='color:red'>
-                    Noe gikk galt, vennligst prøv igjen.
-                    </span></h4>";
+                show_alert("Noe gikk galt, vennligst prøv igjen.");
             }
         }
 
         if(isset($_REQUEST["leave_company"])) {
             if(leave_company($user_id, $company_id)) {
                 unset($_SESSION["user"]["company_id"]);
-                $status = "<h4><span style='color:green'>
-                    Du har forlatt bedriften.
-                    </span></h4>";
+                show_alert("Du har forlatt bedriften");
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, fikk ikke til å forlate bedriften.
-                    </span></h4>";
+                show_alert("Noe gikk galt, fikk ikke til å forlate bedriften.");
             }
         }
 
@@ -122,31 +102,23 @@
                 if(delete_user($user_id)) {
                     header("Location: utility/login.php");
                 } else {
-                    $status = "<h4><span style='color:red'>
-                        Noe gikk galt, fikk ikke slettet profilen 1.
-                        </span></h4>";
+                    show_alert("Noe gikk galt, fikk ikke slettet profilen");
                 }
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, fikk ikke slettet profilen 2.
-                    </span></h4>";
+                show_alert("Noe gikk galt, fikk ikke slettet profilen");
             }
         }
     } else {
-        $status = "<h4><span style='color:red'>
-            Noe gikk galt, fant ikke bruker i systemet.
-            </span></h4>";
+        show_alert("Noe gikk galt, fant ikke bruker i systemet");
     }
 ?>
 <!DOCTYPE html>
 <html lang="no">
 <head>
-    <script>
-        
-    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <title>Rediger profil</title>
 </head>
@@ -197,7 +169,7 @@
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Eksempelvis +4712345678')"
                     oninput="this.setCustomValidity('')"><br><br>
             </div>
-            <div class="rediger_some">
+            <div class="rediger_some"> 
                 <div class="column_rediger_profil">
                     <label class="redpro_label" for="linkedin">LinkedIn</label>
                     <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/" pattern="{1,255}" value="<?=$linkedin?>"><br><br>
@@ -210,7 +182,7 @@
                     <label class="redpro_label" for="instagram">Instagram</label>
                     <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/" pattern="{1,255}" value="<?=$instagram?>"><br><br>
                 </div>
-            </div>
+            </div> 
             <div class="oppdater_profil_knapp">    
                 <button type="submit" name="update_profile">Oppdater profil</button>
             </div>
@@ -220,14 +192,14 @@
                 <button type="submit" name="change_password">Bytt passord</button>
             </div>
         </form>
-        <form actuon="" method="post">
+        <form action="" method="post">
             <div class="change_password_button">
-                <button type="submit" name="leave_company">Forlat bedrift</button>
+                <button type="submit" name="leave_company" onclick="confirmation('Er du sikker på at du ønsker å forlate bedriften?');">Forlat bedrift</button>
             </div>
         </form>
-        <form actuon="" method="post">
+        <form action="" method="post">
             <div class="change_password_button">
-                <button type="submit" name="delete_user">Slett profil</button>
+                <button type="submit" name="delete_user"  onclick="confirmation('Er du sikker på at du ønsker å slette profilen din?');">Slett profil</button>
             </div>
         </form>
     </div>
