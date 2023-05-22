@@ -1,8 +1,8 @@
 <?php
-    define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASS", "");
-    define("DB_NAME", "digikort");
+    define("DB_HOST", getenv('DB_HOST') ? getenv('DB_HOST') : 'localhost');
+    define("DB_USER", getenv('DB_USER') ? getenv('DB_USER') : 'root');
+    define("DB_PASS", getenv('DB_PASS') ? getenv('DB_PASS') : '');
+    define("DB_NAME", getenv('DB_NAME') ? getenv('DB_NAME') : 'digikort');
     $dsn = "mysql:dbname=" . DB_NAME . ";host=" . DB_HOST;
     $pdo;
     try {
