@@ -783,47 +783,6 @@ STYLING GJELDENDE index.php (Menyvalg)
     box-sizing: border-box;
   }
   
-  /* .body_mine-notater {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .h1_mine-notater {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .h2_mine-notater {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .h2_mine-notater  {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-  
-  .main_mine-notater {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .section_mine-notater {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 2rem;
-  } */
-  
   .notat-boks-wrapper, .Ansatt-wrapper {
     display: flex;
     justify-content: center;
@@ -1038,6 +997,34 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 .name-section, .email-section, .subject-section, #freetext-section {
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
     width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .name-section, .email-section, .subject-section input[type="text"] {
+    width: 20rem;
+  }
+
+  .name-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
+  .email-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
+  .subject-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
+  .freetext-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
 }
 
 .addcompany_form input[type="text"]{
