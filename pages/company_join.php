@@ -1,6 +1,7 @@
 <?php
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/db.inc.php");
+    require_once("../assets/include/util.inc.php");
 
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
@@ -9,6 +10,7 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
         header("Location: utility/error.php?error=401");
+        exit();
     }
 
     // Check if user is already in a company:
@@ -18,15 +20,18 @@
             $access_code = $_REQUEST["access_code"];
             if($company_id = join_company($company_name, $access_code, $user_id, false)) {
                 $_SESSION["user"]["company_id"] = $company_id;
+                $_SESSION["business_card"]["company_id"] = $company_id;
                 header("Location: company.php?company_id=$company_id");
+                exit();
             } else {
-                show_alert("Noe gikk galt");
+                show_alert("Noe gikk galt, fikk ikke till å bli med i bedriften.");
             }
         }
     } else {
         // Redirect if user is already in a company:
         $company_id = $user_company->company_id;
         header("Location: company.php?company_id=$company_id");
+        exit();
     }
 ?>
 <!DOCTYPE html>
@@ -38,6 +43,7 @@
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <script>
         ajax_search_companies("utility/all_companies.php");
     </script>

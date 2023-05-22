@@ -1,7 +1,7 @@
 <?php function banner($user_id = false) { ?>
     <header>
         <?php
-            if(isset($_SESSION["user"]["company_id"])) $company_id = $_SESSION["user"]["company_id"]; 
+            if(isset($_SESSION["business_card"]["company_id"])) $company_id = $_SESSION["business_card"]["company_id"]; 
 
             // Define and display profile picture:
             if($user_id) {

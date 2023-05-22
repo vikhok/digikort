@@ -11,6 +11,7 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
         header("Location: utility/error.php?error=401");
+        exit();
     }
 
     // Update note:
@@ -31,6 +32,7 @@
     if(isset($_REQUEST["delete"])) {
         if(delete_note($note_id, $user_id)) {
             header("Location: notes.php?user_id=$user_id");
+            exit();
         } else {
             show_alert("Noe gikk galt, notat ble ikke slettet");
         }

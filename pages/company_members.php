@@ -11,13 +11,14 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
         header("Location: utility/error.php?error=404");
+        exit();
     }
 
     if(isset($_REQUEST["make_admin"])) {
         $user_id = $_REQUEST["user_id"];
         if(give_admin_role($company_id, $user_id)) {
             show_alert("Bruker har fått rollen som administrator.");
-            header("Refresh: 0");
+            header("Refresh");
         } else {
             show_alert("Noe gikk galt, fikk ikke endret rettighetene til brukeren.");
         }
@@ -27,7 +28,7 @@
         $user_id = $_REQUEST["user_id"];
         if(leave_company($user_id, $company_id)) {
             show_alert("Bruker har blitt fjernet fra bedriften.");
-            header("Refresh: 0");
+            header("Refresh");
         } else {
             show_alert("Noe gikk galt, fikk ikke til å fjerne bruker fra bedriften.");
         }

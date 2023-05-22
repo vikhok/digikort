@@ -11,6 +11,7 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
         header("Location: utility/error.php?error=401");
+        exit();
     }
 
     // Get user information from the database:
@@ -94,6 +95,7 @@
 
         if(isset($_REQUEST["leave_company"])) {
             if(leave_company($user_id, $company_id)) {
+                unset($_SESSION["business_card"]["company_id"]);
                 unset($_SESSION["user"]["company_id"]);
                 show_alert("Du har forlatt bedriften");
             } else {
@@ -107,6 +109,7 @@
             if(rrmdir($dir)) {
                 if(delete_user($user_id)) {
                     header("Location: utility/login.php");
+                    exit();
                 } else {
                     show_alert("Noe gikk galt, fikk ikke slettet profilen");
                 }

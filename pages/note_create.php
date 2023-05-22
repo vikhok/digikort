@@ -10,6 +10,7 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
         header("Location: utility/error.php?error=401");
+        exit();
     }
 
     // Create note and push it to the database:
@@ -21,6 +22,7 @@
 
         if($note_id = create_note($user_id, $encrypted_subject, $encrypted_body)) {
             header("Location: note.php?note_id=$note_id");
+            exit();
         } else {
             show_alert("Noe gikk galt, notat ble ikke lagret");
         }
