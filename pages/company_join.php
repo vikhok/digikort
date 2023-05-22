@@ -5,6 +5,12 @@
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
 
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
+
     // Check if user is already in a company:
     if(!$user_company = get_user_company($user_id)) {
         if(isset($_REQUEST["submit_company"])) {
@@ -22,7 +28,6 @@
         $company_id = $user_company->company_id;
         header("Location: company.php?company_id=$company_id");
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -34,7 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
     <script>
-        ajax_search("utility/all_companies.php");
+        ajax_search_companies("utility/all_companies.php");
     </script>
     <title>Bli med i en bedrift</title>
 </head>

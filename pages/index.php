@@ -11,6 +11,8 @@
     $_SESSION["user"]["last_visited"] = $user_id;
 
     if($user = get_user($user_id)) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        
         $name = $user->first_name . " " . $user->last_name;
         $job_title = $user->job_title;
         $email = $user->email;
@@ -28,7 +30,7 @@
         $url = $_SERVER["REQUEST_URI"];
         generateQR($user_id, $url);
     } else {
-        header("Location: utility/error.php?error=404"); // Sjekk denna om den stemme later
+        header("Location: utility/error.php?error=404");
     }
 
     if(isset($_REQUEST["save-contact"])) {
@@ -59,8 +61,8 @@
             <h2><?=$name?></h2>
             <h2><?=$company?></h2>
             <h2><?=$job_title?></h2>
-            <h2><a href="mailto:<?=$email?>"><?=$email?></a></h2>
-            <h2><a href="tel:<?=$phone?>"><?=$phone?></a></h2>
+            <h2><?=$email?></h2>
+            <h2><?=$phone?></h2>
         </div>
         <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]):
             $folder = md5("user." . $user_id);
@@ -71,7 +73,6 @@
             <div class="menu">
                 <form action="" method="post">
                     <ul>
-                        <li><a href="#" class="menu-options"><i class="fa fa-file-text"></i> CV</a></li>
                         <li><a href="contact_form.php?user_id=<?=$user_id?>" class="menu-options"><i class="fa fa-envelope"></i> Kontakt</a></li>
                         <li><button type="submit" class="menu-options" name="save-contact"><i class="fa fa-save"></i> Lagre kontakt</a></li>
                         <li><a href="#" class="menu-options" id="share-link"><i class="fa fa-share-alt"></i> Del</a></li>

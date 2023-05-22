@@ -6,9 +6,11 @@
 
     session_start();
     $user_id = $_SESSION["user"]["last_visited"]; 
-
     $company_id = $_REQUEST["company_id"];
+
     if($location = get_location($company_id)) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+
         $address = $location->company_address;
         $city = $location->company_city;
         $zip = $location->company_zip;
