@@ -41,7 +41,7 @@
     <script src="../../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Registrer</title>
 </head>
-<body>
+<body class="register-page">
     <div class="register-form">
         <div class="register-container">
             <form name="register" class="login" method="POST">

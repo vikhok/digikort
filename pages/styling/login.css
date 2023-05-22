@@ -2,7 +2,7 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-.login-page {
+.login-page, .register-page {
     display: flex;
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -61,7 +61,7 @@ STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
     font-size: medium;
   }
 
-.login-form, .bytt-passord-form {
+.login-form, .register-form, .bytt-passord-form {
     position: absolute;
     color: #FFFFFF;
     font-style: normal;
@@ -78,6 +78,18 @@ STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
     border-radius: 10px;
   }
 
+  .register-form {
+    text-align: center;
+  }
+
+  .already-has-user-clicker{
+    font-size: medium;
+  }
+
+  .register-button{
+    margin-top: 2rem;
+  }
+
   @media (max-width:450px){
     form {
         font-size: 5vw;
@@ -86,13 +98,13 @@ STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
     }
 
     @media only screen and (max-width: 600px) {
-    .login-form {
+    .login-form, .register-form{
         width: 300px;
     }
     }
 
     @media only screen and (max-width: 280px) {
-        .login-form {
+        .login-form, .register-form {
             width: 250px;
         }
     }
@@ -125,7 +137,11 @@ STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
     justify-content: right;
 }
 
-.login-container button[type="submit"], .bytt-passord-container button[type="submit"], .form-submit button[type="submit"]{
+.already-has-user-clicker {
+    text-decoration: none;
+}
+
+.login-container button[type="submit"], .register-button button[type="submit"], .bytt-passord-container button[type="submit"], .form-submit button[type="submit"]{
     background-color: #007bff;
     color: #fff;
     border: none;
