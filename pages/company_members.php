@@ -18,7 +18,6 @@
         $user_id = $_REQUEST["user_id"];
         if(give_admin_role($company_id, $user_id)) {
             show_alert("Bruker har fått rollen som administrator.");
-            header("Refresh");
         } else {
             show_alert("Noe gikk galt, fikk ikke endret rettighetene til brukeren.");
         }
@@ -28,7 +27,6 @@
         $user_id = $_REQUEST["user_id"];
         if(leave_company($user_id, $company_id)) {
             show_alert("Bruker har blitt fjernet fra bedriften.");
-            header("Refresh");
         } else {
             show_alert("Noe gikk galt, fikk ikke til å fjerne bruker fra bedriften.");
         }

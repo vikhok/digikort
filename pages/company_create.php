@@ -42,7 +42,6 @@
             $folder = "../companies/" . md5("company." . $company_id);
             if(!file_exists($folder)) mkdir($folder, 0777, true);
             $_SESSION["user"]["company_id"] = $company_id;
-            $_SESSION["user"]["administrator"] = true;
             header("Location: company.php?company_id=$company_id");
             exit();
         } else {

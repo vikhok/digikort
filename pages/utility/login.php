@@ -15,9 +15,6 @@
             if($user_company = get_user_company($user->user_id)) {
                 $company_id = $user_company->company_id;
                 $_SESSION["user"]["company_id"] = $company_id;
-                if($admin = verify_admin_role($company_id, $user_id)) {
-                    $_SESSION["user"]["administrator"] = $admin;
-                }
             }
             header("Location: ../index.php?user_id=" . $_SESSION["user"]["user_id"]);
         } else {

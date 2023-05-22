@@ -97,7 +97,6 @@
             if(leave_company($user_id, $company_id)) {
                 unset($_SESSION["business_card"]["company_id"]);
                 unset($_SESSION["user"]["company_id"]);
-                unset($_SESSION["user"]["administrator"]);
                 show_alert("Du har forlatt bedriften");
             } else {
                 show_alert("Noe gikk galt, fikk ikke til å forlate bedriften.");
