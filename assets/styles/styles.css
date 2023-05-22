@@ -433,6 +433,7 @@ footer {
     margin: auto;
     padding: 5rem;
     line-height: 1.5;
+    margin-top: 2rem;
 }
 
 .personal-information a {
@@ -442,6 +443,7 @@ footer {
     font-weight: bold;
     color: black;
     margin-right: 20px;
+    padding-top: 2rem;
 }
 
 /*
@@ -546,7 +548,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 .button-notat[type="submit"] {
     display: block;
     margin: 0 auto;
-    background-color: #333;
+    background-color: #00406b;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -556,7 +558,23 @@ STYLING GJELDENDE index.php (Menyvalg)
 }
 
 .button-notat[type="submit"]:hover {
-    background-color: #444;
+    background-color: #00406b;
+}
+
+.return_from_error_button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.return_from_error_button[type="submit"]:hover {
+    background-color: #007bff;
 }
 
 /*
@@ -712,7 +730,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
    .button_create_note button[type="submit"] {
-    background-color: #007bff;
+    background-color: #00406b;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -776,47 +794,6 @@ STYLING GJELDENDE index.php (Menyvalg)
     box-sizing: border-box;
   }
   
-  /* .body_mine-notater {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .h1_mine-notater {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .h2_mine-notater {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .h2_mine-notater  {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-  
-  .main_mine-notater {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .section_mine-notater {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 2rem;
-  } */
-  
   .notat-boks-wrapper, .Ansatt-wrapper {
     display: flex;
     justify-content: center;
@@ -838,7 +815,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
   .button-mine-notater button[type="submit"] {
-    background-color: #007bff;
+    background-color: #00406b;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -868,6 +845,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     position: relative;
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
     justify-content: center;
 }
 
@@ -925,21 +903,29 @@ STYLING GJELDENDE index.php (Menyvalg)
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 66%;
-    font-size: x-large;
+    width: 77%;
+    font-size: 20px;
     padding: 0px 200px 10px;
 }
 
 .bedrift_bilde_styling{
     max-width: 50%;
     height: auto;
-    padding: 30px 0px 0px;
+}
+
+@media only screen and (max-width: 820px) {
+  .bedrift_bilde_styling{
+    max-width: 100%;
+    height: auto;
+  }
+
+  .Bedrift-siden {
+    max-width: 100%;
+    align-items: left;
+  }
 }
 
 @media (max-width: 607px) {
-    .Bedrift-siden {
-        justify-content: center;
-    }
     .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
         width: 300px;
         display: block;
@@ -1024,6 +1010,34 @@ STYLING GJELDENDE contact-employee.php og add_company.php
     width: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+
+  .name-section, .email-section, .subject-section input[type="text"] {
+    width: 20rem;
+  }
+
+  .name-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
+  .email-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
+  .subject-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
+  .freetext-section input[type="text"] {
+    border-radius: 5px;
+    border: none;
+  }
+
+}
+
 .addcompany_form input[type="text"]{
     display: block;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
@@ -1075,15 +1089,15 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 }
 
 #freetext textarea{
-    resize: none;
-    display: block;
-    margin-bottom: 20px;
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight:500;
-    font-size: 16px;
-    padding: 10px;
+  resize: none;
+  display: block;
+  margin-bottom: 20px;
+  width: 60%;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight:500;
+  font-size: 16px;
+  padding: 10px;
 }
 
 .freetext textarea{
@@ -1153,12 +1167,7 @@ STYLING GJELDENDE rediger-bedrift.php
 }
 
 .bedrift_bilde_styling {
-  /* background-color: #f9f9f9; */
-  /* border: none; */
-  /* border-radius: 20px; */
-  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
   font-size: 16px;
-  padding: 8px 12px;
   transition: all 0.3s ease-in-out;
   width: 100%;
   margin-bottom: 15px;
@@ -1206,55 +1215,55 @@ STYLING GJELDENDE rediger-bedrift.php
     margin: 10px auto;
 }
 
-  .rediger-bedrift_form input[type="text"],
-  .rediger-bedrift_form textarea {
+.rediger-bedrift_form input[type="text"],
+.rediger-bedrift_form textarea {
     border-radius: 20px;
-  }
+}
 
 
-  /* 
-  -----------------
-  STYLING GJELDENDE admin-members.php
-  -----------------
-  */
+/* 
+-----------------
+STYLING GJELDENDE admin-members.php
+-----------------
+*/
 
-  .admin-bilde {
+.admin-bilde {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .admin-bedrift-bilde {
+.admin-bedrift-bilde {
     max-width: 100%;
     height: auto;
-  }
+}
 
-  .admin-header {
+.admin-header {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .Ansatt-wrapper {
+.Ansatt-wrapper {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .admin-section {
+.admin-section {
     display: flex;
     position: relative;
     flex-flow: column;
     max-width: 100%;
-  }
+}
 
-  .admin-buttons {
+.admin-buttons {
     display: flex;
     padding: 5px 5px 5px;
     flex-flow: column;
-  }
+}
 
-  .member-delete, .member-make-admin {
+.member-delete, .member-make-admin {
     position: relative;
     padding: 5px;
     margin: 5px;
@@ -1263,17 +1272,74 @@ STYLING GJELDENDE rediger-bedrift.php
     border-radius: 5px;
     border-color: #99A8BF;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  }
-  .ansatte {
+}
+.ansatte {
     background-color: rgb(232, 234, 249);
-  }
+}
 
-  .Ansatt-tekst {
+.Ansatt-tekst {
     color: #01233D;
     font-size: large;
-  }
+}
 
-  .ansatt-email {
+.ansatt-email {
     color: #0069d9;
-  }
+}
 
+/* 
+-----------------
+STYLING GJELDENDE error.php
+-----------------
+*/
+
+.error_page_wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 10rem;
+}
+
+.error_message, .return_from_error {
+    padding: 1rem;
+}
+
+.return_from_error_button {
+    color: black;
+}
+
+
+/*
+---------------
+STYLING GJELDENDE company_create.php
+---------------
+*/
+
+.company_descr, .company_email_field {
+  background-color: #f9f9f9;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      color: #555;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+}
+.company_descr {
+  width: 50%;
+  height: 8rem;
+}
+.company_email_field {
+  width: 40%;
+}
+
+@media only screen and (max-width: 600px) {
+  .company_descr {
+    width: 20rem;
+    height: 12rem;
+  }
+  .company_email_field {
+    width: 20rem;
+  }
+}

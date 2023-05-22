@@ -8,6 +8,8 @@
     $company_id = $_SESSION["user"]["company_id"];
 
     if($company = get_company_info($company_id)) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        
         $company_name = $company->company_name ?? null;
         $company_desc = $company->company_desc ?? null;
         $company_email = $company->company_email ?? null;
@@ -85,15 +87,9 @@
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Navn på bedrift kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 50 tegn.')"
                     oninput="this.setCustomValidity('')">
             </div>
-            <div class="redpro_input_text" id="freetext">
-                <label class="rediger-bedrift-label" for="company_desc">Beskrivelse av bedriften</label>
-                <textarea name="company_desc" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[A-Za-zÆæØøÅå'- ]{1,200}" required 
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Beskrivelse kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 200 tegn.')"
-                    oninput="this.setCustomValidity('')"><?=$company_desc?></textarea>
-            </div>
-            <div class="redpro_input_text" id="freetext">
+            <div class="redpro_input_text" id="free-text">
                 <label class="rediger-bedrift-label" for="company_email">E-post</label>
-                <input type="email" name="company_email" placeholder="bedriften@mail.no" value="<?=$company_email?>" required 
+                <input type="email" class="company_email_field" name="company_email" placeholder="bedriften@mail.no" value="<?=$company_email?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Eksempelvis: bedriften@mail.no.')"
                     oninput="this.setCustomValidity('')">
             </div>
@@ -126,6 +122,12 @@
                 <input type="text" id="access_code" name="access_code" placeholder="Hemmelig kode" pattern="[A-Za-zÆæØøÅå-!?#]{1,50}" value="<?=$access_code?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Sikkerhetskoden kan kun inneholde 50 karakterer i form av bokstaver, tall og tegn som -!?#')"
                     oninput="this.setCustomValidity('')">
+            </div>
+            <div class="redpro_input_text" id="free-text">
+                <label class="rediger-bedrift-label" for="company_desc">Beskrivelse av bedriften</label>
+                <textarea name="company_desc" class="company_descr" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[A-Za-zÆæØøÅå'- ]{1,200}" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Beskrivelse kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 200 tegn.')"
+                    oninput="this.setCustomValidity('')"><?=$company_desc?></textarea>
             </div>
             <div class="rediger-bedrift_submit">
                 <button type="submit" name="submit">Lagre</button>
