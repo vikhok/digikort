@@ -344,7 +344,7 @@
         }
     }
 
-    function add_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $user_id, $administrator) {
+    function add_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $user_id) {
         global $pdo;
         $sql1 = "INSERT INTO company (company_name, company_email, company_desc, company_url, company_address, company_city, company_zip, access_code) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -362,6 +362,7 @@
         try {
             $query1->execute();
             $company_id = $pdo->lastInsertId();
+            $administrator = true;
 
             $sql2 = "INSERT INTO business_card (company_id, user_id, administrator) VALUES (?, ?, ?)";
             $query2 = $pdo->prepare($sql2);

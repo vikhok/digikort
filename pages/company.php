@@ -8,6 +8,7 @@
 
     if($company_info = get_company_info($company_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        $_SESSION["business_card"]["company_id"] = $company_id;
 
         $company_name = $company_info->company_name;
         $company_desc = $company_info->company_desc;
@@ -58,8 +59,11 @@
             <div class="Bedrift-knapper">
                 <div class="om-og-kontakt-knapp">
                     <a class="aboutus-ref" href="https://egde.no/om-oss/">Om oss</a>
-                    <a class="employeelist-ref" href="company_members.php?company_id=<?=$company_id?>">Ansatte</a>
                     <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse</a>
+                    <a class="employeelist-ref" href="company_members.php?company_id=<?=$company_id?>">Ansatte</a>
+                    <?php if(isset($_SESSION["user"]["logged_in"]) && verify_admin_role($company_id, $_SESSION["user"]["user_id"])): ?>
+                        <a class="aboutus-ref" href="company_update.php">Rediger bedrift</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

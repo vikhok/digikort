@@ -31,7 +31,9 @@
                         <?php endif; ?>
                         <li class="nav-item"><a href="utility/logout.php" class="nav-link">Logg ut</a></li>
                 <?php else: ?>
-                    <li class="nav-item"><a href="index.php?user_id=<?=$_SESSION['user']['last_visited']?>" class="nav-link">Visittkort</a></li>
+                    <?php if(isset($_SESSION["user"]["last_visited"])): ?>
+                        <li class="nav-item"><a href="index.php?user_id=<?=$_SESSION['user']['last_visited']?>" class="nav-link">Visittkort</a></li>
+                    <?php endif; ?>
                     <?php // Check whether user belong in a company:
                     if(isset($company_id)): ?>
                         <li class="nav-item"><a href="company.php?company_id=<?=$company_id?>" class="nav-link">Bedrift</a></li>
