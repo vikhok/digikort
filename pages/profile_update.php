@@ -7,6 +7,12 @@
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
 
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
+
     // Get user information from the database:
     if($user = get_user_with_socials_and_company($user_id)) {
         $first_name = $user->first_name ?? null;
@@ -136,11 +142,11 @@
                 }
             ?>
             <div class="profil_bilde">    
-                <label class="redpro_label" for="upload-file">Endre profilbilde</label>
+                <label class="redpro_label" for="profil_bilde">Endre profilbilde</label>
                 <input type="file" id="profil_bilde" name="upload-file">
             </div>
             <div class="redpro_input_text">
-                <label class="redpro_label" for="first_name">Fornavn<mandatory style="color:red">*</mandatory></label>
+                <label class="redpro_label" for="first_name">Fornavn</label>
                 <input type="text" id="first_name" name="first_name" placeholder="Fornavn" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$first_name?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>
@@ -183,7 +189,7 @@
                     <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/" pattern="{1,255}" value="<?=$instagram?>"><br><br>
                 </div>
             </div> 
-            <div class="oppdater_profil_knapp">    
+            <div class="oppdater_profil_knapp">
                 <button type="submit" name="update_profile">Oppdater profil</button>
             </div>
         </form>
@@ -192,11 +198,13 @@
                 <button type="submit" name="change_password">Bytt passord</button>
             </div>
         </form>
-        <form action="" method="post">
-            <div class="change_password_button">
-                <button type="submit" name="leave_company" onclick="confirmation('Er du sikker på at du ønsker å forlate bedriften?');">Forlat bedrift</button>
-            </div>
-        </form>
+        <?php if($company_id != false): ?>
+            <form action="" method="post">
+                <div class="change_password_button">
+                    <button type="submit" name="leave_company" onclick="confirmation('Er du sikker på at du ønsker å forlate bedriften?');">Forlat bedrift</button>
+                </div>
+            </form>
+        <?php endif; ?>
         <form action="" method="post">
             <div class="change_password_button">
                 <button type="submit" name="delete_user"  onclick="confirmation('Er du sikker på at du ønsker å slette profilen din?');">Slett profil</button>

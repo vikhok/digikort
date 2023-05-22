@@ -8,6 +8,8 @@
     $company_id = $_SESSION["user"]["company_id"];
 
     if($company = get_company_info($company_id)) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        
         $company_name = $company->company_name ?? null;
         $company_desc = $company->company_desc ?? null;
         $company_email = $company->company_email ?? null;

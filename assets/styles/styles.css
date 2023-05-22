@@ -433,6 +433,7 @@ footer {
     margin: auto;
     padding: 5rem;
     line-height: 1.5;
+    margin-top: 2rem;
 }
 
 .personal-information a {
@@ -442,6 +443,7 @@ footer {
     font-weight: bold;
     color: black;
     margin-right: 20px;
+    padding-top: 2rem;
 }
 
 /*
@@ -546,7 +548,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 .button-notat[type="submit"] {
     display: block;
     margin: 0 auto;
-    background-color: #333;
+    background-color: #00406b;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -556,7 +558,23 @@ STYLING GJELDENDE index.php (Menyvalg)
 }
 
 .button-notat[type="submit"]:hover {
-    background-color: #444;
+    background-color: #00406b;
+}
+
+.return_from_error_button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.return_from_error_button[type="submit"]:hover {
+    background-color: #007bff;
 }
 
 /*
@@ -712,7 +730,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
    .button_create_note button[type="submit"] {
-    background-color: #007bff;
+    background-color: #00406b;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -838,7 +856,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
   .button-mine-notater button[type="submit"] {
-    background-color: #007bff;
+    background-color: #00406b;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -1210,55 +1228,55 @@ STYLING GJELDENDE rediger-bedrift.php
     margin: 10px auto;
 }
 
-  .rediger-bedrift_form input[type="text"],
-  .rediger-bedrift_form textarea {
+.rediger-bedrift_form input[type="text"],
+.rediger-bedrift_form textarea {
     border-radius: 20px;
-  }
+}
 
 
-  /* 
-  -----------------
-  STYLING GJELDENDE admin-members.php
-  -----------------
-  */
+/* 
+-----------------
+STYLING GJELDENDE admin-members.php
+-----------------
+*/
 
-  .admin-bilde {
+.admin-bilde {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .admin-bedrift-bilde {
+.admin-bedrift-bilde {
     max-width: 100%;
     height: auto;
-  }
+}
 
-  .admin-header {
+.admin-header {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .Ansatt-wrapper {
+.Ansatt-wrapper {
     display: flex;
     position: relative;
     justify-content: center;
-  }
+}
 
-  .admin-section {
+.admin-section {
     display: flex;
     position: relative;
     flex-flow: column;
     max-width: 100%;
-  }
+}
 
-  .admin-buttons {
+.admin-buttons {
     display: flex;
     padding: 5px 5px 5px;
     flex-flow: column;
-  }
+}
 
-  .member-delete, .member-make-admin {
+.member-delete, .member-make-admin {
     position: relative;
     padding: 5px;
     margin: 5px;
@@ -1267,25 +1285,50 @@ STYLING GJELDENDE rediger-bedrift.php
     border-radius: 5px;
     border-color: #99A8BF;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  }
-  .ansatte {
+}
+.ansatte {
     background-color: rgb(232, 234, 249);
-  }
+}
 
-  .Ansatt-tekst {
+.Ansatt-tekst {
     color: #01233D;
     font-size: large;
-  }
+}
 
-  .ansatt-email {
+.ansatt-email {
     color: #0069d9;
-  }
+}
 
 /* 
+-----------------
+STYLING GJELDENDE error.php
+-----------------
+*/
+
+.error_page_wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 10rem;
+}
+
+.error_message, .return_from_error {
+    padding: 1rem;
+}
+
+.return_from_error_button {
+    color: black;
+}
+
+
+/*
 ---------------
 STYLING GJELDENDE company_create.php
 ---------------
 */
+
 .company_descr, .company_email_field {
   background-color: #f9f9f9;
       border: none;
