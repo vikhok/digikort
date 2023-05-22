@@ -4,9 +4,11 @@
     require_once("../assets/include/db.inc.php");
 
     session_start();
-
     $company_id = $_REQUEST["company_id"];
+
     if($company_info = get_company_info($company_id)) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+
         $company_name = $company_info->company_name;
         $company_desc = $company_info->company_desc;
         $company_url = $company_info->company_url;
@@ -24,8 +26,9 @@
                 $dir = "../companies/stockcompany/picture.png";
             }
         }
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
-        header("Location: utility/error.php?error=404"); //FIX ME LATER
+        header("Location: utility/error.php?error=404");
     }
 ?>
 <!DOCTYPE html>

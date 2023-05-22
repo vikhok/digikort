@@ -3,6 +3,7 @@
     require_once("../../assets/include/util.inc.php");
 
     session_start();
+    
     if(isset($_SESSION["user"]["user_id"])) {
         $user_id = $_SESSION["user"]["user_id"];
         $email = $_SESSION["user"]["email"];
@@ -18,30 +19,20 @@
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT, ["cost" => 10]);
                     if(update_password($email, $password_hash)) {
                         delete_validation_code($email);
-                        $status = "<h4><span style='color:green'>
-                            Passordet ditt har blitt endret, sender deg til din profil.
-                            </span></h4>";
+                        show_alert("Passordet ditt har blitt endret, sender deg til din profil");
                         header("Refresh: 3; url=../index.php?user_id=$user_id");
                     } else {
-                        $status = "<h4><span style='color:red'>
-                            Noe gikk galt, passordet ble ikke oppdatert.
-                            </span></h4>";
+                        show_alert("Noe gikk galt, passrodet ble ikke oppdatert");
                     }
                 } else {
-                    $status = "<h4><span style='color:red'>
-                        Passordene du fylte inn samsvarer ikke.
-                        </span></h4>";
+                    show_alert("Passordene du fylte inn samsvarer ikke");
                 }
             }
         } else {
-            $status = "<h4><span style='color:red'>
-                Du må ha en aktiv verifiserings-kode for å bytte passord.
-                </span></h4>";
+            show_alert("Du må ha en aktiv verifiserings-kode for å bytte passord.");
         }
     } else {
-        $status = "<h4><span style='color:red'>
-            Du må være logget inn for å bytte passord, vi sender deg til loggin siden.
-            </span></h4>";
+        show_alert("Du må være logget inn for å bytte passord, vi sender deg til påloggingssiden");
         header("Refresh: 3; url=login.php");
     }
 ?>
@@ -51,7 +42,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styling/login.css">
+    <script src="../../assets/include/javascript/prompt.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../assets/styles/login.css">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.3.0-web/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>Bytt passord</title>

@@ -7,6 +7,12 @@
     $user_id = $_SESSION["user"]["user_id"];
     $note_id = $_REQUEST["note_id"];
 
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
+
     // Update note:
     if(isset($_REQUEST["update"])) {
         $note_subject = clean($_REQUEST["note_subject"]);
@@ -15,13 +21,9 @@
         $encrypted_body = digicrypt($note_body, true);
 
         if(update_note($note_id, $encrypted_subject, $encrypted_body)) {
-            $status = "<h4><span style='color:green'>
-                    Notat ble oppdatert.
-                    </span></h4>";
+            show_alert("Notat ble oppdatert");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, notat ble ikke oppdatert.
-                    </span></h4>";
+            show_alert("Noe gikk galt, notat ble ikke oppdatert");
         }
     }
 
@@ -30,9 +32,7 @@
         if(delete_note($note_id, $user_id)) {
             header("Location: notes.php?user_id=$user_id");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, notat ble ikke slettet.
-                    </span></h4>";
+            show_alert("Noe gikk galt, notat ble ikke slettet");
         }
     }
 
@@ -44,9 +44,7 @@
         $note_body = digicrypt($encrypted_body, false);
         $note_date = date("H:i d-m-Y", strtotime($note->note_date));
     } else {
-        $status = "<h4><span style='color:red'>
-            Fant ingen notat.
-            </span></h4>";
+        show_alert("Fant ingen notat");
     }
 ?>
 <!DOCTYPE html>
@@ -56,6 +54,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Note</title>
 </head>
 <body>
@@ -86,6 +85,5 @@
             </div>
         </form>
     <?php endif; ?>
-    <?php if(isset($status)) echo $status; ?>
 </body>
 </html>

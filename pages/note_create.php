@@ -5,6 +5,12 @@
 
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
+    
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
 
     // Create note and push it to the database:
     if(isset($_REQUEST["create"])) {
@@ -16,9 +22,7 @@
         if($note_id = create_note($user_id, $encrypted_subject, $encrypted_body)) {
             header("Location: note.php?note_id=$note_id");
         } else {
-            $status = "<h4><span style='color:red'>
-                    Noe gikk galt, notat ble ikke lagret.
-                    </span></h4>";
+            show_alert("Noe gikk galt, notat ble ikke lagret");
         }
     }
 ?>
@@ -28,6 +32,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Nytt notat</title>
 </head>
 <body>

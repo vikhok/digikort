@@ -12,27 +12,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../assets/include/javascript/ajax.js"></script>
     <script>
-        ajax_search("utility/all_users.php");
+        ajax_search_users("utility/all_users.php");
     </script>
-    <title>Document</title>
+    <title>Søk blant brukere</title>
 </head>
 <body>
     <?php banner(); ?>
     <div class="ajax-search-field">
-        <h1>AJAX List:</h1>
+        <h1>Brukere:</h1>
         <form method="post" action="">
-            <input name="company" type="text" id="searchInput" placeholder="Search for a company..." list="suggestions">
-            <datalist id="suggestions"></datalist>
+            <input type="text" id="searchInput" placeholder="Search for a fruit...">
+	        <div id="suggestions"></div>
         </form>
     </div>
-    <?php footer("profile") ?>
 </body>
 </html>
-
-<div class="ajax-search-field">
-        <h1>AJAX List:</h1>
-        <form method="post" action="">
-            <input name="company" type="text" id="searchInput" placeholder="Search for a company..." list="suggestions">
-            <datalist id="suggestions"></datalist>
-        </form>
-    </div>

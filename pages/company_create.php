@@ -5,6 +5,12 @@
 
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
+
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
     
     $company_name = null;
     $company_desc = null;
@@ -31,10 +37,7 @@
             $_SESSION["user"]["company_id"] = $company_id;
             header("Location: company.php?company_id=$company_id");
         } else {
-            $status = "<h4><span style='color:red'>
-                Noe gikk galt, bedriften ble ikke opprettet i systemet. <br>
-                Det kan være at navnet på bedriften allerede er registrert i systemet.
-                </span></h4>";
+            show_alert("Noe gikk galt, bedriften ble ikke opprettet i systemet. Det kan være at navnet på bedriften allerede er registrert i systemet.");
         }
     }
 ?>
@@ -45,6 +48,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <title>Opprett bedrift</title>
 </head>
 <body>
@@ -58,15 +62,9 @@
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Navn på bedrift kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 50 tegn.')"
                     oninput="this.setCustomValidity('')">
             </div>
-            <div class="redpro_input_text" id="freetext">
-                <label class="rediger-bedrift-label" for="company_desc">Beskrivelse av bedriften</label>
-                <textarea name="company_desc" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[0-9A-Za-zÆæØøÅå'- ]{1,200}" value="<?=$company_desc?>" required 
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Beskrivelse kan kun inneholde store og små bokstaver, tall, apostrof og bindestrek opp til 200 tegn.')"
-                    oninput="this.setCustomValidity('')"><?=$company_desc?></textarea>
-            </div>
-            <div class="redpro_input_text" id="freetext">
+            <div class="redpro_input_text" id="free_text">
                 <label class="rediger-bedrift-label" for="company_email">E-post</label>
-                <input type="email" name="company_email" placeholder="bedriften@mail.no" value="<?=$company_email?>" required 
+                <input type="email" class="company_email_field" name="company_email" placeholder="bedriften@mail.no" value="<?=$company_email?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Eksempelvis: bedriften@mail.no.')"
                     oninput="this.setCustomValidity('')">
             </div>
@@ -100,6 +98,12 @@
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Sikkerhetskoden kan kun inneholde 50 karakterer i form av bokstaver, tall og tegn som -!?#')"
                     oninput="this.setCustomValidity('')">
             </div>
+            <div class="redpro_input_text" id="free_text">
+                <label class="rediger-bedrift-label" for="company_desc">Beskrivelse av bedriften</label>
+                <textarea name="company_desc" class="company_descr" placeholder="Vi er bedriften og holder på med..." wrap="physical" pattern="[0-9A-Za-zÆæØøÅå'- ]{1,200}" value="<?=$company_desc?>" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Beskrivelse kan kun inneholde store og små bokstaver, tall, apostrof og bindestrek opp til 200 tegn.')"
+                    oninput="this.setCustomValidity('')"><?=$company_desc?></textarea>
+            </div>  
             <div class="rediger-bedrift_submit">
                 <button type="submit" name="create_company">Opprett bedrift</button>
             </div>

@@ -7,6 +7,12 @@
     session_start();
     $user_id = $_SESSION["user"]["user_id"];
 
+    if($_SESSION["user"]["logged_in"]) {
+        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+    } else {
+        header("Location: utility/error.php?error=401");
+    }
+
     // Get user information from the database:
     if($user = get_user_with_socials_and_company($user_id)) {
         $first_name = $user->first_name ?? null;
@@ -44,31 +50,21 @@
                         $upload_image = upload_image($user_id, "user"); // returns array which may contain errors
                         if(!empty($upload_image)) {
                             $terminate = true;
-                            $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av profil ble ikke foretatt.
-                                </span></h4>";
+                            show_alert("Noe gikk galt, endringer av profil ble ikke foretatt.");
                         }
                     }
                     if(!isset($terminate)) {
                         if(update_user_profile($user_id, $first_name, $last_name, $job_title, $email, $phone, $linkedin, $github, $instagram)) {
-                            $status = "<h4><span style='color:green'>
-                                Profilen ble endret.
-                                </span></h4>";
+                            show_alert("Profilen din er oppdatert");
                         } else {
-                            $status = "<h4><span style='color:red'>
-                                Noe gikk galt, endringer av profil ble ikke foretatt.
-                                </span></h4>";
+                            show_alert("Noe gikk galt, endringer av profil ble ikke foretatt");
                         }
                     }
                 } else {
-                    $status = "<h4><span style='color:red'>
-                        Ingen endringer har blitt foretatt.
-                        </span></h4>";
+                    show_alert("Ingen endringer har blitt foretatt");
                 }
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, endringer av profil ble ikke foretatt.
-                    </span></h4>";
+                show_alert("Noe gikk galt, endringer av profil ble ikke foretatt");
             }
         }
     
@@ -87,31 +83,21 @@
                 $message .= "<p>Vennligst ta kontakt med oss på digikortpass@gmail.com om dette ikke var deg.</p>";
                 
                 if(sendMail($reciever_email, $subject, $message, $reciever_name)) {
-                    $status = "<h4><span style='color:green'>
-                        En link for tilbakestilling av passordet har blitt sendt til $reciever_email.
-                        </span></h4>";
+                    show_alert("En link for tilbakestilling av passordet har blitt sendt til $reciever_email.");
                 } else {
-                    $status = $status = "<h4><span style='color:red'>
-                        Noe gikk galt, klarte ikke sende link for tilbakestilling av passord til $reciever_email.
-                        </span></h4>";
+                    show_alert("Noe gikk galt, klarte ikke sende link for tilbakestilling av passord til $reciever_email.");
                 }
             } else {
-                $status = $status = "<h4><span style='color:red'>
-                    Noe gikk galt, vennligst prøv igjen.
-                    </span></h4>";
+                show_alert("Noe gikk galt, vennligst prøv igjen.");
             }
         }
 
         if(isset($_REQUEST["leave_company"])) {
             if(leave_company($user_id, $company_id)) {
                 unset($_SESSION["user"]["company_id"]);
-                $status = "<h4><span style='color:green'>
-                    Du har forlatt bedriften.
-                    </span></h4>";
+                show_alert("Du har forlatt bedriften");
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, fikk ikke til å forlate bedriften.
-                    </span></h4>";
+                show_alert("Noe gikk galt, fikk ikke til å forlate bedriften.");
             }
         }
 
@@ -122,31 +108,23 @@
                 if(delete_user($user_id)) {
                     header("Location: utility/login.php");
                 } else {
-                    $status = "<h4><span style='color:red'>
-                        Noe gikk galt, fikk ikke slettet profilen 1.
-                        </span></h4>";
+                    show_alert("Noe gikk galt, fikk ikke slettet profilen");
                 }
             } else {
-                $status = "<h4><span style='color:red'>
-                    Noe gikk galt, fikk ikke slettet profilen 2.
-                    </span></h4>";
+                show_alert("Noe gikk galt, fikk ikke slettet profilen");
             }
         }
     } else {
-        $status = "<h4><span style='color:red'>
-            Noe gikk galt, fant ikke bruker i systemet.
-            </span></h4>";
+        show_alert("Noe gikk galt, fant ikke bruker i systemet");
     }
 ?>
 <!DOCTYPE html>
 <html lang="no">
 <head>
-    <script>
-        
-    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <title>Rediger profil</title>
 </head>
@@ -164,11 +142,11 @@
                 }
             ?>
             <div class="profil_bilde">    
-                <label class="redpro_label" for="upload-file">Endre profilbilde</label>
+                <label class="redpro_label" for="profil_bilde">Endre profilbilde</label>
                 <input type="file" id="profil_bilde" name="upload-file">
             </div>
             <div class="redpro_input_text">
-                <label class="redpro_label" for="first_name">Fornavn<mandatory style="color:red">*</mandatory></label>
+                <label class="redpro_label" for="first_name">Fornavn</label>
                 <input type="text" id="first_name" name="first_name" placeholder="Fornavn" pattern="[A-Za-zÆæØøÅå'-]{1,64}" value="<?=$first_name?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavn kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 64 tegn')"
                     oninput="this.setCustomValidity('')"><br><br>
@@ -211,7 +189,7 @@
                     <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/" pattern="{1,255}" value="<?=$instagram?>"><br><br>
                 </div>
             </div> 
-            <div class="oppdater_profil_knapp">    
+            <div class="oppdater_profil_knapp">
                 <button type="submit" name="update_profile">Oppdater profil</button>
             </div>
         </form>
@@ -220,14 +198,16 @@
                 <button type="submit" name="change_password">Bytt passord</button>
             </div>
         </form>
-        <form actuon="" method="post">
+        <?php if($company_id != false): ?>
+            <form action="" method="post">
+                <div class="change_password_button">
+                    <button type="submit" name="leave_company" onclick="confirmation('Er du sikker på at du ønsker å forlate bedriften?');">Forlat bedrift</button>
+                </div>
+            </form>
+        <?php endif; ?>
+        <form action="" method="post">
             <div class="change_password_button">
-                <button type="submit" name="leave_company">Forlat bedrift</button>
-            </div>
-        </form>
-        <form actuon="" method="post">
-            <div class="change_password_button">
-                <button type="submit" name="delete_user">Slett profil</button>
+                <button type="submit" name="delete_user"  onclick="confirmation('Er du sikker på at du ønsker å slette profilen din?');">Slett profil</button>
             </div>
         </form>
     </div>
