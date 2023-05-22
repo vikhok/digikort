@@ -15,7 +15,7 @@
         $city = $location->company_city;
         $zip = $location->company_zip;
     } else {
-        show_alert("Noe gikk galt, fant ikke bedriften i systemet");
+        show_alert("Noe gikk galt, fant ikke lokasjonen til bedriften.");
     }
 ?>
 <!DOCTYPE html>

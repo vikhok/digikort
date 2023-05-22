@@ -7,8 +7,20 @@
     session_start();
     $company_id = $_SESSION["user"]["company_id"];
 
+    if(isset($_SESSION["user"]["logged_in"])) {
+        $user_id = $_SESSION["user"]["user_id"];
+    } else {
+        header("Location: utility/error.php?error=401");
+        exit();
+    }
+
     if($company = get_company_info($company_id)) {
-        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        if(verify_admin_role($company_id, $user_id)) {
+            $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        } else {
+            header("Location: utility/error.php?error=401");
+            exit();
+        }
         
         $company_name = $company->company_name ?? null;
         $company_desc = $company->company_desc ?? null;
@@ -61,6 +73,9 @@
                 show_alert("Noe gikk galt, endringer av bedriften ble ikke foretatt");
             }
         }
+    } else {
+        header("Location: utility/error.php?error=404");
+        exit();
     }
 ?>
 <!DOCTYPE html>

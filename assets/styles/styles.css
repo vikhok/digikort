@@ -175,41 +175,19 @@ input::placeholder {
     border: 3px solid #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     margin-top: 15px;
-    }
-  
-    .profil_bilde {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 5rem;
-    }
-  
-    .profil_bilde input[type="file"] {
-      background-color: #f9f9f9;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      color: #555;
-      font-size: 16px;
-      padding: 8px 12px;
-      transition: all 0.3s ease-in-out;
-      width: 40%;
-      margin-bottom: 15px;
-      margin-top: 15px;
-       
-    }
+}
 
-    .change_password_button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 20px;
-        cursor: pointer;
-        margin-bottom: 0,5rem;
-      }
+.change_password_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 0,5rem;
+}
 
     .change_password_button button[type="submit"] {
         background-color: #0b417b;
@@ -306,6 +284,17 @@ header {
     width: 10rem;
     top: 4rem;
     outline: auto;
+}
+
+.profile_picture_small {
+    position: relative;
+    cursor: pointer;
+    margin-right: auto;
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    outline: auto;
+    margin-right: 1rem;
 }
 
 .nav-menu li {
@@ -801,7 +790,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     margin-bottom: 1rem;
   }
   
-  .notat-boks, .Ansatte {
+  .notat-boks {
     padding: 1rem;
     background-color: #f2f2f2;
     border-radius: 5px;
@@ -1227,40 +1216,30 @@ STYLING GJELDENDE admin-members.php
 -----------------
 */
 
-.admin-bilde {
+.members_header {
     display: flex;
     position: relative;
     justify-content: center;
 }
 
-.admin-bedrift-bilde {
-    max-width: 100%;
-    height: auto;
-}
-
-.admin-header {
+.employees_wrapper {
     display: flex;
     position: relative;
     justify-content: center;
 }
 
-.Ansatt-wrapper {
-    display: flex;
-    position: relative;
-    justify-content: center;
-}
-
-.admin-section {
+.members_section {
     display: flex;
     position: relative;
     flex-flow: column;
     max-width: 100%;
 }
 
-.admin-buttons {
+.admin_buttons {
     display: flex;
     padding: 5px 5px 5px;
     flex-flow: column;
+    border-radius: 5px;
 }
 
 .member-delete, .member-make-admin {
@@ -1273,18 +1252,23 @@ STYLING GJELDENDE admin-members.php
     border-color: #99A8BF;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
-.ansatte {
-    background-color: rgb(232, 234, 249);
-}
 
-.Ansatt-tekst {
+.employee_information {
     color: #01233D;
     font-size: large;
 }
 
-.ansatt-email {
-    color: #0069d9;
+.employee {
+    position: relative;
+    display: flex;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    width: 30rem;
 }
+
 
 /* 
 -----------------

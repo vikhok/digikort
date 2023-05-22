@@ -4,13 +4,17 @@
 
     session_start();
 
-    if(isset($_POST["login"])) {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+    if(isset($_REQUEST["login"])) {
+        $email = $_REQUEST["email"];
+        $password = $_REQUEST["password"];
         if($user = login($email, $password)) {
             $_SESSION["user"]["user_id"] = $user->user_id;
             $_SESSION["user"]["email"] = $email;
             $_SESSION["user"]["logged_in"] = true;
+            $_SESSION["user"]["administrator"] = $user->administrator;
+            if($user_company = get_user_company($user->user_id)) {
+                $_SESSION["user"]["company_id"] = $user_company->company_id;
+            }
             header("Location: ../index.php?user_id=" . $_SESSION["user"]["user_id"]);
         } else {
             show_alert("Feil e-post og/eller passord");

@@ -13,7 +13,11 @@
 
     function login($email, $password) {
         global $pdo;
-        $sql = "SELECT user_id, email, pass FROM user WHERE email = ?";
+        $sql = "SELECT u.user_id, u.email, u.pass, bc.administrator 
+            FROM user AS u 
+            LEFT JOIN business_card AS bc 
+            ON u.user_id = bc.user_id 
+            WHERE u.email = ?";
         $query = $pdo->prepare($sql);
         $query->bindParam(1, $email, PDO::PARAM_STR);
 
@@ -240,6 +244,43 @@
         try {
             $query->execute();
             return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function verify_admin_role($company_id, $user_id) {
+        global $pdo;
+        $sql = "SELECT administrator FROM business_card WHERE company_id = ? AND user_id = ?";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(1, $company_id, PDO::PARAM_INT);
+        $query->bindParam(2, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            $object = $query->fetch(PDO::FETCH_ASSOC);
+            if($object && $object["administrator"]) {
+                return true;
+            } else return false;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    function give_admin_role($company_id, $user_id) {
+        global $pdo;
+        $sql = "UPDATE business_card SET administrator = ? WHERE company_id = ? AND user_id = ?";
+        $query = $pdo->prepare($sql);
+        $admin = true;
+        $query->bindParam(1, $admin, PDO::PARAM_BOOL);
+        $query->bindParam(2, $company_id, PDO::PARAM_INT);
+        $query->bindParam(3, $user_id, PDO::PARAM_INT);
+
+        try {
+            $query->execute();
+            return true;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
@@ -545,7 +586,7 @@
 
     function get_all_employees($company_id) {
         global $pdo;
-        $sql = "SELECT bc.user_id, u.first_name, u.last_name, u.job_title, u.email
+        $sql = "SELECT bc.user_id, bc.administrator, u.first_name, u.last_name, u.job_title, u.email
             FROM business_card AS bc 
             LEFT JOIN user AS u 
             ON bc.user_id = u.user_id 

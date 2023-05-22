@@ -10,11 +10,13 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
         header("Location: utility/error.php?error=401");
+        exit();
     }
 
     $notes = get_all_notes($user_id);
     if($notes === false) {
         header("Loaction: utility/error.php?error=500");
+        exit();
     }
 ?>
 <!DOCTYPE html>

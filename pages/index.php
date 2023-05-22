@@ -20,17 +20,18 @@
         if($user_company = get_user_company($user_id)) {
             $company = $user_company->company_name;
             $company_id = $user_company->company_id;
-            $_SESSION["user"]["company_id"] = $company_id;
+            $_SESSION["business_card"]["company_id"] = $company_id;
         } else {
             $company = null;
             $company_id = null;
-            unset($_SESSION["user"]["company_id"]);
+            unset($_SESSION["business_card"]["company_id"]);
         }
         
         $url = $_SERVER["REQUEST_URI"];
         generateQR($user_id, $url);
     } else {
         header("Location: utility/error.php?error=404");
+        exit();
     }
 
     if(isset($_REQUEST["save-contact"])) {

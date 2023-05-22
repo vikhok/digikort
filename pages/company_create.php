@@ -7,9 +7,16 @@
     $user_id = $_SESSION["user"]["user_id"];
 
     if($_SESSION["user"]["logged_in"]) {
-        $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        if(!isset($_SESSION["user"]["company_id"])) {
+            $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
+        } else {
+            $company_id = $_SESSION["user"]["company_id"];
+            header("Location: company.php?company_id=$company_id");
+            exit();
+        }
     } else {
         header("Location: utility/error.php?error=401");
+        exit();
     }
     
     $company_name = null;
@@ -36,8 +43,9 @@
             if(!file_exists($folder)) mkdir($folder, 0777, true);
             $_SESSION["user"]["company_id"] = $company_id;
             header("Location: company.php?company_id=$company_id");
+            exit();
         } else {
-            show_alert("Noe gikk galt, bedriften ble ikke opprettet i systemet. Det kan være at navnet på bedriften allerede er registrert i systemet.");
+            show_alert("Noe gikk galt, bedriften ble ikke opprettet i systemet. Det kan være at en bedrift med samme navn allerede er registrert.");
         }
     }
 ?>

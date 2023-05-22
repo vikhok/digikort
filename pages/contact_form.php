@@ -35,6 +35,7 @@
         }
     } else {
         header("Location: utility/error.php?error=404");
+        exit();
     }
 ?>
 <!DOCTYPE html>

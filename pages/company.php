@@ -29,6 +29,7 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {
         header("Location: utility/error.php?error=404");
+        exit();
     }
 ?>
 <!DOCTYPE html>
@@ -57,8 +58,8 @@
             <div class="Bedrift-knapper">
                 <div class="om-og-kontakt-knapp">
                     <a class="aboutus-ref" href="https://egde.no/om-oss/">Om oss</a>
-                    <a class="employeelist-ref" href="https://egde.no/kontakt/">Se ansatte</a>
-                    <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse på kart</a>
+                    <a class="employeelist-ref" href="company_members.php?company_id=<?=$company_id?>">Ansatte</a>
+                    <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse</a>
                 </div>
             </div>
         </div>
