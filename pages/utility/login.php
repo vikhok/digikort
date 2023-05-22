@@ -8,12 +8,16 @@
         $email = $_REQUEST["email"];
         $password = $_REQUEST["password"];
         if($user = login($email, $password)) {
-            $_SESSION["user"]["user_id"] = $user->user_id;
+            $user_id = $user->user_id;
+            $_SESSION["user"]["user_id"] = $user_id;
             $_SESSION["user"]["email"] = $email;
             $_SESSION["user"]["logged_in"] = true;
-            $_SESSION["user"]["administrator"] = $user->administrator;
             if($user_company = get_user_company($user->user_id)) {
-                $_SESSION["user"]["company_id"] = $user_company->company_id;
+                $company_id = $user_company->company_id;
+                $_SESSION["user"]["company_id"] = $company_id;
+                if($admin = verify_admin_role($company_id, $user_id)) {
+                    $_SESSION["user"]["administrator"] = $admin;
+                }
             }
             header("Location: ../index.php?user_id=" . $_SESSION["user"]["user_id"]);
         } else {

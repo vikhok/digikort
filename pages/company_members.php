@@ -5,7 +5,7 @@
 
     session_start();
     $company_id = $_REQUEST["company_id"];
-    $admin = verify_admin_role($company_id, $_SESSION["user"]["user_id"]);
+    //$admin = verify_admin_role($company_id, $_SESSION["user"]["user_id"]);
 
     if($employees = get_all_employees($company_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
@@ -51,7 +51,7 @@
         <h1 class="members_header">Ansatte</h1>
         <?php if($employees):?>
             <section class="members-section">
-                <?php foreach ($employees as $employee): ?>
+                <?php foreach($employees as $employee): ?>
                     <form action="" method="post">
                         <div class="employees_wrapper">
                             <a class="employee" href="index.php?user_id=<?=$employee["user_id"]?>">
@@ -77,7 +77,7 @@
                                     <p><?= $employee["email"] ?></p>
                                 </div>
                             </a>
-                            <?php if($admin && !verify_admin_role($company_id, $user_id)): ?>
+                            <?php if(isset($_SESSION["user"]["logged_in"]) && verify_admin_role($company_id, $_SESSION["user"]["user_id"]) && !verify_admin_role($company_id, $user_id)): ?>
                                 <div class="admin_buttons">
                                     <input type="hidden" name="user_id" value="<?= $user_id ?>">
                                     <button type="submit" class="member-make-admin" name="make_admin" onclick="confirmation('Er du sikker på at du ønsker å gi rettigheter til <?=$employee['first_name']?>?');">Gi rettigheter</button>

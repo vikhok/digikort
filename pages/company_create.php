@@ -38,10 +38,11 @@
         $company_zip = clean_allow_null($_REQUEST["company_zip"]);
         $access_code = clean($_REQUEST["access_code"]);
         
-        if($company_id = add_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $user_id, true)) {
+        if($company_id = add_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $user_id)) {
             $folder = "../companies/" . md5("company." . $company_id);
             if(!file_exists($folder)) mkdir($folder, 0777, true);
             $_SESSION["user"]["company_id"] = $company_id;
+            $_SESSION["user"]["administrator"] = true;
             header("Location: company.php?company_id=$company_id");
             exit();
         } else {
