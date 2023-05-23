@@ -144,7 +144,7 @@
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Beskrivelse kan kun inneholde store og små bokstaver, apostrof og bindestrek opp til 200 tegn.')"
                     oninput="this.setCustomValidity('')"><?=$company_desc?></textarea>
             </div>
-            <div class="rediger-bedrift_submit">
+            <div class="blue_button">
                 <button type="submit" name="submit">Lagre</button>
             </div>
         </form>

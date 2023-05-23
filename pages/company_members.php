@@ -76,7 +76,7 @@
                                 </div>
                             </a>
                             <?php if(isset($_SESSION["user"]["logged_in"]) && verify_admin_role($company_id, $_SESSION["user"]["user_id"]) && !verify_admin_role($company_id, $user_id)): ?>
-                                <div class="admin_buttons">
+                                <div class="blue_button">
                                     <input type="hidden" name="user_id" value="<?= $user_id ?>">
                                     <button type="submit" class="member-make-admin" name="make_admin" onclick="confirmation('Er du sikker på at du ønsker å gi rettigheter til <?=$employee['first_name']?>?');">Gi rettigheter</button>
                                     <button type="submit" class="member-delete" name="remove_member" onclick="confirmation('Er du sikker på at du ønsker å fjerne <?=$employee['first_name']?> fra bedriften?');">Fjern medlem</button>

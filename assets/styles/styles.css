@@ -36,12 +36,16 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .red_button {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 .blue_button button[type="submit"] {
@@ -716,6 +720,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     color: black;
     font-size: 25px;
     font-weight: bold;
+    margin-bottom: 1rem;
   }
 
   @media (max-width:450px){
@@ -908,6 +913,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     padding: 20px;
     margin: 20px;
     font-size: large;
+    justify-content: center;
 }
 
 .bedrift-epost a {

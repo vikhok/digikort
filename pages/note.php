@@ -75,14 +75,14 @@
                     <p><?= $note_date ?></p>
                 </div>
                 <br>
-                <div class="button_create_note">
+                <div class="blue_button">
                     <button type="submit" name="update">Oppdater notat</button> 
                 </div>
             </div>
         </form>
         <form class="form_create_note" action="" method="post">
             <br>
-            <div class="button_delete_note">
+            <div class="red_button">
                 <button type="submit" name="delete">Slett notat</button>
             </div>
         </form>
