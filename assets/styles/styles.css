@@ -3,6 +3,7 @@
     GENERAL STYLING
     -----------------------------------------------------
 */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,6 +25,55 @@ label {
 input::placeholder {
     opacity: 0.5;
 }
+
+/*
+    -------------------------------------------------------
+    STYLING GJELDENDE Knapper i prosjektet
+    -------------------------------------------------------
+*/
+
+.blue_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue_button button[type="submit"] {
+    background-color: #0b417b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+.red_button button[type="submit"] {
+    background-color: #FF0000; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
 
 /*
     -------------------------------------------------------
