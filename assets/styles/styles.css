@@ -43,6 +43,10 @@ input::placeholder {
       padding-top: 10px;
       font-weight: bold;
     }
+
+.profil_bilde {
+  margin-top: 5rem;
+}    
   
 .redpro_input_text input[type="text"]:focus {
       background-color: #fff;
