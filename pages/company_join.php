@@ -66,7 +66,7 @@
                 <input type="text" name="access_code" placeholder="Tilgangskode" required>
                 <datalist id="suggestions"></datalist>
             </div>
-            <div class="blue_button">    
+            <div class="bli_med_bedrift_knapp">    
                 <button type="submit" name="submit_company">Bli med i bedrift</button>
             </div>
         </form>

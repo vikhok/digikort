@@ -70,7 +70,7 @@
                 <label for="message">Din melding</label><br>
                 <textarea cols="25" rows="10" name="message" wrap="physical"></textarea>
             </div>
-            <div class="blue_button">
+            <div class="submit-button">
                 <button type="submit" name="send">Send inn</button>
             </div>
         </form>

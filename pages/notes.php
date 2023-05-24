@@ -51,7 +51,7 @@
         <?php else: ?>
             <p class="no_notes">Du har ingen notater lagret.</p>
         <?php endif; ?>
-        <div class="blue_button">
+        <div class="button-mine-notater">
             <form action="note_create.php" method="post">
                 <button type="submit" name="create_note" >Nytt notat</button>
             </form>
