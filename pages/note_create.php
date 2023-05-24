@@ -51,7 +51,7 @@
                 <textarea type="text" name="note_body" id="note_body" rows="4" maxlength="255" accept-charset="UTF-8" required></textarea>
             </div>
             <br>
-            <div class="blue_button">
+            <div class="button_create_note">
                 <button  type="submit" name="create" >Legg til notat</button>
             </div>
         </form>

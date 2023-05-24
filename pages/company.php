@@ -56,13 +56,13 @@
                 <h3 class="e-post-form">Kontakt oss på e-post</h3>
                 <p class="bedrift-epost"><a href="mailto:<?=$company_email?>"><?=$company_email?></a></p>
             </section>
-            <div class="blue_button">
-                <div class="blue_button">
-                <button type="submit" a class="aboutus-ref" href="https://egde.no/om-oss/">Om oss</a>
-                <button type="submit" a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse</a>
-                <button type="submit" a class="employeelist-ref" href="company_members.php?company_id=<?=$company_id?>">Ansatte</a>
+            <div class="Bedrift-knapper">
+                <div class="om-og-kontakt-knapp">
+                    <a class="aboutus-ref" href="https://egde.no/om-oss/">Om oss</a>
+                    <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse</a>
+                    <a class="employeelist-ref" href="company_members.php?company_id=<?=$company_id?>">Ansatte</a>
                     <?php if(isset($_SESSION["user"]["logged_in"]) && verify_admin_role($company_id, $_SESSION["user"]["user_id"])): ?>
-                        <button type="submit" a class="aboutus-ref" href="company_update.php">Rediger bedrift</a>
+                        <a class="aboutus-ref" href="company_update.php">Rediger bedrift</a>
                     <?php endif; ?>
                 </div>
             </div>
