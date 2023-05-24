@@ -12,7 +12,8 @@
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
         $email = $user->email;
     } else {
-        show_alert("Noe gikk galt, fant ikke bruker i systemet");
+        header("Location: utility/error.php?error=404");
+        exit();
     }
 
     if(isset($_REQUEST["send"])) {
@@ -34,8 +35,7 @@
             show_alert("Noe gikk galt, e-post ble ikke sendt");
         }
     } else {
-        header("Location: utility/error.php?error=404");
-        exit();
+        show_alert("Noe gikk galt, fikk ikke sendt mail.");
     }
 ?>
 <!DOCTYPE html>
