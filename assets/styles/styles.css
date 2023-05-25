@@ -374,8 +374,8 @@ header {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
     background-color: white;
 }
 
@@ -407,8 +407,9 @@ header {
         background-color: #00406b;
         width: 100%;
         text-align: center;
-        transition: 0.3s;
         z-index: 1;
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
     }
 
     .nav-item {
@@ -496,6 +497,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 */
 
 .qr-code {
+    margin: 2rem;
     width: 15rem;
 }
 
@@ -868,7 +870,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     justify-content: center;
     align-items: center;
     display: block;
-    margin: 10px auto;
+    margin: 2rem auto;
 }
 
 .h1_my_notes {
@@ -952,8 +954,10 @@ STYLING GJELDENDE index.php (Menyvalg)
 }
 
 .bedrift_bilde_styling{
+    object-fit: cover;
     max-width: 50%;
     height: auto;
+    max-height: 20rem;
 }
 
 @media only screen and (max-width: 820px) {
@@ -1241,9 +1245,8 @@ STYLING GJELDENDE rediger-bedrift.php
     padding: 10px 20px;
     font-size: 20px;
     cursor: pointer;
-    margin-bottom: 2rem;
     display: block;
-    margin: 10px auto;
+    margin: 2rem auto;
 }
 
 .rediger-bedrift_form input[type="text"],
