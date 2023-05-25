@@ -1132,18 +1132,6 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 }
 
 #freetext textarea{
-  resize: none;
-  display: block;
-  margin-bottom: 20px;
-  width: 60%;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight:500;
-  font-size: 16px;
-  padding: 10px;
-}
-
-.freetext textarea{
     resize: none;
     display: block;
     margin-bottom: 20px;
