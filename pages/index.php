@@ -60,10 +60,12 @@
     <div class="business-card-container">
         <div class="personal-information">
             <h2><?=$name?></h2>
-            <h2><?=$company?></h2>
-            <h2><?=$job_title?></h2>
             <h2><?=$email?></h2>
             <h2><?=$phone?></h2>
+            <br>
+            <h2 class="business-card-company"><?=$company?></h2>
+            <h2 class="business-card-job-title"><?=$job_title?></h2>
+
         </div>
         <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]):
             $folder = md5("user." . $user_id);
