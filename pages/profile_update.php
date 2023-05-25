@@ -209,7 +209,7 @@
             </form>
         <?php endif; ?>
         <form action="" method="post">
-            <div class="change_password_button">
+            <div class="delete_user_button">
                 <button type="submit" name="delete_user"  onclick="confirmation('Er du sikker på at du ønsker å slette profilen din?');">Slett profil</button>
             </div>
         </form>
