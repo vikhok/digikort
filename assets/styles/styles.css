@@ -530,6 +530,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 */
 
 .qr-code {
+    padding: 1rem;
     height: auto;
     width: 15rem;
 }
