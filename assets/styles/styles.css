@@ -196,9 +196,13 @@ input::placeholder {
       margin: 10px auto;
     }
     
-  .oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
-      background-color: #0069d9;
+  .oppdater_profil_knapp button[type="submit"]:hover {
+      background-color: #0367d3;
     }
+
+  .addcompany_submit button[type="submit"]:hover {
+    background-color: #0b417b;
+  }  
     
   .error {
       color: red;
@@ -264,6 +268,35 @@ input::placeholder {
         background-color: #005ecb;
         box-shadow: none;
       }
+
+  .delete_user_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 0,5rem;
+  }    
+
+  .delete_user_button button[type="submit"] {
+    background-color: #be0303;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }    
+
+  .delete_user_button button[type="submit"]:hover {
+    background-color: #940000;
+  }
 
       @media only screen and (max-width: 600px) {
 
@@ -497,7 +530,7 @@ STYLING GJELDENDE index.php (Menyvalg)
 */
 
 .qr-code {
-    margin: 2rem;
+    height: auto;
     width: 15rem;
 }
 
@@ -900,7 +933,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     align-items: center;
     flex-direction: row;
 }
-.aboutus-ref, .employeelist-ref, .a-map-ref {
+.url-ref, .employeelist-ref, .a-map-ref {
     position: relative;
     display: flex;
     background: gray;
