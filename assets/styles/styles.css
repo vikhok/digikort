@@ -933,7 +933,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     align-items: center;
     flex-direction: row;
 }
-.aboutus-ref, .employeelist-ref, .a-map-ref {
+.url-ref, .employeelist-ref, .a-map-ref {
     position: relative;
     display: flex;
     background: gray;
