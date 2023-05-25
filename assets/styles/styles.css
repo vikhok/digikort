@@ -529,7 +529,9 @@ STYLING GJELDENDE index.php (Menyvalg)
 */
 
 .qr-code {
+    height: auto;
     width: 15rem;
+    margin: 1rem
 }
 
 .menu {
@@ -564,7 +566,7 @@ STYLING GJELDENDE index.php (Menyvalg)
     }
 
     .business-card-container{
-        font-size: medium;
+        font-size: medium; 
     }
 }
 
