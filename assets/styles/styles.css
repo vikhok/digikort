@@ -930,20 +930,19 @@ STYLING GJELDENDE index.php (Menyvalg)
 
 .om-og-kontakt-knapp {
     display: flex;
-    width: 60%;
-    align-items: center;
     flex-direction: row;
 }
-.url-ref, .employeelist-ref, .a-map-ref {
+.company_page_buttons {
     position: relative;
     display: flex;
-    background: gray;
+    background: #00406b;
     flex-flow: row wrap;
     border-radius: 10px;
-    width: 60%;
+    width: 10rem;
     padding: 20px;
     margin: 20px;
     font-size: large;
+    justify-content: center;
 }
 
 .bedrift-epost a {
@@ -1008,7 +1007,6 @@ STYLING GJELDENDE index.php (Menyvalg)
 
 @media (max-width: 607px) {
     .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
-        width: 300px;
         display: block;
     }
     .bedrift_bilde_styling {
