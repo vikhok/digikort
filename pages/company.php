@@ -20,9 +20,9 @@
         if(!file_exists($folder)) {
             mkdir($folder, 0777, true);
         }
-        $dir = "../images/companies/" . $folder . "/picture.png";
+        $dir = $folder . "/picture.png";
         if(!file_exists($dir)) {
-            $dir = "../images/companies/" . $folder . "/picture.jpg";
+            $dir = $folder . "/picture.jpg";
             if(!file_exists($dir)){
                 $dir = "../images/companies/stockcompany/picture.png";
             }
