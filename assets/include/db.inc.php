@@ -109,8 +109,6 @@
         }
     }
 
-
-
     function get_user_company($user_id) {
         global $pdo;
         $sql = "SELECT bc.user_id, bc.company_id, bc.administrator, 
