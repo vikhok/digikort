@@ -6,11 +6,11 @@
             // Define and display profile picture:
             if($user_id) {
                 $folder = md5("user." . $user_id);
-                $dir = "../profiles/" . $folder . "/picture.png";
+                $dir = "../images/profiles/" . $folder . "/picture.png";
                 if(!file_exists($dir)) {
-                    $dir = "../profiles/" . $folder . "/picture.jpg";
+                    $dir = "../images/profiles/" . $folder . "/picture.jpg";
                     if(!file_exists($dir)){
-                        $dir = "../profiles/stockprofile/picture.png";
+                        $dir = "../images/profiles/stockprofile/picture.png";
                     }
                 }
                 echo "<img class='profile_picture' src='$dir' alt='Profile picture'>";

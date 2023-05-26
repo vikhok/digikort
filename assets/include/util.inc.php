@@ -68,10 +68,10 @@
 
         if($option == "user") {
             $folder = md5("user." . $id);
-            $dir = $_SERVER["DOCUMENT_ROOT"] . "/digikort/profiles/" . $folder . "/";
+            $dir = $_SERVER["DOCUMENT_ROOT"] . "/images/profiles/" . $folder . "/";
         } elseif($option == "company") {
             $folder = md5("company." . $id);
-            $dir = $_SERVER["DOCUMENT_ROOT"] . "/digikort/companies/" . $folder . "/";
+            $dir = $_SERVER["DOCUMENT_ROOT"] . "/images/companies/" . $folder . "/";
         } else return false;
 
         if(!file_exists($dir)) {

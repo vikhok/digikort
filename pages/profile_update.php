@@ -136,7 +136,6 @@
     <div class="rediger_profil">
         <form class="redpro_form" action="" method="POST" enctype="multipart/form-data">
             <?php
-                if(isset($status)) echo $status;
                 if(isset($upload_image) && is_array($upload_image) && !empty($upload_image)) {
                     echo "<h4><span style='color:red';>Feilmelding" . (count($upload_image) > 1 ? "er:" : ":") . "</span></h4>";
                     foreach($upload_image as $message) {

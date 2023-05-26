@@ -16,15 +16,15 @@
         $company_address = $company_info->company_address . ", " . $company_info->company_zip . " " . $company_info->company_city;
         $company_email = $company_info->company_email;
 
-        $folder = "../companies/" . md5("company." . $company_id);
+        $folder = "../images/companies/" . md5("company." . $company_id);
         if(!file_exists($folder)) {
             mkdir($folder, 0777, true);
         }
-        $dir = "../companies/" . $folder . "/picture.png";
+        $dir = "../images/companies/" . $folder . "/picture.png";
         if(!file_exists($dir)) {
-            $dir = "../companies/" . $folder . "/picture.jpg";
+            $dir = "../images/companies/" . $folder . "/picture.jpg";
             if(!file_exists($dir)){
-                $dir = "../companies/stockcompany/picture.png";
+                $dir = "../images/companies/stockcompany/picture.png";
             }
         }
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];

@@ -73,7 +73,7 @@
         </div>
         <?php if(isset($_SESSION["user"]["user_id"]) && $_GET["user_id"] == $_SESSION["user"]["user_id"]):
             $folder = md5("user." . $user_id);
-            $dir = "../profiles/" . $folder . "/qr.png";
+            $dir = "../images/profiles/" . $folder . "/qr.png";
             echo "<img class='qr-code' src='$dir' alt='QR-kode'>";
         ?>
         <?php else: ?>
