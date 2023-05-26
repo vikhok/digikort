@@ -41,7 +41,7 @@
     }
 
     if(isset($_REQUEST["save-contact"])) {
-        if(generate_vcard($user->last_name, $user->first_name, $name, $phone, $email, $dir)) {
+        if(generate_vcard($user->last_name, $user->first_name, $name, $phone, $email)) {
             show_alert("Kontaktopplysninger er blitt lastet ned");
         } else {
             show_alert("Noe gikk galt, finner ikke kontaktopplysninger.");
