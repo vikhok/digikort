@@ -105,7 +105,7 @@
 
         if(isset($_REQUEST["delete_user"])) {
             $folder = md5("user." . $user_id);
-            $dir = "../profiles/$folder";
+            $dir = "../images/profiles/$folder";
             if(rrmdir($dir)) {
                 if(delete_user($user_id)) {
                     header("Location: utility/login.php");

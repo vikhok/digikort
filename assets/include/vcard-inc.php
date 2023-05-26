@@ -3,11 +3,11 @@
 if($user_id = false) {
     // Define and display profile picture:
     $folder = md5("user." . $user_id);
-    $dir = "../profiles/" . $folder . "/profile_picture.png";
+    $dir = "../images/profiles/" . $folder . "/profile_picture.png";
     if(!file_exists($dir)) {
-        $dir = "../profiles/" . $folder . "/profile_picture.jpg";
+        $dir = "../images/profiles/" . $folder . "/profile_picture.jpg";
         if(!file_exists($dir)){
-        $dir = "../profiles/stockprofile/profile_picture.png";
+        $dir = "../images/profiles/stockprofile/profile_picture.png";
         }
     }
 }
