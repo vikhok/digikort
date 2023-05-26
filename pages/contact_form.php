@@ -1,13 +1,13 @@
 <?php
+    session_start();
+
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/phpmailer.inc.php");
     require_once("../assets/include/util.inc.php");
 
-    session_start();
     $user_id = $_REQUEST["user_id"];
-    
     if($user = get_user($user_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
         $email = $user->email;

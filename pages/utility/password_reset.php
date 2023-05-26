@@ -1,9 +1,9 @@
 <?php
+    session_start();
+
     require_once("../../assets/include/db.inc.php");
     require_once("../../assets/include/phpmailer.inc.php");
     require_once("../../assets/include/util.inc.php");
-
-    session_start();
     
     if(isset($_REQUEST["send_verification"])) {
         $email = $_REQUEST["email"];

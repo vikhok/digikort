@@ -32,6 +32,8 @@ COPY ssl/apache_ssl.conf /etc/apache2/conf-available/ssl.conf
 COPY ssl/certificate.crt /etc/apache2/certificate.crt
 COPY ssl/private.key /etc/apache2/private.key
 RUN a2enconf ssl
+RUN chown -R www-data:www-data /var/www/html/profiles && chmod -R 755 /var/www/html/profiles
+RUN chown -R www-data:www-data /var/www/html/companies && chmod -R 755 /var/www/html/companies
 EXPOSE 80
 EXPOSE 443
 CMD ["apache2-foreground"]

@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/footer.inc.php");
 ?>

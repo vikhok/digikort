@@ -1,11 +1,11 @@
 <?php
+    session_start();
+    
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/footer.inc.php");
     require_once("../assets/include/db.inc.php");
-
-    session_start();
+    
     $company_id = $_REQUEST["company_id"];
-
     if($company_info = get_company_info($company_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
         $_SESSION["business_card"]["company_id"] = $company_id;

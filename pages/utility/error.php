@@ -1,5 +1,6 @@
 <?php
     session_start();
+    
     $error = $_REQUEST["error"];
     $url = $_SESSION["site"]["last_visited"];
 

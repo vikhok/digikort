@@ -1,12 +1,12 @@
 <?php
+    session_start();
+
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/util.inc.php");
 
-    session_start();
     $company_id = $_REQUEST["company_id"];
     //$admin = verify_admin_role($company_id, $_SESSION["user"]["user_id"]);
-
     if($employees = get_all_employees($company_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
     } else {

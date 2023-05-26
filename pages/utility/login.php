@@ -1,8 +1,7 @@
 <?php
+    session_start();
     require_once("../../assets/include/db.inc.php");
     require_once("../../assets/include/util.inc.php");
-
-    session_start();
 
     if(isset($_REQUEST["login"])) {
         $email = $_REQUEST["email"];

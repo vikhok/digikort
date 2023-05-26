@@ -1,12 +1,12 @@
 <?php
+    session_start();
+
     require_once("../assets/include/header.inc.php");
     require_once("../assets/include/db.inc.php");
     require_once("../assets/include/util.inc.php");
     require_once("../assets/include/phpmailer.inc.php");
 
-    session_start();
     $company_id = $_SESSION["user"]["company_id"];
-
     if(isset($_SESSION["user"]["logged_in"])) {
         $user_id = $_SESSION["user"]["user_id"];
     } else {
