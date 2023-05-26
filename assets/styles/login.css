@@ -109,17 +109,6 @@ STYLING GJELDENDE FOR LOGIN.PHP, CHANGE-PASSWORD.PHP OG REGISTRER-KONTO.PHP
         }
     }
 
-.remember-password-checkbox label{
-    display: block;
-    padding-left: 10px;
-    color: #414242;
-    font-size: large;
-}
-
-.remember-password-checkbox[type="checkbox"] {
-    justify-content: left;
-}
-
 .signup-form {
     position: relative;
    color: black;

@@ -42,10 +42,6 @@
                     <input type="email" name="email" class="email-form" placeholder="E-postadresse" required>
                     <input type="password" name="password" class="password-form" placeholder="Passord" required>
                 </div>
-                <div class="remember-password-checkbox">
-                    <label for="husk-passord">Husk passord</label>
-                    <input type="checkbox" id="remember-password" name="remember-password">
-                </div>
                 <div class="signup-form">
                     <p><a href="register.php">Mangler du brukerkonto?</a></p>
                 </div>
