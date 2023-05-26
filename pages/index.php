@@ -33,7 +33,7 @@
             unset($_SESSION["business_card"]["company_id"]);
         }
         
-        $url = "https://www.digikort.egde.io" . $_SERVER["REQUEST_URI"];
+        $url = "https://digikort.egde.io" . $_SERVER["REQUEST_URI"];
         generateQR($user_id, $url);
     } else {
         header("Location: utility/error.php?error=404");
