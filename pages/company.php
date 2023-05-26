@@ -62,7 +62,7 @@
                     <a class="a-map-ref" href="company_map.php?company_id=<?=$company_id?>">Veibeskrivelse</a>
                     <a class="employeelist-ref" href="company_members.php?company_id=<?=$company_id?>">Ansatte</a>
                     <?php if(isset($_SESSION["user"]["logged_in"]) && verify_admin_role($company_id, $_SESSION["user"]["user_id"])): ?>
-                        <a class="aboutus-ref" href="company_update.php">Rediger bedrift</a>
+                        <a class="url-ref" href="company_update.php">Rediger bedrift</a>
                     <?php endif; ?>
                 </div>
             </div>
