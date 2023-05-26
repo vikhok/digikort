@@ -106,7 +106,7 @@ input::placeholder {
 .redpro_input_text input[type="text"] {
       background-color: #f9f9f9;
       border: none;
-      border-radius: 10px;
+      border-radius: 0.5rem;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
       color: #555;
       font-size: 18px;
@@ -512,14 +512,12 @@ footer {
     margin-top: 2rem;
 }
 
-.personal-information a {
-    position: relative;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    margin-right: 20px;
-    padding-top: 2rem;
+.personal-information {
+  padding: 15px;
+}
+
+.business-card-company, .business-card-job-title {
+  font-size: 1.25rem; 
 }
 
 /*
@@ -567,6 +565,9 @@ STYLING GJELDENDE index.php (Menyvalg)
 
     .business-card-container{
         font-size: medium;
+    }
+    .business-card-company, .business-card-job-title {
+      font-size: 1rem;
     }
 }
 
@@ -798,7 +799,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   .form-group textarea {
     padding: 1rem;
     border: black;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     width: 100%;
     max-width: 100rem;
     font-size: 1rem;
@@ -890,7 +891,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   .notat-boks {
     padding: 1rem;
     background-color: #f2f2f2;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 100%;
     max-width: 700px;
