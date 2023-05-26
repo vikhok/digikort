@@ -1,19 +1,16 @@
 <?php
-    // ini_set('display_errors', 1);
-    // ini_set('display_startup_errors', 1);
-    // error_reporting(E_ALL);    
-
+    // Setup for PHPMyAdmin
     // define("DB_HOST", getenv('DB_HOST') ? getenv('DB_HOST') : 'localhost');
     // define("DB_USER", getenv('DB_USER') ? getenv('DB_USER') : 'root');
     // define("DB_PASS", getenv('DB_PASS') ? getenv('DB_PASS') : '');
     // define("DB_NAME", getenv('DB_NAME') ? getenv('DB_NAME') : 'digikort');
-
     
     define("DB_HOST", "mysql-digikort.mysql.database.azure.com");
     define("DB_USER", "sadigikort");
     define("DB_PASS", "J53KuXrfZbvGxU");
     define("DB_NAME", "digikort");
 
+    // Configurering for "require_secure_transport"
     // $options = [
     //     PDO::MYSQL_ATTR_SSL_CA => '/etc/apache2/certificate.crt',
     //     PDO::MYSQL_ATTR_SSL_CERT => '/etc/apache2/certificate.crt',
@@ -23,27 +20,10 @@
     $dsn = "mysql:dbname=" . DB_NAME . ";host=" . DB_HOST;
     $pdo;
     try {
-        $pdo = new PDO($dsn, DB_USER, DB_PASS);
+        $pdo = new PDO($dsn, DB_USER, DB_PASS); // $options som parameter
     } catch (PDOException $e) {
         echo "Error connecting to database: " . $e->getMessage();
     }
-
-    // $host = 'localhost';
-    // $dbname = 'digikort';
-    // $username = 'root';
-    // $password = 'pass';
-    // $socket = '/var/run/mysqld/mysqld.sock';
-    //;unix_socket=$socket
-
-   
-
-    // try {
-    //     $pdo = new PDO("mysql:dbname=$dbname", $username, $password);
-    //     echo "Connected successfully";
-    // } catch (PDOException $e) {
-    //     die("Connection failed: " . $e->getMessage());
-    // }
-
 
     function login($email, $password) {
         global $pdo;
