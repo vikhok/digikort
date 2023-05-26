@@ -3,6 +3,7 @@
     GENERAL STYLING
     -----------------------------------------------------
 */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,6 +28,55 @@ input::placeholder {
 
 /*
     -------------------------------------------------------
+    STYLING GJELDENDE Knapper i prosjektet
+    -------------------------------------------------------
+*/
+
+.blue_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue_button button[type="submit"] {
+    background-color: #0b417b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+.red_button button[type="submit"] {
+    background-color: #FF0000; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+
+/*
+    -------------------------------------------------------
     STYLING GJELDENDE rediger_profil.php
     -------------------------------------------------------
 */
@@ -39,10 +89,13 @@ input::placeholder {
       display: block;
       font-size: 20px;
       margin-bottom: 5px;
-      color: #00406b;
       padding-top: 10px;
       font-weight: bold;
     }
+
+.profil_bilde {
+  margin-top: 5rem;
+}    
   
 .redpro_input_text input[type="text"]:focus {
       background-color: #fff;
@@ -142,9 +195,13 @@ input::placeholder {
       margin: 10px auto;
     }
     
-  .oppdater_profil_knapp .addcompany_submit button[type="submit"]:hover {
-      background-color: #0069d9;
+  .oppdater_profil_knapp button[type="submit"]:hover {
+      background-color: #0367d3;
     }
+
+  .addcompany_submit button[type="submit"]:hover {
+    background-color: #0b417b;
+  }  
     
   .error {
       color: red;
@@ -210,6 +267,35 @@ input::placeholder {
         background-color: #005ecb;
         box-shadow: none;
       }
+
+  .delete_user_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 0,5rem;
+  }    
+
+  .delete_user_button button[type="submit"] {
+    background-color: #be0303;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }    
+
+  .delete_user_button button[type="submit"]:hover {
+    background-color: #940000;
+  }
 
       @media only screen and (max-width: 600px) {
 
@@ -320,8 +406,8 @@ header {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
     background-color: white;
 }
 
@@ -353,8 +439,9 @@ header {
         background-color: #00406b;
         width: 100%;
         text-align: center;
-        transition: 0.3s;
         z-index: 1;
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
     }
 
     .nav-item {
@@ -442,6 +529,8 @@ STYLING GJELDENDE index.php (Menyvalg)
 */
 
 .qr-code {
+    padding: 1rem;
+    height: auto;
     width: 15rem;
 }
 
@@ -719,7 +808,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
    .button_create_note button[type="submit"] {
-    background-color: #00406b;
+    background-color: #0367d3;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -731,6 +820,10 @@ STYLING GJELDENDE index.php (Menyvalg)
     display: block;
     margin-bottom: 0,5rem;
   } 
+
+  .button_create_note button[type="submit"]:hover {
+    background-color: #0b417b;
+  }
 
   .button_delete_note button[type="submit"] {
     background-color: #e52a09;
@@ -745,6 +838,10 @@ STYLING GJELDENDE index.php (Menyvalg)
     display: block;
     margin-bottom: 2rem;
     margin-top: -1rem;
+  }
+
+  .button_delete_note button[type="submit"]:hover {
+    background-color: #af1e05;
   }
   
   .h1_create_note {
@@ -804,7 +901,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   }
   
   .button-mine-notater button[type="submit"] {
-    background-color: #00406b;
+    background-color: #0367d3;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -814,8 +911,12 @@ STYLING GJELDENDE index.php (Menyvalg)
     justify-content: center;
     align-items: center;
     display: block;
-    margin: 10px auto;
+    margin: 2rem auto;
 }
+
+.button-mine-notater button[type="submit"]:hover {
+  background-color: #0b417b;
+}  
 
 .h1_my_notes {
     display: flex;
@@ -840,20 +941,19 @@ STYLING GJELDENDE index.php (Menyvalg)
 
 .om-og-kontakt-knapp {
     display: flex;
-    width: 60%;
-    align-items: center;
     flex-direction: row;
 }
-.aboutus-ref, .employeelist-ref, .a-map-ref {
+.company_page_buttons {
     position: relative;
     display: flex;
-    background: gray;
+    background: #00406b;
     flex-flow: row wrap;
     border-radius: 10px;
-    width: 60%;
+    width: 10rem;
     padding: 20px;
     margin: 20px;
     font-size: large;
+    justify-content: center;
 }
 
 .bedrift-epost a {
@@ -898,8 +998,10 @@ STYLING GJELDENDE index.php (Menyvalg)
 }
 
 .bedrift_bilde_styling{
+    object-fit: cover;
     max-width: 50%;
     height: auto;
+    max-height: 20rem;
 }
 
 @media only screen and (max-width: 820px) {
@@ -916,7 +1018,6 @@ STYLING GJELDENDE index.php (Menyvalg)
 
 @media (max-width: 607px) {
     .om-og-kontakt-knapp, .a_om_oss, .a-kontakt-oss {
-        width: 300px;
         display: block;
     }
     .bedrift_bilde_styling {
@@ -1078,18 +1179,6 @@ STYLING GJELDENDE contact-employee.php og add_company.php
 }
 
 #freetext textarea{
-  resize: none;
-  display: block;
-  margin-bottom: 20px;
-  width: 60%;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight:500;
-  font-size: 16px;
-  padding: 10px;
-}
-
-.freetext textarea{
     resize: none;
     display: block;
     margin-bottom: 20px;
@@ -1199,9 +1288,8 @@ STYLING GJELDENDE rediger-bedrift.php
     padding: 10px 20px;
     font-size: 20px;
     cursor: pointer;
-    margin-bottom: 2rem;
     display: block;
-    margin: 10px auto;
+    margin: 2rem auto;
 }
 
 .rediger-bedrift_form input[type="text"],

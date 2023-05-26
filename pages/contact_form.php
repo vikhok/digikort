@@ -20,8 +20,8 @@
         $sender_name = $_REQUEST["name"];
         $sender_email = $_REQUEST["email"];
         
-        $reciever_name = $name; // "Reciever";
-        $reciever_email = $email; // "digikortpass@gmail.com"; // Hvem skal motta epost (denne må endres til company_email fra db)
+        $reciever_name = "Reciever";
+        $reciever_email = "digikortpass@gmail.com"; // Hvem skal motta epost (denne må endres til company_email fra db)
 
         $subject = $_REQUEST["subject"];
         $message = "<h4>Fra: " . $sender_name . "</h4>";
@@ -34,8 +34,6 @@
         } else {
             show_alert("Noe gikk galt, e-post ble ikke sendt");
         }
-    } else {
-        show_alert("Noe gikk galt, fikk ikke sendt mail.");
     }
 ?>
 <!DOCTYPE html>
@@ -61,8 +59,8 @@
             <div class="email-section">
                 <label for="email">Din e-postadresse</label><br>
                 <input type="text" id="email" name="email" value="" required>
-            </section>
-            <section class="subject-section">
+            </div>
+            <div class="subject-section">
                 <label for="subject">Emne</label><br>
                 <input type="text" id="subject" name="subject" value="" required>
             </div>
@@ -74,6 +72,6 @@
                 <button type="submit" name="send">Send inn</button>
             </div>
         </form>
-    </div>
+    </section>
 </body>
 </html>

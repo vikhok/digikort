@@ -12,15 +12,18 @@
         $password = clean($_REQUEST["password"]);
         $confirm_password = clean($_REQUEST["confirm_password"]);
 
-        if($password == $confirm_password) {
+        if(strlen($password) >= 8 && $password == $confirm_password) {
             $password_hash = password_hash($password, PASSWORD_DEFAULT, ["cost" => 10]);
             if($user_id = create_account($first_name, $last_name, $email, $phone, $password_hash)) {
                 $folder = "../profiles/" . md5("user." . $user_id);
                 if(!file_exists($folder)) {
                     mkdir($folder, 0777, true);
                 }
-                show_alert("Konto ble registrert i systemet, vi sender deg til påloggingssiden");
-                header("Refresh: 3; url=login.php");
+                $_SESSION["user"]["user_id"] = $user_id;
+                $_SESSION["user"]["email"] = $email;
+                $_SESSION["user"]["logged_in"] = true;
+                header("Location: ../index.php?user_id=$user_id");
+                exit();
             } else {
                 show_alert("Noe gikk galt, konto ble ikke lagret i systemet");
             }
@@ -64,8 +67,6 @@
                     </div>
                     <p><a class="already-has-user-clicker" href="login.php">Jeg har allerede en brukerkonto</a></p>
                 </div>
-                
-                <?php if(isset($status)) { echo $status; } ?>
             </form>
         </div>
     </div>
