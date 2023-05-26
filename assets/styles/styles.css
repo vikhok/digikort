@@ -106,7 +106,7 @@ input::placeholder {
 .redpro_input_text input[type="text"] {
       background-color: #f9f9f9;
       border: none;
-      border-radius: 0.5rem;
+      border-radius: 10px;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
       color: #555;
       font-size: 18px;
@@ -519,7 +519,6 @@ footer {
   font-weight: bold;
   color: black;
   margin-right: 20px;
-
   text-decoration: underline;
 }
 
@@ -579,9 +578,6 @@ STYLING GJELDENDE index.php (Menyvalg)
 
     .business-card-container{
         font-size: medium;
-    }
-    .business-card-company, .business-card-job-title {
-      font-size: 1rem;
     }
 }
 
@@ -813,7 +809,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   .form-group textarea {
     padding: 1rem;
     border: black;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     width: 100%;
     max-width: 100rem;
     font-size: 1rem;
@@ -905,7 +901,7 @@ STYLING GJELDENDE index.php (Menyvalg)
   .notat-boks {
     padding: 1rem;
     background-color: #f2f2f2;
-    border-radius: 0.5rem;
+    border-radius: 5px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 100%;
     max-width: 700px;

@@ -77,7 +77,7 @@
                     oninput="this.setCustomValidity('')">
             </div>
             <div class="redpro_input_text" for="company_url">
-                <label class="rediger-bedrift-label" for="company_url">Nettstide</label>
+                <label class="rediger-bedrift-label" for="company_url">Nettside</label>
                 <input type="text" id="company_url" name="company_url" placeholder="www.bedrift.no" pattern="[A-Za-zÆæØøÅå'-.]{1,50}" value="<?=$company_url?>" required 
                     oninvalid="this.setCustomValidity('Obligatorisk felt. Vennligst følg formatet www.bedriften.no, inntill 50 tegn.')"
                     oninput="this.setCustomValidity('')">
