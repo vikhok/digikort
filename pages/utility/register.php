@@ -15,7 +15,7 @@
         if(strlen($password) >= 8 && $password == $confirm_password) {
             $password_hash = password_hash($password, PASSWORD_DEFAULT, ["cost" => 10]);
             if($user_id = create_account($first_name, $last_name, $email, $phone, $password_hash)) {
-                $folder = "../profiles/" . md5("user." . $user_id);
+                $folder = "../images/profiles/" . md5("user." . $user_id);
                 if(!file_exists($folder)) {
                     mkdir($folder, 0777, true);
                 }

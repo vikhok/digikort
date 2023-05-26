@@ -39,7 +39,7 @@
         $access_code = clean($_REQUEST["access_code"]);
         
         if($company_id = add_company($company_name, $company_desc, $company_email, $company_url, $company_address, $company_city, $company_zip, $access_code, $user_id)) {
-            $folder = "../companies/" . md5("company." . $company_id);
+            $folder = "../images/companies/" . md5("company." . $company_id);
             if(!file_exists($folder)) mkdir($folder, 0777, true);
             $_SESSION["user"]["company_id"] = $company_id;
             header("Location: company.php?company_id=$company_id");
