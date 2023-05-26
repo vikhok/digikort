@@ -1,11 +1,9 @@
-<!--
-    Denne funksjonen blir brukt til å importere HTML elementer for footer.
-    Importer denne der footer trengs, så ungår vi code dupliaction.
-
-    Importeres slik: require_once("denne filen");
-    Kalles på i php: footer() med parameter "profile" eller "company" for å få frem sosiale-media lenker.
--->
 <?php
+    // Denne funksjonen blir brukt til å importere HTML elementer for footer.
+    // Importer denne der footer trengs, så ungår vi code dupliaction.
+    // Importeres slik: require_once("denne filen");
+    // Kalles på i php: footer() med parameter "profile" eller "company" for å få frem sosiale-media lenker.
+
     require_once("../assets/include/db.inc.php");
 
     function footer($id = null, $option = null) {
@@ -18,7 +16,6 @@
             $github = $social->github ?? false;
             $instagram = $social->instagram ?? false;
         }
-
         if($social): ?>
             <footer>
                 <nav class="footer">

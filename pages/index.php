@@ -8,7 +8,13 @@
     require_once("../assets/include/vcard-inc.php");
     require_once("../assets/include/util.inc.php");
 
-    $user_id = $_REQUEST["user_id"];
+    if(isset($_REQUEST["user_id"])) {
+        $user_id = $_REQUEST["user_id"];
+    } else {
+        header("Location: utility/login.php");
+        exit();
+    }
+
     if($user = get_user($user_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
         $_SESSION["user"]["last_visited"] = $user_id;
