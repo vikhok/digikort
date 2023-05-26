@@ -28,7 +28,7 @@
                 show_alert("Noe gikk galt, konto ble ikke lagret i systemet");
             }
         } else {
-            show_alert("Passordene samsvarer ikke, prøv igjen");
+            show_alert("Noe gikk galt, passordet må innhold minst 8 tegn eller samsvarer ikke");
         }
     }
 ?>
