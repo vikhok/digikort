@@ -513,13 +513,21 @@ footer {
 }
 
 .personal-information a {
-    position: relative;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    margin-right: 20px;
-    padding-top: 2rem;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  margin-right: 20px;
+  text-decoration: underline;
+}
+
+.personal-information {
+  padding: 15px;
+}
+
+.business-card-company, .business-card-job-title {
+  font-size: 1.25rem; 
 }
 
 /*
@@ -563,6 +571,9 @@ STYLING GJELDENDE index.php (Menyvalg)
 @media(max-width:768px) {
     .personal-information{
         font-size: small;
+    }
+    .personal-information a {
+      font-size: 1.25rem;
     }
 
     .business-card-container{
