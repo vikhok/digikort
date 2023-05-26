@@ -60,6 +60,7 @@
     <div class="business-card-container">
         <div class="personal-information">
             <h2><?=$name?></h2>
+            <br>
             <h2 class="business-card-mail"><a href="mailto:<?=$email?>"><?=$email?></a></h2>
             <h2 class="business-card-number"><a href="tel:<?=$phone?>"><?=$phone?></a></h2>
             <br>
