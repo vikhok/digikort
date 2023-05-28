@@ -147,7 +147,7 @@
             $user_id = $pdo->lastInsertId();
             return $user_id;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
@@ -213,7 +213,7 @@
             }
             return $new_results;
             } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
@@ -282,7 +282,7 @@
             $query->execute();
             return true;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }

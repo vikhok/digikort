@@ -24,7 +24,7 @@
                 header("Location: company.php?company_id=$company_id");
                 exit();
             } else {
-                show_alert("Noe gikk galt, fikk ikke till å bli med i bedriften.");
+                show_alert("Noe gikk galt, fikk ikke til å bli med i bedriften.");
             }
         }
     } else {

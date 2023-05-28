@@ -40,11 +40,10 @@
 
             if(update_password($email, $password_hash)) {
                 delete_validation_code($email);
-                show_alert("Passordet ditt har blitt endret, sender deg til påloggingssiden");
-                header("Refresh: 3; url=login.php");
+                header("Location: login.php");
+                exit();
             } else {
                 show_alert("Noe gikk galt, passordet ble ikke oppdatert");
-                echo $email;
             }
         } else {
             show_alert("Ugyldig verifiseringskode, vennligst prøv igjen");
@@ -71,8 +70,12 @@
                 <?php if(isset($_REQUEST["send_verification"])): ?>
                     <div class="form-control">
                         <input type="hidden" name="email" value="<?=$_REQUEST['email']?>">
-                        <input type="password" name="new_password" class="new-password-form" placeholder="Nytt passord" required>
-                        <input type="text" name="verification_code" class="confirm-password-form" placeholder="Verifikasjons kode" required>
+                        <input type="password" name="new_password" class="new-password-form" placeholder="Nytt passord" pattern=".{8,64}" required
+                            oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold opptil 64 tegn')"
+                            oninput="this.setCustomValidity('')">
+                        <input type="text" name="verification_code" class="confirm-password-form" placeholder="Verifiseringskode" pattern=".{6}" required 
+                            oninvalid="this.setCustomValidity('Obligatorisk felt. Verifiseringskoden kan kun være 6 tegn')"
+                            oninput="this.setCustomValidity('')">
                     </div>
                     <button type="submit" name="verify_password_reset" class="submit">Lagre passord</button>
                 <?php else: ?>
