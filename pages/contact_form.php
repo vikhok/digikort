@@ -11,17 +11,18 @@
     if($user = get_user($user_id)) {
         $_SESSION["site"]["last_visited"] = $_SERVER["REQUEST_URI"];
         $email = $user->email;
+        $first_name = $user->first_name;
     } else {
         header("Location: utility/error.php?error=404");
         exit();
     }
 
     if(isset($_REQUEST["send"])) {
-        $sender_name = $_REQUEST["name"];
-        $sender_email = $_REQUEST["email"];
+        $sender_name = ucfirst(strtolower(clean($_REQUEST["name"])));
+        $sender_email = strtolower(validateEmail(cleanEmail($_REQUEST["email"])));
         
-        $reciever_name = "Reciever";
-        $reciever_email = "digikortpass@gmail.com"; // Hvem skal motta epost (denne må endres til company_email fra db)
+        $reciever_name = $first_name; // Test "Reciever"
+        $reciever_email = $email; // Test "digikortpass@gmail.com"
 
         $subject = $_REQUEST["subject"];
         $message = "<h4>Fra: " . $sender_name . "</h4>";

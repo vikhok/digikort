@@ -51,17 +51,23 @@
                 <h1 class="digikort-heading">DigiKort</h1>
                 <div class="form-control">
                     <input type="text" name="first_name" class="firstname-form" placeholder="Fornavn" pattern="[A-Za-zÆæØøÅå'-.]{1,64}" required
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavnet kan kun innhold bokstaver og 64 tegn')" oninput="this.setCustomValidity('')">
+                        oninvalid="this.setCustomValidity('Obligatorisk felt. Fornavnet kan kun innhold bokstaver og 64 tegn')" 
+                        oninput="this.setCustomValidity('')">
                     <input type="text" name="last_name" class="surname-form" placeholder="Etternavn" pattern="[A-Za-zÆæØøÅå'-.]{1,64}" required
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavnet kan kun innhold bokstaver og 64 tegn')" oninput="this.setCustomValidity('')">
-                    <input type="email" name="email" class="email-register-form" placeholder="Email" pattern="{1,128}" required
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. E-postadressen kan kun innhold 128 tegn')" oninput="this.setCustomValidity('')">
-                    <input type="tel" name="phone" class="phonenumber-form" placeholder="Mobilnummer" pattern="[0-9]{1,15}" required
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Telefonnummer kan kun innhold nummer og 15 tegn')" oninput="this.setCustomValidity('')">
+                        oninvalid="this.setCustomValidity('Obligatorisk felt. Etternavnet kan kun innhold bokstaver og 64 tegn')" 
+                        oninput="this.setCustomValidity('')">
+                    <input type="email" name="email" class="email-register-form" placeholder="Email" pattern=".{1,128}" required
+                        oninvalid="this.setCustomValidity('Obligatorisk felt. E-postadressen kan kun innhold 128 tegn')" 
+                        oninput="this.setCustomValidity('')">
+                    <input type="tel" name="phone" class="phonenumber-form" placeholder="Mobilnummer" pattern="[0-9+]{1,15}" required
+                        oninvalid="this.setCustomValidity('Obligatorisk felt. Telefonnummer kan kun innhold nummer og 15 tegn')" 
+                        oninput="this.setCustomValidity('')">
                     <input type="password" name="password" class="register-password-form" placeholder="Passord" pattern="[0-9A-Za-zÆæØøÅå'-.]{1,255}" required
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold 255 tegn')" oninput="this.setCustomValidity('')">
+                        oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold 255 tegn')" 
+                        oninput="this.setCustomValidity('')">
                     <input type="password" name="confirm_password" class="confirm-password-form" placeholder="Gjenta passord" pattern="[0-9A-Za-zÆæØøÅå'-.]{1,255}" required
-                    oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold 255 tegn')" oninput="this.setCustomValidity('')">
+                        oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold 255 tegn')" 
+                        oninput="this.setCustomValidity('')">
                     <div class="register-button">
                         <button type="submit" name="register">Registrer</button>
                     </div>

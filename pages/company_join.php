@@ -16,8 +16,8 @@
     // Check if user is already in a company:
     if(!$user_company = get_user_company($user_id)) {
         if(isset($_REQUEST["submit_company"])) {
-            $company_name = $_REQUEST["company_name"];
-            $access_code = $_REQUEST["access_code"];
+            $company_name = clean($_REQUEST["company_name"]);
+            $access_code = clean($_REQUEST["access_code"]);
             if($company_id = join_company($company_name, $access_code, $user_id, false)) {
                 $_SESSION["user"]["company_id"] = $company_id;
                 $_SESSION["business_card"]["company_id"] = $company_id;
@@ -45,7 +45,7 @@
 	<script src="../assets/include/javascript/ajax.js"></script>
     <script src="../assets/include/javascript/prompt.js" type="text/javascript"></script>
     <script>
-        ajax_search_companies("utility/all_companies.php");
+        ajax_search("utility/all_companies.php");
     </script>
     <title>Bli med i en bedrift</title>
 </head>

@@ -32,19 +32,18 @@
     }
 
     if(isset($_REQUEST["verify_password_reset"])) {
-        $email = $_REQUEST["email"];
-        $verification = $_REQUEST["verification_code"];
+        $email = strtolower(validateEmail(cleanEmail($_REQUEST["email"])));
+        $verification = clean($_REQUEST["verification_code"]);
         if(validate_password_reset($email, $verification)) {
-            $new_password = $_REQUEST["new_password"];
+            $new_password = clean($_REQUEST["new_password"]);
             $password_hash = password_hash($new_password, PASSWORD_DEFAULT, ["cost" => 10]);
 
             if(update_password($email, $password_hash)) {
                 delete_validation_code($email);
-                show_alert("Passordet ditt har blitt endret, sender deg til påloggingssiden");
-                header("Refresh: 3; url=login.php");
+                header("Location: login.php");
+                exit();
             } else {
                 show_alert("Noe gikk galt, passordet ble ikke oppdatert");
-                echo $email;
             }
         } else {
             show_alert("Ugyldig verifiseringskode, vennligst prøv igjen");

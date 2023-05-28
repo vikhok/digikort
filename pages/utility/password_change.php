@@ -8,13 +8,13 @@
         $user_id = $_SESSION["user"]["user_id"];
         $email = $_SESSION["user"]["email"];
         if(isset($_REQUEST["verification"])) {
-            $verification = $_REQUEST["verification"];
+            $verification = clean($_REQUEST["verification"]);
         } else $verification = null;
 
         if(validate_password_reset($email, $verification)) {
             if(isset($_REQUEST["verify_password_change"])) {
-                $new_password = $_REQUEST["new_password"];
-                $confrim_password = $_REQUEST["confirm_password"];
+                $new_password = clean($_REQUEST["new_password"]);
+                $confrim_password = clean($_REQUEST["confirm_password"]);
                 if($new_password == $confrim_password) {
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT, ["cost" => 10]);
                     if(update_password($email, $password_hash)) {

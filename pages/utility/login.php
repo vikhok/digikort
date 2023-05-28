@@ -5,8 +5,8 @@
     session_start();
 
     if(isset($_REQUEST["login"])) {
-        $email = $_REQUEST["email"];
-        $password = $_REQUEST["password"];
+        $email = strtolower(validateEmail(cleanEmail($_REQUEST["email"])));
+        $password = clean($_REQUEST["password"]);
         if($user = login($email, $password)) {
             $user_id = $user->user_id;
             $_SESSION["user"]["user_id"] = $user_id;
