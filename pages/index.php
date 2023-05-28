@@ -62,7 +62,7 @@
             <h2 class="business_card_h2"><?=$name?></h2>
             <h2 class="business_card_h2"><?=$company?></h2>
             <h2 class="business_card_h2"><?=$job_title?></h2>
-            <br class="business_card_br">
+            <br>
             <h2 class="business_card_h2"><a class="business_card_h2" href="mailto:<?=$email?>"><?=$email?></a></h2>
             <h2 class="business_card_h2"><a class="business_card_h2" href="tel:<?=$phone?>"><?=$phone?></a></h2>
         </div>
