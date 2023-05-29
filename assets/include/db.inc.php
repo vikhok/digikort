@@ -421,7 +421,7 @@
             $notes = $query->fetchAll(PDO::FETCH_ASSOC);
             return $notes;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
@@ -438,7 +438,7 @@
             $note = $query->fetch(PDO::FETCH_OBJ);
             return $note;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
@@ -459,7 +459,7 @@
             $note_id = $pdo->lastInsertId();
             return $note_id;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
@@ -564,7 +564,7 @@
             $query->execute();
             return true;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
@@ -580,7 +580,7 @@
             $query->execute();
             return true;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
@@ -615,7 +615,7 @@
             $query->execute();
             return true;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
             return false;
         }
     }
