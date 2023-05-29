@@ -40,8 +40,11 @@
             <form name="login" method="POST" action="#">
                 <h1 class="digikort-heading">DigiKort</h1>
                 <div class="form-control">
-                    <input type="email" name="email" class="email-form" placeholder="E-postadresse" required>
-                    <input type="password" name="password" class="password-form" placeholder="Passord" required>
+                    <input type="email" name="email" class="email-form" placeholder="E-postadresse" pattern=".{1,128}" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. E-postadressen kan kun innhold 128 tegn')" oninput="this.setCustomValidity('')">
+                    <input type="password" name="password" class="password-form" placeholder="Passord" pattern=".{8,64}" required
+                    oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innhold 64 tegn')"
+                    oninput="this.setCustomValidity('')">
                 </div>
                 <div class="signup-form">
                     <p><a href="register.php">Mangler du brukerkonto?</a></p>
