@@ -54,8 +54,12 @@
             <form name="Bytt Passord" method="POST" action="#">
                 <h1 class="digikort-heading">DigiKort</h1>
                 <div class="form-control">
-                    <input type="password" name="new_password" class="new-password-form" placeholder="Nytt passord" required>
-                    <input type="password" name="confirm_password" class="confirm-password-form" placeholder="Bekreft passord" required>
+                    <input type="password" name="new_password" class="new-password-form" placeholder="Nytt passord" pattern=".{8,64}" required
+                            oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innholde opptil 64 tegn')"
+                            oninput="this.setCustomValidity('')">
+                    <input type="password" name="confirm_password" class="confirm-password-form" placeholder="Bekreft passord" pattern=".{8,64}" required
+                            oninvalid="this.setCustomValidity('Obligatorisk felt. Passordet kan kun innholde opptil 64 tegn')"
+                            oninput="this.setCustomValidity('')">
                 </div>
                 <button type="submit" name="verify_password_change" class="submit">Lagre passord</button>
             </form>
