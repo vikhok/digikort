@@ -61,9 +61,13 @@
             </div>
             <div class="bedrift_navn">
                 <label for="bedrift_navn">Bedriftsnavn:</label>
-                <input type="text" name="company_name" id="searchInput" placeholder="Søk etter en bedrift..." list="suggestions" required>
+                <input type="text" name="company_name" id="searchInput" placeholder="Søk etter en bedrift..." list="suggestions" required 
+                    oninvalid="this.setCustomValidity('Velg en bedrift fra søkerfeltet.')"
+                    oninput="this.setCustomValidity('')">
                 <label for="access_code">Tilgangskode:</label>
-                <input type="text" name="access_code" placeholder="Tilgangskode" required>
+                <input type="text" name="access_code" placeholder="Tilgangskode" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, fyll inn sikkerhetskoden til bedriften.')"
+                    oninput="this.setCustomValidity('')">
                 <datalist id="suggestions"></datalist>
             </div>
             <div class="bli_med_bedrift_knapp">    

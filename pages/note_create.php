@@ -44,11 +44,15 @@
         <form class="form_create_note" action="" method="POST">
             <div class="form-group">
                 <label for="note_subject"><h3>Tittel:</h3></label>
-                <input type="text" name="note_subject" id="note_subject" maxlength="64" accept-charset="UTF-8" required>
+                <input type="text" name="note_subject" id="note_subject" maxlength="64" accept-charset="UTF-8" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, intill 64 tegn.')"
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="form-group">
                 <label for="note_body"><h3>Tekst:</h3></label>
-                <textarea type="text" name="note_body" id="note_body" rows="4" maxlength="255" accept-charset="UTF-8" required></textarea>
+                <textarea type="text" name="note_body" id="note_body" rows="4" maxlength="255" accept-charset="UTF-8" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, intill 255 tegn.')"
+                    oninput="this.setCustomValidity('')"></textarea>
             </div>
             <br>
             <div class="button_create_note">

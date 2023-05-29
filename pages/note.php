@@ -64,12 +64,14 @@
     <?php if($note): ?>
         <form class="form_create_note" action="" method="post">
             <div class="form-group">
-                <label for="note_subject"><h3>Tittel:</h3>
-                    <input type="text" name="note_subject" value="<?= $note_subject ?>" maxlength="64" accept-charset="UTF-8" required>
-                </label>
-                <label for="note_body"><h3>Notat:</h3>
-                    <textarea type="text" name="note_body" maxlength="255" accept-charset="UTF-8" required><?= $note_body ?></textarea>
-                </label>
+                <label for="note_subject"><h3>Tittel:</h3></label>
+                <input type="text" name="note_subject" value="<?= $note_subject ?>" maxlength="64" accept-charset="UTF-8" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, intill 64 tegn.')"
+                    oninput="this.setCustomValidity('')">
+                <label for="note_body"><h3>Notat:</h3></label>
+                <textarea type="text" name="note_body" maxlength="255" accept-charset="UTF-8" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, intill 255 tegn.')"
+                    oninput="this.setCustomValidity('')"><?= $note_body ?></textarea>
                 <div class="note_date">
                     <h3>Sist oppdatert:</h3>
                     <p><?= $note_date ?></p>

@@ -55,19 +55,27 @@
         <form name="contact" action="" method="POST"> 
             <div class="name-section">
                 <label for="name">Ditt navn</label><br>
-                <input type="text" id="name" name="name" value="" size="100" required>
+                <input type="text" id="name" name="name" value="" size="100" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, intill 64 tegn.')"
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="email-section">
                 <label for="email">Din e-postadresse</label><br>
-                <input type="text" id="email" name="email" value="" required>
+                <input type="text" id="email" name="email" value="" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, eksempelvis epost@epost.no.')"
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="subject-section">
                 <label for="subject">Emne</label><br>
-                <input type="text" id="subject" name="subject" value="" required>
+                <input type="text" id="subject" name="subject" value="" pattern=".{1,64}" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt, intill 64 tegn.')"
+                    oninput="this.setCustomValidity('')">
             </div>
             <div class="freetext-section" id="freetext">
                 <label for="message">Din melding</label><br>
-                <textarea cols="25" rows="10" name="message" wrap="physical"></textarea>
+                <textarea cols="25" rows="10" name="message" wrap="physical" required 
+                    oninvalid="this.setCustomValidity('Obligatorisk felt.')"
+                    oninput="this.setCustomValidity('')"></textarea>
             </div>
             <div class="submit-button">
                 <button type="submit" name="send">Send inn</button>
